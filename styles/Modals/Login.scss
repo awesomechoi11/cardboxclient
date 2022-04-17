@@ -1,0 +1,57 @@
+@use "../vars";
+
+#modal-root .login-signup-modal > .content {
+    text-align: center;
+    > .signup-flow {
+        > .title-1 {
+            margin-bottom: 24rem;
+        }
+        > * {
+            margin-bottom: 48rem;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        > .socials {
+            display: flex;
+            justify-content: center;
+            gap: 48rem;
+            > div {
+                cursor: pointer;
+                border-radius: 100%;
+                width: 72rem;
+                height: 72rem;
+                transition: background-color 220ms;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &:hover {
+                    background-color: vars.$color-secondary-2;
+                }
+            }
+        }
+        > form {
+            text-align: left;
+            margin-bottom: 100rem;
+            > * {
+                margin-top: 24rem;
+            }
+            > .submit {
+                width: 100%;
+            }
+        }
+
+        // >.img{
+        //     margin-bottom: 48rem;
+        // }
+        > .message > * {
+            margin-bottom: 24rem;
+        }
+        > .action-btn {
+            width: 100%;
+        }
+        > .switch {
+            cursor: pointer;
+        }
+    }
+}

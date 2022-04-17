@@ -1,0 +1,60 @@
+@use "../vars";
+
+.large-card-banner {
+    width: 860rem;
+    height: 200rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 32rem;
+    > * {
+        height: 100%;
+    }
+    > .left {
+        border-radius: 4rem;
+        overflow: hidden;
+        width: 272rem;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    > .right {
+        flex-grow: 1;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        > .top {
+            > * {
+                margin-bottom: 12rem;
+            }
+        }
+    }
+}
+@media (max-width: vars.$mobile-maxWidth) {
+    .large-card-banner {
+        width: 100%;
+        height: unset;
+        // display: flex;
+        flex-direction: column;
+        // justify-content: space-between;
+        // gap: 32rem;
+        > * {
+            flex-grow: 1;
+            width: 100% !important;
+        }
+        // > .left {
+        //     border-radius: 4rem;
+        //     overflow: hidden;
+        //     width: 272rem;
+        //     img {
+        //         width: 100%;
+        //         height: 100%;
+        //         object-fit: cover;
+        //     }
+        // }
+        > .right {
+            gap: 32rem;
+        }
+    }
+}

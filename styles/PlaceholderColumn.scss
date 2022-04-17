@@ -1,0 +1,32 @@
+@use "./vars";
+
+.placeholder-column {
+    display: flex;
+    flex-direction: column;
+    gap: 48rem;
+    align-items: center;
+    width: 400rem;
+    text-align: center;
+    word-break: break-word;
+    .img-wrapper {
+        height: 320rem;
+        width: 360rem;
+        position: relative;
+    }
+    .message {
+        width: 360rem;
+    }
+    .message > .title-1 {
+        margin-bottom: 24rem;
+    }
+    > button {
+        width: 100%;
+    }
+    &.regular {
+        > .img-wrapper {
+            width: 360rem;
+            height: 320rem;
+            position: relative;
+        }
+    }
+}

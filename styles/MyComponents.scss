@@ -1,0 +1,15 @@
+@use "./vars";
+
+.my-icon-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8rem;
+    border-radius: 64rem;
+    background-color: vars.$color-secondary-1;
+    transition: background-color 220ms;
+    cursor: pointer;
+    &:hover {
+        background-color: vars.$color-secondary-2;
+    }
+}

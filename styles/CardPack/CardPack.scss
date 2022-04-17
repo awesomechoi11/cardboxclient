@@ -1,0 +1,10 @@
+@import "./CardSwiper.scss";
+@import "./CardBanner.scss";
+@import "./CardDisplay.scss";
+
+#card-pack {
+    > .placeholder-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+}

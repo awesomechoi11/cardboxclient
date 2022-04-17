@@ -1,0 +1,169 @@
+@use "./vars";
+@import "./vars";
+
+// Bootstrap
+// Required
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+// Optional
+@import "../node_modules/bootstrap/scss/buttons";
+@import "../node_modules/bootstrap/scss/forms";
+// @import "../node_modules/bootstrap/scss/dropdown";
+// @import "../node_modules/bootstrap/scss/code";
+// @import "../node_modules/bootstrap/scss/grid";
+
+// My Sass
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;800;900&family=Nunito:wght@600;800&display=swap");
+@import "./CardPack/CardPack.scss";
+@import "./Modals/ModalRoot.scss";
+@import "Navbar.scss";
+@import "ConfirmEmail.scss";
+@import "CreatePack.scss";
+@import "Editor.scss";
+@import "MyComponents.scss";
+@import "Home.scss";
+@import "Browse.scss";
+@import "popper.scss";
+@import "PlaceholderColumn.scss";
+
+html {
+    font-size: 0.0520833333333vw;
+    overflow: hidden;
+}
+
+body {
+    font-size: 14rem;
+    padding: 0;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    color: vars.$color-primary-1;
+    background-color: vars.$color-secondary-1;
+}
+html,
+body,
+#app {
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    color: vars.$color-primary-1;
+    background-color: vars.$color-secondary-1;
+}
+#app {
+    overflow: auto;
+    position: relative;
+    z-index: 1;
+}
+main {
+    width: 100%;
+    padding: 0 530rem;
+    box-sizing: border-box;
+}
+
+@media (max-width: vars.$mobile-maxWidth) {
+    html {
+        font-size: 0.26666666666vw;
+    }
+    main {
+        padding: 0 24rem;
+        width: 100vw;
+    }
+}
+
+.divider {
+    width: 100%;
+    margin: 48rem 0;
+    opacity: 0.2;
+    background-color: #9e694f;
+    height: 2rem;
+}
+
+.title-1 {
+    color: vars.$color-primary-1;
+    font-size: 24rem;
+    font-weight: 600;
+    margin: 8rem 0;
+}
+.subtitle-1 {
+    color: vars.$color-primary-2;
+    font-weight: 600;
+    margin: 8rem 0;
+}
+.subtitle-2 {
+    color: vars.$color-primary-1;
+    font-weight: 600;
+    margin: 8rem 0;
+}
+.description-1 {
+    margin: 8rem 0;
+    color: vars.$color-secondary-4;
+    word-break: break-word;
+}
+.normal-1 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 14rem;
+    color: vars.$color-primary-1;
+}
+input {
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+.content {
+    word-break: break-word;
+}
+.form-error {
+    margin: 8rem;
+    color: vars.$color-error-1;
+}
+
+main.wide {
+    padding: 0 192rem;
+    margin-bottom: 128rem;
+    text-align: left;
+}
+
+main.column {
+    padding: 0 780rem;
+    margin-bottom: 128rem;
+    text-align: center;
+    form {
+        text-align: left;
+    }
+    > * {
+        width: 100%;
+        margin-bottom: 48rem;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    > .message > * {
+        margin-bottom: 24rem;
+    }
+}
+
+/* unvisited link */
+a:link {
+    color: unset;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    color: unset;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: unset;
+    text-decoration: none;
+}
+
+/* selected link */
+a:active {
+    color: unset;
+    text-decoration: none;
+}

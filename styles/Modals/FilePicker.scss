@@ -1,0 +1,105 @@
+@use "../vars";
+
+.file-picker-modal > .content > .inner {
+    text-align: center;
+    > .title-1 {
+        margin-bottom: 24rem;
+    }
+    > .subtitle-1 {
+        margin-bottom: 48rem;
+    }
+    > .file-item-list {
+        height: 300rem;
+        display: flex;
+        flex-flow: row wrap;
+        gap: 24rem;
+        margin-bottom: 24rem;
+        overflow: hidden;
+        &.incoming {
+            height: auto;
+        }
+        > .file-item {
+            cursor: pointer;
+            overflow: hidden;
+            width: 82rem;
+            height: 82rem;
+            border-radius: 16rem;
+            background-color: vars.$color-secondary-2;
+            position: relative;
+            > .percent {
+                position: absolute;
+                top: 32rem;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            > .progress-bar {
+                bottom: 8rem;
+                left: 8rem;
+                position: absolute;
+                width: 66rem;
+                height: 8rem;
+                background-color: vars.$color-secondary-1;
+                border-radius: 8rem;
+                overflow: hidden;
+                > .bar {
+                    // border-radius: 8rem;
+                    background-color: vars.$color-primary-1;
+                    width: 8rem;
+                    height: 8rem;
+                }
+            }
+        }
+    }
+    > .controls {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 48rem;
+        > .icon-btn {
+            transition: background-color 220ms;
+            width: 32rem;
+            height: 32rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100%;
+            path {
+                transform: fill 220ms;
+                fill: vars.$color-secondary-3;
+            }
+
+            &.active {
+                cursor: pointer;
+                path {
+                    transform: fill 220ms;
+                    fill: vars.$color-primary-1;
+                }
+                &:hover {
+                    background-color: vars.$color-secondary-2;
+                }
+            }
+        }
+    }
+    > .dropzone {
+        height: 300rem;
+        > .inner {
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            gap: 16rem;
+            flex-direction: column;
+            align-items: center;
+            > .text {
+                width: 186rem;
+                position: absolute;
+                top: 114rem;
+                text-align: center;
+            }
+            > .cta {
+                top: 214rem;
+                position: absolute;
+            }
+        }
+    }
+}

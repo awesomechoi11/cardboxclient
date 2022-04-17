@@ -1,0 +1,52 @@
+@use "../vars";
+@import "Login.scss";
+@import "FilePicker.scss";
+
+#modal-root {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    pointer-events: none;
+    > .container {
+        width: 100%;
+        min-height: 100%;
+        padding: 128rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        box-sizing: border-box;
+        background-color: rgba(81, 65, 57, 0.55);
+        opacity: 0;
+
+        cursor: pointer;
+        > .content {
+            box-sizing: border-box;
+            cursor: auto;
+            position: relative;
+            width: 600rem;
+            padding: 120rem 100rem;
+            background-color: vars.$color-secondary-1;
+            border-radius: 32rem;
+            > .exit-button {
+                cursor: pointer;
+                background-color: vars.$color-secondary-1;
+                width: 48rem;
+                height: 48rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 100%;
+                position: absolute;
+                top: 32rem;
+                right: -80rem;
+                transition: scale 220ms;
+                &:hover {
+                    scale: 1.1;
+                }
+            }
+        }
+    }
+}

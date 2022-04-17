@@ -1,0 +1,180 @@
+@use "../vars";
+
+.card-swiper-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 32rem 0;
+    padding-bottom: 64rem;
+    // overflow: hidden;
+    &.mobile {
+        padding-bottom: 148rem;
+        > .controls {
+            position: absolute;
+            > * {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                > * {
+                    position: absolute;
+                }
+            }
+            > .left {
+                right: 130rem;
+            }
+            > .right {
+                left: 130rem;
+            }
+            .arrow {
+                width: 80rem;
+                height: 80rem;
+                border-radius: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: background-color 220ms;
+                cursor: pointer;
+                &:hover {
+                    background-color: vars.$color-secondary-2;
+                }
+                > svg {
+                    width: 32rem;
+                    height: 32rem;
+                }
+            }
+            .flipsides,
+            .shuffle {
+                width: 48rem;
+                height: 48rem;
+                border-radius: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: background-color 220ms;
+                cursor: pointer;
+                &:hover {
+                    background-color: vars.$color-secondary-2;
+                }
+                > svg {
+                    width: 48rem;
+                    height: 48rem;
+                }
+            }
+        }
+    }
+
+    > .controls {
+        position: absolute;
+        > * {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            > * {
+                position: absolute;
+            }
+        }
+        > .left {
+            right: 320rem;
+        }
+        > .right {
+            left: 320rem;
+        }
+        .arrow {
+            width: 80rem;
+            height: 80rem;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 220ms;
+            cursor: pointer;
+            &:hover {
+                background-color: vars.$color-secondary-2;
+            }
+            > svg {
+                width: 32rem;
+                height: 32rem;
+            }
+        }
+        .flipsides,
+        .shuffle {
+            width: 48rem;
+            height: 48rem;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 220ms;
+            cursor: pointer;
+            &:hover {
+                background-color: vars.$color-secondary-2;
+            }
+            > svg {
+                width: 48rem;
+                height: 48rem;
+            }
+        }
+    }
+
+    > .dropzone-wrapper {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        width: 860rem;
+        height: 400rem;
+    }
+    > .stack {
+        position: relative;
+        width: 300rem;
+        height: 400rem;
+    }
+    .card {
+        filter: drop-shadow(0px 2rem 4rem vars.$color-primary-1);
+        position: absolute;
+        width: 300rem;
+        height: 400rem;
+        &.active {
+            cursor: grab;
+        }
+        user-select: none;
+        > .inner {
+            width: 100%;
+            height: 100%;
+            opacity: 1;
+            .back-face,
+            .front-face {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                transform-style: preserve-3d;
+                backface-visibility: hidden;
+            }
+            .front-face {
+                transform: rotateY(0deg);
+            }
+            .back-face {
+                transform: rotateY(180deg);
+            }
+            .face {
+                img {
+                    width: 80%;
+                    height: 40%;
+                    object-fit: contain;
+                }
+                position: absolute;
+                pointer-events: none;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: #e7cdb5;
+                border-radius: 26.67rem;
+                gap: 16rem;
+            }
+        }
+    }
+}

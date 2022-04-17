@@ -1,0 +1,13 @@
+#confirmEmail {
+    text-align: center;
+
+    > form {
+        text-align: left;
+        > * {
+            margin-top: 24rem;
+        }
+        > .submit {
+            width: 100%;
+        }
+    }
+}

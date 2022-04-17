@@ -1,0 +1,257 @@
+@use "./vars";
+
+#CreatePack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48rem;
+    margin-bottom: 128rem;
+    > .placeholder-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+    .add-btn {
+        width: 100%;
+        margin-bottom: 48rem;
+    }
+    > .row {
+        width: 100%;
+    }
+    .create-pack-controls {
+        background-color: vars.$color-secondary-1;
+        padding: 16rem 0;
+        display: flex;
+        align-items: center;
+        margin-bottom: 64rem;
+        height: 40rem;
+        position: relative;
+        &.top {
+            top: 0;
+            position: sticky;
+            z-index: 10;
+        }
+        > * {
+            position: absolute;
+            width: 100%;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 16rem;
+            > * {
+                pointer-events: all;
+            }
+        }
+        > .left {
+            justify-content: left;
+        }
+        > .middle {
+            justify-content: center;
+        }
+        > .right {
+            justify-content: end;
+        }
+
+        // &.bottom {
+        //     display: flex;
+        //     flex-direction: column;
+        //     gap: 64rem;
+        //     > .bottom {
+        //         display: flex;
+        //         justify-content: space-between;
+        //         align-items: center;
+        //         > * {
+        //             display: flex;
+        //             align-items: center;
+        //             gap: 16rem;
+        //         }
+        //     }
+        // }
+    }
+
+    > #CreatePack-form {
+        display: flex;
+        justify-content: space-between;
+        width: 640rem;
+        > .right {
+            width: 420rem;
+            > * {
+                margin-bottom: 16rem;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        > .left {
+            width: 198rem;
+            > .file-picker-wrapper {
+                margin-bottom: 16rem;
+                > .inner {
+                    cursor: pointer;
+                    border-radius: 16rem;
+                    padding: 24.7rem 30rem;
+                    border: 2px dashed vars.$color-primary-1;
+                    > .preview-image {
+                        max-width: 100%;
+                        height: 152rem;
+                        position: relative;
+                        img {
+                            object-fit: cover;
+                        }
+                    }
+                }
+                > .remove {
+                    cursor: pointer;
+                    text-align: center;
+                    padding: 8rem 0;
+                }
+            }
+        }
+    }
+    .create-pack-row-item {
+        width: 860rem;
+        // height: 76rem;
+        margin-bottom: 64rem;
+        position: relative;
+        z-index: 2;
+        .image-wrapper {
+            flex-shrink: 0;
+            width: 85rem;
+            height: 76rem;
+            border-radius: 16rem;
+            overflow: hidden;
+            flex-shrink: 0;
+            cursor: pointer;
+            > .inner {
+                width: 85rem;
+                height: 76rem;
+                > svg,
+                > img {
+                    width: 85rem;
+                    height: 76rem;
+                }
+            }
+        }
+
+        .middle {
+            opacity: 0;
+            transition: opacity 220ms;
+        }
+        .controls {
+            opacity: 0;
+            transition: opacity 220ms;
+            display: flex;
+            justify-content: flex-end;
+        }
+        &:hover {
+            .middle {
+                opacity: 1;
+            }
+            .controls {
+                opacity: 1;
+            }
+        }
+        &.dragging {
+            opacity: 0.5;
+            .controls {
+                opacity: 0;
+            }
+        }
+        &.overlay {
+            .index {
+                opacity: 0;
+            }
+        }
+        > .content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+
+            &.focused {
+                z-index: 2;
+            }
+            > .index {
+                min-width: 48rem;
+            }
+            > .title-1 {
+                margin: 0;
+            }
+            > .fields {
+                display: flex;
+                flex-grow: 1;
+                gap: 24rem;
+                img {
+                    object-fit: cover;
+                }
+                > .field {
+                    flex-grow: 1;
+                    display: flex;
+                    align-items: top;
+                    gap: 8rem;
+                    > .editor-group {
+                        width: 250rem;
+                        > .card-editor-wrapper {
+                            > .editor {
+                                min-height: 16rem;
+                            }
+                            flex-grow: 1;
+                            &.active {
+                                z-index: 2;
+                            }
+                        }
+                    }
+                }
+                > .middle {
+                    display: flex;
+                    align-items: center;
+                }
+            }
+            .my-text-input {
+                flex-grow: 1;
+            }
+        }
+    }
+
+    .add-between-trigger {
+        position: relative;
+        z-index: 1;
+        > .inner {
+            position: absolute;
+            bottom: 0;
+            width: 1300rem;
+            height: 96rem;
+            // background: red;
+            // pointer-events: none;
+        }
+        > .button {
+            // pointer-events: all;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            bottom: 32rem;
+            left: 890rem;
+            > .right {
+                box-sizing: border-box;
+                display: flex;
+                background-color: vars.$color-secondary-3;
+                align-items: center;
+                gap: 16rem;
+                border-radius: 8rem;
+                padding: 8rem 16rem;
+                width: 192rem;
+                > .subtitle-2 {
+                    flex-shrink: 0;
+                }
+            }
+            .background {
+                transition: background-color 220ms, fill 220ms;
+            }
+            &:hover .background {
+                background-color: vars.$color-secondary-4;
+
+                fill: vars.$color-secondary-4;
+            }
+        }
+    }
+}
