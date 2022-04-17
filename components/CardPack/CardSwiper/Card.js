@@ -186,6 +186,7 @@ function CardFace({ data: { image, content }, backgroundColor }) {
                 backgroundColor,
             }}
         >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             {imgSrc && <img layout="fill" src={imgSrc} alt="card" />}
             <div dangerouslySetInnerHTML={{ __html: draftjsToHtml(content) }} />
         </motion.div>

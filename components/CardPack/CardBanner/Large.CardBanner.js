@@ -9,6 +9,7 @@ export default function LargeCardBanner({ data }) {
         <div className="large-card-banner">
             {imgSrc && (
                 <div className="left">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={imgSrc} alt="banner" />
                 </div>
             )}

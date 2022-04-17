@@ -99,8 +99,8 @@ export function MyFilePickerCreatePackField({
                 {file?.value?.cdnUrl ? ( // next js image lags like crazy
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
-                        width="85w"
-                        height="76w"
+                        width="85rem"
+                        height="76rem"
                         src={file.value.cdnUrl}
                         alt="preview"
                     />
