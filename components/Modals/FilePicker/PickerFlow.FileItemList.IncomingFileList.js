@@ -70,8 +70,6 @@ function IncomingFileItem({ type, value, previewUrl, index, id, refetch }) {
             startUpload();
         }
     }, []);
-    const isVideo = value.type.startsWith("video/");
-    const isImage = value.type.startsWith("image/");
 
     return (
         <motion.div
@@ -96,21 +94,35 @@ function IncomingFileItem({ type, value, previewUrl, index, id, refetch }) {
             layout
             key={id}
         >
-            {isImage && (
+            {type === "incomingUrl" && (
                 <Image
                     layout="responsive"
-                    width="82w"
-                    height="82w"
-                    src={previewUrl}
+                    width="82rem"
+                    height="82rem"
+                    src="https://ucarecdn.com/8367c6e0-2a0f-40c0-9bbb-7bf74754a3a5/"
                     alt="preview"
                     objectFit="cover"
                 />
             )}
-            {isVideo && (
-                <video width="82w" height="82w" controls>
-                    <source src={previewUrl} type={value.type} />
-                    Your browser does not support the video tag.
-                </video>
+            {type === "incoming" && (
+                <>
+                    {value.type.startsWith("image/") && (
+                        <Image
+                            layout="responsive"
+                            width="82rem"
+                            height="82rem"
+                            src={previewUrl}
+                            alt="preview"
+                            objectFit="cover"
+                        />
+                    )}
+                    {value.type.startsWith("video/") && (
+                        <video width="82rem" height="82rem" controls>
+                            <source src={previewUrl} type={value.type} />
+                            Your browser does not support the video tag.
+                        </video>
+                    )}
+                </>
             )}
             <motion.div
                 className="progress-bar"

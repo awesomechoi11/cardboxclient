@@ -12,6 +12,8 @@ import { usePaginationator } from "../../utils";
 import { usePopperTooltip } from "react-popper-tooltip";
 import { Button } from "react-bootstrap";
 import PlaceholderColumn from "../../PlaceholderColumn";
+import useDeleteFileMutation from "../../Mongo/Files/useDeleteFileMutation";
+import { toast } from "react-toastify";
 
 export const pickerIncomingFileItemState = atom({
     key: "pickerIncomingFileItemState",
@@ -30,15 +32,12 @@ export const pickerIncomingFileItemRemover = selector({
 });
 
 export default function FileItemList() {
-    const {
-        data: { userId },
-    } = useModal("file picker");
     const { db, user } = useMongo();
     const { isLoading, isError, isSuccess, isIdle, data, refetch } = useQuery(
-        ["file-item-list", userId],
+        ["file-item-list", user.id],
         () =>
             db.collection("files").findOne({
-                userId,
+                userId: user.id,
             }),
         { refetchOnWindowFocus: false, enabled: !!db }
     );
@@ -54,7 +53,7 @@ export default function FileItemList() {
             {(isIdle || isLoading) && <PlaceholderColumn presetKey="loading" />}
             {isError && <PlaceholderColumn presetKey="error" />}
             {isSuccess &&
-                data?.files?.length &&
+                !!data?.files?.length &&
                 (() => {
                     let files = data.files.map((file, index) => {
                         switch (file.type) {
@@ -64,6 +63,7 @@ export default function FileItemList() {
                                         {...file}
                                         key={file.value.uuid}
                                         index={index}
+                                        refetch={refetch}
                                     />
                                 );
 
@@ -160,7 +160,7 @@ function PaginatedList({ files }) {
     );
 }
 
-function UploadCareFileItem({ type, value, index }) {
+function UploadCareFileItem({ type, value, index, refetch }) {
     if (!index) console.log(type, value);
     let previewUrl = value.cdnUrl;
 
@@ -189,6 +189,9 @@ function UploadCareFileItem({ type, value, index }) {
         data: { setFile },
         closeModal,
     } = useModal("file picker");
+
+    const deleteFileMutation = useDeleteFileMutation({ type, value });
+
     return (
         <>
             <motion.div
@@ -250,8 +253,8 @@ function UploadCareFileItem({ type, value, index }) {
                     >
                         <div {...getArrowProps({ className: "tooltip-arrow" })}>
                             <motion.svg
-                                width="32w"
-                                height="8w"
+                                width="32"
+                                height="8"
                                 viewBox="0 0 32 8"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -302,7 +305,20 @@ function UploadCareFileItem({ type, value, index }) {
                             <Button variant="secondary" size="sm">
                                 Edit
                             </Button>
-                            <Button variant="secondary" size="sm">
+                            <Button
+                                variant="secondary"
+                                size="sm"
+                                onClick={() => {
+                                    deleteFileMutation.mutate(undefined, {
+                                        onSuccess: () => {
+                                            refetch();
+                                            toast.success(
+                                                "File successfully deleted!"
+                                            );
+                                        },
+                                    });
+                                }}
+                            >
                                 Delete
                             </Button>
                         </motion.div>

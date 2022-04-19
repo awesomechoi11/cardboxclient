@@ -14,7 +14,9 @@ export default function MyFilePicker({
     const { user } = useMongo();
     const { openModal } = useModal("file picker");
     const [file, setFile] = useState(initialValue);
-
+    useEffect(() => {
+        setFile(initialValue);
+    }, [initialValue]);
     const prevFile = useRef(file);
     useEffect(() => {
         if (!fastEqual(prevFile.current, file)) {
@@ -30,7 +32,6 @@ export default function MyFilePicker({
                 onClick={() =>
                     openModal({
                         mode: "picker",
-                        userId: user.id,
                         setFile,
                     })
                 }
@@ -42,6 +43,7 @@ export default function MyFilePicker({
                             objectFit="cover"
                             layout="fill"
                             src={file.value.cdnUrl}
+                            key={file.value.cdnUrl}
                             alt="drag n drop"
                         />
                     </div>
@@ -52,9 +54,19 @@ export default function MyFilePicker({
                         objectFit="contain"
                         layout="responsive"
                         src="/assets/img/photo.png"
+                        key="placeholder img"
                         alt="cute cate -  photo zone"
+                        style={{ opacity: 0.4 }}
                     />
                 )}
+            </div>
+            <div
+                className="subtitle-1 pointer"
+                onClick={() => {
+                    setFile(undefined);
+                }}
+            >
+                remove
             </div>
         </div>
     );
@@ -90,7 +102,6 @@ export function MyFilePickerCreatePackField({
                 onClick={() =>
                     openModal({
                         mode: "picker",
-                        userId: user.id,
                         setFile,
                     })
                 }
@@ -114,6 +125,10 @@ export function MyFilePickerCreatePackField({
 
 const empty_svg = (
     <svg
+        style={{
+            width: "85rem",
+            height: "76rem",
+        }}
         width="85"
         height="76"
         viewBox="0 0 85 76"

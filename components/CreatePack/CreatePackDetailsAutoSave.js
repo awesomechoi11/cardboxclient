@@ -1,12 +1,5 @@
-import { Formik, useFormikContext } from "formik";
-import { MyForm, MySubmitButton, MyTextInput } from "../Form/Basic";
-import * as Yup from "yup";
-import { MySelect } from "../Form/MySelect";
-import { MyDropzone } from "../Form/MyDropzone";
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import { compressImageFile } from "../utils";
-import { useUploadImage } from "../UploadCare/useUpload";
+import { useFormikContext } from "formik";
+import { useEffect, useRef } from "react";
 import fastEqual from "fast-deep-equal";
 import { useDebounce } from "rooks";
 import { useRecoilValue } from "recoil";

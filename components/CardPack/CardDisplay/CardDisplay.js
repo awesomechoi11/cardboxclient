@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { useIsomorphicLayoutEffect } from "framer-motion";
 import { useSetRecoilState } from "recoil";
+import { MyHoverTooltip } from "../../Tooltip/MyClickTooltip";
 import { cardsMapState } from "../CardPackUtils";
 import CardGrid from "./CardGrid";
 import CardRow from "./CardRow";
@@ -40,16 +41,25 @@ function CardDisplayInner() {
                     {/* <div className="icon-button">{number_svg}</div> */}
                     {/* <div className="icon-button">{atoz_svg}</div> */}
                     <div className="icon-button" onClick={() => shuffle()}>
-                        {shuffle_svg}
+                        <MyHoverTooltip
+                            TooltipContent="Shuffle Cards"
+                            TriggerContent={shuffle_svg}
+                        />
                     </div>
                     <div
                         className="icon-button"
                         onClick={() => flipDefaultSide()}
                     >
-                        {flip_svg}
+                        <MyHoverTooltip
+                            TooltipContent="Flip Default Side"
+                            TriggerContent={flip_svg}
+                        />
                     </div>
                     <div className="icon-button" onClick={() => resetCards()}>
-                        {reset_svg}
+                        <MyHoverTooltip
+                            TooltipContent="Flip All To Default Side"
+                            TriggerContent={reset_svg}
+                        />
                     </div>
                 </div>
                 <div className="right">
@@ -66,7 +76,10 @@ function CardDisplayInner() {
                         )}
                         onClick={() => setCardDisplayMode("grid")}
                     >
-                        {grid_svg}
+                        <MyHoverTooltip
+                            TooltipContent="Grid View"
+                            TriggerContent={grid_svg}
+                        />
                     </div>
                 </div>
             </div>
@@ -80,6 +93,10 @@ function CardDisplayInner() {
 
 const number_svg = (
     <svg
+        style={{
+            width: "32rem",
+            height: "32rem",
+        }}
         width="32"
         height="32"
         viewBox="0 0 32 32"
@@ -106,6 +123,10 @@ const number_svg = (
 
 const atoz_svg = (
     <svg
+        style={{
+            width: "32rem",
+            height: "32rem",
+        }}
         width="32"
         height="32"
         viewBox="0 0 32 32"
@@ -128,6 +149,10 @@ const atoz_svg = (
 
 const shuffle_svg = (
     <svg
+        style={{
+            width: "32rem",
+            height: "32rem",
+        }}
         width="32"
         height="32"
         viewBox="0 0 32 32"
@@ -146,6 +171,10 @@ const shuffle_svg = (
 
 const flip_svg = (
     <svg
+        style={{
+            width: "32rem",
+            height: "32rem",
+        }}
         width="32"
         height="32"
         viewBox="0 0 32 32"
@@ -164,6 +193,10 @@ const flip_svg = (
 
 const reset_svg = (
     <svg
+        style={{
+            width: "32rem",
+            height: "32rem",
+        }}
         width="32"
         height="33"
         viewBox="0 0 32 33"
@@ -179,6 +212,10 @@ const reset_svg = (
 
 const row_svg = (
     <svg
+        style={{
+            width: "32rem",
+            height: "32rem",
+        }}
         width="32"
         height="32"
         viewBox="0 0 32 32"
@@ -202,6 +239,10 @@ const row_svg = (
 
 const grid_svg = (
     <svg
+        style={{
+            width: "32rem",
+            height: "32rem",
+        }}
         width="32"
         height="32"
         viewBox="0 0 32 32"

@@ -12,6 +12,7 @@ import { useMutation } from "react-query";
 import { CardPackDataContext } from "../../pages/card-pack-editor/[cardPackId]";
 import { useSetRecoilState } from "recoil";
 import { createPackSaveSelector } from "./_CreatePackUtils";
+import CreatePackPublish from "./CreatePackPublish";
 
 export default function CreatePackDetailsForm() {
     const selectOptions = [
@@ -29,7 +30,7 @@ export default function CreatePackDetailsForm() {
         },
     ];
 
-    const data = useContext(CardPackDataContext);
+    const { data } = useContext(CardPackDataContext);
     console.log(data);
 
     const { db } = useMongo();
@@ -100,20 +101,22 @@ export default function CreatePackDetailsForm() {
                                 ]);
                         }}
                     />
-
-                    <MySelect
-                        label="Visibility"
-                        controlId="visibility"
-                        options={selectOptions}
-                    />
                 </div>
-                <div className="right">
+                <div className="middle">
                     <MyTextInput label="Title" controlId="title" />
                     <MyTextInput
                         label="Tags (separated by commas)"
                         controlId="tags"
                     />
                     <MyTextInput label="Description" controlId="description" />
+                </div>
+                <div className="right">
+                    <MySelect
+                        label="Visibility"
+                        controlId="visibility"
+                        options={selectOptions}
+                    />
+                    <CreatePackPublish />
                 </div>
             </MyForm>
         </Formik>

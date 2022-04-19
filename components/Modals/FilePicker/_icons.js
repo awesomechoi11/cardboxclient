@@ -1,5 +1,9 @@
 export const LAST_SVG = (
     <svg
+        style={{
+            width: "24rem",
+            height: "24rem",
+        }}
         width="24"
         height="24"
         viewBox="0 0 24 24"
@@ -37,6 +41,10 @@ export const LAST_SVG = (
 
 export const NEXT_SVG = (
     <svg
+        style={{
+            width: "24rem",
+            height: "24rem",
+        }}
         width="24"
         height="24"
         viewBox="0 0 24 24"
@@ -60,6 +68,10 @@ export const NEXT_SVG = (
 );
 export const PREV_SVG = (
     <svg
+        style={{
+            width: "24rem",
+            height: "24rem",
+        }}
         width="24"
         height="24"
         viewBox="0 0 24 24"
@@ -83,6 +95,10 @@ export const PREV_SVG = (
 );
 export const FIRST_SVG = (
     <svg
+        style={{
+            width: "24rem",
+            height: "24rem",
+        }}
         width="24"
         height="24"
         viewBox="0 0 24 24"

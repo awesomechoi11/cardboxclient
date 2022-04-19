@@ -15,8 +15,8 @@ export default function Custom404() {
     return (
         <>
             <Head>
-                <title>404 - CardBox - Flashcard App</title>
-                <meta name="description" content="CardBox - Flashcard App" />
+                <title>404 - Flippy - Flashcard App</title>
+                <meta name="description" content="Flippy - Flashcard App" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Navbar />

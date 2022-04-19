@@ -6,6 +6,7 @@ import { motion, useIsomorphicLayoutEffect } from "framer-motion";
 import { useRecoilState } from "recoil";
 import { cardsMapState } from "../CardPackUtils";
 import { useIsMobile } from "../../mediaQueryHooks";
+import { MyHoverTooltip } from "../../Tooltip/MyClickTooltip";
 
 export default function CardSwiper({ data, className, ...props }) {
     const [cardsMap, setCardsMap] = useRecoilState(
@@ -59,6 +60,10 @@ function CardUI() {
                     }}
                 >
                     <svg
+                        style={{
+                            width: "32rem",
+                            height: "32rem",
+                        }}
                         width="32"
                         height="32"
                         viewBox="0 0 32 32"
@@ -84,21 +89,30 @@ function CardUI() {
                         scale: 1.1,
                     }}
                 >
-                    <svg
-                        width="48"
-                        height="48"
-                        viewBox="0 0 48 48"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M31.0385 10.5L37.5 16.5M37.5 16.5L31.0385 22.5M37.5 16.5L16.5 16.5M16.9615 37.5L10.5 31.5M10.5 31.5L16.9615 25.5M10.5 31.5L31.5 31.5"
-                            stroke="#674433"
-                            strokeWidth="3"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
-                    </svg>
+                    <MyHoverTooltip
+                        TooltipContent="Swap Front & Back"
+                        TriggerContent={
+                            <svg
+                                style={{
+                                    width: "48rem",
+                                    height: "48rem",
+                                }}
+                                width="48"
+                                height="48"
+                                viewBox="0 0 48 48"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M31.0385 10.5L37.5 16.5M37.5 16.5L31.0385 22.5M37.5 16.5L16.5 16.5M16.9615 37.5L10.5 31.5M10.5 31.5L16.9615 25.5M10.5 31.5L31.5 31.5"
+                                    stroke="#674433"
+                                    strokeWidth="3"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
+                            </svg>
+                        }
+                    />
                 </motion.div>
             </div>
             <div className="middle">
@@ -123,6 +137,10 @@ function CardUI() {
                     }}
                 >
                     <svg
+                        style={{
+                            width: "32rem",
+                            height: "32rem",
+                        }}
                         width="32"
                         height="32"
                         viewBox="0 0 32 32"
@@ -147,22 +165,31 @@ function CardUI() {
                         scale: 1.1,
                     }}
                 >
-                    <svg
-                        width="48"
-                        height="48"
-                        viewBox="0 0 48 48"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M10.1103 13.2534C9.93341 12.1869 10.6672 11.1809 11.7494 11.0066L29.8734 8.08663C30.9555 7.91229 31.9761 8.63558 32.153 9.70213L36.3166 34.8073C36.4935 35.8738 35.7596 36.8798 34.6775 37.0541L16.5535 39.9741C15.4714 40.1484 14.4508 39.4251 14.2739 38.3586L10.1103 13.2534Z"
-                            fill="#9E694F"
-                        />
-                        <path
-                            d="M15.7499 9.70498C15.8911 8.63328 16.8871 7.87732 17.9744 8.01652L36.186 10.3478C37.2733 10.487 38.0403 11.4686 37.8991 12.5403L34.5749 37.7668C34.4337 38.8385 33.4377 39.5944 32.3504 39.4552L14.1388 37.124C13.0515 36.9848 12.2845 36.0032 12.4257 34.9315L15.7499 9.70498Z"
-                            fill="#E2B082"
-                        />
-                    </svg>
+                    <MyHoverTooltip
+                        TooltipContent="Shuffle Stack"
+                        TriggerContent={
+                            <svg
+                                style={{
+                                    width: "48rem",
+                                    height: "48rem",
+                                }}
+                                width="48"
+                                height="48"
+                                viewBox="0 0 48 48"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M10.1103 13.2534C9.93341 12.1869 10.6672 11.1809 11.7494 11.0066L29.8734 8.08663C30.9555 7.91229 31.9761 8.63558 32.153 9.70213L36.3166 34.8073C36.4935 35.8738 35.7596 36.8798 34.6775 37.0541L16.5535 39.9741C15.4714 40.1484 14.4508 39.4251 14.2739 38.3586L10.1103 13.2534Z"
+                                    fill="#9E694F"
+                                />
+                                <path
+                                    d="M15.7499 9.70498C15.8911 8.63328 16.8871 7.87732 17.9744 8.01652L36.186 10.3478C37.2733 10.487 38.0403 11.4686 37.8991 12.5403L34.5749 37.7668C34.4337 38.8385 33.4377 39.5944 32.3504 39.4552L14.1388 37.124C13.0515 36.9848 12.2845 36.0032 12.4257 34.9315L15.7499 9.70498Z"
+                                    fill="#E2B082"
+                                />
+                            </svg>
+                        }
+                    />
                 </motion.div>
             </div>
         </div>
@@ -193,6 +220,10 @@ function MobileCardUI() {
                     }}
                 >
                     <svg
+                        style={{
+                            width: "32rem",
+                            height: "32rem",
+                        }}
                         width="32"
                         height="32"
                         viewBox="0 0 32 32"
@@ -219,6 +250,10 @@ function MobileCardUI() {
                     }}
                 >
                     <svg
+                        style={{
+                            width: "48rem",
+                            height: "48rem",
+                        }}
                         width="48"
                         height="48"
                         viewBox="0 0 48 48"
@@ -257,6 +292,10 @@ function MobileCardUI() {
                     }}
                 >
                     <svg
+                        style={{
+                            width: "32rem",
+                            height: "32rem",
+                        }}
                         width="32"
                         height="32"
                         viewBox="0 0 32 32"
@@ -282,6 +321,10 @@ function MobileCardUI() {
                     }}
                 >
                     <svg
+                        style={{
+                            width: "48rem",
+                            height: "48rem",
+                        }}
                         width="48"
                         height="48"
                         viewBox="0 0 48 48"
@@ -302,3 +345,20 @@ function MobileCardUI() {
         </div>
     );
 }
+/**
+ *                             <MyHoverTooltip
+            TooltipContent={<>Delete Row</>}
+            TriggerContent={
+                <MyIconButton
+                    onClick={() => {
+                        setData({
+                            action: "remove",
+                        });
+                    }}
+                    variant="secondary"
+                >
+                    {trash_svg}
+                </MyIconButton>
+            }
+        />
+ */

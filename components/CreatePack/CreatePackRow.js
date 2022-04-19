@@ -58,9 +58,6 @@ export default function CreatePackRow() {
         });
     }
     const [focused, setFocused] = useState(null);
-    function handleClick(index) {
-        setFocused(index);
-    }
 
     return (
         <div className="row">
@@ -88,9 +85,7 @@ export default function CreatePackRow() {
                             <AddBetweenTrigger index={index} />
                             <DraggableCreatePackRowItem
                                 focused={index === focused}
-                                onMouseEnter={(e) => {
-                                    handleClick(index);
-                                }}
+                                onFocus={() => setFocused(index)}
                                 id={cardId}
                                 index={index}
                             />
@@ -113,7 +108,7 @@ export default function CreatePackRow() {
                         </createPackIdContext.Provider>
                     ) : null}
                 </DragOverlay>
-            </DndContext>{" "}
+            </DndContext>
             <Button
                 variant="secondary"
                 className="add-btn"

@@ -17,7 +17,7 @@ export default function CreatePackCardsAutosave() {
     //listen to data changes
     const setSaveState = useSetRecoilState(createPackSaveSelector);
     const [allData, setAllData] = useRecoilState(createPackAllDataSelector);
-    const dbdata = useContext(CardPackDataContext);
+    const { data: dbdata } = useContext(CardPackDataContext);
     const mutation = useMutation(
         ([localdb, updateDoc, options]) => {
             localdb.collection("cardpackDrafts").updateOne(
@@ -80,6 +80,7 @@ export default function CreatePackCardsAutosave() {
                 db,
                 {
                     $set: { cards: allData },
+                    $currentDate: { lastModified: true },
                 },
             ]);
         }
@@ -95,6 +96,7 @@ export default function CreatePackCardsAutosave() {
                 db,
                 {
                     $set: { cards: allData },
+                    $currentDate: { lastModified: true },
                 },
             ]);
         }

@@ -14,7 +14,7 @@ $color-shadow-1: rgba(81, 65, 57, 0.55);
 
 $color-error-1: #e94f2e;
 
-@mixin max-lines($lines: 1, $line-height: 16rem) {
+@mixin max-lines($lines: 1, $line-height: 24rem) {
     line-height: $line-height;
     max-height: $line-height * $lines;
     text-overflow: ellipsis;

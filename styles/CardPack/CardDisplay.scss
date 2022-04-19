@@ -72,6 +72,7 @@
             margin-bottom: 24rem;
         }
         .card {
+            word-break: break-word;
             filter: drop-shadow(0px 2rem 1rem vars.$color-primary-1);
             // position: absolute;
             cursor: pointer;
@@ -97,6 +98,8 @@
                     transform: rotateY(180deg);
                 }
                 .face {
+                    padding: 24rem;
+                    box-sizing: border-box;
                     img {
                         width: 80%;
                         height: 40%;

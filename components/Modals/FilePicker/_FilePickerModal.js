@@ -23,9 +23,9 @@ function Inner() {
 }
 
 function ConfirmMode() {
-    const {
-        data: { setFile },
-    } = useModal("file picker");
+    // const {
+    //     data: { setFile },
+    // } = useModal("file picker");
 
     return (
         <div className="inner">

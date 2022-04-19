@@ -3,9 +3,9 @@ import { ToastContainer } from "react-toastify";
 import { RecoilRoot } from "recoil";
 import ModalRoot from "../components/Modals/ModalUtils";
 import "react-toastify/dist/ReactToastify.css";
-// import "react-popper-tooltip/dist/styles.css";
 import "../styles/_globals.scss";
 import { MongoRoot } from "../components/Mongo/MongoUtils";
+import Script from "next/script";
 // import {
 //     Provider as RollbarProvider,
 //     ErrorBoundary as RollbarBoundry,
@@ -42,19 +42,28 @@ function MyApp({ Component, pageProps }) {
         //     {/* ErrorBoundary catches all React errors in the tree below and logs them to Rollbar */}
         //     <RollbarBoundry>
         // {/* // all other app providers and components - Rollbar will just work */}
-        <QueryClientProvider client={queryClient}>
-            <RecoilRoot>
-                <SSRProvider>
-                    <MongoRoot>
-                        <ModalRoot />
-                        <div id="app">
-                            <Component {...pageProps} />
-                        </div>
-                    </MongoRoot>
-                    <ToastContainer />
-                </SSRProvider>
-            </RecoilRoot>
-        </QueryClientProvider>
+        <>
+            <QueryClientProvider client={queryClient}>
+                <RecoilRoot>
+                    <SSRProvider>
+                        <MongoRoot>
+                            <ModalRoot />
+                            <div id="app">
+                                <Component {...pageProps} />
+                            </div>
+                        </MongoRoot>
+                        <ToastContainer />
+                    </SSRProvider>
+                </RecoilRoot>
+            </QueryClientProvider>
+            <Script
+                async
+                defer
+                data-domains="flippy.cards"
+                data-website-id="994c1e46-afd7-47cf-b148-a26406bc2cf2"
+                src="https://umami.bmschoi.dev/umami.js"
+            />
+        </>
         //     </RollbarBoundry>
         // </RollbarProvider>
     );

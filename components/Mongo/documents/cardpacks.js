@@ -1,3 +1,5 @@
+import { generateEmptyCardwithRawContent } from "../../../schemas/cardpacks/card";
+
 // drafts cardpack default
 export const cardpackDraftsDefault = (data) => ({
     // shared fields
@@ -12,7 +14,11 @@ export const cardpackDraftsDefault = (data) => ({
     title: "",
     visibility: "public",
     tags: [],
-    cards: [],
+    cards: [
+        generateEmptyCardwithRawContent(),
+        generateEmptyCardwithRawContent(),
+    ],
+    // cards: [],
     dateCreated: new Date(),
     lastModified: new Date(),
     // draft only fields

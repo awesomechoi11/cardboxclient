@@ -10,14 +10,10 @@ export default function LoginModal() {
     const { isAnon } = useMongo();
     return (
         <ModalWrapper modalId="login/signup" className="login-signup-modal">
-            {isAnon ? (
-                <>
-                    {data === "login" && <LogInFlow setMode={setModalData} />}
-                    {data === "signup" && <SignUpFlow setMode={setModalData} />}
-                </>
-            ) : (
-                "You are already logged in!"
-            )}
+            <>
+                {data === "login" && <LogInFlow setMode={setModalData} />}
+                {data === "signup" && <SignUpFlow setMode={setModalData} />}
+            </>
         </ModalWrapper>
     );
 }

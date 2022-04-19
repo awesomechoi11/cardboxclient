@@ -13,8 +13,8 @@ export default function Browse() {
     return (
         <>
             <Head>
-                <title>Browse - CardBox - Flashcard App</title>
-                <meta name="description" content="CardBox - Flashcard App" />
+                <title>Browse - Flippy - Flashcard App</title>
+                <meta name="description" content="Flippy - Flashcard App" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Navbar />
