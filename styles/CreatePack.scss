@@ -71,15 +71,27 @@
     > #CreatePack-form {
         display: flex;
         justify-content: space-between;
-        width: 640rem;
-        > .right {
-            width: 420rem;
-            > * {
-                margin-bottom: 16rem;
-                &:last-child {
-                    margin-bottom: 0;
-                }
+        width: 100%;
+        gap: 24rem;
+        > * > * {
+            text-align: center;
+            margin-bottom: 16rem;
+            &:last-child {
+                margin-bottom: 0;
             }
+        }
+        label {
+            text-align: left;
+        }
+        > .middle {
+            flex-grow: 1;
+        }
+        > .right {
+            width: 200rem;
+            button {
+                width: 100%;
+            }
+            // width: 420rem;
         }
         > .left {
             width: 198rem;
@@ -90,6 +102,7 @@
                     border-radius: 16rem;
                     padding: 24.7rem 30rem;
                     border: 2px dashed vars.$color-primary-1;
+
                     > .preview-image {
                         max-width: 100%;
                         height: 152rem;
@@ -113,6 +126,9 @@
         margin-bottom: 64rem;
         position: relative;
         z-index: 2;
+        &.focused {
+            z-index: 3;
+        }
         .image-wrapper {
             flex-shrink: 0;
             width: 85rem;
@@ -186,7 +202,7 @@
                 > .field {
                     flex-grow: 1;
                     display: flex;
-                    align-items: top;
+                    align-items: flex-start;
                     gap: 8rem;
                     > .editor-group {
                         width: 250rem;

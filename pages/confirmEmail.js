@@ -12,6 +12,8 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useModal } from "../components/Modals/ModalUtils";
 import { useQuery } from "react-query";
+import PlaceholderColumn from "../components/PlaceholderColumn";
+import { useEffectOnceWhen } from "rooks";
 
 //http://localhost:3000/confirmEmail?token=e8bab441d021cb828b80b2c1a51937381c3b455b056a15ca28ab35fca53596d996e56b551c580749779654151aec35de5c5ac6225330abd9098068047ebf515a&tokenId=62479395d937dcecc6f5456b
 
@@ -19,54 +21,97 @@ export default function ConfirmEmail() {
     const { isReady, query, push } = useRouter();
 
     // this will try to login with anonymous
-    const { confirmUser, resendConfirmationEmail, user, isAnon } = useMongo();
+    const { confirmUser, resendConfirmationEmail, user, isAnon, logOut } =
+        useMongo();
     const { openModal } = useModal("login/signup");
 
     const { isLoading, isIdle, isSuccess, isError, data, refetch } = useQuery(
-        ["confirm-email", query],
+        ["confirm-email", query, isAnon],
         () => {
             if (!(query.token && query.tokenId)) throw Error("missing queries");
             return confirmUser(query.token, query.tokenId);
         },
-        { refetchOnWindowFocus: false, enabled: isReady }
+        {
+            refetchOnWindowFocus: false,
+            enabled: isReady && !!query.token && !!query.tokenId && isAnon,
+        }
     );
-
+    const [NewSignup, setNewSignup] = useState(false);
+    useEffect(() => {
+        if (isSuccess && !NewSignup) setNewSignup(false);
+    }, [isSuccess]);
     return (
         <>
             <Head>
-                <title>Confirm Email - CardBox - Flashcard App</title>
-                <meta name="description" content="CardBox - Flashcard App" />
+                <title>Confirm Email - Flippy - Flashcard App</title>
+                <meta name="description" content="Flippy - Flashcard App" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Navbar />
             <main id="confirmEmail" className="column">
-                {isIdle ||
-                    (isLoading && (
-                        <>
-                            <div>
-                                <Image
-                                    width="360w"
-                                    height="320w"
-                                    objectFit="contain"
-                                    layout="responsive"
-                                    src="/assets/img/Registration_Loading.png"
-                                    alt="cute cate -  registration complete"
-                                />
-                            </div>
-                            <div className="message">
-                                <div className="title-1">Loading</div>
-                                <div className="subtitle-2">zzz...</div>
-                            </div>
-                            <Button
-                                variant="primary"
-                                className="action-btn"
-                                disabled
-                            >
-                                Please Wait
-                            </Button>
-                        </>
+                {isIdle &&
+                    isReady &&
+                    (isAnon ? (
+                        <PlaceholderColumn
+                            options={{
+                                imageKey: "oopsCat",
+                                message: {
+                                    title: "Something went wrong...",
+                                    description: "The link seems to be broken",
+                                },
+                            }}
+                        />
+                    ) : NewSignup ? (
+                        <PlaceholderColumn
+                            options={{
+                                imageKey: "catOnBook",
+                                message: {
+                                    title: "You can now create packs!",
+                                    description:
+                                        "Meow. Thank you for signing up!",
+                                },
+                                actionComponent: (
+                                    <>
+                                        <Button
+                                            onClick={() => {
+                                                push("/card-pack-editor");
+                                            }}
+                                        >
+                                            Create A Card Pack
+                                        </Button>
+                                        <Button
+                                            variant="secondary"
+                                            onClick={() => {
+                                                push("/browse");
+                                            }}
+                                        >
+                                            Browse Card Packs
+                                        </Button>
+                                    </>
+                                ),
+                            }}
+                        />
+                    ) : (
+                        <PlaceholderColumn
+                            options={{
+                                imageKey: "catOnBook",
+                                message: {
+                                    title: "You are already signed in!",
+                                    description:
+                                        "Please sign out to confirm a new account email",
+                                },
+                                action: {
+                                    label: "Log Out",
+                                    props: {
+                                        onClick: () => {
+                                            logOut();
+                                        },
+                                    },
+                                },
+                            }}
+                        />
                     ))}
-                {isSuccess && (
+                {isLoading && (
                     <>
                         <div>
                             <Image
@@ -74,29 +119,73 @@ export default function ConfirmEmail() {
                                 height="320w"
                                 objectFit="contain"
                                 layout="responsive"
-                                src="/assets/img/Registration_Complete.png"
+                                src="/assets/img/Registration_Loading.png"
                                 alt="cute cate -  registration complete"
                             />
                         </div>
                         <div className="message">
-                            <div className="title-1">
-                                Registration Complete!
-                            </div>
-                            <div className="subtitle-2">
-                                You can now log in.
-                            </div>
+                            <div className="title-1">Loading</div>
+                            <div className="subtitle-2">zzz...</div>
                         </div>
                         <Button
                             variant="primary"
                             className="action-btn"
-                            onClick={() => {
-                                openModal("login");
-                            }}
+                            disabled
                         >
-                            Log In
+                            Please Wait
                         </Button>
                     </>
                 )}
+                {isSuccess &&
+                    (isAnon ? (
+                        <>
+                            <div>
+                                <Image
+                                    width="360w"
+                                    height="320w"
+                                    objectFit="contain"
+                                    layout="responsive"
+                                    src="/assets/img/Registration_Complete.png"
+                                    alt="cute cate -  registration complete"
+                                />
+                            </div>
+                            <div className="message">
+                                <div className="title-1">
+                                    Registration Complete!
+                                </div>
+                                <div className="subtitle-2">
+                                    You can now log in.
+                                </div>
+                            </div>
+                            <Button
+                                variant="primary"
+                                className="action-btn"
+                                onClick={() => {
+                                    openModal("login");
+                                }}
+                            >
+                                Log In
+                            </Button>
+                        </>
+                    ) : (
+                        <PlaceholderColumn
+                            options={{
+                                imageKey: "catOnBook",
+                                message: {
+                                    title: "You can now create packs!",
+                                    description: "Meow",
+                                },
+                                action: {
+                                    label: "Browse Card Packs",
+                                    props: {
+                                        onClick: () => {
+                                            push("/browse");
+                                        },
+                                    },
+                                },
+                            }}
+                        />
+                    ))}
                 {isError && (
                     <>
                         <div>

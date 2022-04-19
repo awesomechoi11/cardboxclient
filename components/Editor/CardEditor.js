@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 import React, { Component, useMemo, useState } from "react";
 // import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { encodeSvg } from "../utils";
 import { convertToRaw, ContentState, EditorState } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 
@@ -45,9 +44,14 @@ function Inner({
     editorClassName,
     wrapperClassName,
     toolbarClassName,
+    defaultEditorState,
+    onEditorStateChange,
     setActive,
     ...props
 }) {
+    const [editorState, setEditorState] = useState(
+        defaultEditorState || EditorState.createEmpty()
+    );
     const [focused, setFocused] = useState(false);
     return (
         <Editor
@@ -72,7 +76,12 @@ function Inner({
                 pointerEvents: focused ? "all" : "none",
                 transform: `translate3d(0,${focused ? 0 : 10}rem,0)`,
             }}
-            {...props}
+            // {...props}
+            editorState={editorState}
+            onEditorStateChange={(newState) => {
+                onEditorStateChange(newState);
+                setEditorState(newState);
+            }}
         />
     );
 }

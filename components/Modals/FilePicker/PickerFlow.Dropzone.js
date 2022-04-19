@@ -10,7 +10,6 @@ export default function PickerFlowDropzone() {
     );
     const { getRootProps, getInputProps } = useDropzone({
         onDropAccepted: (acceptedFiles) => {
-            console.log("112331231212", acceptedFiles);
             setIncomingFiles([
                 ...acceptedFiles.map((file) => ({
                     value: file,
@@ -22,11 +21,7 @@ export default function PickerFlowDropzone() {
             ]);
         },
         accept: "image/*",
-        // multiple: false,
-        // maxFiles: 1,
         maxSize: 5000000, // 5mb max
-        // onDragEnter: () => setIsDragging(true),
-        // onDragLeave: () => setIsDragging(false),
     });
 
     return (
@@ -50,8 +45,12 @@ export default function PickerFlowDropzone() {
 
 const Dropzone_SVG = (
     <svg
-        width="400w"
-        height="300w"
+        style={{
+            width: "400rem",
+            height: "300rem",
+        }}
+        width="400"
+        height="300"
         viewBox="0 0 400 300"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

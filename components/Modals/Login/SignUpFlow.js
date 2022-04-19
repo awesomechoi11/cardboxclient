@@ -31,7 +31,7 @@ function StageOne({ setStage, data, setMode }) {
         <>
             <div className="title-1">Sign Up</div>
             <div className="description-1">
-                Create, Share, and Learn with CardBox
+                Create, Share, and Learn with Flippy
             </div>
             {/* <div className="socials">
                 <div>{facebook_svg}</div>
@@ -221,8 +221,12 @@ function StageThree({ data, setStage, setMode }) {
 
 const facebook_svg = (
     <svg
-        width="48rem"
-        height="48rem"
+        style={{
+            width: "48rem",
+            height: "48rem",
+        }}
+        width="48"
+        height="48"
         viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -239,8 +243,12 @@ const facebook_svg = (
 );
 const google_svg = (
     <svg
-        width="48rem"
-        height="48rem"
+        style={{
+            width: "48rem",
+            height: "48rem",
+        }}
+        width="48"
+        height="48"
         viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -273,8 +281,12 @@ const google_svg = (
 
 const apple_svg = (
     <svg
-        width="48rem"
-        height="48rem"
+        style={{
+            width: "48rem",
+            height: "48rem",
+        }}
+        width="48"
+        height="48"
         viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

@@ -14,8 +14,8 @@ export default function CardPack() {
     return (
         <>
             <Head>
-                <title>Card Pack - CardBox - Flashcard App</title>
-                <meta name="description" content="CardBox - Flashcard App" />
+                <title>Card Pack - Flippy - Flashcard App</title>
+                <meta name="description" content="Flippy - Flashcard App" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Navbar />
@@ -28,7 +28,7 @@ export default function CardPack() {
 
 function Inner() {
     const { query, isReady } = useRouter();
-    const { db } = useMongo();
+    const { db, isAnon } = useMongo();
 
     const mutation = useCardpackFunctions_incrementStats();
     useEffect(() => {
@@ -40,7 +40,7 @@ function Inner() {
     }, [isReady]);
 
     const { data, isLoading, isIdle, isSuccess, isError } = useQuery(
-        ["card-pack", query.cardPackId],
+        ["card-pack", query.cardPackId, isAnon],
         () =>
             db
                 .collection("cardpacks")

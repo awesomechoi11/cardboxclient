@@ -2,6 +2,21 @@
 
 .file-picker-modal > .content > .inner {
     text-align: center;
+
+    #uploadbyurl-form {
+        text-align: left;
+        display: flex;
+        gap: 16rem;
+        align-items: flex-start;
+        margin: 24rem 0;
+        .my-text-input {
+            flex-grow: 1;
+        }
+        button {
+            margin-top: 29rem;
+        }
+    }
+
     > .title-1 {
         margin-bottom: 24rem;
     }
@@ -55,7 +70,7 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-        margin-bottom: 48rem;
+        // margin-bottom: 48rem;
         > .icon-btn {
             transition: background-color 220ms;
             width: 32rem;

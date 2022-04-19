@@ -45,9 +45,9 @@ export default function CardPackPreview() {
         selectedState: [selected],
     } = useContext(BrowseContext);
 
-    const { db } = useMongo();
+    const { db, isAnon } = useMongo();
     const { data, isSuccess, isError, isIdle, isLoading } = useQuery(
-        ["card-pack-browser-preview", selected],
+        ["card-pack-browser-preview", selected, isAnon],
         () =>
             db
                 .collection(selected.collection)
@@ -391,8 +391,8 @@ function Details({
                         <Image
                             // layout="responsive"
                             objectFit="cover"
-                            width="32w"
-                            height="32w"
+                            width="32rem"
+                            height="32rem"
                             src={imgSrc}
                             alt={username}
                         />

@@ -6,29 +6,22 @@ import { useModal } from "./Modals/ModalUtils";
 import { useMongo } from "./Mongo/MongoUtils";
 
 export default function Navbar() {
-    const { user } = useMongo();
-    const [authed, setAuthed] = useState(false);
+    const { user, isAnon } = useMongo();
     const router = useRouter();
-    useEffect(() => {
-        if (!user) return;
-        if (user.isLoggedIn && user.providerType !== "anon-user") {
-            setAuthed(true);
-        }
-    }, [user]);
-    if (user)
-        console.log(
-            user.isLoggedIn && user.providerType !== "anon-user",
-            authed
-        );
+
     return (
         <div id="navbar">
             <div className="left">
                 <Link href="/">
                     <a className="home-btn">
-                        CardBox
+                        Flippy
                         <svg
-                            width="24rem"
-                            height="24rem"
+                            style={{
+                                width: "24rem",
+                                height: "24rem",
+                            }}
+                            width="24"
+                            height="24"
                             viewBox="0 0 24 24"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +44,7 @@ export default function Navbar() {
                 </Button>
             </div>
             <div className="right">
-                {authed ? <AuthedSection /> : <UnauthedSection />}
+                {!isAnon ? <AuthedSection /> : <UnauthedSection />}
             </div>
         </div>
     );

@@ -25,6 +25,11 @@ export default function CardPackBrowser() {
                         },
                     },
                     {
+                        $sort: {
+                            lastModified: -1,
+                        },
+                    },
+                    {
                         $lookup: {
                             from: "users",
                             localField: "author",
@@ -97,9 +102,9 @@ export default function CardPackBrowser() {
 
 function BrowserResults({ data: { query, label, collection } }) {
     // console.log(query);
-    const { userId, db } = useMongo();
+    const { user, db, isAnon } = useMongo();
     const { isLoading, isError, isIdle, isSuccess, data, refetch } = useQuery(
-        ["card-pack-browser", userId, label],
+        ["card-pack-browser", user.id, label, isAnon],
         () => query(db),
         { refetchOnWindowFocus: false, enabled: !!db }
     );

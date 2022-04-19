@@ -31,7 +31,7 @@ function StageOne({ setStage, setMode, data }) {
         <>
             <div className="title-1">Log In</div>
             <div className="description-1">
-                Create, Share, and Learn with CardBox
+                Create, Share, and Learn with Flippy
             </div>
 
             <Formik

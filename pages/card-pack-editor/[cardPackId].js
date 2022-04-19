@@ -8,6 +8,7 @@ import { createContext } from "react";
 import { useQuery } from "react-query";
 import CreatePackPublish from "../../components/CreatePack/CreatePackPublish";
 import PlaceholderColumn from "../../components/PlaceholderColumn";
+import Link from "next/link";
 
 export default function CreatePack() {
     const { query, isReady } = useRouter();
@@ -18,8 +19,8 @@ export default function CreatePack() {
     return (
         <>
             <Head>
-                <title>Card Pack Editor - CardBox - Flashcard App</title>
-                <meta name="description" content="CardBox - Flashcard App" />
+                <title>Card Pack Editor - Flippy - Flashcard App</title>
+                <meta name="description" content="Flippy - Flashcard App" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Navbar />
@@ -38,15 +39,18 @@ export default function CreatePack() {
 export const CardPackDataContext = createContext();
 CardPackDataContext.displayName = "CardPackDataContext";
 function Inner({ cardPackId }) {
-    const { user, db } = useMongo();
+    const { user, db, isAnon } = useMongo();
     const result = useQuery(
-        ["card-pack-editor", user.id, cardPackId],
+        ["card-pack-editor", user.id, cardPackId, isAnon],
         () =>
             db.collection("cardpackDrafts").findOne({
                 _id: cardPackId,
                 author: user.id,
             }),
-        { refetchOnWindowFocus: true, enabled: !!db }
+        {
+            // refetchOnWindowFocus: true,
+            enabled: !!db,
+        }
     );
 
     console.log(result);
@@ -55,15 +59,41 @@ function Inner({ cardPackId }) {
         <main id="CreatePack">
             {result.isLoading && <PlaceholderColumn presetKey="loading" />}
             {result.isError && <PlaceholderColumn presetKey="error" />}
-            {result.data && (
-                <CardPackDataContext.Provider value={result.data}>
-                    <div className="title-1">Card Pack Editor</div>
-                    <CreatePackDetailsForm />
-                    <CreatePackPublish />
-                    <div className="divider" />
-                    <CreatePackDisplay />
-                </CardPackDataContext.Provider>
-            )}
+            {result.isSuccess &&
+                (result.data ? (
+                    <CardPackDataContext.Provider value={result}>
+                        <div className="title-1">Card Pack Editor</div>
+                        <CreatePackDetailsForm />
+                        {/* <CreatePackPublish /> */}
+                        <div className="divider" />
+                        <CreatePackDisplay />
+                    </CardPackDataContext.Provider>
+                ) : (
+                    <PlaceholderColumn
+                        options={{
+                            imageKey: "oopsCat",
+                            message: {
+                                title: "Something went wrong...",
+                                description: (
+                                    <>
+                                        Card Pack might be deleted. Otherwise,
+                                        Try refreshing! If it keeps persisting
+                                        please reach out to us on{" "}
+                                        <Link href="https://discord.gg/QC3yHFySAV">
+                                            <a
+                                                target="_blank"
+                                                className="subtitle-2"
+                                            >
+                                                discord
+                                            </a>
+                                        </Link>
+                                        !
+                                    </>
+                                ),
+                            },
+                        }}
+                    />
+                ))}
         </main>
     );
 }

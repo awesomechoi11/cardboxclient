@@ -39,13 +39,16 @@ export const ErrComponent = ({ err }) => {
         case "password":
             return (
                 <>
-                    Must Contain the following:
+                    Must Have At Least:
                     <ul>
                         <li>8 Characters</li>
-                        <li>1 Uppercase </li>
-                        <li>1 Lowercase </li>
-                        <li>1 Number </li>
-                        <li>1 Special Case Character </li>
+                        <li>1 Uppercase (A-Z)</li>
+                        <li>1 Lowercase (a-z)</li>
+                        <li>1 Number (0-9)</li>
+                        <li>
+                            1 Special Case Character{" "}
+                            {`(~!@#$%^&*_-+=\`|\\(){}[]:;"'<>,.?/)`}
+                        </li>
                     </ul>
                 </>
             );

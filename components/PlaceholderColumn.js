@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { Button } from "react-bootstrap";
 import Image from "next/image";
-
+import Link from "next/link";
 const imageObj = {
     studyCat: {
         src: "/assets/placeholdercolumn/Study Cat.png",
@@ -35,8 +35,18 @@ const presets = {
         imageKey: "oopsCat",
         message: {
             title: "Something went wrong...",
-            description:
-                "Try refreshing! If it keeps persisting please reach out to us on discord!",
+            description: (
+                <>
+                    Try refreshing! If it keeps persisting please reach out to
+                    us on{" "}
+                    <Link href="https://discord.gg/QC3yHFySAV">
+                        <a target="_blank" className="subtitle-2">
+                            discord
+                        </a>
+                    </Link>
+                    !
+                </>
+            ),
         },
     },
     loading: {

@@ -76,8 +76,12 @@ export function ModalWrapper({ modalId, children, className, ...props }) {
                     >
                         <div className="exit-button" onClick={() => toggle()}>
                             <svg
-                                width="24rem"
-                                height="24rem"
+                                style={{
+                                    width: "24rem",
+                                    height: "24rem",
+                                }}
+                                width="24"
+                                height="24"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"

@@ -29,24 +29,25 @@ export default function usePublishPackMutation({ cardPackId }) {
         ]);
         const updateDoc = Object.fromEntries(entries);
 
-        // const atLeastTwoCards =
-        //     currentDraft?.cards && currentDraft?.cards.length > 1;
-        // const cardsHaveTermAndDefinition = currentDraft?.cards?.every(
-        //     (card) =>
-        //         card?.term?.content &&
-        //         convertFromRaw(card?.term?.content).hasText() &&
-        //         card?.definition?.content &&
-        //         convertFromRaw(card?.definition?.content).hasText()
-        // );
-        // const hasTitle = currentDraft?.title?.length > 3;
-        // const hasTags = currentDraft?.tags?.length > 0;
-        // const hasVisibility = !!currentDraft?.visibility;
-
         try {
             await cardpackSchema.validate(updateDoc);
         } catch (err) {
             return toast.error(err.message);
         }
+
+        await db.collection("cardpackDrafts").updateOne(
+            {
+                _id: currentDraft._id,
+                author: user.id,
+            },
+            {
+                $set: {
+                    lastPublished: new Date(),
+                    published: true,
+                },
+            }
+        );
+
         return db
             .collection("cardpacks")
             .updateOne(

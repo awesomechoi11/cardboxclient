@@ -21,7 +21,7 @@ export default function CreatePack() {
     // show cannot sign and prolly a button to go home
     const { user, db, isAnon } = useMongo();
     const { data, isSuccess, isError, isIdle, isLoading } = useQuery(
-        ["card-pack-editor-new"],
+        ["card-pack-editor-new", isAnon],
         () =>
             user
                 .refreshCustomData()
@@ -85,8 +85,8 @@ export default function CreatePack() {
     return (
         <>
             <Head>
-                <title>Card Pack Editor - CardBox - Flashcard App</title>
-                <meta name="description" content="CardBox - Flashcard App" />
+                <title>Card Pack Editor - Flippy - Flashcard App</title>
+                <meta name="description" content="Flippy - Flashcard App" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Navbar />

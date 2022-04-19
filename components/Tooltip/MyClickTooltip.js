@@ -27,7 +27,9 @@ export function MyClickTooltip({
 
     return (
         <>
-            <TriggerContent ref={setTriggerRef} />
+            <div className="tooltip-trigger-wrapper" ref={setTriggerRef}>
+                {TriggerContent}
+            </div>
             <AnimatePresence>
                 {visible && (
                     <motion.div
@@ -48,8 +50,8 @@ export function MyClickTooltip({
                     >
                         <div {...getArrowProps({ className: "tooltip-arrow" })}>
                             <motion.svg
-                                width="32w"
-                                height="8w"
+                                width="32"
+                                height="8"
                                 viewBox="0 0 32 8"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +89,7 @@ export function MyClickTooltip({
                                 duration: 0.18,
                             }}
                         >
-                            <TooltipContent />
+                            {TooltipContent}
                         </motion.div>
                     </motion.div>
                 )}
@@ -162,8 +164,8 @@ export function MyHoverTooltip({
                     >
                         <div {...getArrowProps({ className: "tooltip-arrow" })}>
                             <motion.svg
-                                width="32w"
-                                height="8w"
+                                width="32"
+                                height="8"
                                 viewBox="0 0 32 8"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"

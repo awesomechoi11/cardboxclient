@@ -24,17 +24,16 @@ const cardFieldSchema = object({
     })
         .default(undefined)
         .nullable(),
-    content: object()
-        .test(
-            "cardFieldContentHasText",
-            "All Cards need to have text",
-            function (value) {
-                return convertFromRaw(value).hasText();
-            }
-        )
-        .default(() => convertToRaw(ContentState.createFromText("")))
-        .required(),
-});
+    content: object().default(() =>
+        convertToRaw(ContentState.createFromText(""))
+    ),
+}).test(
+    "card Field Has At Least Image or Content",
+    "All Cards need to have either an Image or Text for each side",
+    function (value) {
+        return convertFromRaw(value.content).hasText() || value.image;
+    }
+);
 
 export const cardSchema = object({
     id: string()
@@ -57,6 +56,21 @@ export const generateEmptyCard = (id) => ({
         content: ContentState.createFromText(""),
     },
 });
+
+export const generateEmptyCardwithRawContent = (id) => ({
+    id: id || alphaNumId(), // since duplicate cards can exist / also for ordering
+    term: {
+        id: alphaNumId(),
+        image: undefined,
+        content: convertToRaw(ContentState.createFromText("")),
+    },
+    definition: {
+        id: alphaNumId(),
+        image: undefined,
+        content: convertToRaw(ContentState.createFromText("")),
+    },
+});
+
 export const generateRandomCard = (id) => ({
     id: id || alphaNumId(), // since duplicate cards can exist / also for ordering
     term: {

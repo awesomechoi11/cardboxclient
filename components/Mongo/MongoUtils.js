@@ -28,6 +28,7 @@ export const mongoSelector = selector({
             case "setUser": {
                 const newVal = {
                     ...get(mongoState),
+                    client: data.user.mongoClient("mongodb-atlas"),
                     db: data.user
                         .mongoClient("mongodb-atlas")
                         .db(NEXT_PUBLIC_DATABASE_NAME),
@@ -62,7 +63,8 @@ export function MongoRoot({ children }) {
 }
 
 export function useMongo() {
-    const [{ db, isReady, isAnon }, setMongo] = useRecoilState(mongoSelector);
+    const [{ db, isReady, isAnon, client }, setMongo] =
+        useRecoilState(mongoSelector);
 
     async function loginEmailPassword(email, password) {
         // Create an anonymous credential
@@ -80,12 +82,18 @@ export function useMongo() {
     async function confirmUser(token, tokenId) {
         return await app.emailPasswordAuth.confirmUser({ token, tokenId });
     }
+    async function logOut() {
+        await app.currentUser.logOut();
+        setMongo({ action: "setUser", data: { user: app.currentUser } });
+    }
 
     return {
         isAnon,
         app,
         user: app.currentUser,
+        client,
         db,
+        logOut,
         isReady,
         loginEmailPassword,
         registerEmailPassword,

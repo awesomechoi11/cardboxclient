@@ -13,6 +13,7 @@
         margin: 0;
     }
     .toolbar {
+        z-index: 1;
         position: absolute;
         top: calc(100% + 8rem);
         width: 340rem;
