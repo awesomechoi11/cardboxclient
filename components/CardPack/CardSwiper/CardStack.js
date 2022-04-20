@@ -1,10 +1,10 @@
 import { AnimatePresence } from "framer-motion";
-import { useState } from "react";
 import { nanoid } from "nanoid";
+import { useState } from "react";
+import { useDidUpdate } from "rooks";
 import useSound from "use-sound";
 import Card from "./Card";
 import { useCardSwiperControls } from "./_CardSwiperUtils";
-import { useDidUpdate } from "rooks";
 
 export default function CardStack() {
     const [play] = useSound("/cardflip.m4a");

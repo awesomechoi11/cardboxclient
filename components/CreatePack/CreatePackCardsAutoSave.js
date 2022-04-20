@@ -1,17 +1,15 @@
-import { customAlphabet } from "nanoid";
+import fastEqual from "fast-deep-equal";
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { useMutation } from "react-query";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useDebounce } from "rooks";
+import { CardPackDataContext } from "../../pages/card-pack-editor/[cardPackId]";
+import { useMongo } from "../Mongo/MongoUtils";
 import {
     createPackAllDataSelector,
     createPackManualSaveTrigger,
     createPackSaveSelector,
-    createPackSaveState,
 } from "./_CreatePackUtils";
-import { useMongo } from "../Mongo/MongoUtils";
-import { useMutation } from "react-query";
-import { useDebounce, useEffectOnceWhen } from "rooks";
-import { CardPackDataContext } from "../../pages/card-pack-editor/[cardPackId]";
-import fastEqual from "fast-deep-equal";
 
 export default function CreatePackCardsAutosave() {
     //listen to data changes

@@ -8,6 +8,7 @@ import { createPackSaveSelector } from "./_CreatePackUtils";
 import useDeletePackMutation from "../Mongo/CardPack/useDeletePackMutation";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { useModal } from "../Modals/ModalUtils";
 
 export default function CreatePackPublish() {
     const { data: dbdata, refetch } = useContext(CardPackDataContext);
@@ -25,11 +26,17 @@ export default function CreatePackPublish() {
         lastModified > lastPublished ||
         saveState.lastUpdated > lastPublished;
     const router = useRouter();
+    const { openModal } = useModal("publish");
     return (
         <>
             <Button
                 onClick={() =>
-                    publishMutation.mutate(undefined, { onSuccess: refetch })
+                    publishMutation.mutate(undefined, {
+                        onSuccess: () => {
+                            refetch();
+                            openModal({ url: `/card-pack/${dbdata._id}` });
+                        },
+                    })
                 }
                 disabled={
                     publishMutation.isLoading ||

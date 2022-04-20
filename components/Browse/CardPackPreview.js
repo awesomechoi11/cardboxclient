@@ -1,19 +1,20 @@
-import { useContext, useReducer } from "react";
-import { useMutation, useQuery } from "react-query";
-import { BrowseContext } from "../../pages/browse";
-import { useMongo } from "../Mongo/MongoUtils";
-import ago from "s-ago";
-import { DUPLICATE_SVG, LIKE_SVG, SHARE_SVG } from "./_icons";
-import { Button } from "react-bootstrap";
+import draftjsToHtml from "draftjs-to-html";
+import { AnimatePresence, motion } from "framer-motion";
 import millify from "millify";
 import Image from "next/image";
-import draftjsToHtml from "draftjs-to-html";
-import { MyHoverTooltip } from "../Tooltip/MyClickTooltip";
-import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { useContext, useEffect, useReducer } from "react";
+import { Button } from "react-bootstrap";
+import { useQuery } from "react-query";
+import ago from "s-ago";
+import { BrowseContext } from "../../pages/browse";
 import { useCardpackFunctions_incrementStats } from "../Mongo/CardPack/useCardPackFunctions";
+import useCreatePackMutation from "../Mongo/CardPack/useCreatePackMutation";
 import usePublishPackMutation from "../Mongo/CardPack/usePublishPackMutation";
+import { useMongo } from "../Mongo/MongoUtils";
 import PlaceholderColumn from "../PlaceholderColumn";
+import { MyHoverTooltip } from "../Tooltip/MyClickTooltip";
+import { DUPLICATE_SVG, LIKE_SVG, SHARE_SVG } from "./_icons";
 
 const previewAnim = {
     initial: {
@@ -55,7 +56,6 @@ export default function CardPackPreview() {
                     {
                         $match: {
                             _id: selected.id,
-                            visibility: "public",
                         },
                     },
                     {
@@ -93,6 +93,7 @@ export default function CardPackPreview() {
                 .then((data) => data[0]),
         { refetchOnWindowFocus: false, enabled: !!db && !!selected }
     );
+    console.log(data);
     const router = useRouter();
     return (
         <div className="preview">
@@ -145,7 +146,11 @@ export default function CardPackPreview() {
                     <CardPackPreviewInner key={data._id} data={data} />
                 )}
                 {isSuccess && !data && (
-                    <CardPackPreviewInner key={data._id} data={data} />
+                    <motion.div key="error" className="inner" {...previewAnim}>
+                        <div className="placeholder-wrapper">
+                            <PlaceholderColumn presetKey="error" />
+                        </div>
+                    </motion.div>
                 )}
             </AnimatePresence>
         </div>
@@ -225,7 +230,7 @@ function Field({ data: { content, id, image }, label }) {
     );
 }
 
-const localStatsReducer = (state, action) => {
+const localStatsReducer = (state, { action, data }) => {
     switch (action) {
         case "like":
             return { ...state, likes: state.likes + 1 };
@@ -233,16 +238,25 @@ const localStatsReducer = (state, action) => {
             return { ...state, shares: state.shares + 1 };
         case "duplicate":
             return { ...state, duplicates: state.duplicates + 1 };
+        case "set":
+            return data;
     }
 };
 
-function Header({
-    data: { likes = 0, shares = 0, duplicates = 0, title, authorDetails },
-}) {
+function Header({ data }) {
+    const {
+        likes = 0,
+        shares = 0,
+        duplicates = 0,
+        title,
+        authorDetails,
+    } = data;
     const {
         selectedState: [selected],
     } = useContext(BrowseContext);
-
+    const createMutation = useCreatePackMutation({
+        duplicateCardpackId: selected.id,
+    });
     const mutation = useCardpackFunctions_incrementStats();
     const router = useRouter();
     const [localStats, setLocalStats] = useReducer(localStatsReducer, {
@@ -250,88 +264,120 @@ function Header({
         shares,
         duplicates,
     });
+    useEffect(() => {
+        if (data)
+            setLocalStats({
+                action: "set",
+                data: {
+                    likes: data.likes,
+                    shares: data.shares,
+                    duplicates: data.duplicates,
+                },
+            });
+    }, [data]);
 
     function sendLike() {
-        mutation.mutate(
-            {
-                action: "likes",
-                cardPackId: selected.id,
-            },
-            {
-                onSuccess: () => {
-                    setLocalStats("like");
+        if (mutation.isIdle)
+            mutation.mutate(
+                {
+                    action: "likes",
+                    cardPackId: selected.id,
                 },
-            }
-        );
+                {
+                    onSuccess: () => {
+                        setLocalStats({ action: "like" });
+                        mutation.reset();
+                    },
+                }
+            );
     }
     function sendShare() {
-        mutation.mutate(
-            {
-                action: "shares",
-                cardPackId: selected.id,
-            },
-            {
-                onSuccess: () => {
-                    setLocalStats("share");
-                },
-            }
+        navigator.clipboard.writeText(
+            `https://flippy.cards/card-pack/${selected.id}`
         );
+        if (mutation.isIdle)
+            mutation.mutate(
+                {
+                    action: "shares",
+                    cardPackId: selected.id,
+                },
+                {
+                    onSuccess: () => {
+                        setLocalStats({ action: "share" });
+                        mutation.reset();
+                    },
+                }
+            );
     }
     function sendDuplicate() {
-        mutation.mutate(
-            {
-                action: "duplicates",
-                cardPackId: selected.id,
-            },
-            {
-                onSuccess: () => {
-                    setLocalStats("duplicate");
+        if (mutation.isIdle)
+            mutation.mutate(
+                {
+                    action: "duplicates",
+                    cardPackId: selected.id,
                 },
-            }
-        );
+                {
+                    onSuccess: () => {
+                        setLocalStats({ action: "duplicate" });
+                        if (createMutation.isIdle) createMutation.mutate();
+                        mutation.reset();
+                    },
+                }
+            );
     }
-
+    // console.log(mutation);
     const { user } = useMongo();
     const publishMutation = usePublishPackMutation({
         cardPackId: selected.id,
     });
+
     return (
         <div className="header">
             <div className="title-1 title">{title}</div>
             <div className="controls">
-                <MyHoverTooltip
-                    TriggerContent={
-                        <button className="icon-btn" onClick={sendLike}>
-                            <div className="icon">{LIKE_SVG}</div>
-                            <div className="content">
-                                {millify(localStats.likes)}
-                            </div>
-                        </button>
-                    }
-                    TooltipContent={<div>Send A Like</div>}
-                />
-                <MyHoverTooltip
-                    TriggerContent={
-                        <button className="icon-btn" onClick={sendShare}>
-                            <div className="icon">{SHARE_SVG}</div>
-                            <div className="content">
-                                {millify(localStats.shares)}
-                            </div>
-                        </button>
-                    }
-                    TooltipContent={<div>Copy Link</div>}
-                />
-                <MyHoverTooltip
-                    TriggerContent={
-                        <button className="icon-btn" onClick={sendDuplicate}>
-                            <div className="icon">{DUPLICATE_SVG}</div>
-                            <div className="content">
-                                {millify(localStats.duplicates)}
-                            </div>
-                        </button>
-                    }
-                    TooltipContent={<div>Duplicate</div>}
-                />
+                {selected.collection !== "cardpackDrafts" && (
+                    <>
+                        <MyHoverTooltip
+                            TriggerContent={
+                                <button className="icon-btn" onClick={sendLike}>
+                                    <div className="icon">{LIKE_SVG}</div>
+                                    <div className="content">
+                                        {millify(localStats.likes || 0)}
+                                    </div>
+                                </button>
+                            }
+                            TooltipContent={<div>Send A Like</div>}
+                        />
+                        <MyHoverTooltip
+                            TriggerContent={
+                                <button
+                                    className="icon-btn"
+                                    onClick={sendShare}
+                                >
+                                    <div className="icon">{SHARE_SVG}</div>
+                                    <div className="content">
+                                        {millify(localStats.shares || 0)}
+                                    </div>
+                                </button>
+                            }
+                            TooltipContent={<div>Copy Link</div>}
+                        />
+                        <MyHoverTooltip
+                            TriggerContent={
+                                <button
+                                    className="icon-btn"
+                                    onClick={sendDuplicate}
+                                >
+                                    <div className="icon">{DUPLICATE_SVG}</div>
+                                    <div className="content">
+                                        {millify(localStats.duplicates || 0)}
+                                    </div>
+                                </button>
+                            }
+                            TooltipContent={<div>Duplicate</div>}
+                        />
+                    </>
+                )}
                 {authorDetails[0]._id === user.id && (
                     <Button
                         size="sm"
@@ -379,6 +425,9 @@ function Details({
         views = 0,
     },
 }) {
+    const {
+        selectedState: [selected],
+    } = useContext(BrowseContext);
     const imgSrc =
         image?.value?.cdnUrl ||
         "https://ucarecdn.com/8367c6e0-2a0f-40c0-9bbb-7bf74754a3a5/";
@@ -410,7 +459,8 @@ function Details({
             <div className="subtitle-2 middle">
                 {[
                     lastModified && "Last Updated " + ago(lastModified),
-                    millify(views) + " Views",
+                    selected.collection !== "cardpackDrafts" &&
+                        millify(views) + " Views",
                 ]
                     .filter(Boolean)
                     .join(" · ")}

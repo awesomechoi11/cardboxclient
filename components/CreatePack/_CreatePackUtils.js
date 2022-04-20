@@ -1,15 +1,12 @@
-import { customAlphabet } from "nanoid";
-const nanoid = customAlphabet("1234567890abcdef", 16);
 import { arrayMove } from "@dnd-kit/sortable";
-import { faker } from "@faker-js/faker";
-import { ContentState } from "draft-js";
+import { convertFromRaw, convertToRaw } from "draft-js";
 import copy from "fast-copy";
-import { atom, atomFamily, selector, selectorFamily } from "recoil";
+import { customAlphabet } from "nanoid";
 import { useContext } from "react";
-import { convertToRaw } from "draft-js";
-import { convertFromRaw } from "draft-js";
-import { shuffleArray } from "../utils";
+import { atom, atomFamily, selector, selectorFamily } from "recoil";
 import { generateEmptyCard } from "../../schemas/cardpacks/card";
+import { shuffleArray } from "../utils";
+const nanoid = customAlphabet("1234567890abcdef", 16);
 
 export function useAtomFamilyWithContextId(useRecoilHook, atomFamily, context) {
     const id = useContext(context);

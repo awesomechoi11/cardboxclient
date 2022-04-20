@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 import { cardpackDraftsDefault } from "../../components/Mongo/documents/cardpacks";
@@ -37,7 +36,7 @@ export default function CreatePack() {
                 })
                 .then(() => {
                     // check if user can create a pack
-                    const maxCards = 20;
+                    const maxCards = 100;
                     if (user.customData.cardPacks.length > maxCards) {
                         toast.error(
                             `Max Number of Drafts Reached : ${maxCards}`

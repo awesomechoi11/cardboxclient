@@ -1,12 +1,12 @@
-import { createRef } from "react";
 import clsx from "clsx";
-import CardStack from "./CardStack";
-import { CardSwiperContext, useCardSwiperControls } from "./_CardSwiperUtils";
 import { motion, useIsomorphicLayoutEffect } from "framer-motion";
+import { createRef } from "react";
 import { useRecoilState } from "recoil";
-import { cardsMapState } from "../CardPackUtils";
 import { useIsMobile } from "../../mediaQueryHooks";
 import { MyHoverTooltip } from "../../Tooltip/MyClickTooltip";
+import { cardsMapState } from "../CardPackUtils";
+import CardStack from "./CardStack";
+import { CardSwiperContext, useCardSwiperControls } from "./_CardSwiperUtils";
 
 export default function CardSwiper({ data, className, ...props }) {
     const [cardsMap, setCardsMap] = useRecoilState(

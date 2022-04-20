@@ -1,4 +1,4 @@
-import { useIsMobile } from "../../mediaQueryHooks";
+// import { useIsMobile } from "../../mediaQueryHooks";
 
 export default function LargeCardBanner({ data }) {
     const { tags, title, description, image, cards } = data;

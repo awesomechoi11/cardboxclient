@@ -18,7 +18,6 @@ export const cardpackDraftsDefault = (data) => ({
         generateEmptyCardwithRawContent(),
         generateEmptyCardwithRawContent(),
     ],
-    // cards: [],
     dateCreated: new Date(),
     lastModified: new Date(),
     // draft only fields

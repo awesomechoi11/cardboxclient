@@ -1,9 +1,9 @@
+import { motion } from "framer-motion";
 import { customAlphabet } from "nanoid";
-const nanoid = customAlphabet("1234567890abcdef", 16);
 import { useRef } from "react";
 import { atom, useRecoilState, useSetRecoilState } from "recoil";
+import { alphaNumId } from "../utils";
 import { createPackSelectorFamily } from "./_CreatePackUtils";
-import { motion } from "framer-motion";
 
 const addBetweenState = atom({
     key: "addBetweenState",
@@ -11,7 +11,7 @@ const addBetweenState = atom({
 });
 
 export default function AddBetweenTrigger({ index }) {
-    const idRef = useRef(nanoid());
+    const idRef = useRef(alphaNumId());
     const [current, setCurrent] = useRecoilState(addBetweenState);
     const setData = useSetRecoilState(createPackSelectorFamily("root"));
     return (
