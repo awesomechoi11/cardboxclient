@@ -1,18 +1,16 @@
 import { Formik } from "formik";
-import { MyForm, MyTextInput } from "../Form/Basic";
-import * as Yup from "yup";
-import { MySelect } from "../Form/MySelect";
-import CreatePackDetailsAutoSave from "./CreatePackDetailsAutoSave";
-import { useModal } from "../Modals/ModalUtils";
-import { useMongo } from "../Mongo/MongoUtils";
-import { useContext, useState } from "react";
-import Image from "next/image";
-import MyFilePicker from "../MyFilePicker";
+import { useContext } from "react";
 import { useMutation } from "react-query";
-import { CardPackDataContext } from "../../pages/card-pack-editor/[cardPackId]";
 import { useSetRecoilState } from "recoil";
-import { createPackSaveSelector } from "./_CreatePackUtils";
+import * as Yup from "yup";
+import { CardPackDataContext } from "../../pages/card-pack-editor/[cardPackId]";
+import { MyForm, MyTextInput } from "../Form/Basic";
+import { MySelect } from "../Form/MySelect";
+import { useMongo } from "../Mongo/MongoUtils";
+import MyFilePicker from "../MyFilePicker";
+import CreatePackDetailsAutoSave from "./CreatePackDetailsAutoSave";
 import CreatePackPublish from "./CreatePackPublish";
+import { createPackSaveSelector } from "./_CreatePackUtils";
 
 export default function CreatePackDetailsForm() {
     const selectOptions = [

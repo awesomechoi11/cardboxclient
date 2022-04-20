@@ -48,7 +48,7 @@ function Inner() {
                     {
                         $match: {
                             _id: query.cardPackId,
-                            visibility: { $in: ["public", "hidden"] },
+                            // visibility: { $in: ["public", "hidden"] },
                         },
                     },
                     {
@@ -105,5 +105,9 @@ function Inner() {
             </>
         );
 
-    return <PlaceholderColumn presetKey="error" />;
+    return (
+        <div className="placeholder-wrapper">
+            <PlaceholderColumn presetKey="error" />
+        </div>
+    );
 }

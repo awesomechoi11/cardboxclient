@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import { useMongo } from "../../components/Mongo/MongoUtils";
 import { createContext } from "react";
 import { useQuery } from "react-query";
-import CreatePackPublish from "../../components/CreatePack/CreatePackPublish";
 import PlaceholderColumn from "../../components/PlaceholderColumn";
 import Link from "next/link";
 
@@ -64,7 +63,6 @@ function Inner({ cardPackId }) {
                     <CardPackDataContext.Provider value={result}>
                         <div className="title-1">Card Pack Editor</div>
                         <CreatePackDetailsForm />
-                        {/* <CreatePackPublish /> */}
                         <div className="divider" />
                         <CreatePackDisplay />
                     </CardPackDataContext.Provider>

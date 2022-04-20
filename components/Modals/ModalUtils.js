@@ -3,12 +3,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import { atomFamily, useRecoilState, useResetRecoilState } from "recoil";
 import FilePickerModal from "./FilePicker/_FilePickerModal";
 import LoginModal from "./Login/LoginModal";
+import PublishModal from "./PublishModal/_PublishModal";
 
 export default function ModalRoot() {
     return (
         <div id="modal-root">
             <LoginModal />
             <FilePickerModal />
+            <PublishModal />
         </div>
     );
 }

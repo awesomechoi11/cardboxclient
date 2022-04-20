@@ -72,7 +72,7 @@ export default function FileItemList() {
                                 return null;
                         }
                     });
-                    return <PaginatedList files={files} />;
+                    return <PaginatedList files={files.reverse()} />;
                 })()}
             <IncomingFileList refetch={refetch} />
         </>

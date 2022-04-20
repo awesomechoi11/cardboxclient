@@ -1,5 +1,3 @@
-import { customAlphabet } from "nanoid";
-import { Fragment, useMemo, useState } from "react";
 import {
     closestCenter,
     DndContext,
@@ -7,32 +5,32 @@ import {
     MeasuringStrategy,
 } from "@dnd-kit/core";
 import {
-    SortableContext,
-    verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import {
     restrictToFirstScrollableAncestor,
     restrictToVerticalAxis,
     restrictToWindowEdges,
 } from "@dnd-kit/modifiers";
 import {
-    createPackIdContext,
-    CreatePackRowItem,
-    DraggableCreatePackRowItem,
-} from "./CreatePackRowItem";
-
+    SortableContext,
+    verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { Fragment, useMemo, useState } from "react";
+import { Button } from "react-bootstrap";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import AddBetweenTrigger from "./AddBetweenTrigger";
+import CreatePackCardsAutosave from "./CreatePackCardsAutoSave";
 import {
     CreatePackControlsBottom,
     CreatePackControlsTop,
 } from "./CreatePackControls";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import {
+    createPackIdContext,
+    CreatePackRowItem,
+    DraggableCreatePackRowItem,
+} from "./CreatePackRowItem";
 import {
     createPackCardIdsState,
     createPackSelectorFamily,
 } from "./_CreatePackUtils";
-import AddBetweenTrigger from "./AddBetweenTrigger";
-import CreatePackCardsAutosave from "./CreatePackCardsAutoSave";
-import { Button } from "react-bootstrap";
 
 export default function CreatePackRow() {
     const cardIds = useRecoilValue(createPackCardIdsState);
@@ -112,11 +110,19 @@ export default function CreatePackRow() {
             <Button
                 variant="secondary"
                 className="add-btn"
-                onClick={() =>
+                onClick={() => {
                     setData({
                         action: "add",
-                    })
-                }
+                    });
+                    setTimeout(() => {
+                        document
+                            .getElementById("app")
+                            .scrollTo(
+                                0,
+                                document.getElementById("app").scrollHeight
+                            );
+                    }, 100);
+                }}
             >
                 Add A Card
             </Button>

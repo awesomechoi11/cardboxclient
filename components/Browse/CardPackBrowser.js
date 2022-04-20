@@ -170,7 +170,14 @@ function CardPreviewDefault({ data, collection }) {
                 "card-preview-default",
                 selected?.id === _id && "active"
             )}
-            onClick={() => {
+            // onClick={() => {
+            //     setSelected({
+            //         id: _id,
+            //         collection,
+            //     });
+            // }}
+            tabIndex="0"
+            onFocus={() => {
                 setSelected({
                     id: _id,
                     collection,

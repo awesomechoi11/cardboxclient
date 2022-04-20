@@ -55,7 +55,10 @@ function Inner({
     const [focused, setFocused] = useState(false);
     return (
         <Editor
+            stripPastedStyles
+            placeholder="Click Here!"
             toolbarOnFocus
+            tabIndex="0"
             wrapperClassName={clsx(
                 wrapperClassName,
                 "card-editor-wrapper",

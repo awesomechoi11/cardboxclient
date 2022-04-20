@@ -1,15 +1,15 @@
+import clsx from "clsx";
+import draftjsToHtml from "draftjs-to-html";
 import {
     motion,
     useIsomorphicLayoutEffect,
     useMotionTemplate,
     useSpring,
 } from "framer-motion";
-import { useState, useEffect } from "react";
-import { DragDropRef } from "./CardSwiper";
+import { useEffect, useState } from "react";
 import { relativeRem } from "../../utils";
+import { DragDropRef } from "./CardSwiper";
 import { useCardSwiperControls } from "./_CardSwiperUtils";
-import clsx from "clsx";
-import draftjsToHtml from "draftjs-to-html";
 
 export default function Card({
     active = false,
