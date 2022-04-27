@@ -2,13 +2,14 @@ import { Button } from "react-bootstrap";
 import { useRecoilState } from "recoil";
 import LabeledPills from "../../general/LabeledPills";
 import { gameSettingsSelector } from "../GameStateHelpers";
+import { useRouter } from "next/router";
 
 export default function MatchPostGameDetails() {
     const [gameSettings, setGameSettings] =
         useRecoilState(gameSettingsSelector);
     console.log(gameSettings);
     const { gameId, category, time, label } = gameSettings;
-
+    const router = useRouter();
     return (
         <div id="match-post-game-screen">
             <div className="top">
@@ -51,6 +52,17 @@ export default function MatchPostGameDetails() {
                             }}
                         >
                             Back To Menu
+                        </Button>
+                        <Button
+                            variant="secondary"
+                            size="sm"
+                            onClick={() => {
+                                router.push(
+                                    `/card-pack/${router.query.cardPackId}`
+                                );
+                            }}
+                        >
+                            Goto Pack
                         </Button>
                     </div>
                 </div>

@@ -106,7 +106,8 @@ function Preview({ data }) {
         views = 0,
         image,
     } = data;
-    console.log(data);
+    const router = useRouter();
+
     return (
         <div className="inner">
             <div className="header">
@@ -231,6 +232,15 @@ function Preview({ data }) {
                 </Button>
                 <Button variant="secondary" size="sm">
                     View Leaderboards
+                </Button>
+                <Button
+                    variant="secondary"
+                    size="sm"
+                    onClick={() => {
+                        router.push(`/card-pack/${router.query.cardPackId}`);
+                    }}
+                >
+                    Goto Pack
                 </Button>
             </div>
         </div>
