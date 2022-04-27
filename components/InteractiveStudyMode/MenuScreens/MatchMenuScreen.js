@@ -54,6 +54,30 @@ export default function MatchDetails() {
             <div className="category">
                 <div className="subtitle-2">Category</div>
                 <Select
+                    styles={{
+                        control: (provided) => ({
+                            ...provided,
+                            backgroundColor: "var(--color-secondary-1)",
+                            borderColor: "var(--color-secondary-3)",
+                        }),
+                        menu: (provided) => ({
+                            ...provided,
+                            backgroundColor: "var(--color-secondary-1)",
+                        }),
+                        option: (provided, state) => {
+                            console.log(state);
+                            return {
+                                ...provided,
+                                color: "var(--color-primary-1)",
+                                backgroundColor: state.isSelected
+                                    ? "var(--color-secondary-2)"
+                                    : "var(--color-secondary-1)",
+                                "&:hover": {
+                                    backgroundColor: "var(--color-secondary-3)",
+                                },
+                            };
+                        },
+                    }}
                     options={options}
                     value={selectedCategory}
                     onChange={setSelectedCategory}

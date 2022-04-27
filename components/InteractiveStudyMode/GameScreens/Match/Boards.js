@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useContext } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { CardPackContext } from "../../../../pages/card-pack/[cardPackId]/[modePath]";
+import PlaceholderColumn from "../../../PlaceholderColumn";
 import {
     cardFaceFamily,
     cardFacesSelector,
@@ -14,19 +15,37 @@ import {
 
 export default function Board() {
     const { cardFaces } = useRecoilValue(cardFacesSelector);
+    const [playing, setPlaying] = useRecoilState(gameStateFamily("playing"));
     // uses list of cards from data
     // shuffles and chooses 6 max
     // then puts the term and definition into an array and shuffles again
 
     return (
-        <div className="board">
-            {cardFaces.map((cardFaceData, index) => (
-                <CardFace
-                    {...cardFaceData}
-                    key={cardFaceData.type + cardFaceData.cardId}
-                    index={index}
+        <div className={clsx("board", !playing && "paused")}>
+            {playing ? (
+                cardFaces.map((cardFaceData, index) => (
+                    <CardFace
+                        {...cardFaceData}
+                        key={cardFaceData.type + cardFaceData.cardId}
+                        index={index}
+                    />
+                ))
+            ) : (
+                <PlaceholderColumn
+                    options={{
+                        sizeKey: "regular",
+                        imageKey: "studyCat",
+                        presetKey: undefined,
+                        message: {
+                            title: "Hi!",
+                            description: "Click Start To Play!",
+                        },
+                        // action: {
+                        //     label: ''
+                        // },
+                    }}
                 />
-            ))}
+            )}
         </div>
     );
 }
@@ -111,6 +130,13 @@ function CardFace({ faceId }) {
     useIsomorphicLayoutEffect(() => {
         if (playing) {
             switch (gameState) {
+                case "hidden": {
+                    setCardState({
+                        ...cardState,
+                        gameState: "default",
+                    });
+                    break;
+                }
                 case "correct": {
                     controls.start(gameState).then(() => {
                         setCardState({
@@ -138,27 +164,39 @@ function CardFace({ faceId }) {
         }
     }, [playing, gameState]);
 
+    const inactive = ["cleared", "correct", "hidden"].includes(gameState);
+    const handleClick = () => {
+        if (inactive) return;
+        if (gameState === "selected") {
+            setCardState({
+                ...cardState,
+                gameState: "default",
+            });
+        } else {
+            setCardState({
+                ...cardState,
+                gameState: "selected",
+            });
+        }
+    };
+
     return (
         <div className="card">
             <div className={clsx("inner", gameState)}>
                 <motion.div
+                    tabIndex={inactive ? false : "0"}
                     whileHover={{
                         scale: 1.08,
                     }}
-                    onClick={() => {
-                        if (["cleared", "correct"].includes(gameState)) return;
-                        if (gameState === "selected") {
-                            setCardState({
-                                ...cardState,
-                                gameState: "default",
-                            });
-                        } else {
-                            setCardState({
-                                ...cardState,
-                                gameState: "selected",
-                            });
+                    whileFocus={{
+                        scale: 1.08,
+                    }}
+                    onKeyPress={(e) => {
+                        if (e.code === "Space") {
+                            handleClick();
                         }
                     }}
+                    onClick={handleClick}
                 >
                     <motion.div
                         className="face"
@@ -182,16 +220,16 @@ function CardFace({ faceId }) {
                                 __html: draftjsToHtml(content),
                             }}
                         />
+                        <motion.div
+                            className="floater"
+                            animate={controls}
+                            initial={false}
+                            variants={floaterVariants}
+                        >
+                            {gameState === "wrong" && wrongSvg}
+                            {gameState === "correct" && correctSvg}
+                        </motion.div>
                     </motion.div>
-                </motion.div>
-                <motion.div
-                    className="floater"
-                    animate={controls}
-                    initial={false}
-                    variants={floaterVariants}
-                >
-                    {gameState === "wrong" && wrongSvg}
-                    {gameState === "correct" && correctSvg}
                 </motion.div>
             </div>
         </div>

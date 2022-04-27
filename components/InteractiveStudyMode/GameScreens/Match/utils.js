@@ -61,14 +61,14 @@ export function randomizeCards(cards, count = 6) {
                     type: "term",
                     cardId: card.id,
                     faceId: card.term.id,
-                    gameState: "default",
+                    gameState: "hidden",
                     ...card.term,
                 },
                 {
                     type: "definition",
                     cardId: card.id,
                     faceId: card.definition.id,
-                    gameState: "default",
+                    gameState: "hidden",
                     ...card.definition,
                 },
             ];

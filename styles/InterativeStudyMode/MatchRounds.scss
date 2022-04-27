@@ -5,14 +5,15 @@
     margin: 0 auto;
     display: flex;
     gap: 128rem;
-    justify-content: center;
+    justify-content: left;
+    padding-left: 400rem;
     // justify-content: space-between;
     .side-controls {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         width: 200rem;
-        height: calc(100vh - 256rem - 64rem);
+        height: calc(100vh - 256rem);
         display: flex;
         flex-direction: column;
         gap: 32rem;
@@ -33,6 +34,10 @@
         gap: 24rem;
         flex-flow: row wrap;
         justify-content: space-between;
+        &.paused {
+            justify-content: center;
+            align-items: center;
+        }
     }
     .img-wrapper {
         position: relative;
@@ -57,7 +62,8 @@
         // }
         > .inner {
             cursor: pointer;
-            &.cleared {
+            &.cleared,
+            &.hidden {
                 cursor: initial;
             }
             width: 100%;
@@ -83,6 +89,7 @@
                 height: 100%;
             }
             .face {
+                overflow: hidden;
                 // font-size: 12rem;
                 padding: 16rem;
                 box-sizing: border-box;

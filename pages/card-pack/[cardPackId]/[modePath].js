@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { createContext } from "react";
 import { useQuery } from "react-query";
-import { useRecoilValue } from "recoil";
+import { RecoilRoot, useRecoilValue } from "recoil";
 import GameScreens from "../../../components/InteractiveStudyMode/GameScreens/GameScreens";
 import { gameSettingsState } from "../../../components/InteractiveStudyMode/GameStateHelpers";
 import MenuScreen from "../../../components/InteractiveStudyMode/MenuScreens/MenuScreens";
@@ -14,7 +14,6 @@ export const CardPackContext = createContext();
 
 export default function CardPackMatchInteractiveStudyMode() {
     const router = useRouter();
-    const gameSettings = useRecoilValue(gameSettingsState);
     const { cardPackId, modePath } = router.query;
     const { db, isAnon } = useMongo();
     const query = useQuery(
@@ -46,13 +45,23 @@ export default function CardPackMatchInteractiveStudyMode() {
             <Navbar />
             <main id="interactive-study-mode">
                 <CardPackContext.Provider value={query}>
-                    {gameSettings.stage === "menu-screen" && <MenuScreen />}
-                    {gameSettings.stage === "game-screen" && <GameScreens />}
-                    {gameSettings.stage === "post-game-screen" && (
-                        <PostGameScreens />
-                    )}
+                    <RecoilRoot>
+                        <Inner />
+                    </RecoilRoot>
                 </CardPackContext.Provider>
             </main>
+        </>
+    );
+}
+
+function Inner() {
+    const gameSettings = useRecoilValue(gameSettingsState);
+
+    return (
+        <>
+            {gameSettings.stage === "menu-screen" && <MenuScreen />}
+            {gameSettings.stage === "game-screen" && <GameScreens />}
+            {gameSettings.stage === "post-game-screen" && <PostGameScreens />}
         </>
     );
 }
