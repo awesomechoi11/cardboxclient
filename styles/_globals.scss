@@ -26,6 +26,7 @@
 @import "Browse.scss";
 @import "popper.scss";
 @import "PlaceholderColumn.scss";
+@import "InteractiveStudyMode.scss";
 
 html {
     font-size: 0.0520833333333vw;
@@ -170,4 +171,27 @@ a:active {
 
 .pointer {
     cursor: pointer;
+}
+
+button.discord {
+    color: #5865f2;
+    display: flex;
+    align-items: center;
+    gap: 8rem;
+}
+
+.labeled-pills {
+    > .label {
+        margin-bottom: 8rem;
+    }
+    > .content {
+        padding: 16rem 24rem;
+        border-radius: 8rem;
+        background-color: vars.$color-secondary-2;
+        text-align: center;
+    }
+}
+
+.btn-secondary {
+    background-color: rgba(vars.$color-secondary-2, 0);
 }

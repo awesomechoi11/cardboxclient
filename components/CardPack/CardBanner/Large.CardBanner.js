@@ -1,10 +1,12 @@
 // import { useIsMobile } from "../../mediaQueryHooks";
+import { useRouter } from "next/router";
+import { Button } from "react-bootstrap";
 
 export default function LargeCardBanner({ data }) {
     const { tags, title, description, image, cards } = data;
     // const isMobile = useIsMobile();
     const imgSrc = image?.value?.cdnUrl;
-
+    const router = useRouter();
     return (
         <div className="large-card-banner">
             {imgSrc && (
@@ -21,7 +23,18 @@ export default function LargeCardBanner({ data }) {
                     </div>
                     <div className="description-1">{description}</div>
                 </div>
-                <div className="bottom"> like n share</div>
+                <div className="subtitle-2">Interactive Study Modes</div>
+                <div>
+                    <Button
+                        variant="secondary"
+                        size="sm"
+                        onClick={() => {
+                            router.push(`/card-pack/${data._id}/match`);
+                        }}
+                    >
+                        Match
+                    </Button>
+                </div>
             </div>
         </div>
     );
