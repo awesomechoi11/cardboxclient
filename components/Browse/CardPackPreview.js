@@ -158,6 +158,8 @@ export default function CardPackPreview() {
 }
 
 function CardPackPreviewInner({ data }) {
+    const router = useRouter();
+
     return (
         <motion.div
             // key={data._id}
@@ -184,6 +186,21 @@ function CardPackPreviewInner({ data }) {
             <Header data={data} />
             <div className="divider" />
             <Details data={data} />
+            <div className="divider" />
+            <div className="content-preview">
+                <div className="subtitle-2">Interactive Study Modes</div>
+                <div>
+                    <Button
+                        variant="secondary"
+                        size="sm"
+                        onClick={() => {
+                            router.push(`/card-pack/${data._id}/match`);
+                        }}
+                    >
+                        Match
+                    </Button>
+                </div>
+            </div>
             <div className="divider" />
             <ContentPreview data={data} />
         </motion.div>

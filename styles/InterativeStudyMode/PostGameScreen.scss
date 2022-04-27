@@ -1,0 +1,48 @@
+@use "../vars";
+
+#match-post-game-screen {
+    width: 860rem;
+    margin: 0 auto;
+
+    > .top {
+        display: flex;
+        justify-content: space-between;
+        > .details {
+            width: 400rem;
+            > * {
+                margin-bottom: 24rem;
+            }
+            > .title-1 {
+                margin-bottom: 32rem;
+            }
+            > .stats {
+                display: flex;
+                gap: 24rem;
+            }
+            > .time {
+                margin-bottom: 32rem;
+                > .subtitle-2 {
+                    margin-bottom: 8rem;
+                }
+                > .content {
+                    font-size: 64rem;
+                    font-weight: 600;
+                    margin: 16rem 24rem;
+                }
+            }
+            > .buttons {
+                display: flex;
+                gap: 16rem;
+            }
+        }
+        > .leaderboard {
+            width: 400rem;
+            border-radius: 16rem;
+            padding: 16rem 24rem;
+            display: flex;
+            flex-direction: column;
+            gap: 16rem;
+            background-color: vars.$color-secondary-2;
+        }
+    }
+}
