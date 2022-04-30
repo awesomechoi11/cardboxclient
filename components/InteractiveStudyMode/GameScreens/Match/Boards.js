@@ -2,23 +2,27 @@ import clsx from "clsx";
 import draftjsToHtml from "draftjs-to-html";
 import { motion, useAnimation, useIsomorphicLayoutEffect } from "framer-motion";
 import Image from "next/image";
-import { useContext } from "react";
+import { useRef, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { CardPackContext } from "../../../../pages/card-pack/[cardPackId]/[modePath]";
 import PlaceholderColumn from "../../../PlaceholderColumn";
-import {
-    cardFaceFamily,
-    cardFacesSelector,
-    gameStateFamily,
-    randomizeCards,
-} from "./utils";
+import { cardFaceFamily, cardFacesSelector, gameStateFamily } from "./utils";
 
 export default function Board() {
     const { cardFaces } = useRecoilValue(cardFacesSelector);
     const [playing, setPlaying] = useRecoilState(gameStateFamily("playing"));
+    const currentRound = useRecoilValue(gameStateFamily("currentRound"));
     // uses list of cards from data
     // shuffles and chooses 6 max
     // then puts the term and definition into an array and shuffles again
+
+    // action text logic
+    // if new round/ show "start game"
+    // else // which is is when the pause and resume
+    // show "resume game"
+    const [hasStarted, setStarted] = useState(false);
+    useIsomorphicLayoutEffect(() => {
+        setStarted(false);
+    }, [currentRound]);
 
     return (
         <div className={clsx("board", !playing && "paused")}>
@@ -37,12 +41,20 @@ export default function Board() {
                         imageKey: "studyCat",
                         presetKey: undefined,
                         message: {
-                            title: "Hi!",
-                            description: "Click Start To Play!",
+                            title: `Round ${currentRound}`,
+                            description:
+                                "Try to clear all the cards as fast as possible!",
                         },
-                        // action: {
-                        //     label: ''
-                        // },
+                        action: {
+                            label: hasStarted ? "Resume Game" : "Start Game",
+                            props: {
+                                onClick: () => {
+                                    setPlaying(true);
+                                    // playingRef.current = true;
+                                    setStarted(true);
+                                },
+                            },
+                        },
                     }}
                 />
             )}

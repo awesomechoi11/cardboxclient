@@ -156,7 +156,8 @@ $btn-font-weight: 600;
         background-color: $color-secondary-3;
         // color: $color-secondary-1;
     }
-    &.active {
+    &.active,
+    &:focus {
         background-color: $color-primary-4;
     }
 }

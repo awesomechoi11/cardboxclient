@@ -40,6 +40,10 @@ export function DraggableCreatePackRowItem(props) {
         // overIndex,
     } = useSortable({
         id: props.id,
+        transition: {
+            duration: 180,
+            easing: "cubic-bezier(0.25, 1, 0.5, 1)",
+        },
     });
 
     if (!props.index) console.log("draggable item rendered");
@@ -71,7 +75,6 @@ export const CreatePackRowItem = forwardRef(function CreatePackRowItem(
         transition,
         index,
         listeners,
-        focused,
         ...props
     },
     ref
@@ -88,11 +91,11 @@ export const CreatePackRowItem = forwardRef(function CreatePackRowItem(
     );
 
     const [displayState, setDisplayState] = useState(
-        dragOverlay || isDragging || isSorting || !focused
+        dragOverlay || isDragging || isSorting
     );
     useEffect(() => {
-        setDisplayState(dragOverlay || isDragging || isSorting || !focused);
-    }, [dragOverlay, isDragging, isSorting, focused]);
+        setDisplayState(dragOverlay || isDragging || isSorting);
+    }, [dragOverlay, isDragging, isSorting]);
     return (
         // <InView>
         <div
@@ -102,13 +105,18 @@ export const CreatePackRowItem = forwardRef(function CreatePackRowItem(
             className={clsx(
                 "create-pack-row-item",
                 isDragging && "dragging",
-                dragOverlay && "overlay",
-                focused && "focused"
+                dragOverlay && "overlay"
+                // focused && "focused"
             )}
         >
-            <div className={clsx("content", focused && "focused")}>
+            <div
+                className={clsx(
+                    "content"
+                    // focused && "focused"
+                )}
+            >
                 <div className="index title-1">{index + 1}</div>
-                <Fields displayMode={displayState} onFocus={props.onFocus} />
+                <Fields displayMode={displayState} />
             </div>
             <div className=" controls">
                 <DragButton listeners={listeners} />
@@ -118,7 +126,7 @@ export const CreatePackRowItem = forwardRef(function CreatePackRowItem(
     );
 });
 
-function Fields({ displayMode, onFocus }) {
+function Fields({ displayMode }) {
     const [data, setData] = useAtomFamilyWithContextId(
         useRecoilState,
         createPackSelectorFamily,
@@ -149,7 +157,6 @@ function Fields({ displayMode, onFocus }) {
                 id={termId}
                 defaultEditorState={defaultEditorTerm}
                 displayMode={displayMode}
-                onFocus={onFocus}
             />
             <div className="middle">
                 <SwapButton setData={setData} />
@@ -160,13 +167,12 @@ function Fields({ displayMode, onFocus }) {
                 id={definitionId}
                 defaultEditorState={defaultEditorDefinition}
                 displayMode={displayMode}
-                onFocus={onFocus}
             />
         </div>
     );
 }
 
-function Field({ image, label, id, defaultEditorState, displayMode, onFocus }) {
+function Field({ image, label, id, defaultEditorState, displayMode }) {
     const setData = useAtomFamilyWithContextId(
         useSetRecoilState,
         createPackSelectorFamily,
@@ -232,12 +238,7 @@ function Field({ image, label, id, defaultEditorState, displayMode, onFocus }) {
                     />
                 }
             />
-            <div
-                className="editor-group my-text-input"
-                tabIndex="0"
-                onFocus={onFocus}
-                // onMouseMove={onFocus}
-            >
+            <div className="editor-group my-text-input">
                 <label className="form-label">{label}</label>
                 <CardEditor
                     displayMode={displayMode}
@@ -250,3 +251,4 @@ function Field({ image, label, id, defaultEditorState, displayMode, onFocus }) {
         </div>
     );
 }
+//document.getElementById(`rdw-wrapper-${id}}`).focus()

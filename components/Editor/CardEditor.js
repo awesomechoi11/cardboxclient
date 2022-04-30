@@ -1,10 +1,14 @@
 import clsx from "clsx";
-import dynamic from "next/dynamic";
-import React, { Component, useMemo, useState } from "react";
-// import { Editor } from "react-draft-wysiwyg";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { convertToRaw, ContentState, EditorState } from "draft-js";
+import { convertToRaw, EditorState } from "draft-js";
 import draftToHtml from "draftjs-to-html";
+import dynamic from "next/dynamic";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { atom, useRecoilState, useRecoilValue } from "recoil";
+const focusedFieldState = atom({
+    key: "focusedFieldState",
+    default: null,
+});
 
 const Editor = dynamic(
     () => import("react-draft-wysiwyg").then(({ Editor }) => Editor),
@@ -22,10 +26,14 @@ export const CardEditor = ({ displayMode = false, ...props }) => {
         [props.defaultEditorState]
     );
 
-    if (displayMode) {
+    const [focusedField, setFocusedField] = useRecoilState(focusedFieldState);
+
+    if (displayMode || !(focusedField === props.wrapperId)) {
         return (
             <div
                 className={clsx("card-editor-wrapper", props.wrapperClassName)}
+                tabIndex={"0"}
+                onFocus={() => setFocusedField(props.wrapperId)}
             >
                 <div
                     className={clsx(props.editorClassName, "editor")}
@@ -53,10 +61,25 @@ function Inner({
         defaultEditorState || EditorState.createEmpty()
     );
     const [focused, setFocused] = useState(false);
+    const editorRef = useRef();
+    const setEditorReference = (ref) => {
+        editorRef.current = ref;
+    };
+
+    const [focusedField, setFocusedField] = useRecoilState(focusedFieldState);
+    useEffect(() => {
+        if (focusedField === props.wrapperId) {
+            console.log(focusedField, editorRef.current);
+
+            editorRef.current?.focus();
+        }
+    }, [focusedField, props.wrapperId]);
+
     return (
         <Editor
+            editorRef={setEditorReference}
             stripPastedStyles
-            placeholder="Click Here!"
+            // placeholder="Click Here!"
             toolbarOnFocus
             tabIndex="0"
             wrapperClassName={clsx(
@@ -67,7 +90,7 @@ function Inner({
             editorClassName={clsx(editorClassName, "editor")}
             toolbarClassName={clsx(toolbarClassName, "toolbar")}
             toolbar={toolbar}
-            onFocus={(e) => {
+            onFocus={() => {
                 setFocused(true);
             }}
             onBlur={() => {
@@ -79,7 +102,7 @@ function Inner({
                 pointerEvents: focused ? "all" : "none",
                 transform: `translate3d(0,${focused ? 0 : 10}rem,0)`,
             }}
-            // {...props}
+            {...props}
             editorState={editorState}
             onEditorStateChange={(newState) => {
                 onEditorStateChange(newState);

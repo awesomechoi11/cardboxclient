@@ -4,7 +4,11 @@
 @import "./InterativeStudyMode/PostGameScreen.scss";
 #interactive-study-mode {
     padding: 0;
-
+    > .placeholder-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .tooltip {
         text-align: center;
         display: flex;
@@ -25,13 +29,14 @@
             width: 480rem;
         }
         > .left {
+            > * {
+                width: 100%;
+            }
             > .nav {
                 display: flex;
                 gap: 8rem;
             }
-            > .category {
-                width: 100%;
-            }
+
             > .instructions {
                 > .content {
                     padding: 24rem 16rem;
@@ -39,9 +44,6 @@
                     border-radius: 8rem;
                     line-height: 1.5;
                 }
-            }
-            button {
-                width: 100%;
             }
         }
         > .right {

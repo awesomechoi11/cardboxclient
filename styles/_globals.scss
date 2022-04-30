@@ -27,6 +27,7 @@
 @import "popper.scss";
 @import "PlaceholderColumn.scss";
 @import "InteractiveStudyMode.scss";
+@import "Flippable.scss";
 
 html {
     font-size: 0.0520833333333vw;
@@ -108,6 +109,12 @@ main {
     font-size: 14rem;
     color: vars.$color-primary-1;
 }
+.jumbo-1 {
+    font-size: 64rem;
+    font-weight: 600;
+    color: vars.$color-primary-1;
+}
+
 input {
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
@@ -194,4 +201,20 @@ button.discord {
 
 .btn-secondary {
     background-color: rgba(vars.$color-secondary-2, 0);
+}
+
+ol,
+ul {
+    padding: 0;
+    margin-left: 1.5em;
+}
+
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    resize: vertical;
+}
+button {
+    // outline: none;
+    border: none;
 }
