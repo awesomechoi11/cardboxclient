@@ -61,9 +61,9 @@ export function CreateYourOwnPacks({ play }) {
                             width="200rem"
                             height="200rem"
                         />
-                        A long tube of glass, usually marked in 0.1 mL units,
+                        {`A long tube of glass, usually marked in 0.1 mL units,
                         that's equipped with a stopcock and used for the
-                        controlled addition of a liquid to a receiving flask.
+                        controlled addition of a liquid to a receiving flask.`}
                     </>
                 }
                 back={
