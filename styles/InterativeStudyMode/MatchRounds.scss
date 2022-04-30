@@ -120,3 +120,31 @@
         }
     }
 }
+
+@media (max-width: vars.$mobile-maxWidth) {
+    #match-rounds-game-screen {
+        padding: 0 16rem;
+        flex-direction: column;
+        margin-bottom: 20vh;
+        .side-controls {
+            width: 343rem;
+            height: auto;
+            gap: 48rem;
+        }
+        .board {
+            width: 343rem;
+            gap: 8rem;
+        }
+        .card {
+            font-size: 8rem;
+            width: 79.25rem;
+            height: 106.333333333rem;
+            > .inner {
+                .face {
+                    padding: 4rem;
+                    border-radius: 8rem;
+                }
+            }
+        }
+    }
+}

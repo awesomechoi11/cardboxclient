@@ -1,8 +1,13 @@
+import Link from "next/link";
+import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { Flippable } from "../../general/Flippable";
-import Link from "next/link";
 
 export default function MatchPreview({ play }) {
+    return <Client play={play} />;
+}
+
+function Client({ play }) {
     const cards = [
         {
             front: "Use tongs",
@@ -30,16 +35,25 @@ export default function MatchPreview({ play }) {
             back: "",
         },
     ];
+    const [selected, setselected] = useState(null);
     return (
         <div id="match-preview">
             <div className="card-grid">
                 {cards.map((card, index) => (
                     <Flippable
+                        className={selected === index && "selected"}
                         front={<div className="title-1">{card.front}</div>}
                         key={index}
                         hasWatermark
-                        onFlip={play}
                         active={false}
+                        onClick={() => {
+                            if (selected === index) {
+                                setselected(null);
+                            } else {
+                                play();
+                                setselected(index);
+                            }
+                        }}
                     />
                 ))}
             </div>

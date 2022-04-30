@@ -7,6 +7,7 @@ export function Flippable({
     back,
     hasWatermark = false,
     onFlip = () => {},
+    onClick = () => {},
     className,
     active = true,
 }) {
@@ -19,6 +20,7 @@ export function Flippable({
         <div
             className={clsx("flippable", frontSide && "flipped", className)}
             onClick={() => {
+                onClick();
                 if (!active) return;
                 onFlip();
                 flipSide();

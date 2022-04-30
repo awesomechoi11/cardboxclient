@@ -74,7 +74,8 @@
                 > .stats {
                     align-items: center;
                     display: flex;
-                    gap: 32rem;
+                    // gap: 32rem;
+                    justify-content: space-evenly;
                     > .stat {
                         display: flex;
                         gap: 4rem;
@@ -84,6 +85,38 @@
                 > .actions {
                     display: flex;
                     gap: 8rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: vars.$mobile-maxWidth) {
+    #interactive-study-mode {
+        > .menu-screen {
+            padding: 0 16rem;
+            display: flex;
+            justify-content: space-between;
+            gap: 48rem;
+            flex-direction: column;
+            .nav {
+                display: flex;
+                gap: 8rem;
+                flex-flow: row wrap;
+                width: 343rem;
+            }
+            > * {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24rem;
+                width: 343rem;
+            }
+
+            .selected-card-pack {
+                width: 343rem;
+                .actions {
+                    flex-flow: row wrap;
                 }
             }
         }

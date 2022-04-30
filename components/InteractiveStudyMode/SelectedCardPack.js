@@ -128,6 +128,10 @@ function Preview({ data }) {
             <div className="stats description-1">
                 <div className="stat">
                     <svg
+                        style={{
+                            width: "32rem",
+                            height: "32rem",
+                        }}
                         width="32"
                         height="32"
                         viewBox="0 0 32 32"
@@ -146,6 +150,10 @@ function Preview({ data }) {
                 </div>
                 <div className="stat">
                     <svg
+                        style={{
+                            width: "32rem",
+                            height: "32rem",
+                        }}
                         width="32"
                         height="32"
                         viewBox="0 0 32 32"
@@ -164,6 +172,10 @@ function Preview({ data }) {
                 </div>
                 <div className="stat">
                     <svg
+                        style={{
+                            width: "32rem",
+                            height: "32rem",
+                        }}
                         width="32"
                         height="32"
                         viewBox="0 0 32 32"
@@ -202,6 +214,10 @@ function Preview({ data }) {
                 </div>
                 <div className="stat">
                     <svg
+                        style={{
+                            width: "32rem",
+                            height: "32rem",
+                        }}
                         width="32"
                         height="32"
                         viewBox="0 0 32 32"

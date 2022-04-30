@@ -165,6 +165,8 @@
         background-color: vars.$color-secondary-3;
         border-radius: 4rem;
         flex-shrink: 0;
+        position: relative;
+        overflow: hidden;
     }
     > .right {
         flex-grow: 1;
@@ -173,6 +175,15 @@
         }
         > .details {
             @include vars.max-lines(1);
+        }
+    }
+}
+
+@media (max-width: vars.$mobile-maxWidth) {
+    #Browse {
+        padding: 0 24rem;
+        .card-preview-default > .left {
+            width: 64rem;
         }
     }
 }

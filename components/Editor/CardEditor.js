@@ -69,8 +69,6 @@ function Inner({
     const [focusedField, setFocusedField] = useRecoilState(focusedFieldState);
     useEffect(() => {
         if (focusedField === props.wrapperId) {
-            console.log(focusedField, editorRef.current);
-
             editorRef.current?.focus();
         }
     }, [focusedField, props.wrapperId]);

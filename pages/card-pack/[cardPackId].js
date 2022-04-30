@@ -82,7 +82,6 @@ function Inner() {
             enabled: Boolean(isReady && query.cardPackId),
         }
     );
-    console.log(data);
     if (isIdle || isLoading)
         return (
             <div className="placeholder-wrapper">

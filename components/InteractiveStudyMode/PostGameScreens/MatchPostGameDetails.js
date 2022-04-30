@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 export default function MatchPostGameDetails() {
     const [gameSettings, setGameSettings] =
         useRecoilState(gameSettingsSelector);
-    console.log(gameSettings);
     const { gameId, category, time, label } = gameSettings;
     const router = useRouter();
     return (

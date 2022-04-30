@@ -9,6 +9,13 @@
     // overflow: hidden;
     &.mobile {
         padding-bottom: 148rem;
+        > .dropzone-wrapper {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            width: 343rem;
+            height: 400rem;
+        }
         > .controls {
             position: absolute;
             > * {

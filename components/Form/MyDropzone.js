@@ -80,7 +80,6 @@ export function MyDropzone({
                                 );
                                 compressImageFile(files.[0])
                                     .then(uploadImage)
-                                    .then(console.log);
                             } else {
                                 setFiles(null);
                             }

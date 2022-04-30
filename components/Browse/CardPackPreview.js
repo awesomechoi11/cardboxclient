@@ -93,7 +93,6 @@ export default function CardPackPreview() {
                 .then((data) => data[0]),
         { refetchOnWindowFocus: false, enabled: !!db && !!selected }
     );
-    console.log(data);
     const router = useRouter();
     return (
         <div className="preview">
@@ -342,7 +341,6 @@ function Header({ data }) {
                 }
             );
     }
-    // console.log(mutation);
     const { user } = useMongo();
     const publishMutation = usePublishPackMutation({
         cardPackId: selected.id,

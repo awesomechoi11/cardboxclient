@@ -30,3 +30,25 @@
         }
     }
 }
+@media (max-width: vars.$mobile-maxWidth) {
+    .placeholder-column {
+        width: 343rem;
+        .img-wrapper {
+            height: 308.7rem;
+            width: 343rem;
+        }
+        .message {
+            width: 343rem;
+        }
+
+        > button {
+            width: 343rem;
+        }
+        &.regular {
+            > .img-wrapper {
+                height: 308.7rem;
+                width: 343rem;
+            }
+        }
+    }
+}

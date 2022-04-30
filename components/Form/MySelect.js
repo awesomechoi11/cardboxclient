@@ -25,7 +25,6 @@ export function MySelect({ label, controlId, options, ...props }) {
                         backgroundColor: "var(--color-secondary-1)",
                     }),
                     option: (provided, state) => {
-                        console.log(state);
                         return {
                             ...provided,
                             color: "var(--color-primary-1)",

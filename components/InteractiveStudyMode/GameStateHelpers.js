@@ -20,7 +20,6 @@ export const gameSettingsSelector = selector({
     },
     set: ({ set, get }, { action, data }) => {
         const currentState = get(gameSettingsState);
-        console.log(action, data);
         switch (action) {
             case "set": {
                 set(gameSettingsState, { ...currentState, ...data });

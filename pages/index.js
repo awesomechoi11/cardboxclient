@@ -11,7 +11,6 @@ import { cardpackSchema } from "../schemas/cardpacks/publishedCardpack";
 export default function Home() {
     // this will try to login with anonymous
     const { app, user } = useMongo();
-    console.log(app, user, cardpackSchema);
     const [play] = useSound("/cardflip.m4a");
     return (
         <>

@@ -161,7 +161,6 @@ function PaginatedList({ files }) {
 }
 
 function UploadCareFileItem({ type, value, index, refetch }) {
-    if (!index) console.log(type, value);
     let previewUrl = value.cdnUrl;
 
     const isVideo = value.mimeType.startsWith("video/");

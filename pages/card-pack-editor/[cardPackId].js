@@ -52,8 +52,6 @@ function Inner({ cardPackId }) {
         }
     );
 
-    console.log(result);
-
     return (
         <main id="CreatePack">
             {result.isLoading && <PlaceholderColumn presetKey="loading" />}

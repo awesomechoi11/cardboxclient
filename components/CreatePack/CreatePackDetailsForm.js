@@ -29,7 +29,6 @@ export default function CreatePackDetailsForm() {
     ];
 
     const { data } = useContext(CardPackDataContext);
-    console.log(data);
 
     const { db } = useMongo();
 

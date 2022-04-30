@@ -21,7 +21,6 @@ export default function usePublishPackMutation({ cardPackId }) {
 
         // this shudnt be possible
         if (!currentDraft) throw Error(`Cannot find Card Pack`);
-        console.log("current draft", currentDraft);
 
         const entries = CardpackSharedFields.map((field) => [
             field,

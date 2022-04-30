@@ -70,7 +70,7 @@ main {
     }
     main {
         padding: 0 24rem;
-        width: 100vw;
+        // width: 100vw;
     }
 }
 
@@ -214,7 +214,11 @@ textarea {
     width: 100%;
     resize: vertical;
 }
-button {
+button.btn {
     // outline: none;
     border: none;
+    font-size: 16rem !important;
+}
+.Toastify {
+    max-width: 100%;
 }

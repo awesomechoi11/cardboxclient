@@ -23,7 +23,6 @@ export default function CreatePackDetailsAutoSave({ onUpdate }) {
         }
     }, [values]);
 
-    // console.log(triggerCount);
     useEffect(() => {
         if (triggerCount && isValid) {
             let tags = values.tags.split(",").map((item) => item.trim());
