@@ -106,7 +106,12 @@ export default function CreatePackDetailsForm() {
                         label="Tags (separated by commas)"
                         controlId="tags"
                     />
-                    <MyTextInput label="Description" controlId="description" />
+                    <MyTextInput
+                        label="Description"
+                        controlId="description"
+                        as="textarea"
+                        rows={5}
+                    />
                 </div>
                 <div className="right">
                     <MySelect

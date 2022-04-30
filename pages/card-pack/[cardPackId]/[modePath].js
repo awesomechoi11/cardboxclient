@@ -9,6 +9,7 @@ import MenuScreen from "../../../components/InteractiveStudyMode/MenuScreens/Men
 import PostGameScreens from "../../../components/InteractiveStudyMode/PostGameScreens/PostGameScreens";
 import { useMongo } from "../../../components/Mongo/MongoUtils";
 import Navbar from "../../../components/Navbar";
+import PlaceholderColumn from "../../../components/PlaceholderColumn";
 
 export const CardPackContext = createContext();
 
@@ -35,6 +36,7 @@ export default function CardPackMatchInteractiveStudyMode() {
             ),
         { refetchOnWindowFocus: false, enabled: router.isReady }
     );
+
     return (
         <>
             <Head>
@@ -44,11 +46,42 @@ export default function CardPackMatchInteractiveStudyMode() {
             </Head>
             <Navbar />
             <main id="interactive-study-mode">
-                <CardPackContext.Provider value={query}>
-                    <RecoilRoot>
-                        <Inner />
-                    </RecoilRoot>
-                </CardPackContext.Provider>
+                {query.isSuccess &&
+                    (query.data ? (
+                        <CardPackContext.Provider value={query}>
+                            <RecoilRoot>
+                                <Inner />
+                            </RecoilRoot>
+                        </CardPackContext.Provider>
+                    ) : (
+                        <div className="placeholder-wrapper">
+                            <PlaceholderColumn
+                                options={{
+                                    imageKey: "oopsCat",
+                                    message: {
+                                        title: "Something went wrong...",
+                                        description:
+                                            "The link seems to be broken",
+                                    },
+                                }}
+                            />
+                        </div>
+                    ))}
+                {query.isIdle && (
+                    <div className="placeholder-wrapper">
+                        <PlaceholderColumn presetKey="loading" />
+                    </div>
+                )}
+                {query.isLoading && (
+                    <div className="placeholder-wrapper">
+                        <PlaceholderColumn presetKey="loading" />
+                    </div>
+                )}
+                {query.isError && (
+                    <div className="placeholder-wrapper">
+                        <PlaceholderColumn presetKey="error" />
+                    </div>
+                )}
             </main>
         </>
     );

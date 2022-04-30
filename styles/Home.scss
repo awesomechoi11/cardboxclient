@@ -1,7 +1,9 @@
 @use "./vars";
 
 #home {
+    padding: 0;
     .hero {
+        margin-bottom: 196rem;
         position: relative;
         height: 480rem;
         display: flex;
@@ -69,6 +71,116 @@
                 border-radius: 26.67rem;
                 gap: 16rem;
             }
+        }
+    }
+}
+
+#create-your-own-packs {
+    position: relative;
+    height: 796rem;
+    margin-bottom: 196rem;
+    img {
+        border-radius: 16rem;
+    }
+    > .background {
+        background-color: vars.$color-secondary-2;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 547rem;
+    }
+    > .card1 {
+        position: absolute;
+        left: 697rem;
+        top: 375rem;
+        transform: rotate(-8.11deg);
+        > .face {
+            background-color: vars.$color-secondary-3;
+        }
+    }
+    > .card2 {
+        position: absolute;
+        left: 988rem;
+        top: 298rem;
+        transform: rotate(6.61deg);
+        > .face {
+            background-color: vars.$color-primary-4;
+        }
+    }
+    > .card3 {
+        position: absolute;
+        left: 1178rem;
+        top: 108rem;
+        transform: rotate(-14.81deg);
+        > .face {
+            background-color: vars.$color-secondary-3;
+        }
+    }
+    > .cta {
+        position: absolute;
+        left: 307rem;
+        top: 128rem;
+        width: 396rem;
+        display: flex;
+        flex-direction: column;
+        gap: 24rem;
+    }
+}
+#interactive-study-modes-preview {
+    margin-bottom: 198rem;
+    > .cta {
+        margin-bottom: 128rem;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        > .jumbo-1 {
+            width: 540rem;
+        }
+        > .description-1 {
+            width: 280rem;
+        }
+    }
+    #match-preview {
+        position: relative;
+        > .card-grid {
+            position: relative;
+            left: 420rem;
+            display: flex;
+            justify-content: space-between;
+            flex-flow: row wrap;
+            width: 948rem;
+            height: 848rem;
+            scale: 0.8;
+            transform: skew(10deg, 0deg);
+            top: -80rem;
+        }
+        > .cta-card {
+            text-align: center;
+            position: absolute;
+            left: 1080rem;
+            top: 150rem;
+            > .face {
+                background-color: vars.$color-secondary-2;
+            }
+        }
+    }
+    #coming-soon {
+        display: flex;
+        justify-content: center;
+        > .inner {
+            width: 434rem;
+            box-sizing: border-box;
+            padding: 64rem;
+            background-color: vars.$color-secondary-2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            gap: 8rem;
+            border-radius: 24rem;
         }
     }
 }

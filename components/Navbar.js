@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useModal } from "./Modals/ModalUtils";
 import { useMongo } from "./Mongo/MongoUtils";
-
+import JoinDiscordButton from "@components/Social/JoinDiscordButton";
 export default function Navbar() {
     const { user, isAnon } = useMongo();
     const router = useRouter();
@@ -44,6 +44,7 @@ export default function Navbar() {
                 </Button>
             </div>
             <div className="right">
+                <JoinDiscordButton />
                 {!isAnon ? <AuthedSection /> : <UnauthedSection />}
             </div>
         </div>

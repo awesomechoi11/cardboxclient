@@ -16,7 +16,10 @@ export default function MatchRoundsGameScreen() {
             <RecoilRoot>
                 {isSuccess && data && (
                     <>
-                        <SideControls setGameSettings={setGameSettings} />
+                        <SideControls
+                            setGameSettings={setGameSettings}
+                            gameSettings={gameSettings}
+                        />
                         <Board />
                         <GameLogicFragment
                             setGameSettings={setGameSettings}

@@ -1,4 +1,4 @@
-import { useAnimationFrame } from "framer-motion";
+import { useAnimationFrame, useIsomorphicLayoutEffect } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { Button } from "react-bootstrap";
 import TimerMachine from "react-timer-machine";
@@ -6,7 +6,7 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import LabeledPills from "../../../general/LabeledPills";
 import { gameStateFamily } from "./utils";
 
-export default function SideControls({ setGameSettings }) {
+export default function SideControls({ setGameSettings, gameSettings }) {
     const currentRound = useRecoilValue(gameStateFamily("currentRound"));
     const [playing, setPlaying] = useRecoilState(gameStateFamily("playing"));
     const setTime = useSetRecoilState(gameStateFamily("time"));
@@ -15,6 +15,8 @@ export default function SideControls({ setGameSettings }) {
     const timeSinceMount = useRef(0);
     const displayTime = useRef(0);
     const playingRef = useRef(playing);
+    console.log(playing);
+    playingRef.current = playing;
     useAnimationFrame((time) => {
         timeSinceMount.current = time;
         if (!playingRef.current) return;
@@ -46,6 +48,7 @@ export default function SideControls({ setGameSettings }) {
                 >
                     Back To Menu
                 </Button>
+                <LabeledPills label="Category" content={gameSettings.label} />
                 <LabeledPills
                     label="Time Elapsed"
                     content={
@@ -85,17 +88,7 @@ export default function SideControls({ setGameSettings }) {
                         </Button>
                     </>
                 ) : (
-                    <>
-                        <Button
-                            variant="primary"
-                            onClick={() => {
-                                setPlaying(true);
-                                playingRef.current = true;
-                            }}
-                        >
-                            Start
-                        </Button>
-                    </>
+                    <></>
                 )}
             </div>
         </div>

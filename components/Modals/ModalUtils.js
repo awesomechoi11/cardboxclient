@@ -76,7 +76,12 @@ export function ModalWrapper({ modalId, children, className, ...props }) {
                             e.stopPropagation();
                         }}
                     >
-                        <div className="exit-button" onClick={() => toggle()}>
+                        <button
+                            className="exit-button"
+                            onClick={() => toggle()}
+
+                            // tabIndex="0"
+                        >
                             <svg
                                 style={{
                                     width: "24rem",
@@ -107,7 +112,7 @@ export function ModalWrapper({ modalId, children, className, ...props }) {
                                     fill="#674433"
                                 />
                             </svg>
-                        </div>
+                        </button>
                         {children}
                     </div>
                 </motion.div>

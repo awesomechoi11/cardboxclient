@@ -13,9 +13,14 @@ import {
     SortableContext,
     verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { Fragment, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { Button } from "react-bootstrap";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import {
+    atom,
+    useRecoilState,
+    useRecoilValue,
+    useSetRecoilState,
+} from "recoil";
 import AddBetweenTrigger from "./AddBetweenTrigger";
 import CreatePackCardsAutosave from "./CreatePackCardsAutoSave";
 import {
@@ -55,8 +60,6 @@ export default function CreatePackRow() {
             },
         });
     }
-    const [focused, setFocused] = useState(null);
-
     return (
         <div className="row">
             <CreatePackCardsAutosave />
@@ -82,8 +85,6 @@ export default function CreatePackRow() {
                         <Fragment key={cardId + "trigger"}>
                             <AddBetweenTrigger index={index} />
                             <DraggableCreatePackRowItem
-                                focused={index === focused}
-                                onFocus={() => setFocused(index)}
                                 id={cardId}
                                 index={index}
                             />
@@ -115,6 +116,9 @@ export default function CreatePackRow() {
                         action: "add",
                     });
                     setTimeout(() => {
+                        [...document.querySelectorAll(".card-editor-wrapper")]
+                            .at(-2)
+                            .focus();
                         document
                             .getElementById("app")
                             .scrollTo(

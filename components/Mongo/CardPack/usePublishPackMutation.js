@@ -32,7 +32,8 @@ export default function usePublishPackMutation({ cardPackId }) {
         try {
             await cardpackSchema.validate(updateDoc);
         } catch (err) {
-            return toast.error(err.message);
+            toast.error(err.message);
+            throw err;
         }
 
         await db.collection("cardpackDrafts").updateOne(
@@ -67,6 +68,7 @@ export default function usePublishPackMutation({ cardPackId }) {
                 toast.error(
                     "Oops! Something went wrong. Your Card Pack has not updated or published."
                 );
+                throw err;
             });
     });
 }
