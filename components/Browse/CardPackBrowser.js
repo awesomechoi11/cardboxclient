@@ -7,6 +7,7 @@ import { useMongo } from "../Mongo/MongoUtils";
 import Image from "next/image";
 import PlaceholderColumn from "../PlaceholderColumn";
 import { useRouter } from "next/router";
+import { useIsMobile } from "@components/mediaQueryHooks";
 
 export default function CardPackBrowser() {
     const [currentPage, setCurrentPage] = useState(0);
@@ -77,7 +78,7 @@ export default function CardPackBrowser() {
                 }),
         },
     ];
-
+    const isMobile = useIsMobile();
     return (
         <div className="browser">
             <div className="nav">
@@ -95,6 +96,7 @@ export default function CardPackBrowser() {
                     </Button>
                 ))}
             </div>
+
             <BrowserResults data={pages[currentPage]} />
         </div>
     );
@@ -161,27 +163,25 @@ function CardPreviewDefault({ data, collection }) {
     const {
         selectedState: [selected, setSelected],
     } = useContext(BrowseContext);
-
+    const isMobile = useIsMobile();
     const imgSrc = image?.value?.cdnUrl;
-
+    const router = useRouter();
     return (
         <div
             className={clsx(
                 "card-preview-default",
                 selected?.id === _id && "active"
             )}
-            // onClick={() => {
-            //     setSelected({
-            //         id: _id,
-            //         collection,
-            //     });
-            // }}
             tabIndex="0"
             onFocus={() => {
-                setSelected({
-                    id: _id,
-                    collection,
-                });
+                if (isMobile) {
+                    router.push(`/card-pack/${_id}`);
+                } else {
+                    setSelected({
+                        id: _id,
+                        collection,
+                    });
+                }
             }}
         >
             {imgSrc && (
@@ -189,9 +189,9 @@ function CardPreviewDefault({ data, collection }) {
                     <Image
                         src={imgSrc}
                         alt="preview"
-                        layout="responsive"
-                        width="144w"
-                        height="106.29w"
+                        layout="fill"
+                        // width={isMobile ? "64rem" : "144rem"}
+                        // height="106.29rem"
                         objectFit="cover"
                     />
                 </div>

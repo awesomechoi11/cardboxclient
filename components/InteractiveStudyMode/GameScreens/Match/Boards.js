@@ -222,7 +222,7 @@ function CardFace({ faceId }) {
                                     layout="fill"
                                     src={imgSrc}
                                     alt="card"
-                                    objectFit="cover"
+                                    objectFit="contain"
                                 />
                             </div>
                         )}

@@ -89,3 +89,26 @@
         }
     }
 }
+
+@media (max-width: vars.$mobile-maxWidth) {
+    #interactive-study-mode {
+        > .menu-screen {
+            padding: 0 16rem;
+            display: flex;
+            justify-content: space-between;
+            gap: 48rem;
+            flex-direction: column;
+            > * {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24rem;
+                width: 343rem;
+            }
+
+            .selected-card-pack {
+                width: 343rem;
+            }
+        }
+    }
+}
