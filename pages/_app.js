@@ -6,33 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 import "../styles/_globals.scss";
 import { MongoRoot } from "../components/Mongo/MongoUtils";
 import Script from "next/script";
-// import {
-//     Provider as RollbarProvider,
-//     ErrorBoundary as RollbarBoundry,
-// } from "@rollbar/react"; // <-- Provider imports 'rollbar' for us
 import { QueryClient, QueryClientProvider } from "react-query";
-
-// same configuration you would create for the Rollbar.js SDK
-// const rollbarConfig = {
-//     accessToken: process.env.NEXT_PUBLIC_POST_CLIENT_ITEM_ACCESS_TOKEN,
-//     environment: "production",
-//     enabled: process.env.NEXT_PUBLIC_PRODUCTION_MODE,
-//     autoInstrument: {
-//         log: false,
-//     },
-//     // server: {
-//     //   root: "http://example.com/",
-//     //   branch: "main"
-//     //   },
-//     //   code_version: "0.13.7",
-//     //   person: {
-//     //     id: 117,
-//     //     email: "chief@unsc.gov",
-//     //     username: "john-halo"
-//     //   }
-//     // }
-// };
-//            {/* Provider instantiates Rollbar client instance handling any uncaught errors or unhandled promises in the browser */}
+import Head from "next/head";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +18,10 @@ function MyApp({ Component, pageProps }) {
         //     <RollbarBoundry>
         // {/* // all other app providers and components - Rollbar will just work */}
         <>
+            <Script
+                crossorigin="anonymous"
+                src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.at"
+            />
             <QueryClientProvider client={queryClient}>
                 <RecoilRoot>
                     <SSRProvider>

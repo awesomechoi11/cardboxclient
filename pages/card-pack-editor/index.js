@@ -48,7 +48,7 @@ export default function CreatePack() {
                 })
                 .then(async () => {
                     // create pack : add to cardpacks collection
-                    const cardpackId = alphaNumId();
+                    const cardpackId = alphaNumId(8);
 
                     await db.collection("cardpackDrafts").insertOne(
                         cardpackDraftsDefault({
