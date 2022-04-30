@@ -15,7 +15,6 @@ export default function SideControls({ setGameSettings, gameSettings }) {
     const timeSinceMount = useRef(0);
     const displayTime = useRef(0);
     const playingRef = useRef(playing);
-    console.log(playing);
     playingRef.current = playing;
     useAnimationFrame((time) => {
         timeSinceMount.current = time;

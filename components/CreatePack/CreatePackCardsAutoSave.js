@@ -28,11 +28,9 @@ export default function CreatePackCardsAutosave() {
         },
         {
             onSuccess: () => {
-                console.log("saved");
                 setSaveState({ saving: false, lastUpdated: new Date() });
             },
             onMutate: () => {
-                console.log("mutates");
                 setSaveState({ saving: true });
             },
             onError: () => {
@@ -65,7 +63,6 @@ export default function CreatePackCardsAutosave() {
     }, [allData, dbdata, recoiledPopulated]);
 
     useEffect(() => {
-        console.log("set cards from db!!");
         setAllData(dbdata.cards);
     }, [dbdata]);
 

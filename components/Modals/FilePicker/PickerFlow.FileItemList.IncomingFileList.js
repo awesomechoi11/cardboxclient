@@ -38,8 +38,6 @@ export default function IncomingFileList({ refetch }) {
 }
 
 function IncomingFileItem({ type, value, previewUrl, index, id, refetch }) {
-    if (!index) console.log(type, value);
-
     const removeIncomingFile = useSetRecoilState(pickerIncomingFileItemRemover);
 
     const progressValue = useSpring(0, { stiffness: 30 });

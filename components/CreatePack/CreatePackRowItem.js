@@ -46,8 +46,6 @@ export function DraggableCreatePackRowItem(props) {
         },
     });
 
-    if (!props.index) console.log("draggable item rendered");
-
     return (
         <createPackIdContext.Provider value={props.id}>
             <CreatePackRowItem
@@ -225,7 +223,6 @@ function Field({ image, label, id, defaultEditorState, displayMode }) {
                     <MyFilePickerCreatePackField
                         initialValue={image}
                         onUpdate={(file) => {
-                            console.log(file);
                             setData({
                                 action: "updateItemImage",
                                 data: {

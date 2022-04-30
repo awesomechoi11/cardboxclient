@@ -103,7 +103,6 @@ export default function CardPackBrowser() {
 }
 
 function BrowserResults({ data: { query, label, collection } }) {
-    // console.log(query);
     const { user, db, isAnon } = useMongo();
     const { isLoading, isError, isIdle, isSuccess, data, refetch } = useQuery(
         ["card-pack-browser", user.id, label, isAnon],
@@ -158,7 +157,6 @@ function CardPreviewDefault({ data, collection }) {
         image,
         _id,
     } = data;
-    // console.log(data);
 
     const {
         selectedState: [selected, setSelected],

@@ -79,8 +79,6 @@ export default function CreatePack() {
         { refetchOnWindowFocus: false, enabled: !!user && isReady, retry: 0 }
     );
 
-    console.log(isSuccess, isError, isIdle, isLoading);
-
     return (
         <>
             <Head>

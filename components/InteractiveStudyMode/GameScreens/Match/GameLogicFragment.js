@@ -27,7 +27,6 @@ export default function GameLogicFragment({ setGameSettings, gameSettings }) {
         if (roundCleared) {
             // if game finished // goto/show post game screen
             if (currentRound >= gameSettings.category.value) {
-                console.log(time, currentRound);
                 setGameSettings({
                     action: "set",
                     data: {
@@ -60,20 +59,15 @@ export default function GameLogicFragment({ setGameSettings, gameSettings }) {
             let firstSelection = selectedFaces[0];
             let secondSelection = selectedFaces[1];
             if (firstSelection.cardId === secondSelection.cardId) {
-                console.log("match!");
                 cardFaceSetter(firstSelection.faceId, { gameState: "correct" });
                 cardFaceSetter(secondSelection.faceId, {
                     gameState: "correct",
                 });
             } else {
-                console.log("wrong!");
                 cardFaceSetter(firstSelection.faceId, { gameState: "wrong" });
                 cardFaceSetter(secondSelection.faceId, { gameState: "wrong" });
             }
         }
-
-        // selectedFaces.every(card)
-        // console.log(selectedFaces);
     }, [cardFaces]);
     return null;
 }
