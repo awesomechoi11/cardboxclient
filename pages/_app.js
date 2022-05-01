@@ -20,6 +20,61 @@ function MyApp({ Component, pageProps }) {
         //     <RollbarBoundry>
         // {/* // all other app providers and components - Rollbar will just work */}
         <>
+            <Head>
+                <link key="favicon" rel="icon" href="/favicon.ico" />
+                <title key="title">Flippy - Flashcard App</title>
+                {/* google metadata */}
+                <meta
+                    name="description"
+                    content="Flippy is a cute flashcard app"
+                    key="description"
+                />
+                <meta name="robots" content="index" key="robots" />
+                {/* facebook */}
+                <meta property="og:type" content="website" key="og:type" />
+                <meta
+                    property="og:title"
+                    content="Flippy - Flashcard App"
+                    key="og:title"
+                />
+                <meta
+                    property="og:description"
+                    content="Flippy is a cute flashcard app"
+                    key="og:description"
+                />
+                <meta property="og:url" content="https://flippy.cards/" />
+                <meta
+                    property="og:image"
+                    content="https://ucarecdn.com/23bcd3ee-07fe-4333-bb7a-f306d9b67efc/-/preview/-/quality/smart/"
+                    key="og:image"
+                />
+                {/* twitter */}
+                <meta
+                    name="twitter:card"
+                    content="summary_large_image"
+                    key="twitter:card"
+                />
+                <meta
+                    name="twitter:url"
+                    content="https://flippy.cards/"
+                    key="twitter:url"
+                />
+                <meta
+                    name="twitter:title"
+                    content="Flippy - Flashcard App"
+                    key="twitter:title"
+                />
+                <meta
+                    name="twitter:description"
+                    content="Flippy is a cute flashcard app"
+                    key="twitter:description"
+                />
+                <meta
+                    name="twitter:image"
+                    content="https://ucarecdn.com/74d88f63-44ee-41b5-9073-3a0bed158756/-/preview/-/quality/smart/"
+                    key="twitter:image"
+                />
+            </Head>
             <Script
                 crossorigin="anonymous"
                 src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.at"

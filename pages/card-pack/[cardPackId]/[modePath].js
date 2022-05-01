@@ -7,13 +7,27 @@ import GameScreens from "../../../components/InteractiveStudyMode/GameScreens/Ga
 import { gameSettingsState } from "../../../components/InteractiveStudyMode/GameStateHelpers";
 import MenuScreen from "../../../components/InteractiveStudyMode/MenuScreens/MenuScreens";
 import PostGameScreens from "../../../components/InteractiveStudyMode/PostGameScreens/PostGameScreens";
-import { useMongo } from "../../../components/Mongo/MongoUtils";
+import { useMongo, WaitForMongo } from "../../../components/Mongo/MongoUtils";
 import Navbar from "../../../components/Navbar";
 import PlaceholderColumn from "../../../components/PlaceholderColumn";
 
 export const CardPackContext = createContext();
 
 export default function CardPackMatchInteractiveStudyMode() {
+    return (
+        <>
+            <Head>
+                <title key="title">Card Pack - Flippy - Flashcard App</title>
+            </Head>
+            <Navbar />
+            <WaitForMongo>
+                <Main />
+            </WaitForMongo>
+        </>
+    );
+}
+
+function Main() {
     const router = useRouter();
     const { cardPackId, modePath } = router.query;
     const { db, isAnon } = useMongo();
@@ -38,52 +52,43 @@ export default function CardPackMatchInteractiveStudyMode() {
     );
 
     return (
-        <>
-            <Head>
-                <title>Card Pack - Flippy - Flashcard App</title>
-                <meta name="description" content="Flippy - Flashcard App" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <Navbar />
-            <main id="interactive-study-mode">
-                {query.isSuccess &&
-                    (query.data ? (
-                        <CardPackContext.Provider value={query}>
-                            <RecoilRoot>
-                                <Inner />
-                            </RecoilRoot>
-                        </CardPackContext.Provider>
-                    ) : (
-                        <div className="placeholder-wrapper">
-                            <PlaceholderColumn
-                                options={{
-                                    imageKey: "oopsCat",
-                                    message: {
-                                        title: "Something went wrong...",
-                                        description:
-                                            "The link seems to be broken",
-                                    },
-                                }}
-                            />
-                        </div>
-                    ))}
-                {query.isIdle && (
+        <main id="interactive-study-mode">
+            {query.isSuccess &&
+                (query.data ? (
+                    <CardPackContext.Provider value={query}>
+                        <RecoilRoot>
+                            <Inner />
+                        </RecoilRoot>
+                    </CardPackContext.Provider>
+                ) : (
                     <div className="placeholder-wrapper">
-                        <PlaceholderColumn presetKey="loading" />
+                        <PlaceholderColumn
+                            options={{
+                                imageKey: "oopsCat",
+                                message: {
+                                    title: "Something went wrong...",
+                                    description: "The link seems to be broken",
+                                },
+                            }}
+                        />
                     </div>
-                )}
-                {query.isLoading && (
-                    <div className="placeholder-wrapper">
-                        <PlaceholderColumn presetKey="loading" />
-                    </div>
-                )}
-                {query.isError && (
-                    <div className="placeholder-wrapper">
-                        <PlaceholderColumn presetKey="error" />
-                    </div>
-                )}
-            </main>
-        </>
+                ))}
+            {query.isIdle && (
+                <div className="placeholder-wrapper">
+                    <PlaceholderColumn presetKey="loading" />
+                </div>
+            )}
+            {query.isLoading && (
+                <div className="placeholder-wrapper">
+                    <PlaceholderColumn presetKey="loading" />
+                </div>
+            )}
+            {query.isError && (
+                <div className="placeholder-wrapper">
+                    <PlaceholderColumn presetKey="error" />
+                </div>
+            )}
+        </main>
     );
 }
 

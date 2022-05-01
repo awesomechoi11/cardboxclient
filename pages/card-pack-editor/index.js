@@ -3,12 +3,28 @@ import { useRouter } from "next/router";
 import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 import { cardpackDraftsDefault } from "../../components/Mongo/documents/cardpacks";
-import { useMongo } from "../../components/Mongo/MongoUtils";
+import { useMongo, WaitForMongo } from "../../components/Mongo/MongoUtils";
 import Navbar from "../../components/Navbar";
 import PlaceholderColumn from "../../components/PlaceholderColumn";
 import { alphaNumId } from "../../components/utils";
 
 export default function CreatePack() {
+    return (
+        <>
+            <Head>
+                <title key="title">
+                    Card Pack Editor - Flippy - Flashcard App
+                </title>
+            </Head>
+            <Navbar />
+            <WaitForMongo>
+                <Main />
+            </WaitForMongo>
+        </>
+    );
+}
+
+function Main() {
     const { isReady, push } = useRouter();
     // check if user can create a pack
 
@@ -80,22 +96,14 @@ export default function CreatePack() {
     );
 
     return (
-        <>
-            <Head>
-                <title>Card Pack Editor - Flippy - Flashcard App</title>
-                <meta name="description" content="Flippy - Flashcard App" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <Navbar />
-            <main id="CreatePack">
-                <div className="title-1">Card Pack Editor</div>
-                <div className="placeholder-wrapper">
-                    {(isSuccess || isLoading || isIdle) && (
-                        <PlaceholderColumn presetKey="loading" />
-                    )}
-                    {isError && <PlaceholderColumn presetKey="error" />}
-                </div>
-            </main>
-        </>
+        <main id="CreatePack">
+            <div className="title-1">Card Pack Editor</div>
+            <div className="placeholder-wrapper">
+                {(isSuccess || isLoading || isIdle) && (
+                    <PlaceholderColumn presetKey="loading" />
+                )}
+                {isError && <PlaceholderColumn presetKey="error" />}
+            </div>
+        </main>
     );
 }

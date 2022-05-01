@@ -1,7 +1,11 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Navbar from "../../components/Navbar";
-import { MongoApp, useMongo } from "../../components/Mongo/MongoUtils";
+import {
+    MongoApp,
+    useMongo,
+    WaitForMongo,
+} from "../../components/Mongo/MongoUtils";
 import { useQuery } from "react-query";
 import CardSwiper from "../../components/CardPack/CardSwiper/CardSwiper";
 import LargeCardBanner from "../../components/CardPack/CardBanner/Large.CardBanner";
@@ -28,49 +32,80 @@ export default function CardPack({ metadata }) {
     return (
         <>
             <Head>
-                <title>
-                    Card Pack - {metadata.description} - Flashcard App
-                </title>
                 {metadata ? (
                     <>
+                        <title key="title">
+                            Card Pack - {metadata.description} - Flashcard App
+                        </title>
                         {/* google metadata */}
                         <meta
                             name="description"
                             content={metadata.description}
+                            key="description"
                         />
                         <meta
                             name="robots"
                             content={["nofollow", metadata.noIndex && "noindex"]
                                 .filter(Boolean)
                                 .join(", ")}
+                            key="robots"
                         />
                         {/* facebook */}
-                        <meta property="og:type" content="website" />
-                        <meta property="og:title" content={metadata.title} />
                         <meta
+                            property="og:type"
+                            content="website"
+                            key="og:type"
+                        />
+                        <meta
+                            key="og:title"
+                            property="og:title"
+                            content={metadata.title}
+                        />
+                        <meta
+                            key="og:description"
                             property="og:description"
                             content={metadata.description}
                         />
-                        <meta property="og:url" content={metadata.url} />
-                        <meta property="og:image" content={metadata.image} />
+                        <meta
+                            key="og:url"
+                            property="og:url"
+                            content={metadata.url}
+                        />
+                        <meta
+                            key="og:image"
+                            property="og:image"
+                            content={metadata.image}
+                        />
                         {/* twitter */}
                         <meta
+                            key="twitter:card"
                             name="twitter:card"
                             content="summary_large_image"
                         />
                         <meta
-                            property="twitter:url"
+                            key="twitter:url"
+                            name="twitter:url"
                             content="https://awesomechoi11.lhr.rocks/card-pack/9125f846ec1e972a"
                         />
-                        <meta name="twitter:title" content={metadata.title} />
                         <meta
+                            key="twitter:title"
+                            name="twitter:title"
+                            content={metadata.title}
+                        />
+                        <meta
+                            key="twitter:description"
                             name="twitter:description"
                             content={metadata.description}
                         />
-                        <meta name="twitter:image" content={metadata.image} />
+                        <meta
+                            key="twitter:image"
+                            name="twitter:image"
+                            content={metadata.image}
+                        />
                     </>
                 ) : (
                     <>
+                        <title>404 - Cardpack Not Found - Flashcard App</title>
                         <meta
                             name="description"
                             content="404 - Cardpack Not Found"
@@ -82,7 +117,9 @@ export default function CardPack({ metadata }) {
             </Head>
             <Navbar />
             <main id="card-pack">
-                <Inner />
+                <WaitForMongo>
+                    <Inner />
+                </WaitForMongo>
             </main>
         </>
     );
@@ -200,6 +237,10 @@ export async function getStaticProps({ params }) {
     const apiUser = await MongoApp.logIn(apiCreds);
     const cardpack = await apiUser.functions.getCardPackById(params.cardPackId);
 
+    const cdnUrl =
+        `${cardpack?.image?.value?.cdnUrl}-/overlay/e8cc658f-c96e-4463-aff9-83434e3e3898/50px50p/10p,90p/100p/` ||
+        "https://ucarecdn.com/23bcd3ee-07fe-4333-bb7a-f306d9b67efc/-/preview/-/quality/smart/";
+
     if (!cardpack) {
         return {
             props: {
@@ -207,6 +248,10 @@ export async function getStaticProps({ params }) {
                     description:
                         "404 Cardpack Not Found - Flippy - Flashcard App",
                     title: "Cardpack Not Found",
+                    image: cdnUrl,
+                    url: `https://flippy.cards/card-pack/${
+                        cardpack._id
+                    }?slug=${slugify(cardpack.title)}`,
                     noIndex: true,
                 },
             },
@@ -214,26 +259,22 @@ export async function getStaticProps({ params }) {
     }
     // By returning { props: { posts } }, the Blog component
     // will receive `posts` as a prop at build time
-    const cdnUrl =
-        `${cardpack?.image?.value?.cdnUrl}-/overlay/e8cc658f-c96e-4463-aff9-83434e3e3898/50px50p/10p,90p/100p/` ||
-        "https://ucarecdn.com/23bcd3ee-07fe-4333-bb7a-f306d9b67efc/-/preview/-/quality/smart/";
 
-    const metadata = {
-        description: cardpack
-            ? `${cardpack.cards.length} cards - ${cardpack.tags.join(", ")} - ${
-                  cardpack.description
-              }`
-            : null,
-        title: cardpack.title,
-        image: cdnUrl,
-        url: `https://flippy.cards/card-pack/${cardpack._id}?slug=${slugify(
-            cardpack.title
-        )}}`,
-        noIndex: cardpack.visibility !== "public",
-    };
     return {
         props: {
-            metadata,
+            metadata: {
+                description: cardpack
+                    ? `${cardpack.cards.length} cards - ${cardpack.tags.join(
+                          ", "
+                      )} - ${cardpack.description}`
+                    : null,
+                title: cardpack.title,
+                image: cdnUrl,
+                url: `https://flippy.cards/card-pack/${
+                    cardpack._id
+                }?slug=${slugify(cardpack.title)}`,
+                noIndex: cardpack.visibility !== "public",
+            },
         },
         revalidate: 10, // seconds
     };
