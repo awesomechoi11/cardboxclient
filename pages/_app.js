@@ -8,7 +8,9 @@ import { MongoRoot } from "../components/Mongo/MongoUtils";
 import Script from "next/script";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Head from "next/head";
+// import ReactGA from "react-ga";
 
+// ReactGA.initialize("UA-227551059-1");
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }) {
@@ -22,6 +24,17 @@ function MyApp({ Component, pageProps }) {
                 crossorigin="anonymous"
                 src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.at"
             />
+            <Script id="google-analytics" strategy="afterInteractive">
+                {`
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-227551059-1', 'auto');
+          ga('send', 'pageview');
+        `}
+            </Script>
             <QueryClientProvider client={queryClient}>
                 <RecoilRoot>
                     <SSRProvider>

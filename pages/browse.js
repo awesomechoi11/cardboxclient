@@ -11,6 +11,7 @@ export const BrowseContext = createContext();
 export default function Browse() {
     const [selected, setSelected] = useState(null);
     const isMobile = useIsMobile();
+
     return (
         <>
             <Head>
