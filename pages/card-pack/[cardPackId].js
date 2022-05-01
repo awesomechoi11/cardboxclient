@@ -28,9 +28,12 @@ export default function CardPack({ metadata }) {
     return (
         <>
             <Head>
-                <title>Card Pack - Flippy - Flashcard App</title>
+                <title>
+                    Card Pack - {metadata.description} - Flashcard App
+                </title>
                 {metadata ? (
                     <>
+                        {/* google metadata */}
                         <meta
                             name="description"
                             content={metadata.description}
@@ -41,6 +44,30 @@ export default function CardPack({ metadata }) {
                                 .filter(Boolean)
                                 .join(", ")}
                         />
+                        {/* facebook */}
+                        <meta property="og:type" content="website" />
+                        <meta property="og:title" content={metadata.title} />
+                        <meta
+                            property="og:description"
+                            content={metadata.description}
+                        />
+                        <meta property="og:url" content={metadata.url} />
+                        <meta property="og:image" content={metadata.image} />
+                        {/* twitter */}
+                        <meta
+                            name="twitter:card"
+                            content="summary_large_image"
+                        />
+                        <meta
+                            property="twitter:url"
+                            content="https://awesomechoi11.lhr.rocks/card-pack/9125f846ec1e972a"
+                        />
+                        <meta name="twitter:title" content={metadata.title} />
+                        <meta
+                            name="twitter:description"
+                            content={metadata.description}
+                        />
+                        <meta name="twitter:image" content={metadata.image} />
                     </>
                 ) : (
                     <>
@@ -187,6 +214,10 @@ export async function getStaticProps({ params }) {
     }
     // By returning { props: { posts } }, the Blog component
     // will receive `posts` as a prop at build time
+    const cdnUrl =
+        `${cardpack?.image?.value?.cdnUrl}-/overlay/e8cc658f-c96e-4463-aff9-83434e3e3898/50px50p/10p,90p/100p/` ||
+        "https://ucarecdn.com/23bcd3ee-07fe-4333-bb7a-f306d9b67efc/-/preview/-/quality/smart/";
+
     const metadata = {
         description: cardpack
             ? `${cardpack.cards.length} cards - ${cardpack.tags.join(", ")} - ${
@@ -194,6 +225,10 @@ export async function getStaticProps({ params }) {
               }`
             : null,
         title: cardpack.title,
+        image: cdnUrl,
+        url: `https://flippy.cards/card-pack/${cardpack._id}?slug=${slugify(
+            cardpack.title
+        )}}`,
         noIndex: cardpack.visibility !== "public",
     };
     return {
