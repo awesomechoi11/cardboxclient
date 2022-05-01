@@ -8,6 +8,7 @@ const NEXT_PUBLIC_APP_ID = process.env.NEXT_PUBLIC_APP_ID,
     NEXT_PUBLIC_CLUSTER_NAME = process.env.NEXT_PUBLIC_CLUSTER_NAME,
     NEXT_PUBLIC_DATABASE_NAME = process.env.NEXT_PUBLIC_DATABASE_NAME;
 const app = new Realm.App({ id: NEXT_PUBLIC_APP_ID });
+export const MongoApp = app;
 // const mongo = app.currentUser.mongoClient(CLUSTER_NAME);
 // const db = mongo.db(DATABASE_NAME);
 

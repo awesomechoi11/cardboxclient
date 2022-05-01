@@ -1,15 +1,28 @@
 @use "./vars";
 
+.back-to-top-button.track {
+    position: absolute;
+    top: 1457rem;
+    bottom: 75rem;
+    left: 230rem;
+
+    > .inner {
+        position: sticky;
+        top: calc(100vh - 256rem);
+    }
+}
+.placeholder-wrapper {
+    display: flex;
+    justify-content: center;
+}
 #CreatePack {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 48rem;
     margin-bottom: 128rem;
-    > .placeholder-wrapper {
-        display: flex;
-        justify-content: center;
-    }
+
     .add-btn {
         width: 100%;
         margin-bottom: 48rem;

@@ -44,7 +44,11 @@
     > .header {
         display: flex;
         justify-content: space-between;
-        padding: 16rem;
+        align-items: center;
+        padding: 0 24rem;
+        height: 64rem;
+        margin-bottom: 32rem;
+        box-sizing: border-box;
     }
     > .content {
         display: flex;

@@ -8,6 +8,7 @@ import Image from "next/image";
 import PlaceholderColumn from "../PlaceholderColumn";
 import { useRouter } from "next/router";
 import { useIsMobile } from "@components/mediaQueryHooks";
+// import ReactGA from "react-ga";
 
 export default function CardPackBrowser() {
     const [currentPage, setCurrentPage] = useState(0);
@@ -78,7 +79,6 @@ export default function CardPackBrowser() {
                 }),
         },
     ];
-    const isMobile = useIsMobile();
     return (
         <div className="browser">
             <div className="nav">
@@ -89,7 +89,14 @@ export default function CardPackBrowser() {
                         }
                         size="sm"
                         key={label}
-                        onClick={() => setCurrentPage(index)}
+                        onClick={() => {
+                            // ReactGA.event({
+                            //     category: "Browse",
+                            //     action: "click",
+                            //     label,
+                            // });
+                            setCurrentPage(index);
+                        }}
                         className={clsx(index === currentPage && "active")}
                     >
                         {label}

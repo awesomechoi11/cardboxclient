@@ -6,34 +6,11 @@ import "react-toastify/dist/ReactToastify.css";
 import "../styles/_globals.scss";
 import { MongoRoot } from "../components/Mongo/MongoUtils";
 import Script from "next/script";
-// import {
-//     Provider as RollbarProvider,
-//     ErrorBoundary as RollbarBoundry,
-// } from "@rollbar/react"; // <-- Provider imports 'rollbar' for us
 import { QueryClient, QueryClientProvider } from "react-query";
+import Head from "next/head";
+// import ReactGA from "react-ga";
 
-// same configuration you would create for the Rollbar.js SDK
-// const rollbarConfig = {
-//     accessToken: process.env.NEXT_PUBLIC_POST_CLIENT_ITEM_ACCESS_TOKEN,
-//     environment: "production",
-//     enabled: process.env.NEXT_PUBLIC_PRODUCTION_MODE,
-//     autoInstrument: {
-//         log: false,
-//     },
-//     // server: {
-//     //   root: "http://example.com/",
-//     //   branch: "main"
-//     //   },
-//     //   code_version: "0.13.7",
-//     //   person: {
-//     //     id: 117,
-//     //     email: "chief@unsc.gov",
-//     //     username: "john-halo"
-//     //   }
-//     // }
-// };
-//            {/* Provider instantiates Rollbar client instance handling any uncaught errors or unhandled promises in the browser */}
-
+// ReactGA.initialize("UA-227551059-1");
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }) {
@@ -43,6 +20,21 @@ function MyApp({ Component, pageProps }) {
         //     <RollbarBoundry>
         // {/* // all other app providers and components - Rollbar will just work */}
         <>
+            <Script
+                crossorigin="anonymous"
+                src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.at"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+                {`
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-227551059-1', 'auto');
+          ga('send', 'pageview');
+        `}
+            </Script>
             <QueryClientProvider client={queryClient}>
                 <RecoilRoot>
                     <SSRProvider>

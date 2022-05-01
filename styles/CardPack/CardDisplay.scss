@@ -1,56 +1,5 @@
 @use "../vars";
 
-@media (max-width: vars.$mobile-maxWidth) {
-    .card-display {
-        > .content > .card-grid {
-            &.mobile {
-                > .row {
-                    display: flex;
-                    justify-content: space-between;
-                    margin-bottom: 24rem;
-                    min-height: 434rem;
-                }
-                .card {
-                    width: 327rem;
-                    height: 434rem;
-                }
-            }
-        }
-
-        > .content {
-            margin: 32rem 0 128rem 0;
-        }
-
-        > .controls {
-            display: flex;
-            justify-content: space-between;
-            margin: 32rem 0;
-            > * {
-                display: flex;
-                gap: 8rem;
-                > .icon-button {
-                    width: 32rem;
-                    height: 32rem;
-                    border-radius: 100%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    transition: background-color 220ms;
-                    cursor: pointer;
-                    &:hover,
-                    &.active {
-                        background-color: vars.$color-secondary-2;
-                    }
-                }
-            }
-            > .left {
-            }
-            > .right {
-            }
-        }
-    }
-}
-
 .card-display {
     > .content > .card-grid {
         &.mobile {
@@ -150,6 +99,59 @@
         > .left {
         }
         > .right {
+        }
+    }
+}
+
+@media (max-width: vars.$mobile-maxWidth) {
+    .card-display {
+        > .content > .card-grid {
+            &.mobile {
+                > .row {
+                    display: flex;
+                    justify-content: space-between;
+                    flex-flow: row wrap;
+                    margin-bottom: 24rem;
+                    height: 434rem;
+                }
+                .card {
+                    width: 327rem;
+                    height: 434rem;
+                    box-sizing: border-box;
+                }
+            }
+        }
+
+        > .content {
+            margin: 32rem 0 128rem 0;
+        }
+
+        > .controls {
+            display: flex;
+            justify-content: space-between;
+            margin: 32rem 0;
+            > * {
+                display: flex;
+                gap: 8rem;
+                > .icon-button {
+                    width: 32rem;
+                    height: 32rem;
+                    border-radius: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: background-color 220ms;
+                    cursor: pointer;
+                    &:hover,
+                    &.active {
+                        background-color: vars.$color-secondary-2;
+                    }
+                }
+            }
+            > .left {
+            }
+            > .right {
+            }
         }
     }
 }
