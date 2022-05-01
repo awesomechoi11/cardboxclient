@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import { useModal } from "./Modals/ModalUtils";
-import { useMongo } from "./Mongo/MongoUtils";
-import fastEqual from "fast-deep-equal";
 import clsx from "clsx";
+import fastEqual from "fast-deep-equal";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { useModal } from "./Modals/ModalUtils";
 
 const noop = () => {};
 export default function MyFilePicker({
@@ -11,7 +10,6 @@ export default function MyFilePicker({
     onUpdate = noop,
     children,
 }) {
-    const { user } = useMongo();
     const { openModal } = useModal("file picker");
     const [file, setFile] = useState(initialValue);
     useEffect(() => {
@@ -77,7 +75,6 @@ export function MyFilePickerCreatePackField({
     onUpdate = noop,
     className,
 }) {
-    const { user } = useMongo();
     const { openModal } = useModal("file picker");
     const [file, setFile] = useState(initialValue);
     useEffect(() => {

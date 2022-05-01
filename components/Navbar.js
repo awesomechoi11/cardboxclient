@@ -5,11 +5,11 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useModal } from "./Modals/ModalUtils";
-import { useMongo } from "./Mongo/MongoUtils";
+import { useMongo, WaitForMongo } from "./Mongo/MongoUtils";
 
 export default function Navbar() {
     const isMobile = useIsMobile();
-    const { isAnon } = useMongo();
+
     const router = useRouter();
 
     return (
@@ -38,12 +38,19 @@ export default function Navbar() {
                 ) : (
                     <>
                         <JoinDiscordButton />
-                        {!isAnon ? <AuthedSection /> : <UnauthedSection />}
+                        <WaitForMongo>
+                            <Right />
+                        </WaitForMongo>
                     </>
                 )}
             </div>
         </div>
     );
+}
+
+function Right() {
+    const { isAnon } = useMongo();
+    return !isAnon ? <AuthedSection /> : <UnauthedSection />;
 }
 
 function MobileDropdown() {

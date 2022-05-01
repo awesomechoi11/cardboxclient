@@ -14,10 +14,26 @@ import { useModal } from "../components/Modals/ModalUtils";
 import { useQuery } from "react-query";
 import PlaceholderColumn from "../components/PlaceholderColumn";
 import { useEffectOnceWhen } from "rooks";
-
+import { WaitForMongo } from "../components/Mongo/MongoUtils";
 //http://localhost:3000/confirmEmail?token=e8bab441d021cb828b80b2c1a51937381c3b455b056a15ca28ab35fca53596d996e56b551c580749779654151aec35de5c5ac6225330abd9098068047ebf515a&tokenId=62479395d937dcecc6f5456b
 
 export default function ConfirmEmail() {
+    return (
+        <>
+            <Head>
+                <title key="title">
+                    Confirm Email - Flippy - Flashcard App
+                </title>
+            </Head>
+            <Navbar />
+            <WaitForMongo>
+                <Main />
+            </WaitForMongo>
+        </>
+    );
+}
+
+function Main() {
     const { isReady, query, push } = useRouter();
 
     // this will try to login with anonymous
@@ -40,78 +56,93 @@ export default function ConfirmEmail() {
     useEffect(() => {
         if (isSuccess && !NewSignup) setNewSignup(false);
     }, [isSuccess]);
+
     return (
-        <>
-            <Head>
-                <title>Confirm Email - Flippy - Flashcard App</title>
-                <meta name="description" content="Flippy - Flashcard App" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <Navbar />
-            <main id="confirmEmail" className="column">
-                {isIdle &&
-                    isReady &&
-                    (isAnon ? (
-                        <PlaceholderColumn
-                            options={{
-                                imageKey: "oopsCat",
-                                message: {
-                                    title: "Something went wrong...",
-                                    description: "The link seems to be broken",
-                                },
-                            }}
-                        />
-                    ) : NewSignup ? (
-                        <PlaceholderColumn
-                            options={{
-                                imageKey: "catOnBook",
-                                message: {
-                                    title: "You can now create packs!",
-                                    description:
-                                        "Meow. Thank you for signing up!",
-                                },
-                                actionComponent: (
-                                    <>
-                                        <Button
-                                            onClick={() => {
-                                                push("/card-pack-editor");
-                                            }}
-                                        >
-                                            Create A Card Pack
-                                        </Button>
-                                        <Button
-                                            variant="secondary"
-                                            onClick={() => {
-                                                push("/browse");
-                                            }}
-                                        >
-                                            Browse Card Packs
-                                        </Button>
-                                    </>
-                                ),
-                            }}
-                        />
-                    ) : (
-                        <PlaceholderColumn
-                            options={{
-                                imageKey: "catOnBook",
-                                message: {
-                                    title: "You are already signed in!",
-                                    description:
-                                        "Please sign out to confirm a new account email",
-                                },
-                                action: {
-                                    label: "Log Out",
-                                    props: {
-                                        onClick: () => {
-                                            logOut();
-                                        },
+        <main id="confirmEmail" className="column">
+            {isIdle &&
+                isReady &&
+                (isAnon ? (
+                    <PlaceholderColumn
+                        options={{
+                            imageKey: "oopsCat",
+                            message: {
+                                title: "Something went wrong...",
+                                description: "The link seems to be broken",
+                            },
+                        }}
+                    />
+                ) : NewSignup ? (
+                    <PlaceholderColumn
+                        options={{
+                            imageKey: "catOnBook",
+                            message: {
+                                title: "You can now create packs!",
+                                description: "Meow. Thank you for signing up!",
+                            },
+                            actionComponent: (
+                                <>
+                                    <Button
+                                        onClick={() => {
+                                            push("/card-pack-editor");
+                                        }}
+                                    >
+                                        Create A Card Pack
+                                    </Button>
+                                    <Button
+                                        variant="secondary"
+                                        onClick={() => {
+                                            push("/browse");
+                                        }}
+                                    >
+                                        Browse Card Packs
+                                    </Button>
+                                </>
+                            ),
+                        }}
+                    />
+                ) : (
+                    <PlaceholderColumn
+                        options={{
+                            imageKey: "catOnBook",
+                            message: {
+                                title: "You are already signed in!",
+                                description:
+                                    "Please sign out to confirm a new account email",
+                            },
+                            action: {
+                                label: "Log Out",
+                                props: {
+                                    onClick: () => {
+                                        logOut();
                                     },
                                 },
-                            }}
+                            },
+                        }}
+                    />
+                ))}
+            {isLoading && (
+                <>
+                    <div>
+                        <Image
+                            width="360w"
+                            height="320w"
+                            objectFit="contain"
+                            layout="responsive"
+                            src="/assets/img/Registration_Loading.png"
+                            alt="cute cate -  registration complete"
                         />
-                    ))}
-                {isLoading && (
+                    </div>
+                    <div className="message">
+                        <div className="title-1">Loading</div>
+                        <div className="subtitle-2">zzz...</div>
+                    </div>
+                    <Button variant="primary" className="action-btn" disabled>
+                        Please Wait
+                    </Button>
+                </>
+            )}
+            {isSuccess &&
+                (isAnon ? (
                     <>
                         <div>
                             <Image
@@ -119,136 +150,104 @@ export default function ConfirmEmail() {
                                 height="320w"
                                 objectFit="contain"
                                 layout="responsive"
-                                src="/assets/img/Registration_Loading.png"
+                                src="/assets/img/Registration_Complete.png"
                                 alt="cute cate -  registration complete"
                             />
                         </div>
                         <div className="message">
-                            <div className="title-1">Loading</div>
-                            <div className="subtitle-2">zzz...</div>
+                            <div className="title-1">
+                                Registration Complete!
+                            </div>
+                            <div className="subtitle-2">
+                                You can now log in.
+                            </div>
                         </div>
                         <Button
                             variant="primary"
                             className="action-btn"
-                            disabled
+                            onClick={() => {
+                                openModal("login");
+                            }}
                         >
-                            Please Wait
+                            Log In
                         </Button>
                     </>
-                )}
-                {isSuccess &&
-                    (isAnon ? (
-                        <>
-                            <div>
-                                <Image
-                                    width="360w"
-                                    height="320w"
-                                    objectFit="contain"
-                                    layout="responsive"
-                                    src="/assets/img/Registration_Complete.png"
-                                    alt="cute cate -  registration complete"
-                                />
-                            </div>
-                            <div className="message">
-                                <div className="title-1">
-                                    Registration Complete!
-                                </div>
-                                <div className="subtitle-2">
-                                    You can now log in.
-                                </div>
-                            </div>
-                            <Button
-                                variant="primary"
-                                className="action-btn"
-                                onClick={() => {
-                                    openModal("login");
-                                }}
-                            >
-                                Log In
-                            </Button>
-                        </>
-                    ) : (
-                        <PlaceholderColumn
-                            options={{
-                                imageKey: "catOnBook",
-                                message: {
-                                    title: "You can now create packs!",
-                                    description: "Meow",
-                                },
-                                action: {
-                                    label: "Browse Card Packs",
-                                    props: {
-                                        onClick: () => {
-                                            push("/browse");
-                                        },
+                ) : (
+                    <PlaceholderColumn
+                        options={{
+                            imageKey: "catOnBook",
+                            message: {
+                                title: "You can now create packs!",
+                                description: "Meow",
+                            },
+                            action: {
+                                label: "Browse Card Packs",
+                                props: {
+                                    onClick: () => {
+                                        push("/browse");
                                     },
                                 },
-                            }}
+                            },
+                        }}
+                    />
+                ))}
+            {isError && (
+                <>
+                    <div>
+                        <Image
+                            width="360w"
+                            height="367w"
+                            objectFit="contain"
+                            layout="responsive"
+                            src="/assets/img/oops.png"
+                            alt="cute cate -  oops"
                         />
-                    ))}
-                {isError && (
-                    <>
-                        <div>
-                            <Image
-                                width="360w"
-                                height="367w"
-                                objectFit="contain"
-                                layout="responsive"
-                                src="/assets/img/oops.png"
-                                alt="cute cate -  oops"
+                    </div>
+                    <div className="message">
+                        <div className="title-1">Something went wrong...</div>
+                        <div className="subtitle-2">
+                            The link is broken or its been over 30 minutes. You
+                            can resend the email confirmation link below.
+                        </div>
+                    </div>
+                    <Formik
+                        initialValues={{
+                            formBasicEmail: "",
+                        }}
+                        validationSchema={Yup.object({
+                            formBasicEmail: EmailSchema,
+                        })}
+                        onSubmit={(values, { setSubmitting }) => {
+                            // do stuff
+                            resendConfirmationEmail(values.formBasicEmail)
+                                .then(() => {
+                                    toast.success("Email successfully sent!");
+                                })
+                                .catch((e) => {
+                                    console.log(e);
+                                    toastifyMongoErrors(e);
+                                })
+                                .finally(() => {
+                                    setTimeout(() => {
+                                        setSubmitting(false);
+                                    }, 5000);
+                                });
+                        }}
+                    >
+                        <MyForm>
+                            <MyTextInput
+                                label="Email"
+                                type="email"
+                                placeholder="Enter email"
+                                controlId="formBasicEmail"
                             />
-                        </div>
-                        <div className="message">
-                            <div className="title-1">
-                                Something went wrong...
-                            </div>
-                            <div className="subtitle-2">
-                                The link is broken or its been over 30 minutes.
-                                You can resend the email confirmation link
-                                below.
-                            </div>
-                        </div>
-                        <Formik
-                            initialValues={{
-                                formBasicEmail: "",
-                            }}
-                            validationSchema={Yup.object({
-                                formBasicEmail: EmailSchema,
-                            })}
-                            onSubmit={(values, { setSubmitting }) => {
-                                // do stuff
-                                resendConfirmationEmail(values.formBasicEmail)
-                                    .then(() => {
-                                        toast.success(
-                                            "Email successfully sent!"
-                                        );
-                                    })
-                                    .catch((e) => {
-                                        console.log(e);
-                                        toastifyMongoErrors(e);
-                                    })
-                                    .finally(() => {
-                                        setTimeout(() => {
-                                            setSubmitting(false);
-                                        }, 5000);
-                                    });
-                            }}
-                        >
-                            <MyForm>
-                                <MyTextInput
-                                    label="Email"
-                                    type="email"
-                                    placeholder="Enter email"
-                                    controlId="formBasicEmail"
-                                />
-                                <MySubmitButton variant="primary">
-                                    Resend Email
-                                </MySubmitButton>
-                            </MyForm>
-                        </Formik>
-                    </>
-                )}
-            </main>
-        </>
+                            <MySubmitButton variant="primary">
+                                Resend Email
+                            </MySubmitButton>
+                        </MyForm>
+                    </Formik>
+                </>
+            )}
+        </main>
     );
 }

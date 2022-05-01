@@ -15,9 +15,7 @@ export default function Custom404() {
     return (
         <>
             <Head>
-                <title>404 - Flippy - Flashcard App</title>
-                <meta name="description" content="Flippy - Flashcard App" />
-                <link rel="icon" href="/favicon.ico" />
+                <title key="title">404 - Flippy - Flashcard App</title>
             </Head>
             <Navbar />
             <main id="404" className="column">

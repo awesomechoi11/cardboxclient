@@ -43,6 +43,12 @@ export const mongoSelector = selector({
     },
 });
 
+export function WaitForMongo({ children }) {
+    const [mongo, setMongo] = useRecoilState(mongoSelector);
+    if (!mongo.isReady) return null;
+    return children;
+}
+
 export function MongoRoot({ children }) {
     const [mongo, setMongo] = useRecoilState(mongoSelector);
     useEffect(() => {
@@ -58,7 +64,7 @@ export function MongoRoot({ children }) {
         }
     }, []);
 
-    if (!mongo.isReady) return null;
+    // if (!mongo.isReady) return null;
 
     return children;
 }

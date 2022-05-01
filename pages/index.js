@@ -15,9 +15,7 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Flippy - Flashcard App</title>
-                <meta name="description" content="Flippy - Flashcard App" />
-                <link rel="icon" href="/favicon.ico" />
+                <title key="title">Flippy - Home - Flashcard App</title>
             </Head>
             <Navbar />
             <main id="home">

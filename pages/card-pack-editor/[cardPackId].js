@@ -6,23 +6,18 @@ import { createContext } from "react";
 import { useQuery } from "react-query";
 import CreatePackDetailsForm from "../../components/CreatePack/CreatePackDetailsForm";
 import CreatePackDisplay from "../../components/CreatePack/CreatePackDisplay";
-import { useMongo } from "../../components/Mongo/MongoUtils";
+import { useMongo, WaitForMongo } from "../../components/Mongo/MongoUtils";
 import Navbar from "../../components/Navbar";
 import PlaceholderColumn from "../../components/PlaceholderColumn";
 
 export default function CreatePack() {
-    const { query, isReady } = useRouter();
-    const { cardPackId } = query;
-
-    const { isAnon } = useMongo();
     const isMobile = useIsMobile();
-    const router = useRouter();
     return (
         <>
             <Head>
-                <title>Card Pack Editor - Flippy - Flashcard App</title>
-                <meta name="description" content="Flippy - Flashcard App" />
-                <link rel="icon" href="/favicon.ico" />
+                <title key="title">
+                    Card Pack Editor - Flippy - Flashcard App
+                </title>
             </Head>
             <Navbar />
             {isMobile ? (
@@ -41,40 +36,52 @@ export default function CreatePack() {
             ) : (
                 <>
                     (
-                    {isAnon ? (
-                        <div className="placeholder-wrapper">
-                            <PlaceholderColumn
-                                options={{
-                                    imageKey: "oopsCat",
-                                    message: {
-                                        title: "Not Allowed",
-                                        description:
-                                            "You need an account to create or edit card packs!",
-                                    },
-                                    action: {
-                                        label: "Browse Packs Instead",
-                                        props: {
-                                            onClick: () => {
-                                                router.push("/browse");
-                                            },
-                                        },
-                                    },
-                                }}
-                            />
-                        </div>
-                    ) : (
-                        <>
-                            {!isReady && (
-                                <div className="placeholder-wrapper">
-                                    <PlaceholderColumn presetKey="loading" />
-                                </div>
-                            )}
-                            {isReady && <Inner cardPackId={cardPackId} />}
-                        </>
-                    )}{" "}
+                    <WaitForMongo>
+                        <Main />
+                    </WaitForMongo>
                     )
                 </>
             )}
+        </>
+    );
+}
+
+function Main() {
+    const { query, isReady } = useRouter();
+    const { cardPackId } = query;
+
+    const { isAnon } = useMongo();
+    const router = useRouter();
+
+    return isAnon ? (
+        <div className="placeholder-wrapper">
+            <PlaceholderColumn
+                options={{
+                    imageKey: "oopsCat",
+                    message: {
+                        title: "Not Allowed",
+                        description:
+                            "You need an account to create or edit card packs!",
+                    },
+                    action: {
+                        label: "Browse Packs Instead",
+                        props: {
+                            onClick: () => {
+                                router.push("/browse");
+                            },
+                        },
+                    },
+                }}
+            />
+        </div>
+    ) : (
+        <>
+            {!isReady && (
+                <div className="placeholder-wrapper">
+                    <PlaceholderColumn presetKey="loading" />
+                </div>
+            )}
+            {isReady && <Inner cardPackId={cardPackId} />}
         </>
     );
 }
