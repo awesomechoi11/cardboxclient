@@ -200,6 +200,6 @@ export async function getStaticProps({ params }) {
         props: {
             metadata,
         },
-        revalidate: 60 * 60, // 1hr
+        revalidate: 10, // seconds
     };
 }
