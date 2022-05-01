@@ -62,6 +62,7 @@ main {
     width: 100%;
     padding: 0 530rem;
     box-sizing: border-box;
+    margin-bottom: 10vh;
 }
 
 @media (max-width: vars.$mobile-maxWidth) {
@@ -221,4 +222,8 @@ button.btn {
 }
 .Toastify {
     max-width: 100%;
+}
+
+.nowrap {
+    white-space: nowrap;
 }

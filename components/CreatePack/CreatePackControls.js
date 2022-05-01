@@ -7,6 +7,7 @@ import {
 } from "./_CreatePackUtils";
 import ago from "s-ago";
 import { useEffect, useState } from "react";
+import BackToTopButton from "./BackToTopButton";
 
 // this one is fixed on top
 export function CreatePackControlsTop() {

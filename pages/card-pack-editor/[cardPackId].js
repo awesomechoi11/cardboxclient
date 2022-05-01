@@ -1,20 +1,22 @@
+import { useIsMobile } from "@components/mediaQueryHooks";
 import Head from "next/head";
-import CreatePackDetailsForm from "../../components/CreatePack/CreatePackDetailsForm";
-import CreatePackDisplay from "../../components/CreatePack/CreatePackDisplay";
-import Navbar from "../../components/Navbar";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import { useMongo } from "../../components/Mongo/MongoUtils";
 import { createContext } from "react";
 import { useQuery } from "react-query";
+import CreatePackDetailsForm from "../../components/CreatePack/CreatePackDetailsForm";
+import CreatePackDisplay from "../../components/CreatePack/CreatePackDisplay";
+import { useMongo } from "../../components/Mongo/MongoUtils";
+import Navbar from "../../components/Navbar";
 import PlaceholderColumn from "../../components/PlaceholderColumn";
-import Link from "next/link";
 
 export default function CreatePack() {
     const { query, isReady } = useRouter();
     const { cardPackId } = query;
 
     const { isAnon } = useMongo();
-
+    const isMobile = useIsMobile();
+    const router = useRouter();
     return (
         <>
             <Head>
@@ -23,12 +25,54 @@ export default function CreatePack() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Navbar />
-            {isAnon ? (
-                <>not verified</>
+            {isMobile ? (
+                <div className="placeholder-wrapper">
+                    <PlaceholderColumn
+                        options={{
+                            imageKey: "catOnBook",
+                            message: {
+                                title: "Sorry, Not Ready Yet :(",
+                                description:
+                                    "Card Pack Editing is not avaiable in mobile yet!",
+                            },
+                        }}
+                    />
+                </div>
             ) : (
                 <>
-                    {!isReady && <PlaceholderColumn presetKey="loading" />}
-                    {isReady && <Inner cardPackId={cardPackId} />}
+                    (
+                    {isAnon ? (
+                        <div className="placeholder-wrapper">
+                            <PlaceholderColumn
+                                options={{
+                                    imageKey: "oopsCat",
+                                    message: {
+                                        title: "Not Allowed",
+                                        description:
+                                            "You need an account to create or edit card packs!",
+                                    },
+                                    action: {
+                                        label: "Browse Packs Instead",
+                                        props: {
+                                            onClick: () => {
+                                                router.push("/browse");
+                                            },
+                                        },
+                                    },
+                                }}
+                            />
+                        </div>
+                    ) : (
+                        <>
+                            {!isReady && (
+                                <div className="placeholder-wrapper">
+                                    <PlaceholderColumn presetKey="loading" />
+                                </div>
+                            )}
+                            {isReady && <Inner cardPackId={cardPackId} />}
+                        </>
+                    )}{" "}
+                    )
                 </>
             )}
         </>

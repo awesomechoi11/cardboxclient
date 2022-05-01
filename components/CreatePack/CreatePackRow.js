@@ -22,6 +22,7 @@ import {
     useSetRecoilState,
 } from "recoil";
 import AddBetweenTrigger from "./AddBetweenTrigger";
+import BackToTopButton from "./BackToTopButton";
 import CreatePackCardsAutosave from "./CreatePackCardsAutoSave";
 import {
     CreatePackControlsBottom,
@@ -64,6 +65,7 @@ export default function CreatePackRow() {
         <div className="row">
             <CreatePackCardsAutosave />
             <CreatePackControlsTop />
+
             <DndContext
                 collisionDetection={closestCenter}
                 measuring={{
