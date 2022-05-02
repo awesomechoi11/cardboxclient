@@ -87,6 +87,9 @@ function Client({ play }) {
                 }
                 hasWatermark
                 onFlip={play}
+                onClick={() => {
+                    window.umami("Click - Home - MatchPreview - Card");
+                }}
             />
         </div>
     );

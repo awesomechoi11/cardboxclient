@@ -106,6 +106,7 @@ function MyApp({ Component, pageProps }) {
             <Script
                 async
                 defer
+                strategy="afterInteractive"
                 data-domains="flippy.cards"
                 data-website-id="994c1e46-afd7-47cf-b148-a26406bc2cf2"
                 src="https://umami.bmschoi.dev/umami.js"

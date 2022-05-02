@@ -34,6 +34,8 @@ function FlippyCard({ active = true }) {
                     setFlip(!flip);
                     play();
                 }
+                // console.log(window);
+                window.umami("Click - Home - Hero - Card");
             }}
             className={clsx("card", active && "active")}
             initial={{

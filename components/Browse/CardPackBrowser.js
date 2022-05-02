@@ -96,6 +96,7 @@ export default function CardPackBrowser() {
                             //     label,
                             // });
                             setCurrentPage(index);
+                            window.umami(`Click - Browse - Navbar - ${label}`);
                         }}
                         className={clsx(index === currentPage && "active")}
                     >
@@ -179,6 +180,7 @@ function CardPreviewDefault({ data, collection }) {
             )}
             tabIndex="0"
             onFocus={() => {
+                window.umami(`Click - Browse - Card Preview - ${title}`);
                 if (isMobile) {
                     router.push(`/card-pack/${_id}`);
                 } else {

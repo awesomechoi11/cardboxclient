@@ -4,7 +4,12 @@ import Link from "next/link";
 export default function JoinDiscordButton() {
     return (
         <Link href="https://discord.gg/QC3yHFySAV">
-            <a target="_blank">
+            <a
+                target="_blank"
+                onClick={() => {
+                    window.umami("Click - JoinDiscord");
+                }}
+            >
                 <Button size="sm" variant="secondary" className="discord">
                     <svg
                         style={{

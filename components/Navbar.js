@@ -16,12 +16,25 @@ export default function Navbar() {
         <div id="navbar">
             <div className="left">
                 <Link href="/">
-                    <a className="home-btn">{cardsIcon}flippy.cards</a>
+                    <a
+                        className="home-btn"
+                        onClick={() => {
+                            window.umami("Click - Navbar - Home");
+                        }}
+                    >
+                        {cardsIcon}flippy.cards
+                    </a>
                 </Link>
                 {!isMobile && (
                     <>
                         <Link href="/browse">
-                            <a target="_blank">
+                            <a
+                                onClick={() => {
+                                    window.umami(
+                                        "Click - Navbar - Browse Packs"
+                                    );
+                                }}
+                            >
                                 <Button variant="secondary" size="sm">
                                     Browse Packs
                                 </Button>

@@ -26,6 +26,9 @@ export function CreateYourOwnPacks({ play }) {
                 back="Zenitsu Agatsumad"
                 onFlip={play}
                 className="card1"
+                onClick={() => {
+                    window.umami("Click - Home - CreateYourOwnPacks - Cards");
+                }}
             />
             <Flippable
                 hasWatermark
