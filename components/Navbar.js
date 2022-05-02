@@ -16,17 +16,17 @@ export default function Navbar() {
         <div id="navbar">
             <div className="left">
                 <Link href="/">
-                    <a className="home-btn">Flippy.Cards</a>
+                    <a className="home-btn">{cardsIcon}flippy.cards</a>
                 </Link>
                 {!isMobile && (
                     <>
-                        <Button
-                            variant="secondary"
-                            size="sm"
-                            onClick={() => router.push("/browse")}
-                        >
-                            Browse Packs
-                        </Button>
+                        <Link href="/browse">
+                            <a target="_blank">
+                                <Button variant="secondary" size="sm">
+                                    Browse Packs
+                                </Button>
+                            </a>
+                        </Link>
                     </>
                 )}
             </div>
@@ -198,5 +198,30 @@ const Hamburger = (setIsOpen) => (
             d="M6 22C6 21.4477 6.44772 21 7 21H25C25.5523 21 26 21.4477 26 22C26 22.5523 25.5523 23 25 23H7C6.44772 23 6 22.5523 6 22Z"
             fill="#674433"
         />
+    </svg>
+);
+
+const cardsIcon = (
+    <svg
+        width="33"
+        height="32"
+        style={{
+            width: "33rem",
+            height: "32rem",
+        }}
+        viewBox="0 0 33 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <rect y="12" width="15" height="20" rx="0.799289" fill="#C2A190" />
+        <rect
+            x="9"
+            y="6.02661"
+            width="15"
+            height="20"
+            rx="0.799289"
+            fill="#DECBC0"
+        />
+        <rect x="18" width="15" height="20" rx="0.799289" fill="#E2B082" />
     </svg>
 );
