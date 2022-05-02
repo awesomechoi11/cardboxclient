@@ -22,7 +22,7 @@ export default function JoinDiscordButton() {
                             fill="#5865F2"
                         />
                     </svg>
-                    Join Discord
+                    Join Our Discord
                 </Button>
             </a>
         </Link>

@@ -25,7 +25,7 @@ export default function MyFilePicker({
 
     return (
         <div className="file-picker-wrapper">
-            <label className="form-label">Image</label>
+            <label className="form-label">Cover Image</label>
             <div
                 onClick={() =>
                     openModal({
