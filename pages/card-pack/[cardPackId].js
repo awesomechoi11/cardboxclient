@@ -25,7 +25,7 @@ export default function CardPack({ metadata }) {
             router?.query?.slug !== slugify(metadata.title)
         ) {
             router.query.slug = slugify(metadata.title);
-            router.push(router, undefined, { shallow: true });
+            router.replace(router, undefined, { shallow: true });
         }
     }, [metadata, router]);
 
