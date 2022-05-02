@@ -20,13 +20,13 @@ export default function Navbar() {
                 </Link>
                 {!isMobile && (
                     <>
-                        <Button
-                            variant="secondary"
-                            size="sm"
-                            onClick={() => router.push("/browse")}
-                        >
-                            Browse Packs
-                        </Button>
+                        <Link href="/browse">
+                            <a target="_blank">
+                                <Button variant="secondary" size="sm">
+                                    Browse Packs
+                                </Button>
+                            </a>
+                        </Link>
                     </>
                 )}
             </div>
