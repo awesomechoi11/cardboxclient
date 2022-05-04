@@ -1,6 +1,7 @@
 @use "./vars";
 
 #home {
+    padding: 0;
     .hero {
         > * {
             width: 300rem;
