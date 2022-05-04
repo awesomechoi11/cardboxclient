@@ -19,7 +19,7 @@
   <a href="#check-these-out">Check These Out</a>
 </p>
 <br>
-![screenshot](https://cdn.bmschoi.dev/flippy/flippyhome.jpg)
+![](https://cdn.bmschoi.dev/flippy/flippyhome.jpg)
 
 ## Key Features
 
