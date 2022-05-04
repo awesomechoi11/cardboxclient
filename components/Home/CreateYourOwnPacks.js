@@ -27,7 +27,9 @@ export function CreateYourOwnPacks({ play }) {
                 onFlip={play}
                 className="card1"
                 onClick={() => {
-                    window.umami("Click - Home - CreateYourOwnPacks - Cards");
+                    window?.umami?.(
+                        "Click - Home - CreateYourOwnPacks - Cards"
+                    );
                 }}
             />
             <Flippable

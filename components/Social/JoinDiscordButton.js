@@ -7,7 +7,7 @@ export default function JoinDiscordButton() {
             <a
                 target="_blank"
                 onClick={() => {
-                    window.umami("Click - JoinDiscord");
+                    window?.umami?.("Click - JoinDiscord");
                 }}
             >
                 <Button size="sm" variant="secondary" className="discord">

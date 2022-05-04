@@ -19,7 +19,7 @@ export default function Navbar() {
                     <a
                         className="home-btn"
                         onClick={() => {
-                            window.umami("Click - Navbar - Home");
+                            window?.umami?.("Click - Navbar - Home");
                         }}
                     >
                         {cardsIcon}flippy.cards
@@ -30,7 +30,7 @@ export default function Navbar() {
                         <Link href="/browse">
                             <a
                                 onClick={() => {
-                                    window.umami(
+                                    window?.umami?.(
                                         "Click - Navbar - Browse Packs"
                                     );
                                 }}
