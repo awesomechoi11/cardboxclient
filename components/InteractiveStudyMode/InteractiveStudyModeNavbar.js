@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import { useRouter } from "next/router";
 import { MyHoverTooltip } from "../Tooltip/MyClickTooltip";
 import JoinDiscordButton from "../Social/JoinDiscordButton";

@@ -4,7 +4,7 @@ import millify from "millify";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useReducer } from "react";
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import { useQuery } from "react-query";
 import ago from "s-ago";
 import { BrowseContext } from "../../pages/browse";

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Flippable } from "../general/Flippable";
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 
 export function CreateYourOwnPacks({ play }) {
     return (
@@ -26,6 +26,11 @@ export function CreateYourOwnPacks({ play }) {
                 back="Zenitsu Agatsumad"
                 onFlip={play}
                 className="card1"
+                onClick={() => {
+                    window?.umami?.(
+                        "Click - Home - CreateYourOwnPacks - Cards"
+                    );
+                }}
             />
             <Flippable
                 hasWatermark

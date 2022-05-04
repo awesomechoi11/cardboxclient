@@ -13,16 +13,10 @@ import {
     SortableContext,
     verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { Fragment, useEffect, useMemo, useState } from "react";
-import { Button } from "react-bootstrap";
-import {
-    atom,
-    useRecoilState,
-    useRecoilValue,
-    useSetRecoilState,
-} from "recoil";
+import { Fragment, useMemo, useState } from "react";
+import Button from "@components/general/Button";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import AddBetweenTrigger from "./AddBetweenTrigger";
-import BackToTopButton from "./BackToTopButton";
 import CreatePackCardsAutosave from "./CreatePackCardsAutoSave";
 import {
     CreatePackControlsBottom,

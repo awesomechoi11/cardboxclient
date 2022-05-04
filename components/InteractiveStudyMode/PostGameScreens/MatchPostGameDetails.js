@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import { useRecoilState } from "recoil";
 import LabeledPills from "../../general/LabeledPills";
 import { gameSettingsSelector } from "../GameStateHelpers";

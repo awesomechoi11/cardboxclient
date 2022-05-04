@@ -1,13 +1,13 @@
-import { useRef, useState } from "react";
-import { Button } from "react-bootstrap";
-import { Formik } from "formik";
-import * as Yup from "yup";
-import { MyForm, MySubmitButton, MyTextInput } from "../../Form/Basic";
-import { EmailSchema, PasswordSchema } from "../../Form/_validation";
-import { useMongo, toastifyMongoErrors } from "../../Mongo/MongoUtils";
-import { toast } from "react-toastify";
+import Button from "@components/general/Button";
+import { Form, Formik } from "formik";
 import Image from "next/image";
+import { useRef, useState } from "react";
+import { toast } from "react-toastify";
 import * as Realm from "realm-web";
+import * as Yup from "yup";
+import { MySubmitButton, MyTextInput } from "../../Form/Basic";
+import { EmailSchema, PasswordSchema } from "../../Form/_validation";
+import { toastifyMongoErrors, useMongo } from "../../Mongo/MongoUtils";
 
 export default function SignUpFlow({ setMode }) {
     const [stage, setStage] = useState("one");
@@ -83,7 +83,7 @@ function StageOne({ setStage, data, setMode }) {
                         });
                 }}
             >
-                <MyForm>
+                <Form>
                     <MyTextInput
                         label="Email"
                         type="email"
@@ -97,7 +97,7 @@ function StageOne({ setStage, data, setMode }) {
                         controlId="formBasicPassword"
                     />
                     <MySubmitButton variant="primary">Sign Up</MySubmitButton>
-                </MyForm>
+                </Form>
             </Formik>
             <div
                 className="subtitle-1 switch"
@@ -203,7 +203,7 @@ function StageThree({ data, setStage, setMode }) {
                         });
                 }}
             >
-                <MyForm>
+                <Form>
                     <MyTextInput
                         label="Email"
                         type="email"
@@ -213,7 +213,7 @@ function StageThree({ data, setStage, setMode }) {
                     <MySubmitButton variant="primary">
                         Resend Email
                     </MySubmitButton>
-                </MyForm>
+                </Form>
             </Formik>
         </>
     );

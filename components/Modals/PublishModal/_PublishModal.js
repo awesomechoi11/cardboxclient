@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import PlaceholderColumn from "../../PlaceholderColumn";
 import { ModalWrapper, useModal } from "../ModalUtils";
 import { useRouter } from "next/router";

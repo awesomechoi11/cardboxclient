@@ -1,10 +1,10 @@
-import { Formik } from "formik";
+import { Form, Formik } from "formik";
 import { useContext } from "react";
 import { useMutation } from "react-query";
 import { useSetRecoilState } from "recoil";
 import * as Yup from "yup";
 import { CardPackDataContext } from "../../pages/card-pack-editor/[cardPackId]";
-import { MyForm, MyTextInput } from "../Form/Basic";
+import { MyTextInput } from "../Form/Basic";
 import { MySelect } from "../Form/MySelect";
 import { useMongo } from "../Mongo/MongoUtils";
 import MyFilePicker from "../MyFilePicker";
@@ -78,7 +78,7 @@ export default function CreatePackDetailsForm() {
                 // .required("Required"),
             })}
         >
-            <MyForm id="CreatePack-form">
+            <Form id="CreatePack-form">
                 <CreatePackDetailsAutoSave
                     onUpdate={(newDoc) => {
                         if (db) mutation.mutate([db, newDoc]);
@@ -120,7 +120,7 @@ export default function CreatePackDetailsForm() {
                     />
                     <CreatePackPublish />
                 </div>
-            </MyForm>
+            </Form>
         </Formik>
     );
 }

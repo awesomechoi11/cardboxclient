@@ -1,7 +1,6 @@
-import { useField, useFormikContext } from "formik";
-import Form from "react-bootstrap/Form";
+import { useField, useFormikContext, Form } from "formik";
 import React from "react";
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import clsx from "clsx";
 
 export function MySubmitButton({ className, ...props }) {
@@ -15,24 +14,6 @@ export function MySubmitButton({ className, ...props }) {
         />
     );
 }
-
-//https://github.com/jaredpalmer/formik/blob/master/packages/formik/src/Form.tsx
-export const MyForm = React.forwardRef(function MyForm(props, ref) {
-    // iOS needs an "action" attribute for nice input: https://stackoverflow.com/a/39485162/406725
-    // We default the action to "#" in case the preventDefault fails (just updates the URL hash)
-    const { action, ...rest } = props;
-    const _action = action ?? "#";
-    const { handleReset, handleSubmit } = useFormikContext();
-    return (
-        <Form
-            onSubmit={handleSubmit}
-            ref={ref}
-            onReset={handleReset}
-            action={_action}
-            {...rest}
-        />
-    );
-});
 
 export const ErrComponent = ({ err }) => {
     switch (err) {
@@ -66,15 +47,15 @@ export function MyTextInput({ label, controlId, ...props }) {
     const { isSubmitting } = useFormikContext();
 
     return (
-        <Form.Group controlId={controlId} className="my-text-input">
-            <Form.Label>{label}</Form.Label>
-            <Form.Control {...props} {...field} disabled={isSubmitting} />
+        <div className="my-text-input">
+            <label htmlFor={controlId}>{label}</label>
+            <input {...props} {...field} disabled={isSubmitting} />
             {meta.touched && meta.error ? (
                 <div className="form-error">
                     <ErrComponent err={meta.error} />
                 </div>
             ) : null}
-        </Form.Group>
+        </div>
     );
 }
 

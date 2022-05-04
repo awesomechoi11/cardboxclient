@@ -3,7 +3,7 @@ import millify from "millify";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useContext } from "react";
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import { CardPackContext } from "../../pages/card-pack/[cardPackId]/[modePath]";
 import PlaceholderColumn from "../PlaceholderColumn";
 

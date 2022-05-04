@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useContext, useState } from "react";
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import { useQuery } from "react-query";
 import { BrowseContext } from "../../pages/browse";
 import { useMongo } from "../Mongo/MongoUtils";
@@ -96,6 +96,9 @@ export default function CardPackBrowser() {
                             //     label,
                             // });
                             setCurrentPage(index);
+                            window?.umami?.(
+                                `Click - Browse - Navbar - ${label}`
+                            );
                         }}
                         className={clsx(index === currentPage && "active")}
                     >
@@ -179,6 +182,7 @@ function CardPreviewDefault({ data, collection }) {
             )}
             tabIndex="0"
             onFocus={() => {
+                window?.umami?.(`Click - Browse - Card Preview - ${title}`);
                 if (isMobile) {
                     router.push(`/card-pack/${_id}`);
                 } else {

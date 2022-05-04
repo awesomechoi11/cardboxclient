@@ -1,6 +1,6 @@
 import { useAnimationFrame, useIsomorphicLayoutEffect } from "framer-motion";
 import { useEffect, useRef } from "react";
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import TimerMachine from "react-timer-machine";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import LabeledPills from "../../../general/LabeledPills";

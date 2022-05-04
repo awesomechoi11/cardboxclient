@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import Image from "next/image";
 import Link from "next/link";
 const imageObj = {

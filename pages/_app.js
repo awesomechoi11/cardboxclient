@@ -1,4 +1,3 @@
-import SSRProvider from "react-bootstrap/SSRProvider";
 import { ToastContainer } from "react-toastify";
 import { RecoilRoot } from "recoil";
 import ModalRoot from "../components/Modals/ModalUtils";
@@ -92,20 +91,19 @@ function MyApp({ Component, pageProps }) {
             </Script>
             <QueryClientProvider client={queryClient}>
                 <RecoilRoot>
-                    <SSRProvider>
-                        <MongoRoot>
-                            <ModalRoot />
-                            <div id="app">
-                                <Component {...pageProps} />
-                            </div>
-                        </MongoRoot>
-                        <ToastContainer />
-                    </SSRProvider>
+                    <MongoRoot>
+                        <ModalRoot />
+                        <div id="app">
+                            <Component {...pageProps} />
+                        </div>
+                    </MongoRoot>
+                    <ToastContainer />
                 </RecoilRoot>
             </QueryClientProvider>
             <Script
                 async
                 defer
+                strategy="afterInteractive"
                 data-domains="flippy.cards"
                 data-website-id="994c1e46-afd7-47cf-b148-a26406bc2cf2"
                 src="https://umami.bmschoi.dev/umami.js"

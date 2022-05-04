@@ -1,20 +1,22 @@
+import Button from "@components/general/Button";
+import { Form, Formik } from "formik";
 import Head from "next/head";
-import Navbar from "../components/Navbar";
-import { toastifyMongoErrors, useMongo } from "../components/Mongo/MongoUtils";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Image from "next/image";
-import { Button } from "react-bootstrap";
-import { MyForm, MySubmitButton, MyTextInput } from "../components/Form/Basic";
-import { Formik } from "formik";
-import { EmailSchema } from "../components/Form/_validation";
-import * as Yup from "yup";
-import { toast } from "react-toastify";
-import { useModal } from "../components/Modals/ModalUtils";
 import { useQuery } from "react-query";
+import { toast } from "react-toastify";
+import * as Yup from "yup";
+import { MySubmitButton, MyTextInput } from "../components/Form/Basic";
+import { EmailSchema } from "../components/Form/_validation";
+import { useModal } from "../components/Modals/ModalUtils";
+import {
+    toastifyMongoErrors,
+    useMongo,
+    WaitForMongo,
+} from "../components/Mongo/MongoUtils";
+import Navbar from "../components/Navbar";
 import PlaceholderColumn from "../components/PlaceholderColumn";
-import { useEffectOnceWhen } from "rooks";
-import { WaitForMongo } from "../components/Mongo/MongoUtils";
 //http://localhost:3000/confirmEmail?token=e8bab441d021cb828b80b2c1a51937381c3b455b056a15ca28ab35fca53596d996e56b551c580749779654151aec35de5c5ac6225330abd9098068047ebf515a&tokenId=62479395d937dcecc6f5456b
 
 export default function ConfirmEmail() {
@@ -234,7 +236,7 @@ function Main() {
                                 });
                         }}
                     >
-                        <MyForm>
+                        <Form>
                             <MyTextInput
                                 label="Email"
                                 type="email"
@@ -244,7 +246,7 @@ function Main() {
                             <MySubmitButton variant="primary">
                                 Resend Email
                             </MySubmitButton>
-                        </MyForm>
+                        </Form>
                     </Formik>
                 </>
             )}

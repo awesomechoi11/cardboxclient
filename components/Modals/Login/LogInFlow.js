@@ -1,12 +1,12 @@
+import Button from "@components/general/Button";
+import { Form, Formik } from "formik";
+import Image from "next/image";
 import { useRef, useState } from "react";
-import { Button } from "react-bootstrap";
-import { Formik } from "formik";
+import * as Realm from "realm-web";
 import * as Yup from "yup";
-import { MyForm, MySubmitButton, MyTextInput } from "../../Form/Basic";
+import { MySubmitButton, MyTextInput } from "../../Form/Basic";
 import { EmailSchema, PasswordSchema } from "../../Form/_validation";
 import { toastifyMongoErrors, useMongo } from "../../Mongo/MongoUtils";
-import Image from "next/image";
-import * as Realm from "realm-web";
 import { useModal } from "../ModalUtils";
 
 export default function LogInFlow({ setMode }) {
@@ -72,7 +72,7 @@ function StageOne({ setStage, setMode, data }) {
                         });
                 }}
             >
-                <MyForm>
+                <Form>
                     <MyTextInput
                         label="Email"
                         type="email"
@@ -86,7 +86,7 @@ function StageOne({ setStage, setMode, data }) {
                         controlId="formBasicPassword"
                     />
                     <MySubmitButton variant="primary">Log In</MySubmitButton>
-                </MyForm>
+                </Form>
             </Formik>
             <div
                 className="subtitle-1 switch"
@@ -178,7 +178,7 @@ function StageThree({ data, setStage }) {
                         });
                 }}
             >
-                <MyForm>
+                <Form>
                     <MyTextInput
                         label="Email"
                         type="email"
@@ -188,7 +188,7 @@ function StageThree({ data, setStage }) {
                     <MySubmitButton variant="primary">
                         Resend Email
                     </MySubmitButton>
-                </MyForm>
+                </Form>
             </Formik>
         </>
     );
