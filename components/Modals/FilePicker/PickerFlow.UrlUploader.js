@@ -1,10 +1,9 @@
-import { Formik } from "formik";
-import { MyForm, MySubmitButton, MyTextInput } from "../../Form/Basic";
-import { useUploadImage } from "../../UploadCare/useUpload";
-import * as Yup from "yup";
+import { Form, Formik } from "formik";
 import { useRecoilState } from "recoil";
-import { pickerIncomingFileItemState } from "./PickerFlow.FileItemList";
+import * as Yup from "yup";
+import { MySubmitButton, MyTextInput } from "../../Form/Basic";
 import { alphaNumId } from "../../utils";
+import { pickerIncomingFileItemState } from "./PickerFlow.FileItemList";
 
 export default function UrlUploader() {
     const [incomingFiles, setIncomingFiles] = useRecoilState(
@@ -38,14 +37,14 @@ export default function UrlUploader() {
                 setSubmitting(false);
             }}
         >
-            <MyForm id="uploadbyurl-form">
+            <Form id="uploadbyurl-form">
                 <MyTextInput
                     label="Paste Image Url"
                     controlId="url"
                     size="sm"
                 />
                 <MySubmitButton size="sm">Upload</MySubmitButton>
-            </MyForm>
+            </Form>
         </Formik>
     );
 }

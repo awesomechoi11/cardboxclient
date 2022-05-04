@@ -1,6 +1,6 @@
 // import { useIsMobile } from "../../mediaQueryHooks";
 import { useRouter } from "next/router";
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 
 export default function LargeCardBanner({ data }) {
     const { tags, title, description, image, cards } = data;

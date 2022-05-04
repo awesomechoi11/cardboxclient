@@ -18,7 +18,7 @@ export default function Home() {
                 <title key="title">Flippy - Home - Flashcard App</title>
             </Head>
             <Navbar />
-            <main id="home">
+            <main id="home" className="p-0">
                 <Hero />
                 <CreateYourOwnPacks play={play} />
                 <InteractiveStudyModes play={play} />

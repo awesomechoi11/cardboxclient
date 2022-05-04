@@ -1,17 +1,10 @@
 @use "./vars";
 @import "./vars";
 
-// Bootstrap
-// Required
-@import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
-// Optional
-@import "../node_modules/bootstrap/scss/buttons";
-@import "../node_modules/bootstrap/scss/forms";
-// @import "../node_modules/bootstrap/scss/dropdown";
-// @import "../node_modules/bootstrap/scss/code";
-// @import "../node_modules/bootstrap/scss/grid";
+// Tailwind Directives
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 // My Sass
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;800;900&family=Nunito:wght@600;800&display=swap");
@@ -50,7 +43,7 @@ body,
     padding: 0;
     margin: 0;
     font-family: "Inter", sans-serif;
-    color: vars.$color-primary-1;
+    // color: vars.$color-primary-1;
     background-color: vars.$color-secondary-1;
 }
 #app {
@@ -83,11 +76,28 @@ main {
     height: 2rem;
 }
 
-.title-1 {
-    color: vars.$color-primary-1;
-    font-size: 24rem;
-    font-weight: 600;
-    margin: 8rem 0;
+// .title-1 {
+//     color: vars.$color-primary-1;
+//     font-size: 24rem;
+//     font-weight: 600;
+//     margin: 8rem 0;
+// }
+
+@layer components {
+    .title-1 {
+        @apply text-lg font-semibold text-brown-600 my-1;
+    }
+    input {
+        @apply px-4 py-3 rounded-sm border-brown-200 bg-brown-50 active:border-brown-400 hover:border-brown-400 border;
+    }
+}
+.my-text-input {
+    display: flex;
+    gap: 8rem;
+    flex-direction: column;
+    > label {
+        font-weight: 600;
+    }
 }
 .subtitle-1 {
     color: vars.$color-primary-2;

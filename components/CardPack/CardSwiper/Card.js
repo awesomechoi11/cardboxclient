@@ -83,7 +83,7 @@ export default function Card({
                 rotate.set(0);
                 scale.set(1);
                 setLock(true);
-
+                window.umami("Drag End - CardSwiper - Card");
                 if (Math.abs(info.offset.x) > dragThreshold) {
                     if (Math.sign(info.offset.x) > 0) {
                         // right
@@ -103,6 +103,7 @@ export default function Card({
                 if (active && !dragging) {
                     setFlip(!flip);
                     play();
+                    window.umami("Click - CardSwiper - Card");
                 }
             }}
             className={clsx("card", active && "active")}

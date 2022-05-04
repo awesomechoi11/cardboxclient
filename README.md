@@ -1,34 +1,124 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+  <br>
+  <a href="https://flippy.cards/"><img src="https://cdn.bmschoi.dev/flippy/flippy%20icon.png" alt="Markdownify" width="160"></a>
+  <br>
+  <br>
+  Flippy.Cards
+  <br>
+  <br>
+</h1>
 
-## Getting Started
+<h4 align="center">Passion Project - Cute Flashcard Study Tool</h4>
+<br>
 
-First, run the development server:
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#screencaps">Screencaps</a> •
+  <a href="#built-with">Built With</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#check-these-out">Check These Out</a>
+</p>
+<br>
+![screenshot](https://cdn.bmschoi.dev/flippy/flippyhome.jpg)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-   **Card Pack Creator Page**
+    -   Debounced autosave
+    -   Rich Text Editor
+    -   Drag & Drop rearrange
+-   **Card Pack Viewer**
+    -   Card Swiper
+        -   Drag & Drop
+            -   Optimized animations
+-   **Card Pack Gamemode**
+    -   Match
+        -   Accurate Timer
+            -   Interactive Animations
+-   **Modals**
+    -   Image Picker - Image Uploader connected to CDN and DB - Drag & Drop uploader - Image Url Uploader
+        -   Login/ Signup
+            -   MongoDB login
+                -   Email Confirmation
+        -   Publish Confirmation
+-   **Styles**
+    -   SCSS
+        -   Tailwind
+        -   Bootstrap
+-   **Analytics**
+    -   Umami
+        -   Google
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Screencaps
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+...or visit the [Live Website](https://flippy.cards/) to see it live🔥!
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+---
 
-## Learn More
+#### **Home Hero**
 
-To learn more about Next.js, take a look at the following resources:
+![](https://cdn.bmschoi.dev/flippy/flippyhome.jpg)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### **Home Section 2 **
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![](https://cdn.bmschoi.dev/flippy/flippysection2.jpg)
 
-## Deploy on Vercel
+#### **Card Pack **
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![](https://cdn.bmschoi.dev/flippy/flippycardpack1.jpg)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+#### ** Card Pack Popper**
+
+![](https://cdn.bmschoi.dev/flippy/flippycardpack2.jpg)
+
+#### ** Editor**
+
+![](https://cdn.bmschoi.dev/flippy/flippyeditor1.jpg)
+
+#### **Editor Rich Text Editor & Popper **
+
+![](https://cdn.bmschoi.dev/flippy/flippyeditor2.jpg)
+
+#### ** Gamemode Menu**
+
+![](https://cdn.bmschoi.dev/flippy/flippygamemode1.jpg)
+
+#### ** Match Gamemode**
+
+![](https://cdn.bmschoi.dev/flippy/flippygamemode2.jpg)
+
+#### ** Match Gamemode Midgame**
+
+![](https://cdn.bmschoi.dev/flippy/flippygamemode3.jpg)
+
+#### \*\* \*\*
+
+## ![]()
+
+## Built with
+
+-   [React](https://github.com/facebook/react)
+-   [NextJs](https://nextjs.org/)
+-   [Framer Motion](https://github.com/framer/motion)
+-   [Sass](https://github.com/sass/node-sass)
+-   [Recoil](https://github.com/facebookexperimental/Recoil)
+-   [Tailwind](https://tailwindcss.com/)
+-   [Bootstrap](https://getbootstrap.com/)
+-   [Yup](https://github.com/jquense/yup)
+-   [Dnd Kit](https://dndkit.com/)
+-   [React Query](https://react-query.tanstack.com/)
+-   [Formik](https://formik.org/)
+-   [DraftJs](https://draftjs.org/)
+-   [Popper](https://popper.js.org/)
+
+---
+
+## Check These Out
+
+-   [thehumanexperience](https://github.com/awesomechoi11/thehumanexperience) - Portfolio of Chris Orozco, a photographer.
+-   [kongee](https://kongee.info/) - Portfolio of Sally (Hyunji) Kim, a UI/UX designer.
+
+---
+
+> Website [bmschoi.dev](https://bmschoi.dev) &nbsp;&middot;&nbsp;
+> Email [brandonchoi2016@gmail.com](mailto:brandonchoi2016@gmail.com)

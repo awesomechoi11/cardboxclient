@@ -1,5 +1,5 @@
 import { useDropzone } from "react-dropzone";
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import { useRecoilState } from "recoil";
 import { pickerIncomingFileItemState } from "./PickerFlow.FileItemList";
 import { alphaNumId } from "../../utils";

@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import { useContext } from "react";
 import { CardPackDataContext } from "../../pages/card-pack-editor/[cardPackId]";
 import usePublishPackMutation from "../Mongo/CardPack/usePublishPackMutation";

@@ -6,11 +6,14 @@ import Image from "next/image";
 
 export default function Hero() {
     return (
-        <div className="hero">
-            <div>
+        <div
+            className="hero mb-20 relative flex justify-center items-center gap-5 h-[480rem]"
+            // style={{ height: "480rem" }}
+        >
+            <div style={{ width: "300rem" }}>
                 <FlippyCard />
             </div>
-            <div className="tagline">
+            <div className="tagline" style={{ width: "300rem" }}>
                 Make it.
                 <br />
                 Flip it.

@@ -1,15 +1,7 @@
 @use "./vars";
 
 #home {
-    padding: 0;
     .hero {
-        margin-bottom: 196rem;
-        position: relative;
-        height: 480rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 32rem;
         > * {
             width: 300rem;
         }

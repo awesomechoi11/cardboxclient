@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
     createPackCardsControlSelector,

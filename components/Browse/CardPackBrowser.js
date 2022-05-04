@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useContext, useState } from "react";
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import { useQuery } from "react-query";
 import { BrowseContext } from "../../pages/browse";
 import { useMongo } from "../Mongo/MongoUtils";

@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import Link from "next/link";
 
 export default function JoinDiscordButton() {

@@ -14,7 +14,7 @@ import {
     verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { Fragment, useMemo, useState } from "react";
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import AddBetweenTrigger from "./AddBetweenTrigger";
 import CreatePackCardsAutosave from "./CreatePackCardsAutoSave";

@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useField, useFormikContext } from "formik";
-import { Form } from "react-bootstrap";
+import { Form } from "@components/general/Button";
 import { useDropzone } from "react-dropzone";
 import { ErrComponent } from "./Basic";
 

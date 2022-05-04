@@ -96,7 +96,7 @@ function Main() {
     );
 
     return (
-        <main id="CreatePack">
+        <main id="CreatePack" className="px-[540rem]">
             <div className="title-1">Card Pack Editor</div>
             <div className="placeholder-wrapper">
                 {(isSuccess || isLoading || isIdle) && (

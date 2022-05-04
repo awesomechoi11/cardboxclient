@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import Select from "react-select";
 import { useSetRecoilState } from "recoil";
 import { gameSettingsSelector } from "../GameStateHelpers";

@@ -3,7 +3,7 @@ import JoinDiscordButton from "@components/Social/JoinDiscordButton";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import { useModal } from "./Modals/ModalUtils";
 import { useMongo, WaitForMongo } from "./Mongo/MongoUtils";
 

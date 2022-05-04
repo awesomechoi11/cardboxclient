@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Navbar from "../components/Navbar";
 import Image from "next/image";
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import { useState } from "react";
 import useSound from "use-sound";
 import { useRouter } from "next/router";

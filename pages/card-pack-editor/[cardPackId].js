@@ -104,7 +104,7 @@ function Inner({ cardPackId }) {
     );
 
     return (
-        <main id="CreatePack">
+        <main id="CreatePack" className="px-[540rem]">
             {result.isLoading && <PlaceholderColumn presetKey="loading" />}
             {result.isError && <PlaceholderColumn presetKey="error" />}
             {result.isSuccess &&

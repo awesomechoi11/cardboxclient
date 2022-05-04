@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Flippable } from "../general/Flippable";
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 
 export function CreateYourOwnPacks({ play }) {
     return (

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import { Flippable } from "../../general/Flippable";
 
 export default function MatchPreview({ play }) {

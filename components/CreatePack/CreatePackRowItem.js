@@ -23,7 +23,7 @@ import {
     SwapButton,
 } from "./CreatePackRowItem.IconButtons";
 import { MyHoverTooltip } from "../Tooltip/MyClickTooltip";
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 
 export const createPackIdContext = createContext();
 createPackIdContext.displayName = "CreatePackIdContext";

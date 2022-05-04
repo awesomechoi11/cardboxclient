@@ -10,7 +10,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import IncomingFileList from "./PickerFlow.FileItemList.IncomingFileList";
 import { usePaginationator } from "../../utils";
 import { usePopperTooltip } from "react-popper-tooltip";
-import { Button } from "react-bootstrap";
+import Button from "@components/general/Button";
 import PlaceholderColumn from "../../PlaceholderColumn";
 import useDeleteFileMutation from "../../Mongo/Files/useDeleteFileMutation";
 import { toast } from "react-toastify";
