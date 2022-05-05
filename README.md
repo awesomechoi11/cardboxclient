@@ -59,35 +59,35 @@
 
 ![](https://cdn.bmschoi.dev/flippy/flippyhome.jpg)
 
-#### **Home Section 2 **
+#### **Home Section 2**
 
 ![](https://cdn.bmschoi.dev/flippy/flippysection2.jpg)
 
-#### **Card Pack **
+#### **Card Pack**
 
 ![](https://cdn.bmschoi.dev/flippy/flippycardpack1.jpg)
 
-#### ** Card Pack Popper**
+#### **Card Pack Popper**
 
 ![](https://cdn.bmschoi.dev/flippy/flippycardpack2.jpg)
 
-#### ** Editor**
+#### **Editor**
 
 ![](https://cdn.bmschoi.dev/flippy/flippyeditor1.jpg)
 
-#### **Editor Rich Text Editor & Popper **
+####**Editor Rich Text Editor & Popper**
 
 ![](https://cdn.bmschoi.dev/flippy/flippyeditor2.jpg)
 
-#### ** Gamemode Menu**
+#### **Gamemode Menu**
 
 ![](https://cdn.bmschoi.dev/flippy/flippygamemode1.jpg)
 
-#### ** Match Gamemode**
+#### **Match Gamemode**
 
 ![](https://cdn.bmschoi.dev/flippy/flippygamemode2.jpg)
 
-#### ** Match Gamemode Midgame**
+#### **Match Gamemode Midgame**
 
 ![](https://cdn.bmschoi.dev/flippy/flippygamemode3.jpg)
 
