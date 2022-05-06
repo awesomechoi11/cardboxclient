@@ -3,5 +3,3 @@ Sitemap: https://flippy.cards/api/sitemap
 
 User-agent: *
 Allow: /*
-Allow: /api/sitemap
-Disallow: /api/*
