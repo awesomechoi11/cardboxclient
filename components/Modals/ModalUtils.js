@@ -56,7 +56,7 @@ export function ModalWrapper({ modalId, children, className, ...props }) {
             {isOpen && (
                 <motion.div
                     className={clsx(
-                        "container",
+                        "modal-container",
                         className
                         // isOpen && "active"
                     )}

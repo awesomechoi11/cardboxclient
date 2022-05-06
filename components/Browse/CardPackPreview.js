@@ -15,7 +15,7 @@ import { useMongo } from "../Mongo/MongoUtils";
 import PlaceholderColumn from "../PlaceholderColumn";
 import { MyHoverTooltip } from "../Tooltip/MyClickTooltip";
 import { DUPLICATE_SVG, LIKE_SVG, SHARE_SVG } from "./_icons";
-
+import Link from "next/link";
 const previewAnim = {
     initial: {
         scale: 0.98,
@@ -416,15 +416,19 @@ function Header({ data }) {
                         Publish
                     </Button>
                 ) : (
-                    <Button
-                        size="sm"
-                        variant="primary"
-                        onClick={() => {
-                            router.push(`/card-pack/${selected.id}`);
-                        }}
-                    >
-                        Open
-                    </Button>
+                    <Link href={`/card-pack/${selected.id}`}>
+                        <a
+                            onClick={() => {
+                                window?.umami?.(
+                                    "Click - Navbar - Browse Packs"
+                                );
+                            }}
+                        >
+                            <Button size="sm" variant="primary">
+                                Open
+                            </Button>
+                        </a>
+                    </Link>
                 )}
             </div>
         </div>

@@ -32,10 +32,11 @@
 }
 @media (max-width: vars.$mobile-maxWidth) {
     .placeholder-column {
+        gap: 24rem;
         width: 343rem;
-        .img-wrapper {
-            height: 308.7rem;
-            width: 343rem;
+        > .img-wrapper {
+            height: 148.7rem;
+            width: 183rem;
         }
         .message {
             width: 343rem;
@@ -46,8 +47,8 @@
         }
         &.regular {
             > .img-wrapper {
-                height: 308.7rem;
-                width: 343rem;
+                height: 148.7rem;
+                width: 183rem;
             }
         }
     }

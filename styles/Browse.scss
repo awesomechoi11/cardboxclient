@@ -182,8 +182,11 @@
 @media (max-width: vars.$mobile-maxWidth) {
     #Browse {
         padding: 0 24rem;
-        .card-preview-default > .left {
-            width: 64rem;
+        .card-preview-default {
+            height: 98rem;
+            > .left {
+                width: 64rem;
+            }
         }
     }
 }
