@@ -191,16 +191,16 @@ function Inner() {
         <PlaceholderColumn presetKey="error" />
     </div>;
 
-    if (isSuccess && data)
-        return (
-            <>
-                <CardSwiper data={data} />
-                <div className="divider" />
-                <LargeCardBanner data={data} />
-                <div className="divider" />
-                <CardDisplay data={data} />
-            </>
-        );
+    if (isSuccess && data) console.log(data);
+    return (
+        <>
+            <CardSwiper data={data} />
+            <div className="divider" />
+            <LargeCardBanner data={data} />
+            <div className="divider" />
+            <CardDisplay data={data} />
+        </>
+    );
 
     return (
         <div className="placeholder-wrapper">
