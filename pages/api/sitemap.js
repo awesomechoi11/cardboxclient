@@ -14,7 +14,6 @@ export default async function sitemap(req, res) {
         const apiCreds = Realm.Credentials.apiKey(process.env.MONGO_API_KEY);
         const apiUser = await MongoApp.logIn(apiCreds);
         const cardpacks = await apiUser.functions.getPublicCardPacks();
-        console.log(cardpacks);
         // Get the paths we want to pre-render based on posts
         cardpacks.forEach((pack) => {
             smStream.write({
