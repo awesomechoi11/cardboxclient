@@ -1,5 +1,5 @@
 
-Sitemap: https://domain.com/api/posts-sitemap
+Sitemap: https://flippy.cards/api/sitemap
 
 User-agent: *
 Allow: /*
