@@ -9,8 +9,6 @@ const NEXT_PUBLIC_APP_ID = process.env.NEXT_PUBLIC_APP_ID,
     NEXT_PUBLIC_DATABASE_NAME = process.env.NEXT_PUBLIC_DATABASE_NAME;
 const app = new Realm.App({ id: NEXT_PUBLIC_APP_ID });
 export const MongoApp = app;
-// const mongo = app.currentUser.mongoClient(CLUSTER_NAME);
-// const db = mongo.db(DATABASE_NAME);
 
 const mongoState = atom({
     key: "mongoState",
@@ -18,9 +16,10 @@ const mongoState = atom({
         user: null,
         db: null,
         isAnon: null,
-        isReady: false, // not ready if user is not set
+        isReady: false,
     },
 });
+
 export const mongoSelector = selector({
     key: "mongoSelector",
     get: ({ get }) => get(mongoState),
