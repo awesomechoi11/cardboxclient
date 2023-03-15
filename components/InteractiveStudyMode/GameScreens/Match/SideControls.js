@@ -1,20 +1,28 @@
 import { useAnimationFrame, useIsomorphicLayoutEffect } from "framer-motion";
 import { useEffect, useRef } from "react";
 import Button from "@components/general/Button";
-import TimerMachine from "react-timer-machine";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import LabeledPills from "../../../general/LabeledPills";
 import { gameStateFamily } from "./utils";
+import { Timer } from "@components/utils";
 
 export default function SideControls({ setGameSettings, gameSettings }) {
     const currentRound = useRecoilValue(gameStateFamily("currentRound"));
     const [playing, setPlaying] = useRecoilState(gameStateFamily("playing"));
-    const setTime = useSetRecoilState(gameStateFamily("time"));
+    // const setTime = useSetRecoilState(gameStateFamily("time"));
+    const [time, setTime] = useRecoilState(gameStateFamily("time"));
     const resumeTimestamp = useRef(null);
     const totalRunningTime = useRef(0);
     const timeSinceMount = useRef(0);
     const displayTime = useRef(0);
     const playingRef = useRef(playing);
+
+    const timer = useRef(
+        new Timer(() => {
+            console.log("done!");
+        }, 1000)
+    );
+
     playingRef.current = playing;
     useAnimationFrame((time) => {
         timeSinceMount.current = time;
@@ -51,15 +59,16 @@ export default function SideControls({ setGameSettings, gameSettings }) {
                 <LabeledPills
                     label="Time Elapsed"
                     content={
-                        <TimerMachine // dont use this to keep track but update at intervals
-                            timeStart={0}
-                            started={true}
-                            formatTimer={() =>
-                                Math.round(displayTime.current / 10) / 100
-                            }
-                            paused={!playing}
-                            interval={100} // tick every 0.1 seconds
-                        />
+                        // <TimerMachine // dont use this to keep track but update at intervals
+                        //     timeStart={0}
+                        //     started={true}
+                        //     formatTimer={() =>
+                        //         Math.round(displayTime.current / 10) / 100
+                        //     }
+                        //     paused={!playing}
+                        //     interval={100} // tick every 0.1 seconds
+                        // />
+                        Math.round(time / 10) / 100
                     }
                 />
                 <LabeledPills label="Current Round" content={currentRound} />

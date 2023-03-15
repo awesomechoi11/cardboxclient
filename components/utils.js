@@ -105,3 +105,26 @@ export const shuffleArray = (arr) => {
     }
     return copyArr;
 };
+
+export const Timer = function (callback = () => {}, duration = 1000) {
+    var timerId,
+        start,
+        remaining = duration;
+
+    this.pause = function () {
+        window.clearTimeout(timerId);
+        timerId = null;
+        remaining -= Date.now() - start;
+    };
+
+    this.resume = function () {
+        if (timerId) {
+            return;
+        }
+
+        start = Date.now();
+        timerId = window.setTimeout(callback, remaining);
+    };
+
+    this.resume();
+};
