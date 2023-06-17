@@ -32,8 +32,6 @@ body {
     padding: 0;
     margin: 0;
     font-family: "Inter", sans-serif;
-    color: vars.$color-primary-1;
-    background-color: vars.$color-secondary-1;
 }
 html,
 body,
@@ -44,7 +42,6 @@ body,
     margin: 0;
     font-family: "Inter", sans-serif;
     // color: vars.$color-primary-1;
-    background-color: vars.$color-secondary-1;
 }
 #app {
     overflow: auto;
