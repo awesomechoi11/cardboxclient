@@ -7,6 +7,7 @@ import InteractiveStudyModes from "../components/Home/InteractiveStudyModes";
 import { useMongo } from "../components/Mongo/MongoUtils";
 import Navbar from "../components/Navbar";
 import { cardpackSchema } from "../schemas/cardpacks/publishedCardpack";
+import HomePage from "@components/Home/HomePage";
 
 export default function Home() {
     // this will try to login with anonymous
@@ -20,6 +21,7 @@ export default function Home() {
             <Navbar />
             <main id="home" className="p-0">
                 <Hero />
+                <HomePage />
                 <CreateYourOwnPacks play={play} />
                 <InteractiveStudyModes play={play} />
             </main>

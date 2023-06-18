@@ -22,7 +22,7 @@ export default function Navbar() {
                             window?.umami?.("Click - Navbar - Home");
                         }}
                     >
-                        {cardsIcon}flippy.cards
+                        {cardsIcon}flippy
                     </a>
                 </Link>
                 {!isMobile && (
@@ -36,7 +36,10 @@ export default function Navbar() {
                                 }}
                             >
                                 <Button variant="secondary" size="sm">
-                                    Browse Packs
+                                    Browse
+                                </Button>
+                                <Button variant="secondary" size="sm">
+                                    My Packs
                                 </Button>
                             </a>
                         </Link>
@@ -50,7 +53,7 @@ export default function Navbar() {
                     </>
                 ) : (
                     <>
-                        <JoinDiscordButton />
+                        {/* <JoinDiscordButton /> No comment on it yet */}
                         <WaitForMongo>
                             <Right />
                         </WaitForMongo>
@@ -77,7 +80,7 @@ function MobileDropdown() {
                 <div id="mobile-nav-dropdown">
                     <div className="header">
                         <Link href="/">
-                            <a className="home-btn">Flippy.Cards</a>
+                            <a className="home-btn">Flippy</a>
                         </Link>
                         {close(setIsOpen)}
                     </div>
