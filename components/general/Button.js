@@ -47,6 +47,54 @@ const buttonVariants = {
         "active:bg-brown-400",
         "active:text-brown-50",
     ],
+
+    pink: [
+        "rounded-lg",
+        "font-semibold",
+        "bg-pink-600",
+        "text-brown-50",
+        //hover
+        "hover:bg-pink-400",
+        "hover:text-brown-50",
+        //disabled
+        "disabled:bg-pink-50",
+        "disabled:text-black",
+        //active
+        "active:bg-pink-400",
+        "active:text-brown-50",
+    ],
+
+    yellow: [
+        "rounded-lg",
+        "font-semibold",
+        "bg-yellow-400",
+        "text-black",
+        //hover
+        "hover:bg-yellow-300",
+        "hover:text-black",
+        //disabled
+        "disabled:bg-yellow-50",
+        "disabled:text-black",
+        //active
+        "active:bg-yellow-300",
+        "active:text-black",
+    ],
+
+    cyan: [
+        "rounded-lg",
+        "font-semibold",
+        "bg-cyan-400",
+        "text-black",
+        //hover
+        "hover:bg-cyan-300",
+        "hover:text-black",
+        //disabled
+        "disabled:bg-cyan-50",
+        "disabled:text-black",
+        //active
+        "active:bg-cyan-300",
+        "active:text-black",
+    ]
 };
 const sizeVariants = {
     sm: ["text-sm rounded-sm px-3 py-2 "],
