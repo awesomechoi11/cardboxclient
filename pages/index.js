@@ -20,10 +20,10 @@ export default function Home() {
             </Head>
             <Navbar />
             <main id="home" className="p-0">
-                <Hero />
+                {/* <Hero /> */}
                 <HomePage />
-                <CreateYourOwnPacks play={play} />
-                <InteractiveStudyModes play={play} />
+                {/* <CreateYourOwnPacks play={play} />
+                <InteractiveStudyModes play={play} /> */}
             </main>
         </>
     );

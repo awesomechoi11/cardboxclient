@@ -114,7 +114,7 @@ export default function Button({
                 buttonVariants[variant],
                 sizeVariants[size],
                 className,
-                "ease-in-out duration-180"
+                "transition ease-in-out duration-180 active:scale-75"
             )}
         >
             {children}
