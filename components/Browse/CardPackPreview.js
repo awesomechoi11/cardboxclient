@@ -416,18 +416,15 @@ function Header({ data }) {
                         Publish
                     </Button>
                 ) : (
-                    <Link href={`/card-pack/${selected.id}`}>
-                        <a
-                            onClick={() => {
-                                window?.umami?.(
-                                    "Click - Navbar - Browse Packs"
-                                );
-                            }}
-                        >
-                            <Button size="sm" variant="primary">
-                                Open
-                            </Button>
-                        </a>
+                    <Link
+                        href={`/card-pack/${selected.id}`}
+                        onClick={() => {
+                            window?.umami?.("Click - Navbar - Browse Packs");
+                        }}
+                    >
+                        <Button size="sm" variant="primary">
+                            Open
+                        </Button>
                     </Link>
                 )}
             </div>

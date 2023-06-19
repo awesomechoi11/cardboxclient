@@ -85,10 +85,8 @@ export function CreateYourOwnPacks({ play }) {
                     Create & Share Your Card Packs with just your friends or
                     everybody!
                 </div>
-                <Link href="/card-pack-editor">
-                    <a target="_blank">
-                        <Button>Create Pack</Button>
-                    </a>
+                <Link href="/card-pack-editor" target="_blank">
+                    <Button>Create Pack</Button>
                 </Link>
             </div>
         </div>

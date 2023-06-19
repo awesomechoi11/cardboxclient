@@ -6,7 +6,6 @@ import {
     CardDisplayContext,
     useCardDisplayCardState,
 } from "./_CardDisplayUtils";
-// import { isMobile } from "react-device-detect";
 import clsx from "clsx";
 import { useIsMobile } from "../../mediaQueryHooks";
 import draftjsToHtml from "draftjs-to-html";
