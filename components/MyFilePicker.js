@@ -38,8 +38,8 @@ export default function MyFilePicker({
                 {file?.value?.cdnUrl ? (
                     <div className="preview-image">
                         <Image
-                            objectFit="cover"
-                            layout="fill"
+                            className="object-cover"
+                            fill
                             src={file.value.cdnUrl}
                             key={file.value.cdnUrl}
                             alt="drag n drop"
@@ -47,10 +47,10 @@ export default function MyFilePicker({
                     </div>
                 ) : (
                     <Image
-                        width="135w"
-                        height="105.5w"
-                        objectFit="contain"
-                        layout="responsive"
+                        width="135"
+                        height="105"
+                        className="object-contain"
+                        fill
                         src="/assets/img/photo.png"
                         key="placeholder img"
                         alt="cute cate -  photo zone"
@@ -107,8 +107,8 @@ export function MyFilePickerCreatePackField({
                 {file?.value?.cdnUrl ? ( // next js image lags like crazy
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
-                        width="85rem"
-                        height="76rem"
+                        width="85"
+                        height="76"
                         src={file.value.cdnUrl}
                         alt="preview"
                     />
@@ -123,8 +123,8 @@ export function MyFilePickerCreatePackField({
 const empty_svg = (
     <svg
         style={{
-            width: "85rem",
-            height: "76rem",
+            width: "85",
+            height: "76",
         }}
         width="85"
         height="76"

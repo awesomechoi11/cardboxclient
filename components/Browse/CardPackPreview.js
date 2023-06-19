@@ -164,7 +164,7 @@ function CardPackPreviewInner({ data }) {
             // key={data._id}
             className="inner"
             initial={{
-                // y: "-48rem",
+                // y: "-48",
                 scale: 0.98,
                 opacity: 0,
                 position: "absolute",
@@ -176,7 +176,7 @@ function CardPackPreviewInner({ data }) {
                 position: "relative",
             }}
             exit={{
-                // y: "48rem",
+                // y: "48",
                 opacity: 0,
                 scale: 0.98,
                 position: "absolute",
@@ -226,10 +226,9 @@ function Field({ data: { content, id, image }, label }) {
             {imgSrc && (
                 <div className="img">
                     <Image
-                        // layout="responsive"
-                        objectFit="cover"
-                        width="85w"
-                        height="76w"
+                        className="object-cover"
+                        width="85"
+                        height="76"
                         src={imgSrc}
                         alt="card icon"
                     />
@@ -416,18 +415,15 @@ function Header({ data }) {
                         Publish
                     </Button>
                 ) : (
-                    <Link href={`/card-pack/${selected.id}`}>
-                        <a
-                            onClick={() => {
-                                window?.umami?.(
-                                    "Click - Navbar - Browse Packs"
-                                );
-                            }}
-                        >
-                            <Button size="sm" variant="primary">
-                                Open
-                            </Button>
-                        </a>
+                    <Link
+                        href={`/card-pack/${selected.id}`}
+                        onClick={() => {
+                            window?.umami?.("Click - Navbar - Browse Packs");
+                        }}
+                    >
+                        <Button size="sm" variant="primary">
+                            Open
+                        </Button>
                     </Link>
                 )}
             </div>
@@ -457,10 +453,9 @@ function Details({
                 <div className="author">
                     <div className="img">
                         <Image
-                            // layout="responsive"
-                            objectFit="cover"
-                            width="32rem"
-                            height="32rem"
+                            className="object-cover"
+                            width="32"
+                            height="32"
                             src={imgSrc}
                             alt={username}
                         />

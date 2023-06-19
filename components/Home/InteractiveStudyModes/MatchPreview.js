@@ -65,18 +65,16 @@ function Client({ play }) {
                         <div className="description-1">
                             Match related cards to clear. Clear them all to win!
                         </div>
-                        <Link href="/browse">
-                            <a target="_blank">
-                                <Button
-                                    size="sm"
-                                    variant="secondary"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                    }}
-                                >
-                                    Play Match Mode
-                                </Button>
-                            </a>
+                        <Link href="/browse" target="_blank">
+                            <Button
+                                size="sm"
+                                variant="secondary"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                }}
+                            >
+                                Play Match Mode
+                            </Button>
                         </Link>
                     </>
                 }

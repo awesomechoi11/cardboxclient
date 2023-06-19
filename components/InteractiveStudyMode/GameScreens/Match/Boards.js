@@ -219,10 +219,9 @@ function CardFace({ faceId }) {
                         {imgSrc && (
                             <div className="img-wrapper">
                                 <Image
-                                    layout="fill"
                                     src={imgSrc}
                                     alt="card"
-                                    objectFit="contain"
+                                    className="object-contain"
                                 />
                             </div>
                         )}

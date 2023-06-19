@@ -94,8 +94,8 @@ function CardDisplayInner() {
 const number_svg = (
     <svg
         style={{
-            width: "32rem",
-            height: "32rem",
+            width: "32",
+            height: "32",
         }}
         width="32"
         height="32"
@@ -124,8 +124,8 @@ const number_svg = (
 const atoz_svg = (
     <svg
         style={{
-            width: "32rem",
-            height: "32rem",
+            width: "32",
+            height: "32",
         }}
         width="32"
         height="32"
@@ -150,8 +150,8 @@ const atoz_svg = (
 const shuffle_svg = (
     <svg
         style={{
-            width: "32rem",
-            height: "32rem",
+            width: "32",
+            height: "32",
         }}
         width="32"
         height="32"
@@ -172,8 +172,8 @@ const shuffle_svg = (
 const flip_svg = (
     <svg
         style={{
-            width: "32rem",
-            height: "32rem",
+            width: "32",
+            height: "32",
         }}
         width="32"
         height="32"
@@ -194,8 +194,8 @@ const flip_svg = (
 const reset_svg = (
     <svg
         style={{
-            width: "32rem",
-            height: "32rem",
+            width: "32",
+            height: "32",
         }}
         width="32"
         height="33"
@@ -213,8 +213,8 @@ const reset_svg = (
 const row_svg = (
     <svg
         style={{
-            width: "32rem",
-            height: "32rem",
+            width: "32",
+            height: "32",
         }}
         width="32"
         height="32"
@@ -240,8 +240,8 @@ const row_svg = (
 const grid_svg = (
     <svg
         style={{
-            width: "32rem",
-            height: "32rem",
+            width: "32",
+            height: "32",
         }}
         width="32"
         height="32"

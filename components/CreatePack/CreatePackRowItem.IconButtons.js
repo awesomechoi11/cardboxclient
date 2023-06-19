@@ -36,8 +36,8 @@ export function DragButton({ listeners }) {
 const trash_svg = (
     <svg
         style={{
-            width: "32rem",
-            height: "32rem",
+            width: "32",
+            height: "32",
         }}
         width="32"
         height="32"
@@ -88,8 +88,8 @@ export function DeleteButton({ setData }) {
 const hand_svg = (
     <svg
         style={{
-            width: "32rem",
-            height: "32rem",
+            width: "32",
+            height: "32",
         }}
         width="32"
         height="32"
@@ -127,8 +127,8 @@ const hand_svg = (
 const swap_svg = (
     <svg
         style={{
-            width: "24rem",
-            height: "24rem",
+            width: "24",
+            height: "24",
         }}
         width="24"
         height="24"

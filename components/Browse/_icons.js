@@ -1,8 +1,8 @@
 export const LIKE_SVG = (
     <svg
         style={{
-            width: "32rem",
-            height: "33rem",
+            width: "32",
+            height: "33",
         }}
         width="32"
         height="33"
@@ -22,8 +22,8 @@ export const LIKE_SVG = (
 export const SHARE_SVG = (
     <svg
         style={{
-            width: "32rem",
-            height: "33rem",
+            width: "32",
+            height: "33",
         }}
         width="32"
         height="33"
@@ -43,8 +43,8 @@ export const SHARE_SVG = (
 export const DUPLICATE_SVG = (
     <svg
         style={{
-            width: "32rem",
-            height: "33rem",
+            width: "32",
+            height: "33",
         }}
         width="32"
         height="33"

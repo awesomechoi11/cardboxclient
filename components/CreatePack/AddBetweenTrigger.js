@@ -38,8 +38,8 @@ export default function AddBetweenTrigger({ index }) {
                 >
                     <svg
                         style={{
-                            width: "8rem",
-                            height: "32rem",
+                            width: "8",
+                            height: "32",
                         }}
                         width="8"
                         height="32"
@@ -57,8 +57,8 @@ export default function AddBetweenTrigger({ index }) {
                     <div className="right background">
                         <svg
                             style={{
-                                width: "32rem",
-                                height: "32rem",
+                                width: "32",
+                                height: "32",
                             }}
                             width="32"
                             height="32"

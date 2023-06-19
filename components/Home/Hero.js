@@ -8,12 +8,12 @@ export default function Hero() {
     return (
         <div
             className="hero mb-20 relative flex justify-center items-center gap-5 h-[480rem]"
-            // style={{ height: "480rem" }}
+            // style={{ height: "480" }}
         >
-            <div style={{ width: "300rem" }}>
+            <div style={{ width: "300" }}>
                 <FlippyCard />
             </div>
-            <div className="tagline" style={{ width: "300rem" }}>
+            <div className="tagline" style={{ width: "300" }}>
                 Make it.
                 <br />
                 Flip it.
@@ -105,17 +105,15 @@ const BlankCardFace = ({
                 <Image
                     src="/assets/cardplaceholder/cat_face.png"
                     alt="card front face"
-                    layout="responsive"
-                    width="162w"
-                    height="228w"
+                    width="162"
+                    height="228"
                 />
             ) : (
                 <Image
                     src="/assets/cardplaceholder/cat_butt.png"
                     alt="card back face"
-                    layout="responsive"
-                    width="141.5w"
-                    height="227.8w"
+                    width="141"
+                    height="227"
                 />
             )}
         </div>
@@ -124,19 +122,15 @@ const BlankCardFace = ({
                 <Image
                     src="/assets/cardplaceholder/flippy.png"
                     alt="card branding front face"
-                    layout="responsive"
-                    width="68w"
-                    height="29w"
-                    objectFit="contain"
+                    width="68"
+                    height="29"
                 />
             ) : (
                 <Image
                     src="/assets/cardplaceholder/cards.png"
                     alt="card branding back face"
-                    layout="responsive"
-                    width="75w"
-                    height="29w"
-                    objectFit="contain"
+                    width="75"
+                    height="29"
                 />
             )}
         </div>

@@ -27,7 +27,7 @@ const imageObj = {
 
 const sizes = {
     regular: {
-        width: "360rem",
+        width: "360",
     },
 };
 const presets = {
@@ -39,10 +39,12 @@ const presets = {
                 <>
                     Try refreshing! If it keeps persisting please reach out to
                     us on{" "}
-                    <Link href="https://discord.gg/QC3yHFySAV">
-                        <a target="_blank" className="subtitle-2">
-                            discord
-                        </a>
+                    <Link
+                        href="https://discord.gg/QC3yHFySAV"
+                        target="_blank"
+                        className="subtitle-2"
+                    >
+                        discord
                     </Link>
                     !
                 </>
@@ -86,8 +88,8 @@ export default function PlaceholderColumn({
                     <Image
                         alt={image.alt}
                         src={image.src}
-                        layout="fill"
-                        objectFit="contain"
+                        className="object-contain"
+                        fill
                     />
                 </div>
             )}

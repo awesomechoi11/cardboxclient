@@ -126,10 +126,9 @@ function Main() {
                 <>
                     <div>
                         <Image
-                            width="360w"
-                            height="320w"
-                            objectFit="contain"
-                            layout="responsive"
+                            width="360"
+                            height="320"
+                            className="object-contain"
                             src="/assets/img/Registration_Loading.png"
                             alt="cute cate -  registration complete"
                         />
@@ -148,10 +147,9 @@ function Main() {
                     <>
                         <div>
                             <Image
-                                width="360w"
-                                height="320w"
-                                objectFit="contain"
-                                layout="responsive"
+                                width="360"
+                                height="320"
+                                className="object-contain"
                                 src="/assets/img/Registration_Complete.png"
                                 alt="cute cate -  registration complete"
                             />
@@ -197,10 +195,9 @@ function Main() {
                 <>
                     <div>
                         <Image
-                            width="360w"
-                            height="367w"
-                            objectFit="contain"
-                            layout="responsive"
+                            width="360"
+                            height="367"
+                            className="object-contain"
                             src="/assets/img/oops.png"
                             alt="cute cate -  oops"
                         />

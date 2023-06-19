@@ -118,10 +118,9 @@ function StageTwo({ data }) {
         <>
             <div className="img">
                 <Image
-                    width="360w"
-                    height="364w"
-                    objectFit="contain"
-                    layout="responsive"
+                    width="360"
+                    height="364"
+                    className="object-contain"
                     src="/assets/img/Email Verification_Success.png"
                     alt="cute cate - email sent"
                 />
@@ -163,10 +162,9 @@ function StageThree({ data, setStage, setMode }) {
         <>
             <div className="img">
                 <Image
-                    width="360w"
-                    height="243w"
-                    objectFit="contain"
-                    layout="responsive"
+                    width="360"
+                    height="243"
+                    className="object-contain"
                     src="/assets/img/Registration_3.png"
                     alt="cute cate - email not sent"
                 />
@@ -222,8 +220,8 @@ function StageThree({ data, setStage, setMode }) {
 const facebook_svg = (
     <svg
         style={{
-            width: "48rem",
-            height: "48rem",
+            width: "48",
+            height: "48",
         }}
         width="48"
         height="48"
@@ -244,8 +242,8 @@ const facebook_svg = (
 const google_svg = (
     <svg
         style={{
-            width: "48rem",
-            height: "48rem",
+            width: "48",
+            height: "48",
         }}
         width="48"
         height="48"
@@ -273,7 +271,7 @@ const google_svg = (
         </g>
         <defs>
             <clipPath id="clip0_227_700">
-                <rect width="48rem" height="48rem" fill="white" />
+                <rect width="48" height="48" fill="white" />
             </clipPath>
         </defs>
     </svg>
@@ -282,8 +280,8 @@ const google_svg = (
 const apple_svg = (
     <svg
         style={{
-            width: "48rem",
-            height: "48rem",
+            width: "48",
+            height: "48",
         }}
         width="48"
         height="48"
@@ -299,7 +297,7 @@ const apple_svg = (
         </g>
         <defs>
             <clipPath id="clip0_227_702">
-                <rect width="48rem" height="48rem" fill="white" />
+                <rect width="48" height="48" fill="white" />
             </clipPath>
         </defs>
     </svg>
