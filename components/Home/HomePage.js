@@ -9,7 +9,7 @@ export default function HomePage() {
     return (
         <div>
             <section className="pt-7 pb-10 bg-white dark:bg-black">
-                <div className="flex items-center w-4/6 mx-auto mb-12 justify-evenly">
+                <div className="flex items-center w-4/6 mx-auto mb-9 justify-evenly">
                     <div className="w-1/3 space-y-3 text-left">
                         <p className="text-3xl font-semibold leading-tight">
                             Study <span className="text-pink-500">smarter</span>{" "}
