@@ -1,69 +1,64 @@
 import Button from "@components/general/Button";
 import { useIsMobile } from "@components/mediaQueryHooks";
-import { Form, Formik } from "formik";
+import clsx from "clsx";
+import { Formik } from "formik";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import * as Yup from "yup";
 import { useModal } from "./Modals/ModalUtils";
-import { useMongo, WaitForMongo } from "./Mongo/MongoUtils";
-import { MyTextInput } from "./Form/Basic";
-import { useSearchParams } from "next/navigation";
+import { WaitForMongo, useMongo } from "./Mongo/MongoUtils";
 
 export default function Navbar() {
     const isMobile = useIsMobile();
 
-    const router = useRouter();
-
     return (
-        <div id="navbar">
-            <div className="left">
-                <Link
-                    href="/"
-                    onClick={() => {
-                        window?.umami?.("Click - Navbar - Home");
-                    }}
-                >
-                    {cardsIcon}flippy
-                </Link>
-                {!isMobile && (
-                    <>
-                        <Link
-                            href="/search"
-                            onClick={() => {
-                                window?.umami?.("Click - Navbar - Subjects");
-                            }}
-                        >
-                            <Button variant="secondary" size="sm">
-                                Subjects
-                            </Button>
-                        </Link>
-                        <Link
-                            href="/library"
-                            onClick={() => {
-                                window?.umami?.("Click - Navbar - My Library");
-                            }}
-                        >
-                            <Button variant="secondary" size="sm">
-                                My Library
-                            </Button>
-                        </Link>
-                    </>
-                )}
-
-                {isMobile ? (
-                    <>
-                        <MobileDropdown />
-                    </>
-                ) : (
-                    <>
-                        {/* <JoinDiscordButton /> No comment on it yet */}
-                        <WaitForMongo>
-                            <Right />
-                        </WaitForMongo>
-                    </>
-                )}
-            </div>
+        <div className="flex gap-4 px-1  tablet:px-4 desktop:px-[225px]">
+            <Link
+                href="/"
+                onClick={() => {
+                    window?.umami?.("Click - Navbar - Home");
+                }}
+            >
+                {cardsIcon}flippy
+            </Link>
+            {!isMobile && (
+                <>
+                    <Link
+                        href="/search"
+                        onClick={() => {
+                            window?.umami?.("Click - Navbar - Subjects");
+                        }}
+                    >
+                        <Button variant="secondary" size="sm">
+                            Subjects
+                        </Button>
+                    </Link>
+                    <Link
+                        href="/library"
+                        onClick={() => {
+                            window?.umami?.("Click - Navbar - My Library");
+                        }}
+                    >
+                        <Button variant="secondary" size="sm">
+                            My Library
+                        </Button>
+                    </Link>
+                </>
+            )}
+            <SearchBar />
+            {isMobile ? (
+                <>
+                    <MobileDropdown />
+                </>
+            ) : (
+                <>
+                    <WaitForMongo>
+                        <Right />
+                    </WaitForMongo>
+                </>
+            )}
         </div>
     );
 }
@@ -71,6 +66,7 @@ export default function Navbar() {
 function SearchBar() {
     const searchParams = useSearchParams();
     const query = searchParams.get("query");
+    const router = useRouter();
 
     return (
         <Formik
@@ -84,20 +80,67 @@ function SearchBar() {
                     .max(254, "Must be 254 characters or less")
                     .required("Required"),
             })}
+            onSubmit={(values) => {
+                router.push(`/search?query=${values.query}`);
+            }}
         >
-            <Form id="CreatePack-form">
-                <MyTextInput label="Title" controlId="title" />
-                <MyTextInput
-                    label="Tags (separated by commas)"
-                    controlId="tags"
-                />
-                <MyTextInput
-                    label="Description"
-                    controlId="description"
-                    as="textarea"
-                    rows={5}
-                />
-            </Form>
+            {({
+                values,
+                errors,
+                touched,
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                isSubmitting,
+                /* and other goodies */
+            }) => (
+                <form onSubmit={handleSubmit} className="flex-grow">
+                    <div>
+                        <div className="relative mt-2 rounded-md shadow-sm">
+                            <div className="absolute inset-y-0 left-0 flex items-center pt-[18px] pl-3 pointer-events-none">
+                                <svg
+                                    width="21"
+                                    height="21"
+                                    viewBox="0 0 21 21"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M9 16C12.866 16 16 12.866 16 9C16 5.13401 12.866 2 9 2C5.13401 2 2 5.13401 2 9C2 12.866 5.13401 16 9 16Z"
+                                        stroke="#A5A5A5"
+                                        strokeWidth="3"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                    <path
+                                        d="M19 19.0004L14.65 14.6504"
+                                        stroke="#A5A5A5"
+                                        strokeWidth="3"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                </svg>
+                            </div>
+                            <input
+                                type="text"
+                                name="query"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.query}
+                                placeholder="Study packs, homework problems, study guides"
+                                className={clsx(
+                                    errors.email &&
+                                        touched.email &&
+                                        errors.email &&
+                                        "border-red-500",
+                                    "w-full py-3 px-4 text-base font-semibold pl-6 bg-blue-200 border-blue-300 rounded-xl placeholder:text-gray-400"
+                                )}
+                                disabled={isSubmitting}
+                            />
+                        </div>
+                    </div>
+                </form>
+            )}
         </Formik>
     );
 }
