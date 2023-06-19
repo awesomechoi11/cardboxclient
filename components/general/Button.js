@@ -54,14 +54,14 @@ const buttonVariants = {
         "bg-transparent",
         "text-blue-800",
         //hover
-        "hover:bg-brown-400",
-        "hover:text-brown-50",
+        "hover:bg-blue-300",
+        "hover:text-blue-800",
         //disabled
         "disabled:bg-brown-50",
         "disabled:text-brown-200",
         //active
-        "active:bg-brown-400",
-        "active:text-brown-50",
+        "active:bg-blue-300",
+        "active:text-blue-800",
     ],
 
     pink: [

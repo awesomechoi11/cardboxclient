@@ -70,6 +70,7 @@ export default function HomePage() {
                         alt="pooperfarthead"
                         width={409}
                         height={115}
+                        className="mx-auto"
                     />
                     <p>
                         Our intuitive and easy-to-use flashcard app is designed
