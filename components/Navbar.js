@@ -14,7 +14,7 @@ export default function Navbar() {
     const isMobile = useIsMobile();
 
     return (
-        <div className="flex gap-4 px-1 pb-5  tablet:px-4 desktop:px-[225px]">
+        <div className="flex gap-4 px-1 pt-3  tablet:px-4 desktop:px-[225px]">
             <Link
                 href="/"
                 onClick={() => {
@@ -26,16 +26,26 @@ export default function Navbar() {
             </Link>
             {!isMobile && (
                 <div className="flex items-center">
-                    <Link
-                        href="/search"
-                        onClick={() => {
-                            window?.umami?.("Click - Navbar - Subjects");
-                        }}
-                    >
-                        <Button variant="secondary" size="sm">
-                            Subjects
-                        </Button>
-                    </Link>
+                    <div>
+                        <Link
+                            href="/"
+                            onClick={subjectSelect}
+                            className="flex">
+                            <Button variant="secondary" size="sm" className="flex items-center">
+                                Subject
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="hover:rotate-180 transition duration-600 ease-in-out"
+                                >
+                                    <path d="M6 9L12 15L18 9" stroke="#082858" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </Button>
+                        </Link>
+                    </div>
                     <Link
                         href="/library"
                         onClick={() => {
@@ -149,6 +159,10 @@ function SearchBar() {
 function Right() {
     const { isAnon } = useMongo();
     return !isAnon ? <AuthedSection /> : <UnauthedSection />;
+}
+
+function subjectSelect() {
+
 }
 
 function MobileDropdown() {
