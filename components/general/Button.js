@@ -17,6 +17,22 @@ const buttonVariants = {
         "active:bg-brown-400",
         "active:text-brown-50",
     ],
+    create: [
+        "rounded-lg",
+        "font-semibold",
+        "bg-blue-800",
+        "text-brown-50",
+        //hover
+        "hover:bg-blue-400",
+        "hover:text-brown-50",
+        //disabled
+        "disabled:bg-blue-200",
+        "disabled:text-brown-300",
+        //active
+        "active:bg-blue-400",
+        "active:text-brown-50",
+    ],
+
     danger: [
         // default
         "rounded-lg",
@@ -36,7 +52,7 @@ const buttonVariants = {
         "rounded-lg",
         "font-semibold",
         "bg-transparent",
-        "text-brown-600",
+        "text-blue-800",
         //hover
         "hover:bg-brown-400",
         "hover:text-brown-50",
@@ -97,8 +113,9 @@ const buttonVariants = {
     ]
 };
 const sizeVariants = {
-    sm: ["text-sm rounded-sm px-3 py-2 "],
+    sm: ["text-base rounded-sm px-3 py-2 "],
     default: ["text-base rounded px-4 py-3 "],
+    xs: ["text-base rounded px-1 py-1 h-6"]
 };
 export default function Button({
     variant = "primary",

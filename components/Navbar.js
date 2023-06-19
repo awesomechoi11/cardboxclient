@@ -14,17 +14,18 @@ export default function Navbar() {
     const isMobile = useIsMobile();
 
     return (
-        <div className="flex gap-4 px-1  tablet:px-4 desktop:px-[225px]">
+        <div className="flex gap-4 px-1 pb-5  tablet:px-4 desktop:px-[225px]">
             <Link
                 href="/"
                 onClick={() => {
                     window?.umami?.("Click - Navbar - Home");
                 }}
+                className="flex items-center"
             >
-                {cardsIcon}flippy
+                {cardsIcon} <span className="text-lg font-bold ml-2">flippy</span>
             </Link>
             {!isMobile && (
-                <>
+                <div className="flex items-center">
                     <Link
                         href="/search"
                         onClick={() => {
@@ -45,7 +46,7 @@ export default function Navbar() {
                             My Library
                         </Button>
                     </Link>
-                </>
+                </div>
             )}
             <SearchBar />
             {isMobile ? (
@@ -130,9 +131,9 @@ function SearchBar() {
                                 placeholder="Study packs, homework problems, study guides"
                                 className={clsx(
                                     errors.email &&
-                                        touched.email &&
-                                        errors.email &&
-                                        "border-red-500",
+                                    touched.email &&
+                                    errors.email &&
+                                    "border-red-500",
                                     "w-full py-3 px-4 text-base font-semibold pl-6 bg-blue-200 border-blue-300 rounded-xl placeholder:text-gray-400"
                                 )}
                                 disabled={isSubmitting}
@@ -212,15 +213,17 @@ function AuthedSection() {
     const router = useRouter();
 
     return (
-        <>
+        <div className="mt-3">
             <Button
-                variant="primary"
-                size="sm"
+                variant="create"
+                size="xs"
                 onClick={() => router.push("/card-pack-editor")}
             >
-                Create Pack
+                <svg width="31" height="30" viewBox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M14.2083 5.6434C14.2083 4.95304 14.7866 4.3934 15.4999 4.3934C16.2133 4.3934 16.7916 4.95304 16.7916 5.6434L16.7916 13.75L25.1684 13.75C25.8818 13.75 26.4601 14.3096 26.4601 15C26.4601 15.6904 25.8818 16.25 25.1684 16.25L16.7916 16.25L16.7916 24.3566C16.7916 25.047 16.2133 25.6066 15.4999 25.6066C14.7866 25.6066 14.2083 25.047 14.2083 24.3566L14.2083 16.25L5.83145 16.25C5.11809 16.25 4.53979 15.6904 4.53979 15C4.53979 14.3096 5.11809 13.75 5.83145 13.75L14.2083 13.75L14.2083 5.6434Z" fill="white" />
+                </svg>
             </Button>
-        </>
+        </div>
     );
 }
 

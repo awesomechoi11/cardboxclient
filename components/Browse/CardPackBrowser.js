@@ -8,6 +8,7 @@ import Image from "next/image";
 import PlaceholderColumn from "../PlaceholderColumn";
 import { useRouter } from "next/router";
 import { useIsMobile } from "@components/mediaQueryHooks";
+import Footer from "@components/Home/Footer";
 // import ReactGA from "react-ga";
 
 export default function CardPackBrowser() {
@@ -106,7 +107,6 @@ export default function CardPackBrowser() {
                     </Button>
                 ))}
             </div>
-
             <BrowserResults data={pages[currentPage]} />
         </div>
     );
@@ -155,6 +155,7 @@ function BrowserResults({ data: { query, label, collection } }) {
                     />
                 ))}
         </div>
+        
     );
 }
 
