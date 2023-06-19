@@ -12,7 +12,12 @@ const nextConfig = {
         ];
     },
     images: {
-        domains: ["quizlet.com", "loremflickr.com", "ucarecdn.com"],
+        domains: [
+            "quizlet.com",
+            "loremflickr.com",
+            "ucarecdn.com",
+            "cdn.discordapp.com",
+        ],
     },
 };
 
