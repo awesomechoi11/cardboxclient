@@ -4,6 +4,12 @@ module.exports = {
         "./components/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
+        screens: {
+            tablet: "640px",
+            // => @media (min-width: 640px) { ... }
+            desktop: "1280px",
+            // => @media (min-width: 1280px) { ... }
+        },
         spacing: {
             1: "8px",
             2: "12px",
@@ -48,8 +54,8 @@ module.exports = {
             sm: "8px",
             tiny: "2px",
             base: "8px",
-            lg: "8px",
-            xl: "8px",
+            lg: "12px",
+            xl: "16px",
         },
         extend: {
             colors: {
