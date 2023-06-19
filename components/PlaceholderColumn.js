@@ -27,7 +27,7 @@ const imageObj = {
 
 const sizes = {
     regular: {
-        width: "360rem",
+        width: "360",
     },
 };
 const presets = {
@@ -88,8 +88,8 @@ export default function PlaceholderColumn({
                     <Image
                         alt={image.alt}
                         src={image.src}
-                        layout="fill"
-                        objectFit="contain"
+                        className="object-contain"
+                        fill
                     />
                 </div>
             )}

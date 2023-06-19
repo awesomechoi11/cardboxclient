@@ -16,9 +16,8 @@ export function CreateYourOwnPacks({ play }) {
                         <Image
                             src="https://ucarecdn.com/cd15bed7-a920-48b5-a6d0-fa72b7de99f7/-/scale_crop/400x400/smart/"
                             alt="zenitsu face"
-                            layout="fixed"
-                            width="200rem"
-                            height="200rem"
+                            width="200"
+                            height="200"
                         />
                         Name this character
                     </>
@@ -45,9 +44,8 @@ export function CreateYourOwnPacks({ play }) {
                         <Image
                             src="https://ucarecdn.com/e9c1edee-0693-43b2-b173-e0cfd95f8063/-/scale_crop/400x400/smart"
                             alt="babylon"
-                            layout="fixed"
-                            width="200rem"
-                            height="200rem"
+                            width="200"
+                            height="200"
                         />
                         <div className="subtitle-2">Babylon</div>
                     </>
@@ -62,9 +60,8 @@ export function CreateYourOwnPacks({ play }) {
                         <Image
                             src="https://ucarecdn.com/0c586228-d7d8-4fc2-bd02-1d07cf086b57/-/scale_crop/400x400/smart/"
                             alt="burette"
-                            layout="fixed"
-                            width="200rem"
-                            height="200rem"
+                            width="200"
+                            height="200"
                         />
                         {`A long tube of glass, usually marked in 0.1 mL units,
                         that's equipped with a stopcock and used for the

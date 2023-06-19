@@ -56,13 +56,13 @@ export function MyClickTooltip({
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                                 initial={{
-                                    y: "10rem",
+                                    y: "10",
                                 }}
                                 animate={{
-                                    y: "0rem",
+                                    y: "0",
                                 }}
                                 exit={{
-                                    y: "10rem",
+                                    y: "10",
                                 }}
                                 transition={{
                                     duration: 0.18,
@@ -77,13 +77,13 @@ export function MyClickTooltip({
                         <motion.div
                             className="inner"
                             initial={{
-                                y: "10rem",
+                                y: "10",
                             }}
                             animate={{
-                                y: "0rem",
+                                y: "0",
                             }}
                             exit={{
-                                y: "10rem",
+                                y: "10",
                             }}
                             transition={{
                                 duration: 0.18,
@@ -170,13 +170,13 @@ export function MyHoverTooltip({
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                                 initial={{
-                                    y: "10rem",
+                                    y: "10",
                                 }}
                                 animate={{
-                                    y: "0rem",
+                                    y: "0",
                                 }}
                                 exit={{
-                                    y: "10rem",
+                                    y: "10",
                                 }}
                                 transition={{
                                     duration: 0.18,
@@ -191,13 +191,13 @@ export function MyHoverTooltip({
                         <motion.div
                             className="inner normal-1"
                             initial={{
-                                y: "10rem",
+                                y: "10",
                             }}
                             animate={{
-                                y: "0rem",
+                                y: "0",
                             }}
                             exit={{
-                                y: "10rem",
+                                y: "10",
                             }}
                             transition={{
                                 duration: 0.18,

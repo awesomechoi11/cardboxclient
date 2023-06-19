@@ -106,10 +106,9 @@ function StageTwo() {
         <>
             <div className="img">
                 <Image
-                    width="360w"
-                    height="364w"
-                    objectFit="contain"
-                    layout="responsive"
+                    width="360"
+                    height="364"
+                    className="object-contain"
                     src="/assets/img/Study_Cat.png"
                     alt="cute cate - logged in"
                 />
@@ -142,10 +141,9 @@ function StageThree({ data, setStage }) {
         <>
             <div className="img">
                 <Image
-                    width="360w"
-                    height="243w"
-                    objectFit="contain"
-                    layout="responsive"
+                    width="360"
+                    height="243"
+                    className="object-contain"
                     src="/assets/img/Registration_3.png"
                     alt="cute cate - email not sent"
                 />

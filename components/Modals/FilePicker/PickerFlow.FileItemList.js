@@ -217,16 +217,15 @@ function UploadCareFileItem({ type, value, index, refetch }) {
             >
                 {isImage && (
                     <Image
-                        layout="responsive"
-                        width="82w"
-                        height="82w"
+                        width="82"
+                        height="82"
                         src={previewUrl}
                         alt="preview"
-                        objectFit="cover"
+                        className="object-cover"
                     />
                 )}
                 {isVideo && (
-                    <video width="82w" height="82w" controls>
+                    <video width="82" height="82" controls>
                         <source src={previewUrl} type={value.mimeType} />
                         Your browser does not support the video tag.
                     </video>
@@ -258,13 +257,13 @@ function UploadCareFileItem({ type, value, index, refetch }) {
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                                 initial={{
-                                    y: "10rem",
+                                    y: "10",
                                 }}
                                 animate={{
-                                    y: "0rem",
+                                    y: "0",
                                 }}
                                 exit={{
-                                    y: "10rem",
+                                    y: "10",
                                 }}
                                 transition={{
                                     duration: 0.18,
@@ -279,13 +278,13 @@ function UploadCareFileItem({ type, value, index, refetch }) {
                         <motion.div
                             className="inner"
                             initial={{
-                                y: "10rem",
+                                y: "10",
                             }}
                             animate={{
-                                y: "0rem",
+                                y: "0",
                             }}
                             exit={{
-                                y: "10rem",
+                                y: "10",
                             }}
                             transition={{
                                 duration: 0.18,

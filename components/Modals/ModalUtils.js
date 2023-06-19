@@ -84,8 +84,8 @@ export function ModalWrapper({ modalId, children, className, ...props }) {
                         >
                             <svg
                                 style={{
-                                    width: "24rem",
-                                    height: "24rem",
+                                    width: "24",
+                                    height: "24",
                                 }}
                                 width="24"
                                 height="24"

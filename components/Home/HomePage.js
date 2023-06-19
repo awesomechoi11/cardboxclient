@@ -24,7 +24,7 @@ export default function HomePage() {
                         src="/assets/img/placeholder.png"
                         alt="poopyfarthead"
                         width="666"
-                        height="238.5"
+                        height="238"
                     />
                 </div>
 

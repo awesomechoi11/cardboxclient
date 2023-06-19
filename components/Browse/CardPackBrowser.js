@@ -198,10 +198,8 @@ function CardPreviewDefault({ data, collection }) {
                     <Image
                         src={imgSrc}
                         alt="preview"
-                        layout="fill"
-                        // width={isMobile ? "64rem" : "144rem"}
-                        // height="106.29rem"
-                        objectFit="cover"
+                        fill
+                        className="object-cover"
                     />
                 </div>
             )}

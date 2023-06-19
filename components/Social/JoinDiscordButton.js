@@ -13,8 +13,8 @@ export default function JoinDiscordButton() {
             <Button size="sm" variant="secondary" className="discord">
                 <svg
                     style={{
-                        width: "24rem",
-                        height: "19rem",
+                        width: "24",
+                        height: "19",
                     }}
                     width="24"
                     height="19"

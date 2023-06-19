@@ -46,8 +46,8 @@ export default function PickerFlowDropzone() {
 const Dropzone_SVG = (
     <svg
         style={{
-            width: "400rem",
-            height: "300rem",
+            width: "400",
+            height: "300",
         }}
         width="400"
         height="300"

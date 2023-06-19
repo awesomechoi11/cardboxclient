@@ -53,7 +53,7 @@ function CardUI() {
                     className="arrow"
                     onClick={() => decrement()}
                     style={{
-                        y: "205rem",
+                        y: "205",
                     }}
                     whileHover={{
                         scale: 1.1,
@@ -61,8 +61,8 @@ function CardUI() {
                 >
                     <svg
                         style={{
-                            width: "32rem",
-                            height: "32rem",
+                            width: "32",
+                            height: "32",
                         }}
                         width="32"
                         height="32"
@@ -83,7 +83,7 @@ function CardUI() {
                     className="flipsides"
                     onClick={() => flipDefaultSide()}
                     style={{
-                        y: "376rem",
+                        y: "376",
                     }}
                     whileHover={{
                         scale: 1.1,
@@ -94,8 +94,8 @@ function CardUI() {
                         TriggerContent={
                             <svg
                                 style={{
-                                    width: "48rem",
-                                    height: "48rem",
+                                    width: "48",
+                                    height: "48",
                                 }}
                                 width="48"
                                 height="48"
@@ -117,7 +117,7 @@ function CardUI() {
             </div>
             <div className="middle">
                 {cardsMap && cardsMap.length && (
-                    <motion.div className="counter" style={{ y: "446rem" }}>
+                    <motion.div className="counter" style={{ y: "446" }}>
                         {(((cardIndex % cardsMap.length) + cardsMap.length) %
                             cardsMap.length) +
                             1}
@@ -130,7 +130,7 @@ function CardUI() {
                     className="arrow"
                     onClick={() => increment()}
                     style={{
-                        y: "205rem",
+                        y: "205",
                     }}
                     whileHover={{
                         scale: 1.1,
@@ -138,8 +138,8 @@ function CardUI() {
                 >
                     <svg
                         style={{
-                            width: "32rem",
-                            height: "32rem",
+                            width: "32",
+                            height: "32",
                         }}
                         width="32"
                         height="32"
@@ -159,7 +159,7 @@ function CardUI() {
                     className="shuffle"
                     onClick={() => shuffle()}
                     style={{
-                        y: "376rem",
+                        y: "376",
                     }}
                     whileHover={{
                         scale: 1.1,
@@ -170,8 +170,8 @@ function CardUI() {
                         TriggerContent={
                             <svg
                                 style={{
-                                    width: "48rem",
-                                    height: "48rem",
+                                    width: "48",
+                                    height: "48",
                                 }}
                                 width="48"
                                 height="48"
@@ -213,7 +213,7 @@ function MobileCardUI() {
                     className="arrow"
                     onClick={() => decrement()}
                     style={{
-                        y: "466rem",
+                        y: "466",
                     }}
                     whileHover={{
                         scale: 1.1,
@@ -221,8 +221,8 @@ function MobileCardUI() {
                 >
                     <svg
                         style={{
-                            width: "32rem",
-                            height: "32rem",
+                            width: "32",
+                            height: "32",
                         }}
                         width="32"
                         height="32"
@@ -243,7 +243,7 @@ function MobileCardUI() {
                     className="flipsides"
                     onClick={() => flipDefaultSide()}
                     style={{
-                        y: "546rem",
+                        y: "546",
                     }}
                     whileHover={{
                         scale: 1.1,
@@ -251,8 +251,8 @@ function MobileCardUI() {
                 >
                     <svg
                         style={{
-                            width: "48rem",
-                            height: "48rem",
+                            width: "48",
+                            height: "48",
                         }}
                         width="48"
                         height="48"
@@ -272,7 +272,7 @@ function MobileCardUI() {
             </div>
             <div className="middle">
                 {cardsMap && cardsMap.length && (
-                    <motion.div className="counter" style={{ y: "466rem" }}>
+                    <motion.div className="counter" style={{ y: "466" }}>
                         {(((cardIndex % cardsMap.length) + cardsMap.length) %
                             cardsMap.length) +
                             1}
@@ -285,7 +285,7 @@ function MobileCardUI() {
                     className="arrow"
                     onClick={() => increment()}
                     style={{
-                        y: "466rem",
+                        y: "466",
                     }}
                     whileHover={{
                         scale: 1.1,
@@ -293,8 +293,8 @@ function MobileCardUI() {
                 >
                     <svg
                         style={{
-                            width: "32rem",
-                            height: "32rem",
+                            width: "32",
+                            height: "32",
                         }}
                         width="32"
                         height="32"
@@ -314,7 +314,7 @@ function MobileCardUI() {
                     className="shuffle"
                     onClick={() => shuffle()}
                     style={{
-                        y: "546rem",
+                        y: "546",
                     }}
                     whileHover={{
                         scale: 1.1,
@@ -322,8 +322,8 @@ function MobileCardUI() {
                 >
                     <svg
                         style={{
-                            width: "48rem",
-                            height: "48rem",
+                            width: "48",
+                            height: "48",
                         }}
                         width="48"
                         height="48"

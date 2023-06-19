@@ -94,28 +94,26 @@ function IncomingFileItem({ type, value, previewUrl, index, id, refetch }) {
         >
             {type === "incomingUrl" && (
                 <Image
-                    layout="responsive"
-                    width="82rem"
-                    height="82rem"
+                    width="82"
+                    height="82"
                     src="https://ucarecdn.com/8367c6e0-2a0f-40c0-9bbb-7bf74754a3a5/"
                     alt="preview"
-                    objectFit="cover"
+                    className="object-cover"
                 />
             )}
             {type === "incoming" && (
                 <>
                     {value.type.startsWith("image/") && (
                         <Image
-                            layout="responsive"
-                            width="82rem"
-                            height="82rem"
+                            width="82"
+                            height="82"
                             src={previewUrl}
                             alt="preview"
-                            objectFit="cover"
+                            className="object-cover"
                         />
                     )}
                     {value.type.startsWith("video/") && (
-                        <video width="82rem" height="82rem" controls>
+                        <video width="82" height="82" controls>
                             <source src={previewUrl} type={value.type} />
                             Your browser does not support the video tag.
                         </video>

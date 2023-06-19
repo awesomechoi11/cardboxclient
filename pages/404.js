@@ -22,19 +22,17 @@ export default function Custom404() {
                 <div>
                     {clicked ? (
                         <Image
-                            width="360w"
-                            height="322w"
-                            objectFit="contain"
-                            layout="responsive"
+                            width="360"
+                            height="322"
+                            className="object-contain"
                             src="/assets/img/404 - 2.png"
                             alt="cute cate -  404"
                         />
                     ) : (
                         <Image
-                            width="360w"
-                            height="322w"
-                            objectFit="contain"
-                            layout="responsive"
+                            width="360"
+                            height="322"
+                            className="object-contain"
                             src="/assets/img/404 - 1.png"
                             alt="cute cate -  404"
                         />

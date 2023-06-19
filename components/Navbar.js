@@ -185,8 +185,8 @@ const close = (setIsOpen) => (
     <svg
         onClick={() => setIsOpen(false)}
         style={{
-            width: "32rem",
-            height: "32rem",
+            width: "32",
+            height: "32",
         }}
         width="32"
         height="32"
@@ -207,8 +207,8 @@ const Hamburger = (setIsOpen) => (
     <svg
         onClick={() => setIsOpen(true)}
         style={{
-            width: "32rem",
-            height: "32rem",
+            width: "32",
+            height: "32",
         }}
         width="32"
         height="32"

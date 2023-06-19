@@ -116,10 +116,9 @@ function Preview({ data }) {
                         <Image
                             alt="selected card pack"
                             src={image?.value?.cdnUrl}
-                            layout="responsive"
-                            width="64rem"
-                            height="54rem"
-                            objectFit="cover"
+                            width="64"
+                            height="54"
+                            className="object-cover"
                         />
                     </div>
                 )}
@@ -129,8 +128,8 @@ function Preview({ data }) {
                 <div className="stat">
                     <svg
                         style={{
-                            width: "32rem",
-                            height: "32rem",
+                            width: "32",
+                            height: "32",
                         }}
                         width="32"
                         height="32"
@@ -151,8 +150,8 @@ function Preview({ data }) {
                 <div className="stat">
                     <svg
                         style={{
-                            width: "32rem",
-                            height: "32rem",
+                            width: "32",
+                            height: "32",
                         }}
                         width="32"
                         height="32"
@@ -173,8 +172,8 @@ function Preview({ data }) {
                 <div className="stat">
                     <svg
                         style={{
-                            width: "32rem",
-                            height: "32rem",
+                            width: "32",
+                            height: "32",
                         }}
                         width="32"
                         height="32"
@@ -215,8 +214,8 @@ function Preview({ data }) {
                 <div className="stat">
                     <svg
                         style={{
-                            width: "32rem",
-                            height: "32rem",
+                            width: "32",
+                            height: "32",
                         }}
                         width="32"
                         height="32"
