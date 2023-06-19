@@ -8,6 +8,7 @@ import { useMongo } from "../components/Mongo/MongoUtils";
 import Navbar from "../components/Navbar";
 import { cardpackSchema } from "../schemas/cardpacks/publishedCardpack";
 import HomePage from "@components/Home/HomePage";
+import Footer from "@components/Home/Footer";
 
 export default function Home() {
     // this will try to login with anonymous
@@ -20,11 +21,12 @@ export default function Home() {
             </Head>
             <Navbar />
             <main id="home" className="p-0">
-                <Hero />
+                {/* <Hero /> */}
                 <HomePage />
-                <CreateYourOwnPacks play={play} />
-                <InteractiveStudyModes play={play} />
+                {/* <CreateYourOwnPacks play={play} />
+                <InteractiveStudyModes play={play} /> */}
             </main>
+            <Footer />
         </>
     );
 }

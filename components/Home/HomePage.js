@@ -1,14 +1,17 @@
 import clsx from "clsx";
 import Button from "@components/general/Button";
+import { useRouter } from "next/router";
 import Image from "next/image";
 
 export default function HomePage() {
+    const router = useRouter();
+
     return (
         <div>
-            <section className="pt-12 pb-10 bg-white">
+            <section className="pt-7 pb-10 bg-white dark:bg-black">
                 <div className="flex items-center w-4/6 mx-auto mb-12 justify-evenly">
                     <div className="w-1/3 space-y-3 text-left">
-                        <p className="text-3xl font-semibold">
+                        <p className="text-3xl font-semibold leading-tight">
                             Study <span className="text-pink-500">smarter</span>{" "}
                             <br></br> not harder
                         </p>
@@ -18,7 +21,12 @@ export default function HomePage() {
                             by the simplicity of flashcards and the flexibility
                             of digital learning
                         </p>
-                        <Button variant="pink">Browse Packs</Button>
+                        <Button 
+                            variant="pink"
+                            onClick={() => router.push("/browse")}
+                        >
+                            Browse Packs
+                        </Button>
                     </div>
                     <Image
                         src="/assets/img/placeholder.png"
@@ -36,7 +44,7 @@ export default function HomePage() {
                         height="375"
                     />
                     <div className="w-1/3 space-y-3 text-right">
-                        <p className="text-3xl font-semibold">
+                        <p className="text-3xl font-semibold leading-tight">
                             Unlock your{" "}
                             <span className="text-yellow-500">potential</span>
                         </p>
@@ -51,9 +59,9 @@ export default function HomePage() {
                 </div>
             </section>
 
-            <section className="flex justify-center py-12 bg-slate-50">
+            <section className="flex justify-center py-10 bg-slate-50">
                 <div className="w-1/3 space-y-3 text-center">
-                    <p className="text-3xl font-semibold">
+                    <p className="text-3xl font-semibold leading-tight">
                         Learning <br></br>{" "}
                         <span className="text-cyan-500">Redefined!</span>
                     </p>
@@ -76,3 +84,5 @@ export default function HomePage() {
         </div>
     );
 }
+
+
