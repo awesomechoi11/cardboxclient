@@ -30,6 +30,7 @@ module.exports = {
                 24: "208px",
                 28: "240px",
                 32: "272px",
+                40: "520px",
             },
             fontSize: {
                 xs: "10px",
