@@ -7,7 +7,7 @@ import PublishModal from "./PublishModal/_PublishModal";
 
 export default function ModalRoot() {
     return (
-        <div id="modal-root">
+        <div id="modal-root"  className="absolute overflow-auto pointer-events-none w-full h-screen z-10 top-0 ">
             <LoginModal />
             <FilePickerModal />
             <PublishModal />
@@ -57,7 +57,8 @@ export function ModalWrapper({ modalId, children, className, ...props }) {
                 <motion.div
                     className={clsx(
                         "modal-container",
-                        className
+                        className,
+                        "cursor-pointer w-full min-h-full p-10 flex items-center flex-col box-border bg-blue-300/50 opacity-0 "
                         // isOpen && "active"
                     )}
                     {...props}
@@ -71,13 +72,13 @@ export function ModalWrapper({ modalId, children, className, ...props }) {
                     }}
                 >
                     <div
-                        className="content"
+                        className="content border-box cursor-auto relative bg-brown-50 rounded-xl w-[600px] h-[770px] py-11 px-10 m-auto text-center"
                         onClick={(e) => {
                             e.stopPropagation();
                         }}
                     >
                         <button
-                            className="exit-button"
+                            className="flex justify-center items-center absolute -translate-y-11 translate-x-40 cursor-pointer bg-brown-50 h-6 w-6 rounded-xl hover:scale-110 transition linear duration-600"
                             onClick={() => toggle()}
 
                             // tabIndex="0"

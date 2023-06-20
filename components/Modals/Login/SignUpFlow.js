@@ -29,14 +29,11 @@ function StageOne({ setStage, data, setMode }) {
     const { registerEmailPassword } = useMongo();
     return (
         <>
-            <div className="title-1">Sign Up</div>
-            <div className="description-1">
+            <div className="title-1 mb-4">Sign Up</div>
+            <div className="description-1 mb-6">
                 Create, Share, and Learn with Flippy
             </div>
-            {/* <div className="socials">
-                <div>{facebook_svg}</div>
-                <div>{google_svg}</div> <div>{apple_svg}</div>
-            </div> */}
+
             <Formik
                 initialValues={{
                     formBasicEmail: "",
@@ -83,24 +80,27 @@ function StageOne({ setStage, data, setMode }) {
                         });
                 }}
             >
-                <Form>
+                <Form className="text-left mb-10 mt-6">
                     <MyTextInput
                         label="Email"
                         type="email"
                         placeholder="Enter email"
                         controlId="formBasicEmail"
+                        className="mb-2"
                     />
                     <MyTextInput
                         label="Password"
                         type="password"
                         placeholder="Enter password"
                         controlId="formBasicPassword"
+                        className="mb-2"
                     />
-                    <MySubmitButton variant="primary">Sign Up</MySubmitButton>
+                    <MySubmitButton variant="primary"
+                    className="w-full mt-4">Sign Up</MySubmitButton>
                 </Form>
             </Formik>
             <div
-                className="subtitle-1 switch"
+                className="subtitle-1 switch cursor-pointer"
                 onClick={() => {
                     setMode("login");
                 }}
