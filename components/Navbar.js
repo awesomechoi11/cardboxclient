@@ -158,7 +158,8 @@ function SearchBar() {
 
 function Right() {
     const { isAnon } = useMongo();
-    return !isAnon ? <AuthedSection /> : <UnauthedSection />;
+    return <UnauthedSection />
+    //!isAnon ? <AuthedSection /> : <UnauthedSection />;
 }
 
 function subjectSelect() {

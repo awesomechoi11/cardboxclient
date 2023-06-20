@@ -5,16 +5,16 @@ const buttonVariants = {
         // default
         "rounded-lg",
         "font-semibold",
-        "bg-brown-600",
+        "bg-blue-800",
         "text-brown-50",
         //hover
-        "hover:bg-brown-400",
+        "hover:bg-blue-400",
         "hover:text-brown-50",
         //disabled
         "disabled:bg-brown-200",
         "disabled:text-brown-300",
         //active
-        "active:bg-brown-400",
+        "active:bg-blue-400",
         "active:text-brown-50",
     ],
     create: [
