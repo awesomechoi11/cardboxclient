@@ -9,13 +9,10 @@
 // My Sass
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;800;900&family=Nunito:wght@600;800&display=swap");
 @import "./CardPack/CardPack.scss";
-@import "./Modals/ModalRoot.scss";
-@import "Navbar.scss";
 @import "ConfirmEmail.scss";
 @import "CreatePack.scss";
 @import "Editor.scss";
 @import "MyComponents.scss";
-@import "Home.scss";
 @import "Browse.scss";
 @import "popper.scss";
 @import "PlaceholderColumn.scss";
@@ -50,7 +47,6 @@ body,
 }
 main {
     width: 100%;
-    padding: 0 530rem;
     box-sizing: border-box;
     margin-bottom: 10vh;
 }

@@ -9,13 +9,13 @@ export default function HomePage() {
     return (
         <div>
             <section className="pt-7 pb-10 bg-white dark:bg-black">
-                <div className="flex items-center w-4/6 mx-auto mb-12 justify-evenly">
+                <div className="flex items-center w-4/6 mx-auto mb-9 justify-evenly">
                     <div className="w-1/3 space-y-3 text-left">
                         <p className="text-3xl font-semibold leading-tight">
                             Study <span className="text-pink-500">smarter</span>{" "}
                             <br></br> not harder
                         </p>
-                        <p>
+                        <p className="text-base">
                             Whatever your learning journey, flippy is here to
                             guide you. Dive into a world of knowledge, powered
                             by the simplicity of flashcards and the flexibility
@@ -48,7 +48,7 @@ export default function HomePage() {
                             Unlock your{" "}
                             <span className="text-yellow-500">potential</span>
                         </p>
-                        <p>
+                        <p className="text-base">
                             Whatever your learning journey, flippy is here to
                             guide you. Dive into a world of knowledge, powered
                             by the simplicity of flashcards and the flexibility
@@ -70,8 +70,9 @@ export default function HomePage() {
                         alt="pooperfarthead"
                         width={409}
                         height={115}
+                        className="mx-auto"
                     />
-                    <p>
+                    <p className="text-base">
                         Our intuitive and easy-to-use flashcard app is designed
                         to help you learn and retain information more
                         effectively. Whether you{"'"}re a student or a
