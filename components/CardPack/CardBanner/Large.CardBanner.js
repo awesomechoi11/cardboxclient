@@ -5,7 +5,7 @@ import Button from "@components/general/Button";
 export default function LargeCardBanner({ data }) {
     const { tags, title, description, image, cards } = data;
     // const isMobile = useIsMobile();
-    const imgSrc = image?.value?.cdnUrl;
+    let imgSrc = normalizeImageSrc(image);
     const router = useRouter();
     return (
         <div className="large-card-banner">

@@ -184,7 +184,7 @@ export default function Card({
 }
 
 function CardFace({ data: { image, content }, backgroundColor }) {
-    const imgSrc = image?.value?.cdnUrl;
+    let imgSrc = normalizeImageSrc(image);
 
     return (
         <motion.div

@@ -16,6 +16,7 @@ export default async function sitemap(req, res) {
         const cardpacks = await apiUser.functions.getPublicCardPacks();
         // Get the paths we want to pre-render based on posts
         cardpacks.forEach((pack) => {
+            let imgSrc = normalizeImageSrc(pack.image);
             smStream.write({
                 url: `/card-pack/${pack._id}?slug=${slugify(pack.title)}`,
                 lastmod: pack.lastModified.toISOString(),
@@ -23,7 +24,7 @@ export default async function sitemap(req, res) {
                 priority: 0.9,
                 img: [
                     {
-                        url: pack?.image?.value?.cdnUrl,
+                        url: imgSrc,
                     },
                 ],
             });
