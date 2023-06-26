@@ -6,6 +6,7 @@ import { useContext } from "react";
 import Button from "@components/general/Button";
 import { CardPackContext } from "../../pages/card-pack/[cardPackId]/[modePath]";
 import PlaceholderColumn from "../PlaceholderColumn";
+import { normalizeImageSrc } from "@components/general/NormalizedImage";
 
 const previewAnim = {
     initial: {
@@ -107,15 +108,15 @@ function Preview({ data }) {
         image,
     } = data;
     const router = useRouter();
-
+    let imgSrc = normalizeImageSrc(image);
     return (
         <div className="inner">
             <div className="header">
-                {image?.value?.cdnUrl && (
+                {imgSrc && (
                     <div className="img">
                         <Image
                             alt="selected card pack"
-                            src={image?.value?.cdnUrl}
+                            src={imgSrc}
                             width="64"
                             height="54"
                             className="object-cover"

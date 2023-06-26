@@ -14,6 +14,7 @@ import Button from "@components/general/Button";
 import PlaceholderColumn from "../../PlaceholderColumn";
 import useDeleteFileMutation from "../../Mongo/Files/useDeleteFileMutation";
 import { toast } from "react-toastify";
+import { normalizeImageSrc } from "@components/general/NormalizedImage";
 
 export const pickerIncomingFileItemState = atom({
     key: "pickerIncomingFileItemState",
@@ -55,23 +56,14 @@ export default function FileItemList() {
             {isSuccess &&
                 !!data?.files?.length &&
                 (() => {
-                    let files = data.files.map((file, index) => {
-                        switch (file.type) {
-                            case "uploadcare":
-                                return (
-                                    <UploadCareFileItem
-                                        {...file}
-                                        key={file.value.uuid}
-                                        index={index}
-                                        refetch={refetch}
-                                    />
-                                );
-
-                            default:
-                                // dont show on list if not handled
-                                return null;
-                        }
-                    });
+                    let files = data.files.map((file, index) => (
+                        <FileItem
+                            file={file}
+                            key={file.value.uuid}
+                            index={index}
+                            refetch={refetch}
+                        />
+                    ));
                     return <PaginatedList files={files.reverse()} />;
                 })()}
             <IncomingFileList refetch={refetch} />
@@ -160,8 +152,9 @@ function PaginatedList({ files }) {
     );
 }
 
-function UploadCareFileItem({ type, value, index, refetch }) {
-    let previewUrl = value.cdnUrl;
+function FileItem({ file, index, refetch }) {
+    const { type, value } = file;
+    let previewUrl = normalizeImageSrc(file);
 
     const isVideo = value.mimeType.startsWith("video/");
     const isImage = value.mimeType.startsWith("image/");

@@ -3,6 +3,7 @@ import fastEqual from "fast-deep-equal";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useModal } from "./Modals/ModalUtils";
+import { normalizeImageSrc } from "./general/NormalizedImage";
 
 const noop = () => {};
 export default function MyFilePicker({
@@ -22,7 +23,7 @@ export default function MyFilePicker({
             onUpdate(file);
         }
     }, [file, onUpdate]);
-
+    let imgSrc = normalizeImageSrc(file);
     return (
         <div className="file-picker-wrapper">
             <label className="form-label">Cover Image</label>
@@ -35,13 +36,13 @@ export default function MyFilePicker({
                 }
                 className="inner"
             >
-                {file?.value?.cdnUrl ? (
+                {imgSrc ? (
                     <div className="preview-image">
                         <Image
                             className="object-cover"
                             fill
-                            src={file.value.cdnUrl}
-                            key={file.value.cdnUrl}
+                            src={imgSrc}
+                            key={imgSrc}
                             alt="drag n drop"
                         />
                     </div>

@@ -21,10 +21,10 @@ export default function IncomingFileList({ refetch }) {
     return (
         <>
             <motion.div className="file-item-list incoming" layout>
-                <AnimatePresence exitBeforeEnter>
+                <AnimatePresence mode="wait">
                     {incomingFiles.map((file, index) => (
                         <IncomingFileItem
-                            {...file}
+                            file={file}
                             key={file.key}
                             index={index}
                             id={file.key}
@@ -37,7 +37,8 @@ export default function IncomingFileList({ refetch }) {
     );
 }
 
-function IncomingFileItem({ type, value, previewUrl, index, id, refetch }) {
+function IncomingFileItem({ index, id, refetch }) {
+    const { type, value, previewUrl } = file;
     const removeIncomingFile = useSetRecoilState(pickerIncomingFileItemRemover);
 
     const progressValue = useSpring(0, { stiffness: 30 });

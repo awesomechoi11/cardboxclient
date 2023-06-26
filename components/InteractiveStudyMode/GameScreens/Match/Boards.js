@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import PlaceholderColumn from "../../../PlaceholderColumn";
 import { cardFaceFamily, cardFacesSelector, gameStateFamily } from "./utils";
+import { normalizeImageSrc } from "@components/general/NormalizedImage";
 
 export default function Board() {
     const { cardFaces } = useRecoilValue(cardFacesSelector);
@@ -135,7 +136,7 @@ function CardFace({ faceId }) {
     const controls = useAnimation();
     const [cardState, setCardState] = useRecoilState(cardFaceFamily(faceId));
     const { image, content, gameState } = cardState;
-    const imgSrc = image?.value?.cdnUrl;
+    const imgSrc = normalizeImageSrc(image);
     const [playing, setPlaying] = useRecoilState(gameStateFamily("playing"));
 
     // animation effects
