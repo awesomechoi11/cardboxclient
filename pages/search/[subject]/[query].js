@@ -1,6 +1,7 @@
 import Navbar from "@components/Navbar";
 import SubjectCard from "@components/Search/SubjectCard";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 const subjectCards = [
   {
@@ -72,7 +73,9 @@ const subjectCards = [
   },
 ];
 
-export default function Search({ params: { query } }) {
+export default function Search({ params }) {
+  const router = useRouter();
+  const { query, subject } = router.query;
   return (
     <>
       <Head>
@@ -80,7 +83,7 @@ export default function Search({ params: { query } }) {
       </Head>
       <Navbar />
       <main className="p-0">
-        {query}
+        {query} {subject}
         <div className="flex gap-4">
           {subjectCards.map((data, index) => (
             <SubjectCard {...data} key={index} />

@@ -30,7 +30,7 @@ export default function Searchbar() {
           .required("Required"),
       })}
       onSubmit={(values) => {
-        router.push(`/search/${values.query}`);
+        router.push(`/search/any/${values.query}`);
       }}
     >
       {({
@@ -124,7 +124,6 @@ function SearchAutocomplete({ focused }) {
       keepPreviousData: true,
     }
   );
-  console.log(data);
 
   return (
     <AnimatePresence>
@@ -148,8 +147,8 @@ function SearchAutocomplete({ focused }) {
                   <button
                     type="button"
                     onClick={(e) => {
-                      //   helpers.setValue(result.title);
-                      router.push(`/search/${result.title}`);
+                      helpers.setValue(result.title);
+                      router.push(`/search/any/${result.title}`);
                     }}
                     key={result._id}
                     className="px-1 py-3 rounded-xl hover:bg-blue-200 text-left transition-colors"
