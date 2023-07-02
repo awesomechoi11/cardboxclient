@@ -16,6 +16,7 @@ import PlaceholderColumn from "../PlaceholderColumn";
 import { MyHoverTooltip } from "../Tooltip/MyClickTooltip";
 import { DUPLICATE_SVG, LIKE_SVG, SHARE_SVG } from "./_icons";
 import Link from "next/link";
+import { normalizeImageSrc } from "@components/general/NormalizedImage";
 const previewAnim = {
     initial: {
         scale: 0.98,
@@ -220,7 +221,7 @@ function ContentPreview({ data: { totalCards, cardsPreview } }) {
     );
 }
 function Field({ data: { content, id, image }, label }) {
-    const imgSrc = image?.value?.cdnUrl;
+    const imgSrc = normalizeImageSrc(image);
     return (
         <div className="field">
             {imgSrc && (
@@ -444,7 +445,7 @@ function Details({
         selectedState: [selected],
     } = useContext(BrowseContext);
     const imgSrc =
-        image?.value?.cdnUrl ||
+        normalizeImageSrc(image) ||
         "https://ucarecdn.com/8367c6e0-2a0f-40c0-9bbb-7bf74754a3a5/";
 
     return (

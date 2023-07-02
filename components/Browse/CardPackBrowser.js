@@ -9,6 +9,7 @@ import PlaceholderColumn from "../PlaceholderColumn";
 import { useRouter } from "next/router";
 import { useIsMobile } from "@components/mediaQueryHooks";
 import Footer from "@components/Home/Footer";
+import { normalizeImageSrc } from "@components/general/NormalizedImage";
 // import ReactGA from "react-ga";
 
 export default function CardPackBrowser() {
@@ -155,7 +156,6 @@ function BrowserResults({ data: { query, label, collection } }) {
                     />
                 ))}
         </div>
-        
     );
 }
 
@@ -173,7 +173,7 @@ function CardPreviewDefault({ data, collection }) {
         selectedState: [selected, setSelected],
     } = useContext(BrowseContext);
     const isMobile = useIsMobile();
-    const imgSrc = image?.value?.cdnUrl;
+    const imgSrc = normalizeImageSrc(image);
     const router = useRouter();
     return (
         <div
@@ -198,6 +198,7 @@ function CardPreviewDefault({ data, collection }) {
                 <div className="left">
                     <Image
                         src={imgSrc}
+                        key={imgSrc}
                         alt="preview"
                         fill
                         className="object-cover"

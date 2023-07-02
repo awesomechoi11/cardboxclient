@@ -3,6 +3,7 @@ import fastEqual from "fast-deep-equal";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useModal } from "./Modals/ModalUtils";
+import { normalizeImageSrc } from "./general/NormalizedImage";
 
 const noop = () => {};
 export default function MyFilePicker({
@@ -22,7 +23,7 @@ export default function MyFilePicker({
             onUpdate(file);
         }
     }, [file, onUpdate]);
-
+    let imgSrc = normalizeImageSrc(file);
     return (
         <div className="file-picker-wrapper">
             <label className="form-label">Cover Image</label>
@@ -35,13 +36,13 @@ export default function MyFilePicker({
                 }
                 className="inner"
             >
-                {file?.value?.cdnUrl ? (
+                {imgSrc ? (
                     <div className="preview-image">
                         <Image
                             className="object-cover"
                             fill
-                            src={file.value.cdnUrl}
-                            key={file.value.cdnUrl}
+                            src={imgSrc}
+                            key={imgSrc}
                             alt="drag n drop"
                         />
                     </div>
@@ -90,7 +91,7 @@ export function MyFilePickerCreatePackField({
     }, [file, onUpdate]);
 
     // console.log(file, initialValue);
-
+    let imgSrc = normalizeImageSrc(file);
     return (
         <div
             className={clsx(className, "file-picker-wrapper-create-pack-field")}
@@ -104,14 +105,9 @@ export function MyFilePickerCreatePackField({
                 }
                 className="inner"
             >
-                {file?.value?.cdnUrl ? ( // next js image lags like crazy
+                {imgSrc ? ( // next js image lags like crazy
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                        width="85"
-                        height="76"
-                        src={file.value.cdnUrl}
-                        alt="preview"
-                    />
+                    <img width="85" height="76" src={imgSrc} alt="preview" />
                 ) : (
                     empty_svg
                 )}
