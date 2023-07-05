@@ -1,13 +1,6 @@
 @use "./vars";
 
 .placeholder-column {
-    display: flex;
-    flex-direction: column;
-    gap: 48rem;
-    align-items: center;
-    width: 400rem;
-    text-align: center;
-    word-break: break-word;
     .img-wrapper {
         height: 320rem;
         width: 360rem;

@@ -4,86 +4,87 @@ import Button from "@components/general/Button";
 import clsx from "clsx";
 
 export function MySubmitButton({ className, ...props }) {
-    const { isSubmitting } = useFormikContext();
-    return (
-        <Button
-            type="submit"
-            className={clsx("submit", className)}
-            disabled={isSubmitting}
-            {...props}
-        />
-    );
+  const { isSubmitting } = useFormikContext();
+  return (
+    <Button
+      type="submit"
+      className={clsx("submit", className)}
+      disabled={isSubmitting}
+      {...props}
+    />
+  );
 }
 
 export const ErrComponent = ({ err }) => {
-    switch (err) {
-        case "password":
-            return (
-                <>
-                    Must Have At Least:
-                    <ul>
-                        <li>8 Characters</li>
-                        <li>1 Uppercase (A-Z)</li>
-                        <li>1 Lowercase (a-z)</li>
-                        <li>1 Number (0-9)</li>
-                        <li>
-                            1 Special Case Character{" "}
-                            {`(~!@#$%^&*_-+=\`|\\(){}[]:;"'<>,.?/)`}
-                        </li>
-                    </ul>
-                </>
-            );
-        default:
-            return <>{err}</>;
-    }
+  switch (err) {
+    case "password":
+      return (
+        <>
+          Must Have At Least:
+          <ul>
+            <li>8 Characters</li>
+            <li>1 Uppercase (A-Z)</li>
+            <li>1 Lowercase (a-z)</li>
+            <li>1 Number (0-9)</li>
+            <li>
+              1 Special Case Character {`(~!@#$%^&*_-+=\`|\\(){}[]:;"'<>,.?/)`}
+            </li>
+          </ul>
+        </>
+      );
+    default:
+      return <>{err}</>;
+  }
 };
 
 export function MyTextInput({ label, controlId, ...props }) {
-    props.name = controlId;
-    // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
-    // which we can spread on <input>. We can use field meta to show an error
-    // message if the field is invalid and it has been touched (i.e. visited)
-    const [field, meta] = useField(props);
-    const { isSubmitting } = useFormikContext();
+  props.name = controlId;
+  // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
+  // which we can spread on <input>. We can use field meta to show an error
+  // message if the field is invalid and it has been touched (i.e. visited)
+  const [field, meta] = useField(props);
+  const { isSubmitting } = useFormikContext();
 
-    return (
-        <div className="my-text-input">
-            <label htmlFor={controlId}>{label}</label>
-            <input {...props} {...field} disabled={isSubmitting} />
-            {meta.touched && meta.error ? (
-                <div className="form-error">
-                    <ErrComponent err={meta.error} />
-                </div>
-            ) : null}
+  return (
+    <div className="my-text-input">
+      <label htmlFor={controlId} className="text-left">
+        {label}
+      </label>
+      <input {...props} {...field} disabled={isSubmitting} />
+      {meta.touched && meta.error ? (
+        <div className="form-error">
+          <ErrComponent err={meta.error} />
         </div>
-    );
+      ) : null}
+    </div>
+  );
 }
 
 export function MyTextArea({ label, controlId, ...props }) {
-    props.name = controlId;
-    // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
-    // which we can spread on <input>. We can use field meta to show an error
-    // message if the field is invalid and it has been touched (i.e. visited)
-    const [field, meta] = useField(props);
-    const { isSubmitting } = useFormikContext();
+  props.name = controlId;
+  // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
+  // which we can spread on <input>. We can use field meta to show an error
+  // message if the field is invalid and it has been touched (i.e. visited)
+  const [field, meta] = useField(props);
+  const { isSubmitting } = useFormikContext();
 
-    return (
-        <Form.Group controlId={controlId} className="my-text-input">
-            <Form.Label>{label}</Form.Label>
-            <Form.Control
-                as="textarea"
-                rows={5}
-                {...props}
-                {...field}
-                disabled={isSubmitting}
-            />
-            {meta.touched && meta.error ? (
-                <div className="form-error">
-                    <ErrComponent err={meta.error} />
-                </div>
-            ) : null}
-        </Form.Group>
-    );
+  return (
+    <Form.Group controlId={controlId} className="my-text-input">
+      <Form.Label>{label}</Form.Label>
+      <Form.Control
+        as="textarea"
+        rows={5}
+        {...props}
+        {...field}
+        disabled={isSubmitting}
+      />
+      {meta.touched && meta.error ? (
+        <div className="form-error">
+          <ErrComponent err={meta.error} />
+        </div>
+      ) : null}
+    </Form.Group>
+  );
 }
 
 // const MyCheckbox = ({ children, ...props }) => {

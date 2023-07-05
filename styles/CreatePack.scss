@@ -1,27 +1,7 @@
 @use "./vars";
 
-.back-to-top-button.track {
-    position: absolute;
-    top: 1457rem;
-    bottom: 75rem;
-    left: 230rem;
 
-    > .inner {
-        position: sticky;
-        top: calc(100vh - 256rem);
-    }
-}
-.placeholder-wrapper {
-    display: flex;
-    justify-content: center;
-}
 #CreatePack {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 48rem;
-    margin-bottom: 128rem;
 
     .add-btn {
         width: 100%;
@@ -31,25 +11,8 @@
         width: 100%;
     }
     .create-pack-controls {
-        background-color: vars.$color-secondary-1;
-        padding: 16rem 0;
-        display: flex;
-        align-items: center;
-        margin-bottom: 64rem;
-        height: 40rem;
-        position: relative;
-        &.top {
-            top: 0;
-            position: sticky;
-            z-index: 10;
-        }
         > * {
-            position: absolute;
-            width: 100%;
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            gap: 16rem;
+
             > * {
                 pointer-events: all;
             }
@@ -64,84 +27,11 @@
             justify-content: end;
         }
 
-        // &.bottom {
-        //     display: flex;
-        //     flex-direction: column;
-        //     gap: 64rem;
-        //     > .bottom {
-        //         display: flex;
-        //         justify-content: space-between;
-        //         align-items: center;
-        //         > * {
-        //             display: flex;
-        //             align-items: center;
-        //             gap: 16rem;
-        //         }
-        //     }
-        // }
+
     }
 
-    > #CreatePack-form {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        gap: 24rem;
-        > * > * {
-            text-align: center;
-            margin-bottom: 16rem;
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
-        label {
-            text-align: left;
-        }
-        > .middle {
-            flex-grow: 1;
-        }
-        > .right {
-            width: 200rem;
-            button {
-                width: 100%;
-            }
-            // width: 420rem;
-        }
-        > .left {
-            width: 198rem;
-            > .file-picker-wrapper {
-                margin-bottom: 16rem;
-                > .inner {
-                    cursor: pointer;
-                    border-radius: 16rem;
-                    padding: 24.7rem 30rem;
-                    border: 2px dashed vars.$color-primary-1;
-
-                    > .preview-image {
-                        max-width: 100%;
-                        height: 152rem;
-                        position: relative;
-                        img {
-                            object-fit: cover;
-                        }
-                    }
-                }
-                > .remove {
-                    cursor: pointer;
-                    text-align: center;
-                    padding: 8rem 0;
-                }
-            }
-        }
-    }
     .create-pack-row-item {
-        width: 860rem;
-        // height: 76rem;
-        margin-bottom: 64rem;
-        position: relative;
-        z-index: 2;
-        &.focused {
-            z-index: 3;
-        }
+
         .image-wrapper {
             flex-shrink: 0;
             width: 85rem;
