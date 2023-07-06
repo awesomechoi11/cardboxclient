@@ -9,12 +9,6 @@ export default async function handler(req, res) {
         let cursor;
 
         const { db: cachedDb, client, disconnect } = await connectToAtlas();
-        // let newConnection;
-        // let cachedDb = db;
-        // if (!db) {
-        //     newConnection = await connectToAtlas();
-        //     cachedDb = newConnection.db;
-        // }
 
         try {
             // Process a POST request
@@ -40,17 +34,11 @@ export default async function handler(req, res) {
             res.status(200).json({
                 results: result,
             });
-
-            // await disconnect();
         } catch (e) {
             res.status(400).json("something went wrong!");
             console.log(e);
         } finally {
-            if (cursor)
-                await cursor.close().then(() => {
-                    console.log("cursor closed");
-                });
-            // disconnect();
+            if (cursor) await cursor.close();
         }
     } else {
         // Handle any other HTTP method

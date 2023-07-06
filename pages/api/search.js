@@ -2,7 +2,6 @@ import { connectToAtlas } from "lib/mongodb";
 
 export default async function handler(req, res) {
     if (req.method === "POST") {
-        // console.log(req.body);
         if (!req.body.query || typeof req.body.query !== "string") {
             res.status(401).json("Unauthorized");
             return;
@@ -15,12 +14,6 @@ export default async function handler(req, res) {
         let cursor;
 
         const { db: cachedDb, client, disconnect } = await connectToAtlas();
-        // let newConnection;
-        // let cachedDb = db;
-        // if (!db) {
-        //     newConnection = await connectToAtlas();
-        //     cachedDb = newConnection.db;
-        // }
 
         try {
             // Process a POST request
@@ -95,19 +88,14 @@ export default async function handler(req, res) {
                 },
             ]);
             let result = await cursor.toArray();
-            // console.log(result);
             res.status(200).json({
                 results: result,
-                // total: result[0].totalCount[0].count,
             });
-
-            // await disconnect();
         } catch (e) {
             res.status(400).json("something went wrong!");
             console.log(e);
         } finally {
             if (cursor) await cursor.close();
-            // disconnect();
         }
     } else {
         // Handle any other HTTP method
