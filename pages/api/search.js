@@ -10,7 +10,7 @@ export default async function handler(req, res) {
         let subject = JSON.stringify(req.body.subject);
         let page = Number(JSON.stringify(req.body.page));
         let limit = 12;
-        console.log(query, subject, page);
+        console.log("search ", query, subject, page);
         let cursor;
 
         const { db: cachedDb, client, disconnect } = await connectToAtlas();

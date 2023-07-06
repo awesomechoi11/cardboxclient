@@ -4,7 +4,7 @@ import SearchPagination from "@components/Search/Search.Pagination";
 import SearchResultCard from "@components/Search/Search.ResultCard";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 
 export default function SearchSubjectQueryPage() {
@@ -14,6 +14,11 @@ export default function SearchSubjectQueryPage() {
 
     const [page, setPage] = useState(0);
     const { user, isReady } = useMongo();
+
+    useEffect(() => {
+        setPage(0);
+    }, [query]);
+
     const fetchProjects = ({ query, page, subject }) =>
         fetch(`/api/search`, {
             method: "POST",
@@ -53,7 +58,6 @@ export default function SearchSubjectQueryPage() {
             <Navbar />
             <main className="p-0 ">
                 {/* <SearchSubjectList /> */}
-                {isFetching && <>loading</>}
                 {isSuccess && (
                     <div className="mx-auto desktop:max-w-[1280px] tablet:max-w-[848px] max-w-[416px] pt-5">
                         <div className=" text-blue-950 text-[16px] font-semibold">
