@@ -92,7 +92,7 @@ function MyApp({ Component, pageProps }) {
       <QueryClientProvider client={queryClient}>
         <RecoilRoot>
           <MongoRoot>
-            <div className="text-blue-800 text-base">
+            <div className="text-blue-800 text-base bg-blue-100">
               <ModalRoot />
               <div id="app">
                 <Component {...pageProps} />

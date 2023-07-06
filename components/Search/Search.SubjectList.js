@@ -1,4 +1,7 @@
+import { useMongo } from "@components/Mongo/MongoUtils";
 import SubjectCard from "./SubjectCard";
+import { useRouter } from "next/router";
+import { useQuery } from "react-query";
 
 const subjectCards = [
   {
@@ -71,6 +74,32 @@ const subjectCards = [
 ];
 
 export default function SearchSubjectList({}) {
+  const router = useRouter();
+  const { query, subject } = router.query;
+
+  const { user, isReady } = useMongo();
+  const fetchProjects = ({ page = 0 }) =>
+    fetch(`/api/search`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${user.accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query,
+        page,
+        subject,
+      }),
+    }).then((res) => res.json());
+
+  const { isLoading, isError, error, data, isFetching, isPreviousData } =
+    useQuery({
+      queryKey: ["search", user, query, subject],
+      queryFn: () => fetchProjects({ page: 0, query, subject }),
+      keepPreviousData: true,
+      enabled: isReady,
+    });
+  console.log(data);
   return (
     <div className="mx-40 flex gap-4">
       {subjectCards.map((data, index) => (

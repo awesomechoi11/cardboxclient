@@ -46,10 +46,10 @@ export default function Searchbar() {
         <form
           onSubmit={handleSubmit}
           className="flex-grow relative"
-          autocomplete="off"
+          autoComplete="off"
         >
           <div tabindex="-1" onFocus={onFocus} onBlur={onBlur}>
-            <div className="relative rounded-md shadow-sm">
+            <div className="relative rounded-md">
               <div className="absolute left-0 flex items-center pt-[18px] pl-3 pointer-events-none">
                 <svg
                   width="21"
