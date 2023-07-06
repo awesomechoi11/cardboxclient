@@ -23,7 +23,7 @@ export default function Searchbar() {
             }}
             validationSchema={Yup.object({
                 query: Yup.string()
-                    .min(4, "Must be 4 characters or more")
+                    .min(3, "Must be 3 characters or more")
                     .max(254, "Must be 254 characters or less")
                     .required("Required"),
             })}

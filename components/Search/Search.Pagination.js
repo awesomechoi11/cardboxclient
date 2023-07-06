@@ -11,6 +11,7 @@ export default function SearchPagination({
 }) {
     let currentPagination = paginate({ current, max });
     const { current: page, prev, next, items } = currentPagination;
+    console.log(max, page, current === max - 1);
     return (
         <div className="hidden px-3 sm:flex sm:flex-1 sm:items-center sm:justify-between">
             <div>
@@ -32,6 +33,7 @@ export default function SearchPagination({
                         onClick={() => {
                             setPage(prev);
                         }}
+                        disabled={current === 0}
                     >
                         <span className="sr-only">Previous</span>
                         <ChevronLeftIcon
@@ -44,7 +46,10 @@ export default function SearchPagination({
                         currentPagination.items.map((pageNum, index) => {
                             if (typeof pageNum === "string") {
                                 return (
-                                    <span key={`${pageNum} ${index}`}>
+                                    <span
+                                        key={`${pageNum} ${index}`}
+                                        className="w-[48px] text-center"
+                                    >
                                         {pageNum}
                                     </span>
                                 );
@@ -70,6 +75,7 @@ export default function SearchPagination({
                         }}
                         size="roundedSm"
                         variant="primary"
+                        disabled={current === max - 1}
                     >
                         <span className="sr-only">Next</span>
                         <ChevronRightIcon
