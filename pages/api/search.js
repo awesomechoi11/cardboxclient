@@ -2,7 +2,7 @@ import { connectToAtlas } from "lib/mongodb";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
-    console.log(req.body);
+    // console.log(req.body);
     if (!req.body.query || typeof req.body.query !== "string") {
       res.status(401).json("Unauthorized");
       return;
