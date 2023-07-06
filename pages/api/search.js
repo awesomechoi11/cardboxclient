@@ -1,4 +1,4 @@
-import { connectToAtlas } from "lib/mongodb";
+import { connectToAtlas, db } from "lib/mongodb";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -12,13 +12,21 @@ export default async function handler(req, res) {
     let page = Number(JSON.stringify(req.body.page));
     let limit = 12;
     console.log(query, subject, page);
+    let cursor;
+
+    let newConnection;
+    let cachedDb;
+    if (!db) {
+      newConnection = await connectToAtlas();
+      cachedDb = newConnection.db;
+    }
+
     try {
       // Process a POST request
-      const { db, disconnect } = await connectToAtlas();
-      let collection = db.collection("testpacks");
+      let collection = cachedDb.collection("testpacks");
 
       console.info("query: ", query);
-      let cursor = await collection.aggregate([
+      cursor = await collection.aggregate([
         {
           $search: {
             index: "default",
@@ -86,18 +94,20 @@ export default async function handler(req, res) {
           },
         },
       ]);
-      let result = cursor.toArray();
+      let result = await cursor.toArray();
       // console.log(result);
       res.status(200).json({
         results: result,
         // total: result[0].totalCount[0].count,
       });
-      await cursor.close();
 
       // await disconnect();
     } catch (e) {
       res.status(400).json("something went wrong!");
       console.log(e);
+    } finally {
+      if (cursor) cursor.close();
+      newConnection.disconnect();
     }
   } else {
     // Handle any other HTTP method

@@ -1,4 +1,4 @@
-import { connectToAtlas } from "lib/mongodb";
+import { connectToAtlas, db } from "lib/mongodb";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -6,16 +6,23 @@ export default async function handler(req, res) {
       res.status(401).json("Unauthorized");
     }
     let query = JSON.stringify(req.body.query);
+    let cursor;
+
+    let newConnection;
+    let cachedDb;
+    if (!db) {
+      newConnection = await connectToAtlas();
+      cachedDb = newConnection.db;
+    }
+
     try {
       // Process a POST request
-      const { db, disconnect } = await connectToAtlas();
-      let collection = db.collection("testpacks");
-
+      let collection = cachedDb.collection("testpacks");
       console.info("query: ", query);
       if (!query) {
         throw Error("query invalid");
       }
-      let cursor = await collection.aggregate([
+      cursor = await collection.aggregate([
         {
           $search: {
             index: "testpackAutocomplete",
@@ -28,15 +35,18 @@ export default async function handler(req, res) {
         { $limit: 5 },
         { $project: { _id: 0, title: 1 } },
       ]);
-      let result = cursor.toArray();
+      let result = await cursor.toArray();
       res.status(200).json({
         results: result,
       });
-      await cursor.close();
+
       // await disconnect();
     } catch (e) {
       res.status(400).json("something went wrong!");
       console.log(e);
+    } finally {
+      if (cursor) cursor.close();
+      newConnection.disconnect();
     }
   } else {
     // Handle any other HTTP method
