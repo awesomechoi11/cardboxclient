@@ -18,82 +18,83 @@ export default async function handler(req, res) {
       let collection = db.collection("testpacks");
 
       console.info("query: ", query);
-      let result = await collection
-        .aggregate([
-          {
-            $search: {
-              index: "default",
-              text: {
-                query,
-                path: {
-                  wildcard: "*",
-                },
+      let cursor = await collection.aggregate([
+        {
+          $search: {
+            index: "default",
+            text: {
+              query,
+              path: {
+                wildcard: "*",
               },
             },
           },
-          {
-            $match: {
-              visibility: "public",
-            },
+        },
+        {
+          $match: {
+            visibility: "public",
           },
-          {
-            $project: {
-              _id: 1,
-              title: 1,
-              tags: 1,
-              // author: 1,
-              cards: 1,
-              image: 1,
-            },
+        },
+        {
+          $project: {
+            _id: 1,
+            title: 1,
+            tags: 1,
+            // author: 1,
+            cards: 1,
+            image: 1,
           },
-          {
-            $facet: {
-              result: [
-                // { // get author data too
-                //   $lookup: {
-                //     from: "users",
-                //     localField: "author",
-                //     foreignField: "_id",
-                //     as: "author",
-                //   },
-                // },
-                {
-                  $set: {
-                    cardsCount: { $size: "$cards" },
-                    previewCards: { $slice: ["$cards", 5] },
-                    subject: { $first: "$tags" },
-                  },
+        },
+        {
+          $facet: {
+            result: [
+              // { // get author data too
+              //   $lookup: {
+              //     from: "users",
+              //     localField: "author",
+              //     foreignField: "_id",
+              //     as: "author",
+              //   },
+              // },
+              {
+                $set: {
+                  cardsCount: { $size: "$cards" },
+                  previewCards: { $slice: ["$cards", 5] },
+                  subject: { $first: "$tags" },
                 },
-                { $unset: "cards" },
-                { $skip: page * limit },
-                { $limit: limit },
-              ],
-              subjectCounts: [
-                {
-                  $group: {
-                    _id: "$subject",
-                    count: { $count: {} },
-                  },
+              },
+              { $unset: "cards" },
+              { $skip: page * limit },
+              { $limit: limit },
+            ],
+            subjectCounts: [
+              {
+                $group: {
+                  _id: "$subject",
+                  count: { $count: {} },
                 },
-              ],
-              totalCount: [
-                {
-                  $group: {
-                    _id: null,
-                    count: { $count: {} },
-                  },
+              },
+            ],
+            totalCount: [
+              {
+                $group: {
+                  _id: null,
+                  count: { $count: {} },
                 },
-              ],
-            },
+              },
+            ],
           },
-        ])
-        .toArray();
+        },
+      ]);
+      let result = cursor.toArray();
       // console.log(result);
       res.status(200).json({
         results: result,
         // total: result[0].totalCount[0].count,
       });
-      await disconnect();
+      await cursor.close();
+
+      // await disconnect();
     } catch (e) {
       res.status(400).json("something went wrong!");
       console.log(e);
