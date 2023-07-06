@@ -1,17 +1,13 @@
 import { useMongo } from "@components/Mongo/MongoUtils";
 import Navbar from "@components/Navbar";
+import SearchPagination from "@components/Search/Search.Pagination";
 import SearchResultCard from "@components/Search/Search.ResultCard";
-import SearchSubjectList from "@components/Search/Search.SubjectList";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useQuery } from "react-query";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import { useState } from "react";
-import Button from "@components/general/Button";
-import { paginate } from "@components/utils";
-import SearchPagination from "@components/Search/Search.Pagination";
+import { useQuery } from "react-query";
 
-export default function SearchSubjectQueryPage({ params }) {
+export default function SearchSubjectQueryPage() {
   const router = useRouter();
   const { query, subject } = router.query;
   let limit = 12;

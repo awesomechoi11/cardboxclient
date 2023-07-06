@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     console.log(query, subject, page);
     try {
       // Process a POST request
-      const { db } = await connectToAtlas();
+      const { db, disconnect } = await connectToAtlas();
       let collection = db.collection("testpacks");
 
       console.info("query: ", query);
@@ -93,6 +93,7 @@ export default async function handler(req, res) {
         results: result,
         // total: result[0].totalCount[0].count,
       });
+      await disconnect();
     } catch (e) {
       res.status(400).json("something went wrong!");
       console.log(e);

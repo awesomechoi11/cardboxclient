@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     let query = JSON.stringify(req.body.query);
     try {
       // Process a POST request
-      const { db } = await connectToAtlas();
+      const { db, disconnect } = await connectToAtlas();
       let collection = db.collection("testpacks");
 
       console.info("query: ", query);
@@ -33,6 +33,7 @@ export default async function handler(req, res) {
       res.status(200).json({
         results: result,
       });
+      await disconnect();
     } catch (e) {
       res.status(400).json("something went wrong!");
       console.log(e);
