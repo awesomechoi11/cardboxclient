@@ -11,7 +11,7 @@ export default function Navbar() {
   const isMobile = useIsMobile();
 
   return (
-    <div className="flex gap-4 px-1 pt-3  tablet:px-4 desktop:px-[225px]">
+    <div className="flex gap-4 px-1 py-3  tablet:px-4 desktop:px-[225px] bg-white relative z-10">
       <Link
         href="/"
         onClick={() => {

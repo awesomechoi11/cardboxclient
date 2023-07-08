@@ -1,95 +1,88 @@
+import { useMongo } from "@components/Mongo/MongoUtils";
 import Navbar from "@components/Navbar";
-import SubjectCard from "@components/Search/SubjectCard";
+import SearchPagination from "@components/Search/Search.Pagination";
+import SearchResultCard from "@components/Search/Search.ResultCard";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
 
-const subjectCards = [
-  {
-    backgroundImg: {
-      src: "https://cdn.discordapp.com/attachments/1082157939906855083/1120225889892966470/image.png",
-      alt: "Hot air balloon flying over a river and mountains",
-    },
-    title: "Geography",
-    titleColor: "#FAFDFD",
-    topGradient:
-      "linear-gradient(180deg, #E6596B 0%, rgba(230, 89, 107, 0) 100%)",
+export default function SearchSubjectQueryPage() {
+    const router = useRouter();
+    const { query, subject } = router.query;
+    let limit = 12;
 
-    subtitle: "62 topics",
-    subtitleColor: "#FAFDFD",
-    bottomGradient:
-      "linear-gradient(180deg, rgba(14, 46, 66, 0) 0%, #0E2E42 100%)",
+    const [page, setPage] = useState(0);
+    const { user, isReady } = useMongo();
 
-    to: "/subject/geography",
-  },
-  {
-    backgroundImg: {
-      src: "https://cdn.discordapp.com/attachments/1082157939906855083/1120234810531643482/image.png",
-      alt: "Morning sunrise on a river between desert mountains",
-    },
-    title: "History",
-    titleColor: "#FAFDFD",
-    topGradient:
-      "linear-gradient(180deg, #4592BC 0%, rgba(69, 146, 188, 0) 100%)",
+    useEffect(() => {
+        setPage(0);
+    }, [query]);
 
-    subtitle: `US History, Ancient History, Japanese History`,
-    subtitleColor: "#FAFDFD",
-    bottomGradient:
-      "linear-gradient(180deg, rgba(14, 46, 66, 0) 0%, #0E2E42 100%)",
+    const fetchProjects = ({ query, page, subject }) =>
+        fetch(`/api/search`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${user.accessToken}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                query,
+                page,
+                subject,
+            }),
+        }).then(async (res) => (await res.json()).results[0]);
 
-    to: "/subject/history",
-  },
-  {
-    backgroundImg: {
-      src: "https://cdn.discordapp.com/attachments/1082157939906855083/1120234811030782003/image.png",
-      alt: "Egyptian Sphynx in a middle of a oasis",
-    },
-    title: "Architecture",
-    titleColor: "#031024",
-    topGradient:
-      "linear-gradient(180deg, #FACE6C 0%, rgba(250, 206, 108, 0) 100%)",
+    const {
+        isLoading,
+        isSuccess,
+        isError,
+        error,
+        data,
+        isFetching,
+        isPreviousData,
+    } = useQuery({
+        queryKey: ["search", user, query, page, subject],
+        queryFn: () => fetchProjects({ page, query, subject }),
+        keepPreviousData: true,
+        enabled: isReady,
+        refetchOnWindowFocus: false,
+    });
 
-    subtitle: `Architectural History, Codes and Regulations, Models`,
-    subtitleColor: "#FAFDFD",
-    bottomGradient:
-      "linear-gradient(180deg, rgba(14, 46, 66, 0) 0%, #0E2E42 100%)",
-
-    to: "/subject/architecture",
-  },
-  {
-    backgroundImg: {
-      src: "https://cdn.discordapp.com/attachments/1082157939906855083/1120234811525705818/image.png",
-      alt: "Starry night sky, curious man with ladder gazing upwards",
-    },
-    title: "Physics",
-    titleColor: "#FAFDFD",
-    topGradient: "linear-gradient(0deg, rgba(19, 30, 58, 0) 0%, #141E3B 100%)",
-
-    subtitle: `Astrophysics, Nuclear physics, AP Physics`,
-    subtitleColor: "#FAFDFD",
-    bottomGradient:
-      "linear-gradient(180deg, rgba(14, 46, 66, 0) 0%, #0E2E42 100%)",
-
-    to: "/subject/physics",
-  },
-];
-
-export default function Search({ params }) {
-  const router = useRouter();
-  const { query, subject } = router.query;
-  return (
-    <>
-      <Head>
-        <title key="title">Flippy - Home - Flashcard App</title>
-      </Head>
-      <Navbar />
-      <main className="p-0">
-        {query} {subject}
-        <div className="flex gap-4">
-          {subjectCards.map((data, index) => (
-            <SubjectCard {...data} key={index} />
-          ))}
-        </div>
-      </main>
-    </>
-  );
+    console.log(data);
+    return (
+        <>
+            <Head>
+                <title key="title">Flippy - Home - Flashcard App</title>
+            </Head>
+            <Navbar />
+            <main className="p-0 ">
+                {/* <SearchSubjectList /> */}
+                {isSuccess && (
+                    <div className="mx-auto desktop:max-w-[1280px] tablet:max-w-[848px] max-w-[416px] pt-5">
+                        <div className=" text-blue-950 text-[16px] font-semibold">
+                            Results ({data?.totalCount[0].count})
+                        </div>
+                        <div className="grid grid-cols-1 mb-3 gap-x-3 gap-y-4 desktop:grid-cols-3 tablet:grid-cols-2">
+                            {data?.result?.map((cardData) => (
+                                <SearchResultCard
+                                    cardData={cardData}
+                                    key={cardData._id}
+                                />
+                            ))}
+                        </div>
+                        <SearchPagination
+                            current={page}
+                            max={Math.ceil(
+                                Number(data?.totalCount[0].count) / limit
+                            )}
+                            maxDocs={Number(data?.totalCount[0].count)}
+                            limit={limit}
+                            setPage={setPage}
+                        />
+                    </div>
+                )}
+            </main>
+        </>
+    );
 }

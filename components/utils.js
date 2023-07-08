@@ -128,3 +128,39 @@ export const Timer = function (callback = () => {}, duration = 1000) {
 
     this.resume();
 };
+
+// https://www.zacfukuda.com/blog/pagination-algorithm
+export function paginate({ current, max }) {
+    const itemsLength = Math.min(max, 7);
+
+    if (current !== 0) if (!current || !max) return null;
+
+    let prev = Math.max(0, current - 1),
+        next = Math.min(current + 1, max - 1),
+        items = [0];
+
+    if (current === 0 && max === 1) return { current, prev, next, items };
+    if (current > 2) items.push("…");
+
+    let range = 1;
+    let startLeft = current - range;
+    let endRight = current + range;
+
+    for (
+        let i = startLeft > 1 ? Math.min(startLeft, max - itemsLength + 3) : 1;
+        i <=
+        Math.min(
+            max - 1,
+            endRight + 1 < max - 1
+                ? Math.max(itemsLength - 3, endRight)
+                : endRight
+        );
+        i++
+    )
+        items.push(i);
+
+    if (endRight + 1 < max - 1) items.push("…");
+    if (endRight < max - 1) items.push(max - 1);
+
+    return { current, prev, next, items };
+}

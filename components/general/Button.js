@@ -3,22 +3,20 @@ import clsx from "clsx";
 const buttonVariants = {
     primary: [
         // default
-        "rounded-lg",
         "font-semibold",
         "bg-blue-800",
         "text-brown-50",
         //hover
-        "hover:bg-blue-400",
+        "hover:bg-blue-700",
         "hover:text-brown-50",
         //disabled
-        "disabled:bg-brown-200",
-        "disabled:text-brown-300",
+        "disabled:bg-blue-200",
+        "disabled:text-blue-400",
         //active
-        "active:bg-blue-400",
+        "active:bg-blue-700",
         "active:text-brown-50",
     ],
     create: [
-        "rounded-lg",
         "font-semibold",
         "bg-blue-800",
         "text-brown-50",
@@ -35,7 +33,6 @@ const buttonVariants = {
 
     danger: [
         // default
-        "rounded-lg",
         "font-semibold",
         "bg-rose-600",
         "text-rose-100",
@@ -49,7 +46,6 @@ const buttonVariants = {
         "active:text-rose-100",
     ],
     secondary: [
-        "rounded-lg",
         "font-semibold",
         "bg-transparent",
         "text-blue-800",
@@ -57,15 +53,14 @@ const buttonVariants = {
         "hover:bg-blue-300",
         "hover:text-blue-800",
         //disabled
-        "disabled:bg-brown-50",
-        "disabled:text-brown-200",
+        "disabled:bg-blue-50",
+        "disabled:text-blue-400",
         //active
         "active:bg-blue-300",
         "active:text-blue-800",
     ],
 
     pink: [
-        "rounded-lg",
         "font-semibold",
         "bg-pink-600",
         "text-brown-50",
@@ -81,7 +76,6 @@ const buttonVariants = {
     ],
 
     yellow: [
-        "rounded-lg",
         "font-semibold",
         "bg-yellow-400",
         "text-black",
@@ -97,7 +91,6 @@ const buttonVariants = {
     ],
 
     cyan: [
-        "rounded-lg",
         "font-semibold",
         "bg-cyan-400",
         "text-black",
@@ -110,12 +103,13 @@ const buttonVariants = {
         //active
         "active:bg-cyan-300",
         "active:text-black",
-    ]
+    ],
 };
 const sizeVariants = {
+    roundedSm: ["text-base rounded-full px-2 py-2 "],
     sm: ["text-base rounded-sm px-3 py-2 "],
     default: ["text-base rounded px-4 py-3 "],
-    xs: ["text-base rounded px-1 py-1 h-6"]
+    xs: ["text-base rounded px-1 py-1 h-6"],
 };
 export default function Button({
     variant = "primary",
@@ -131,7 +125,7 @@ export default function Button({
                 buttonVariants[variant],
                 sizeVariants[size],
                 className,
-                "transition ease-in-out duration-180 active:scale-75"
+                "transition ease-in-out duration-180 active:scale-95 disabled:pointer-events-none"
             )}
         >
             {children}
