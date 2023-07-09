@@ -11,7 +11,6 @@ export default function SearchPagination({
 }) {
     let currentPagination = paginate({ current, max });
     const { current: page, prev, next, items } = currentPagination;
-    console.log(max, page, current === max - 1);
     return (
         <div className="hidden px-3 sm:flex sm:flex-1 sm:items-center sm:justify-between">
             <div>

@@ -67,7 +67,6 @@ export function ModalWrapper({
     ...props
 }) {
     const { toggle, isOpen } = useModal(modalId);
-    console.log(isOpen, modalId);
     return (
         <AnimatePresence>
             {isOpen && (

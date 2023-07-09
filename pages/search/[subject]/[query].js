@@ -49,7 +49,6 @@ export default function SearchSubjectQueryPage() {
         refetchOnWindowFocus: false,
     });
 
-    console.log(data);
     return (
         <>
             <Head>
