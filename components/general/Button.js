@@ -6,30 +6,30 @@ const buttonVariants = {
         // default
         "font-semibold",
         "bg-blue-600",
-        "text-brown-50",
+        "text-blue-100",
         //hover
         "hover:bg-blue-700",
-        "hover:text-brown-50",
+        "hover:text-blue-100",
         //disabled
         "disabled:bg-blue-200",
         "disabled:text-blue-400",
         //active
         "active:bg-blue-700",
-        "active:text-brown-50",
+        "active:text-blue-100",
     ],
     create: [
         "font-semibold",
         "bg-blue-800",
-        "text-brown-50",
+        "text-blue-100",
         //hover
         "hover:bg-blue-400",
-        "hover:text-brown-50",
+        "hover:text-blue-100",
         //disabled
         "disabled:bg-blue-200",
-        "disabled:text-brown-300",
+        "disabled:text-blue-300",
         //active
         "active:bg-blue-400",
-        "active:text-brown-50",
+        "active:text-blue-100",
     ],
 
     danger: [
@@ -41,7 +41,7 @@ const buttonVariants = {
         "hover:bg-rose-800",
         //disabled
         "disabled:bg-rose-400",
-        "disabled:text-brown-300",
+        "disabled:text-blue-300",
         //active
         "active:bg-rose-600",
         "active:text-rose-100",
@@ -64,16 +64,16 @@ const buttonVariants = {
     pink: [
         "font-semibold",
         "bg-pink-600",
-        "text-brown-50",
+        "text-blue-100",
         //hover
         "hover:bg-pink-400",
-        "hover:text-brown-50",
+        "hover:text-blue-100",
         //disabled
         "disabled:bg-pink-50",
         "disabled:text-black",
         //active
         "active:bg-pink-400",
-        "active:text-brown-50",
+        "active:text-blue-100",
     ],
 
     yellow: [

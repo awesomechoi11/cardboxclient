@@ -62,7 +62,7 @@ function Client({ play }) {
                 back={
                     <>
                         <div className="jumbo-1">Match</div>
-                        <div className="description-1">
+                        <div className=" mt-2 mx-0 text-blue-400 break-words">
                             Match related cards to clear. Clear them all to win!
                         </div>
                         <Link href="/browse" target="_blank">

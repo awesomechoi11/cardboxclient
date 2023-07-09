@@ -84,7 +84,7 @@ export function ImageViewerModal() {
     return (
         <ModalWrapper
             modalId="image viewer"
-            innerClassName="px-0 py-0 rounded-none"
+            innerClassName="px-0 py-0 rounded-none tablet:px-0 tablet:py-0 desktop:px-0 desktop:py-0"
         >
             <Image
                 src={imgSrc}
@@ -94,8 +94,9 @@ export function ImageViewerModal() {
                 unoptimized
                 style={{
                     height: "auto",
-                    width: "600px",
+                    // width: "600px",
                 }}
+                className="w-full tablet:w-[600px]"
             />
         </ModalWrapper>
     );

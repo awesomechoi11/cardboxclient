@@ -126,14 +126,14 @@ function Inner({ data }) {
     const { title, previewCards } = data;
     return (
         <div className="flex flex-col gap-4 text-left">
-            <div className="flex gap-3">
+            <div className="flex flex-col gap-3 tablet:flex-row">
                 <div className="flex-grow">
                     <div className="text-blue-950 text-[24px] font-semibold">
                         <Text>{title}</Text>
                     </div>
                     <div>ratings here</div>
                 </div>
-                <div className="flex items-start flex-shrink-0 gap-1">
+                <div className="flex flex-row-reverse justify-end flex-shrink-0 gap-1 tablet:items-start">
                     <Button variant="secondary">Share</Button>
                     <Button variant="secondary">Save</Button>
                     <Button>Study</Button>

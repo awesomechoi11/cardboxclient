@@ -8,6 +8,7 @@ import { SearchResultPreviewModal } from "@components/Search/Search.ResultCard";
 import Button from "@components/general/Button";
 import { twMerge } from "tailwind-merge";
 import { ImageViewerModal } from "./ImageViewer/ImageViewer";
+import { MobileDropdownModal } from "@components/Navbar";
 
 export default function ModalRoot() {
     return (
@@ -20,6 +21,7 @@ export default function ModalRoot() {
             <ImageViewerModal />
             <FilePickerModal />
             <LoginModal />
+            <MobileDropdownModal />
         </div>
     );
 }
@@ -88,7 +90,10 @@ export function ModalWrapper({
                     >
                         <div
                             className={twMerge(
-                                "content border-box cursor-auto relative bg-brown-50 rounded-xl w-[600px] py-11 px-10 m-auto text-center",
+                                "text-center content border-box cursor-auto relative bg-blue-200 rounded-xl ",
+                                "px-1 py-5 my-8 w-full",
+                                "tablet:w-[600px] tablet:py-8 tablet:px-6",
+                                "desktop:py-11 desktop:px-10 desktop:m-auto ",
                                 innerClassName
                             )}
                             onClick={(e) => {

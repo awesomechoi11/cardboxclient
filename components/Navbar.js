@@ -3,7 +3,7 @@ import { useIsMobile } from "@components/mediaQueryHooks";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useModal } from "./Modals/ModalUtils";
+import { ModalWrapper, useModal } from "./Modals/ModalUtils";
 import { WaitForMongo, useMongo } from "./Mongo/MongoUtils";
 import Searchbar from "./Searchbar";
 
@@ -11,7 +11,7 @@ export default function Navbar() {
     const isMobile = useIsMobile();
 
     return (
-        <div className="flex gap-4 px-1 py-3  tablet:px-4 desktop:px-[225px] bg-blue-200 relative z-10">
+        <div className="flex gap-2 tablet:gap-4 px-1 py-3 items-center tablet:px-4 desktop:px-[225px] bg-blue-200 relative z-10">
             <Link
                 href="/"
                 onClick={() => {
@@ -20,7 +20,9 @@ export default function Navbar() {
                 className="flex items-center"
             >
                 {cardsIcon}{" "}
-                <span className="ml-2 text-lg font-bold">flippy</span>
+                <span className="hidden ml-2 text-lg font-bold tablet:block">
+                    flippy
+                </span>
             </Link>
             {!isMobile && (
                 <div className="flex items-center">
@@ -88,56 +90,67 @@ function Right() {
 function subjectSelect() {}
 
 function MobileDropdown() {
-    const [isOpen, setIsOpen] = useState(false);
+    // const [isOpen, setIsOpen] = useState(false);
     const { isAnon } = useMongo();
     const router = useRouter();
+    const { openModal } = useModal("mobile navbar");
+    return <>{Hamburger(openModal)}</>;
+}
+
+export function MobileDropdownModal() {
+    const { closeModal } = useModal("mobile navbar");
+    const { isAnon } = useMongo();
+
     return (
-        <>
-            {Hamburger(setIsOpen)}
-            {isOpen && (
-                <div id="mobile-nav-dropdown">
-                    <div className="header">
-                        <Link href="/">
-                            <a className="home-btn">Flippy</a>
-                        </Link>
-                        {close(setIsOpen)}
-                    </div>
-                    <div className="content">
-                        <div>
-                            <Button
-                                variant="secondary"
-                                size="sm"
-                                onClick={() => router.push("/browse")}
-                            >
-                                Browse Packs
-                            </Button>
-                        </div>
-                        <div>
-                            {!isAnon ? <AuthedSection /> : <UnauthedSection />}
-                        </div>
-                    </div>
-                </div>
-            )}
-        </>
+        <ModalWrapper
+            modalId="mobile navbar"
+            innerClassName="px-0 py-4 mx-0 mt-0 pt-3"
+        >
+            <div className="flex items-center justify-between px-3 pt-0 pb-6">
+                <Link href="/" className="flex">
+                    {cardsIcon}{" "}
+                    <span className="ml-2 text-lg font-bold ">flippy</span>
+                </Link>
+                {close(closeModal)}
+            </div>
+            <div className="content">
+                {/* <div>
+                    <Button
+                        variant="secondary"
+                        size="sm"
+                        onClick={() => router.push("/browse")}
+                    >
+                        Browse Packs
+                    </Button>
+                </div> */}
+                <div>{!isAnon ? <AuthedSection /> : <UnauthedSection />}</div>
+            </div>
+        </ModalWrapper>
     );
 }
 
 function UnauthedSection() {
     const { openModal } = useModal("login/signup");
-
+    const { closeModal } = useModal("mobile navbar");
     return (
         <>
             <Button
                 variant="secondary"
                 size="sm"
-                onClick={() => openModal("login")}
+                onClick={() => {
+                    closeModal();
+                    openModal("login");
+                }}
             >
                 Log In
             </Button>
             <Button
                 variant="primary"
                 size="sm"
-                onClick={() => openModal("signup")}
+                onClick={() => {
+                    closeModal();
+                    openModal("signup");
+                }}
             >
                 Sign Up
             </Button>
@@ -174,9 +187,9 @@ function AuthedSection() {
     );
 }
 
-const close = (setIsOpen) => (
+const close = (closeModal) => (
     <svg
-        onClick={() => setIsOpen(false)}
+        onClick={() => closeModal()}
         style={{
             width: "32",
             height: "32",
@@ -191,14 +204,14 @@ const close = (setIsOpen) => (
             fillRule="evenodd"
             clipRule="evenodd"
             d="M21.2929 9.79289C21.6834 9.40237 22.3166 9.40237 22.7071 9.79289C23.0976 10.1834 23.0976 10.8166 22.7071 11.2071L17.4142 16.5L22.7071 21.7929C23.0976 22.1834 23.0976 22.8166 22.7071 23.2071C22.3166 23.5976 21.6834 23.5976 21.2929 23.2071L16 17.9142L10.7071 23.2071C10.3166 23.5976 9.68342 23.5976 9.29289 23.2071C8.90237 22.8166 8.90237 22.1834 9.29289 21.7929L14.5858 16.5L9.29289 11.2071C8.90237 10.8166 8.90237 10.1834 9.29289 9.79289C9.68342 9.40237 10.3166 9.40237 10.7071 9.79289L16 15.0858L21.2929 9.79289Z"
-            fill="#674433"
+            className="fill-blue-600"
         />
     </svg>
 );
 
-const Hamburger = (setIsOpen) => (
+const Hamburger = (openModal) => (
     <svg
-        onClick={() => setIsOpen(true)}
+        onClick={() => openModal()}
         style={{
             width: "32",
             height: "32",
@@ -213,37 +226,37 @@ const Hamburger = (setIsOpen) => (
             fillRule="evenodd"
             clipRule="evenodd"
             d="M6 10C6 9.44772 6.44772 9 7 9H25C25.5523 9 26 9.44772 26 10C26 10.5523 25.5523 11 25 11H7C6.44772 11 6 10.5523 6 10Z"
-            fill="#674433"
+            className="fill-blue-600"
         />
         <path
             fillRule="evenodd"
             clipRule="evenodd"
             d="M6 10C6 9.44772 6.44772 9 7 9H25C25.5523 9 26 9.44772 26 10C26 10.5523 25.5523 11 25 11H7C6.44772 11 6 10.5523 6 10Z"
-            fill="#674433"
+            className="fill-blue-600"
         />
         <path
             fillRule="evenodd"
             clipRule="evenodd"
             d="M6 16C6 15.4477 6.44772 15 7 15H25C25.5523 15 26 15.4477 26 16C26 16.5523 25.5523 17 25 17H7C6.44772 17 6 16.5523 6 16Z"
-            fill="#674433"
+            className="fill-blue-600"
         />
         <path
             fillRule="evenodd"
             clipRule="evenodd"
             d="M6 16C6 15.4477 6.44772 15 7 15H25C25.5523 15 26 15.4477 26 16C26 16.5523 25.5523 17 25 17H7C6.44772 17 6 16.5523 6 16Z"
-            fill="#674433"
+            className="fill-blue-600"
         />
         <path
             fillRule="evenodd"
             clipRule="evenodd"
             d="M6 22C6 21.4477 6.44772 21 7 21H25C25.5523 21 26 21.4477 26 22C26 22.5523 25.5523 23 25 23H7C6.44772 23 6 22.5523 6 22Z"
-            fill="#674433"
+            className="fill-blue-600"
         />
         <path
             fillRule="evenodd"
             clipRule="evenodd"
             d="M6 22C6 21.4477 6.44772 21 7 21H25C25.5523 21 26 21.4477 26 22C26 22.5523 25.5523 23 25 23H7C6.44772 23 6 22.5523 6 22Z"
-            fill="#674433"
+            className="fill-blue-600"
         />
     </svg>
 );
@@ -272,7 +285,8 @@ const cardsIcon = (
             fillRule="evenodd"
             clipRule="evenodd"
             d="M11.3343 4.33427V6.99454H7V3.9637C7 1.77461 8.77461 0 10.9637 0H23.0363C25.2254 0 27 1.77461 27 3.96369V24.0363C27 26.2254 25.2254 28 23.0363 28H21.08V23.6657H22.6657V4.33427H11.3343ZM19.16 23.6657H11.3343V9.16028H7V24.0363C7 26.2254 8.77461 28 10.9637 28H19.16V23.6657Z"
-            fill="#124898"
+            // fill="#124898"
+            className="fill-blue-600"
         />
     </svg>
 );
