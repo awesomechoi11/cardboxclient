@@ -7,12 +7,19 @@ import { MongoRoot } from "../components/Mongo/MongoUtils";
 import Script from "next/script";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Head from "next/head";
+import { useRef, createContext } from "react";
 // import ReactGA from "react-ga";
 
 // ReactGA.initialize("UA-227551059-1");
 const queryClient = new QueryClient();
 
+export const AppRefContext = createContext();
+
+
 function MyApp({ Component, pageProps }) {
+
+  const appRef = useRef();
+
   return (
     // <RollbarProvider config={rollbarConfig}>
     //     {/* ErrorBoundary catches all React errors in the tree below and logs them to Rollbar */}
@@ -94,8 +101,10 @@ function MyApp({ Component, pageProps }) {
           <MongoRoot>
             <div className="text-blue-800 text-base bg-blue-100">
               <ModalRoot />
-              <div id="app">
-                <Component {...pageProps} />
+              <div id="app" ref={appRef}>
+                <AppRefContext.Provider value = {appRef} >
+                  <Component {...pageProps} />
+                </AppRefContext.Provider >
               </div>
             </div>
           </MongoRoot>
