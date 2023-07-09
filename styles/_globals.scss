@@ -19,12 +19,12 @@
 @import "Flippable.scss";
 
 html {
-    font-size: 0.0520833333333vw;
+    // font-size: 0.0520833333333vw;
     overflow: hidden;
 }
 
 body {
-    font-size: 14rem;
+    // font-size: 14rem;
     padding: 0;
     margin: 0;
     font-family: "Inter", sans-serif;
@@ -77,10 +77,10 @@ main {
 
 @layer components {
     .title-1 {
-        @apply text-lg font-semibold text-brown-600 my-1;
+        @apply text-lg font-semibold text-blue-600 my-1;
     }
     input {
-        @apply px-4 py-3 rounded-sm border-brown-200 bg-brown-50 active:border-brown-400 hover:border-brown-400 border;
+        @apply px-4 py-3 rounded-sm border-blue-200 bg-blue-100 active:border-blue-400 hover:border-blue-400 border;
     }
 }
 .my-text-input {
@@ -91,20 +91,11 @@ main {
         font-weight: 600;
     }
 }
-.subtitle-1 {
-    color: vars.$color-primary-2;
-    font-weight: 600;
-    margin: 8rem 0;
-}
+
 .subtitle-2 {
     color: vars.$color-primary-1;
     font-weight: 600;
     margin: 8rem 0;
-}
-.description-1 {
-    margin: 8rem 0;
-    color: vars.$color-secondary-4;
-    word-break: break-word;
 }
 .normal-1 {
     margin: 0;

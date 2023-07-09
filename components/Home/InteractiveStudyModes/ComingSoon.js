@@ -4,7 +4,7 @@ export default function ComingSoon() {
         <div id="coming-soon">
             <div className="inner">
                 <div className="title-1">More Modes Coming Soon</div>
-                <div className="description-1">
+                <div className=" mt-2 mx-0 text-blue-400 break-words">
                     Follow Updates and Give Suggestions in Our Discord!
                 </div>
                 <JoinDiscordButton />

@@ -78,7 +78,7 @@ export function CreateYourOwnPacks({ play }) {
             />
             <div className="cta">
                 <div className="jumbo-1">Create Your Own Packs</div>
-                <div className="description-1">
+                <div className=" mt-2 mx-0 text-blue-400 break-words">
                     Create & Share Your Card Packs with just your friends or
                     everybody!
                 </div>

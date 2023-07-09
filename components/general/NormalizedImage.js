@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 export function normalizeImageSrc(imageContent) {
+    if (!imageContent) return undefined;
     switch (imageContent.type) {
         case "uploadcare":
             return imageContent.value.cdnUrl;

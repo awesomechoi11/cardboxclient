@@ -31,7 +31,9 @@ export default function MenuScreen() {
                 </div>
                 <div>
                     <div className="title-1">Other Card Packs</div>
-                    <div className="description-1">TODO</div>
+                    <div className=" mt-2 mx-0 text-blue-400 break-words">
+                        TODO
+                    </div>
                 </div>
             </div>
         </div>

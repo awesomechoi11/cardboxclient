@@ -64,10 +64,10 @@ export default function SearchSubjectQueryPage() {
                             Results ({data?.totalCount[0].count})
                         </div>
                         <div className="grid grid-cols-1 mb-3 gap-x-3 gap-y-4 desktop:grid-cols-3 tablet:grid-cols-2">
-                            {data?.result?.map((cardData) => (
+                            {data?.result?.map((packData) => (
                                 <SearchResultCard
-                                    cardData={cardData}
-                                    key={cardData._id}
+                                    data={packData}
+                                    key={packData._id}
                                 />
                             ))}
                         </div>

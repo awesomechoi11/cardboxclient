@@ -140,7 +140,7 @@ function SearchInner({
                                 touched.email &&
                                 errors.email &&
                                 "border-red-500",
-                            "w-full py-3 px-4 text-base font-semibold pl-6 bg-blue-200 border-blue-300 rounded-xl placeholder:text-gray-400"
+                            "w-full py-3 px-4 text-base font-semibold pl-6 bg-blue-200 border-blue-400 rounded-xl placeholder:text-gray-400"
                         )}
                         disabled={isSubmitting}
                     />

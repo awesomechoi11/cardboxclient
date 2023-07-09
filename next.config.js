@@ -17,6 +17,7 @@ const nextConfig = {
             "loremflickr.com",
             "ucarecdn.com",
             "cdn.discordapp.com",
+            "imagedelivery.net",
         ],
     },
 };

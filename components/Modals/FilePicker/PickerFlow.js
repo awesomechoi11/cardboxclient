@@ -6,7 +6,9 @@ export default function PickerMode() {
     return (
         <div className="inner">
             <div className="title-1">File Picker</div>
-            <div className="subtitle-1">Choose or Upload an Image</div>
+            <div className="text-blue-500 font-bold my-2 mx-0">
+                Choose or Upload an Image
+            </div>
             <FileItemList />
             <div className="divider" />
             <UrlUploader />
