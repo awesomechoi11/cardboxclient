@@ -6,7 +6,7 @@ export default function InteractiveStudyModes({ play }) {
         <div id="interactive-study-modes-preview">
             <div className="cta">
                 <div className="jumbo-1">Interactive Study Modes</div>
-                <div className="description-1">
+                <div className=" mt-2 mx-0 text-blue-400 break-words">
                     You can play games with every card pack and compete with
                     friends!
                 </div>

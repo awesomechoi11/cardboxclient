@@ -207,11 +207,13 @@ function CardPreviewDefault({ data, collection }) {
             )}
             <div className="right">
                 <div className="subtitle-2 title">{title}</div>
-                <div className="description-1 details">
+                <div className=" mt-2 mx-0 text-blue-400 break-words  details">
                     {[totalCards + " cards", ...tags].join(", ")}
                 </div>
                 {!isMobile && (
-                    <div className="description-1 details">{description}</div>
+                    <div className=" mt-2 mx-0 text-blue-400 break-words  details">
+                        {description}
+                    </div>
                 )}
             </div>
         </div>

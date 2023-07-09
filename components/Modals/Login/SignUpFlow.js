@@ -30,7 +30,7 @@ function StageOne({ setStage, data, setMode }) {
     return (
         <>
             <div className="title-1 mb-4">Sign Up</div>
-            <div className="description-1 mb-6">
+            <div className=" mt-2 mx-0 text-blue-400 break-words  mb-6">
                 Create, Share, and Learn with Flippy
             </div>
 
@@ -95,12 +95,13 @@ function StageOne({ setStage, data, setMode }) {
                         controlId="formBasicPassword"
                         className="mb-2"
                     />
-                    <MySubmitButton variant="primary"
-                    className="w-full mt-4">Sign Up</MySubmitButton>
+                    <MySubmitButton variant="primary" className="w-full mt-4">
+                        Sign Up
+                    </MySubmitButton>
                 </Form>
             </Formik>
             <div
-                className="subtitle-1 switch cursor-pointer"
+                className="text-blue-500 font-bold my-2 mx-0 switch cursor-pointer"
                 onClick={() => {
                     setMode("login");
                 }}

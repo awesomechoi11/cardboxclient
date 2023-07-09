@@ -67,7 +67,9 @@ export default function MatchPostGameDetails() {
                 </div>
                 <div className="leaderboard">
                     <div className="subtitle-2">Leaderboard</div>
-                    <div className="description-1">coming soon!</div>
+                    <div className=" mt-2 mx-0 text-blue-400 break-words">
+                        coming soon!
+                    </div>
                 </div>
             </div>
         </div>

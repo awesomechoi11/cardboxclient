@@ -18,10 +18,12 @@ export default function LargeCardBanner({ data }) {
             <div className="right">
                 <div className="top">
                     <div className="title-1">{title}</div>
-                    <div className="subtitle-1">
+                    <div className="text-blue-500 font-bold my-2 mx-0">
                         {[cards.length + " cards", ...tags].join(" · ")}
                     </div>
-                    <div className="description-1">{description}</div>
+                    <div className=" mt-2 mx-0 text-blue-400 break-words">
+                        {description}
+                    </div>
                 </div>
                 <div className="subtitle-2">Interactive Study Modes</div>
                 <div>

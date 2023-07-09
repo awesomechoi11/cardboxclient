@@ -30,7 +30,9 @@ function ConfirmMode() {
     return (
         <div className="inner">
             <div className="title-1">File Picker</div>
-            <div className="subtitle-1">Confirm Your Choice</div>
+            <div className="text-blue-500 font-bold my-2 mx-0">
+                Confirm Your Choice
+            </div>
             <div>image preview</div>
             <div>confirm , go back , or edit</div>
         </div>
@@ -41,7 +43,9 @@ function EditMode() {
     return (
         <div className="inner">
             <div className="title-1">File Picker</div>
-            <div className="subtitle-1">Edit Your Image</div>
+            <div className="text-blue-500 font-bold my-2 mx-0">
+                Edit Your Image
+            </div>
             <div>image preview</div>
             <div>edit controls</div>
             <div>cancel or finish</div>

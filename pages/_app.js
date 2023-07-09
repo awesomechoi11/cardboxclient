@@ -12,14 +12,10 @@ import { useRef, createContext } from "react";
 
 // ReactGA.initialize("UA-227551059-1");
 const queryClient = new QueryClient();
-
 export const AppRefContext = createContext();
 
-
 function MyApp({ Component, pageProps }) {
-
   const appRef = useRef();
-
   return (
     // <RollbarProvider config={rollbarConfig}>
     //     {/* ErrorBoundary catches all React errors in the tree below and logs them to Rollbar */}
@@ -99,12 +95,12 @@ function MyApp({ Component, pageProps }) {
       <QueryClientProvider client={queryClient}>
         <RecoilRoot>
           <MongoRoot>
-            <div className="text-blue-800 text-base bg-blue-100">
+            <div className="text-base text-blue-800 bg-blue-200">
               <ModalRoot />
               <div id="app" ref={appRef}>
-                <AppRefContext.Provider value = {appRef} >
+                <AppRefContext.Provider value={appRef}>
                   <Component {...pageProps} />
-                </AppRefContext.Provider >
+                </AppRefContext.Provider>
               </div>
             </div>
           </MongoRoot>
