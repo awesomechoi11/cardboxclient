@@ -2,6 +2,7 @@ import CardRow from "@components/CardPack/CardDisplay/CardRow";
 import { ModalWrapper, useModal } from "@components/Modals/ModalUtils";
 import Button from "@components/general/Button";
 import Text from "@components/general/Text";
+import Link from "next/link";
 
 export default function SearchResultCard({ data }) {
     //   console.log(cardData);
@@ -109,20 +110,19 @@ export default function SearchResultCard({ data }) {
 }
 
 export function SearchResultPreviewModal() {
-    const { data } = useModal("search result preview");
-
-    console.log(data);
     return (
         <ModalWrapper
             modalId="search result preview"
-            innerClassName="px-3 py-4 bg-blue-200 w-full tablet:w-[600px] desktop:w-[860px]"
+            innerClassName="px-3 py-4 tablet:px-3 tablet:py-4 desktop:px-3 desktop:py-4 bg-blue-200 w-full tablet:w-[600px] desktop:w-[860px]"
         >
-            <Inner data={data} />
+            <Inner />
         </ModalWrapper>
     );
 }
 
-function Inner({ data }) {
+function Inner() {
+    const { data, closeModal } = useModal("search result preview");
+
     const { title, previewCards } = data;
     return (
         <div className="flex flex-col gap-4 text-left">
@@ -144,7 +144,15 @@ function Inner({ data }) {
                     <CardRow data={data} key={data._id} />
                 ))}
             </div>
-            <Button className="flex-grow">View Full Set</Button>
+            {/* <Link href={`/card-pack/d9b431ca?slug=cs-10c-final`}> */}
+            <Link
+                href={`/404`}
+                onClick={() => {
+                    closeModal();
+                }}
+            >
+                <Button className="w-full text-center">View Full Set</Button>
+            </Link>
         </div>
     );
 }
