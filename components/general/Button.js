@@ -1,10 +1,11 @@
 import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
 
 const buttonVariants = {
     primary: [
         // default
         "font-semibold",
-        "bg-blue-800",
+        "bg-blue-600",
         "text-brown-50",
         //hover
         "hover:bg-blue-700",
@@ -47,7 +48,7 @@ const buttonVariants = {
     ],
     secondary: [
         "font-semibold",
-        "bg-transparent",
+        "bg-blue-200",
         "text-blue-800",
         //hover
         "hover:bg-blue-300",
@@ -108,7 +109,8 @@ const buttonVariants = {
 const sizeVariants = {
     roundedSm: ["text-base rounded-full px-2 py-2 "],
     sm: ["text-base rounded-sm px-3 py-2 "],
-    default: ["text-base rounded px-4 py-3 "],
+    default: ["text-base rounded-lg px-4 py-3 "],
+    roundedDefault: ["text-base rounded-full px-3 py-3 "],
     xs: ["text-base rounded px-1 py-1 h-6"],
 };
 export default function Button({
@@ -121,11 +123,11 @@ export default function Button({
     return (
         <button
             {...props}
-            className={clsx(
+            className={twMerge(
                 buttonVariants[variant],
                 sizeVariants[size],
-                className,
-                "transition ease-in-out duration-180 active:scale-95 disabled:pointer-events-none"
+                "transition ease-in-out duration-180 active:scale-95 disabled:pointer-events-none",
+                className
             )}
         >
             {children}
