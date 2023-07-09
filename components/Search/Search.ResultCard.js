@@ -11,7 +11,7 @@ export default function SearchResultCard({ data }) {
 
     return (
         <div
-            className="w-full tablet:w-[416px] px-3 py-2 h-[212px] relative bg-white rounded-lg shadow-lg cursor-pointer"
+            className="w-full tablet:max-w-[416px] px-3 py-2 h-[212px] relative bg-white rounded-lg shadow-lg cursor-pointer"
             onClick={() => {
                 openModal(data);
             }}

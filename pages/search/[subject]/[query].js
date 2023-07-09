@@ -1,3 +1,4 @@
+import Footer from "@components/Home/Footer";
 import { useMongo } from "@components/Mongo/MongoUtils";
 import Navbar from "@components/Navbar";
 import SearchPagination from "@components/Search/Search.Pagination";
@@ -55,14 +56,14 @@ export default function SearchSubjectQueryPage() {
                 <title key="title">Flippy - Home - Flashcard App</title>
             </Head>
             <Navbar />
-            <main className="p-0 ">
+            <main className="p-0 pb-4">
                 {/* <SearchSubjectList /> */}
                 {isSuccess && (
-                    <div className="mx-1 tablet:mx-auto desktop:max-w-[1280px] tablet:max-w-[848px] max-w-[416px] pt-5">
-                        <div className=" text-blue-950 text-[16px] font-semibold mb-3">
+                    <div className="box-content mx-auto tablet:mx-auto desktop:max-w-[1280px] tablet:max-w-[848px] max-w-[416px] pt-5">
+                        <div className="mx-1 text-blue-950 text-[16px] font-semibold mb-3">
                             Results ({data?.totalCount[0].count})
                         </div>
-                        <div className="grid grid-cols-1 mb-3 gap-x-3 gap-y-4 desktop:grid-cols-3 tablet:grid-cols-2">
+                        <div className="grid grid-cols-1 mx-1 mb-3 gap-x-3 gap-y-4 desktop:grid-cols-3 tablet:grid-cols-2">
                             {data?.result?.map((packData) => (
                                 <SearchResultCard
                                     data={packData}
@@ -82,6 +83,7 @@ export default function SearchSubjectQueryPage() {
                     </div>
                 )}
             </main>
+            {/* <Footer /> */}
         </>
     );
 }
