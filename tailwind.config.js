@@ -84,6 +84,9 @@ module.exports = {
                     100: "#FFFFFF",
                 },
             },
+            backgroundImage: {
+                'hero-pattern': "url('/assets/img/flippybanner.png')"
+            },
         },
     },
     darkMode: "class",

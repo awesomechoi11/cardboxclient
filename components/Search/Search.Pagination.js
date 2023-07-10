@@ -11,9 +11,8 @@ export default function SearchPagination({
 }) {
     let currentPagination = paginate({ current, max });
     const { current: page, prev, next, items } = currentPagination;
-    console.log(max, page, current === max - 1);
     return (
-        <div className="hidden px-3 sm:flex sm:flex-1 sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 px-3 mb-6 tablet:flex-row sm:flex sm:flex-1 sm:items-center sm:justify-between">
             <div>
                 <p className="text-sm text-gray-700 ">
                     Showing{" "}
@@ -24,7 +23,7 @@ export default function SearchPagination({
             </div>
             <div>
                 <nav
-                    className="inline-flex items-center gap-2 -space-x-px rounded-md isolate"
+                    className="inline-flex flex-wrap items-center gap-2 -space-x-px rounded-md tablet:flex-nowrap isolate"
                     aria-label="Pagination"
                 >
                     <Button
@@ -41,7 +40,6 @@ export default function SearchPagination({
                             aria-hidden="true"
                         />
                     </Button>
-                    {/* Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" */}
                     {currentPagination?.items &&
                         currentPagination.items.map((pageNum, index) => {
                             if (typeof pageNum === "string") {

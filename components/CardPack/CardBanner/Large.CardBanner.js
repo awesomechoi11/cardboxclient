@@ -25,7 +25,9 @@ export default function LargeCardBanner({ data }) {
                         {description}
                     </div>
                 </div>
-                <div className="subtitle-2">Interactive Study Modes</div>
+                <div className="text-blue-600 font-bold mx-2 my-0">
+                    Interactive Study Modes
+                </div>
                 <div>
                     <Button
                         variant="secondary"

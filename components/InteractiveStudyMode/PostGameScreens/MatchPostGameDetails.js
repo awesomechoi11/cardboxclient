@@ -19,8 +19,10 @@ export default function MatchPostGameDetails() {
                         <LabeledPills label="Category" content={label} />
                     </div>
                     <div className="time">
-                        <div className="subtitle-2">My Time</div>
-                        <div className="content">
+                        <div className="text-blue-600 font-bold mx-2 my-0">
+                            My Time
+                        </div>
+                        <div className="break-words">
                             {Math.round(time / 10) / 100} s
                         </div>
                     </div>
@@ -66,7 +68,9 @@ export default function MatchPostGameDetails() {
                     </div>
                 </div>
                 <div className="leaderboard">
-                    <div className="subtitle-2">Leaderboard</div>
+                    <div className="text-blue-600 font-bold mx-2 my-0">
+                        Leaderboard
+                    </div>
                     <div className=" mt-2 mx-0 text-blue-400 break-words">
                         coming soon!
                     </div>

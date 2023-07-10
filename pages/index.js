@@ -36,7 +36,7 @@ export default function Home() {
     })
 
     return (
-        <>
+        <div>
             <motion.div
                 className="fixed h-3 bg-red-600 bottom-0 right-0 left-0 origin-center z-1"
                 style={{ scaleX }}
@@ -54,6 +54,6 @@ export default function Home() {
                 <InteractiveStudyModes play={play} /> */}
             </main>
             <Footer />
-        </>
+        </div>
     );
 }

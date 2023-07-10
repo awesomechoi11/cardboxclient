@@ -14,7 +14,7 @@ export default function ModalRoot() {
     return (
         <div
             id="modal-root"
-            className="absolute top-0 z-10 w-full h-screen overflow-auto pointer-events-none "
+            className="absolute top-0 z-20 w-full h-full overflow-hidden pointer-events-none"
         >
             <SearchResultPreviewModal />
             <PublishModal />
@@ -67,30 +67,34 @@ export function ModalWrapper({
     ...props
 }) {
     const { toggle, isOpen } = useModal(modalId);
-    console.log(isOpen, modalId);
     return (
         <AnimatePresence>
             {isOpen && (
-                <div className="absolute top-0 z-10 w-full h-screen overflow-auto pointer-events-none ">
-                    <motion.div
+                <motion.div
+                    styke={{
+                        WebkitOverflowScrolling: "touch",
+                    }}
+                    className="absolute inset-0 z-10 overflow-y-auto opacity-0 pointer-events-auto bg-blue-900/75 "
+                    initial={{ opacity: 0, pointerEvents: "none" }}
+                    animate={{ opacity: 1, pointerEvents: "all" }}
+                    exit={{ opacity: 0, pointerEvents: "none" }}
+                    transition={{
+                        duration: 0.22,
+                        ease: [0.2, 0, 0.33, 1],
+                    }}
+                >
+                    <div
                         className={twMerge(
                             "z-10 absolute",
-                            "cursor-pointer w-full min-h-full p-1 tablet:p-4 desktop:p-10 flex items-center flex-col box-border bg-blue-900/75 opacity-0 ",
+                            "cursor-pointer w-full min-h-full p-1 tablet:p-4 desktop:p-10 flex items-center flex-col box-border ",
                             className
                         )}
                         {...props}
                         onClick={() => toggle()}
-                        initial={{ opacity: 0, pointerEvents: "none" }}
-                        animate={{ opacity: 1, pointerEvents: "all" }}
-                        exit={{ opacity: 0, pointerEvents: "none" }}
-                        transition={{
-                            duration: 0.22,
-                            ease: [0.2, 0, 0.33, 1],
-                        }}
                     >
                         <div
                             className={twMerge(
-                                "text-center content border-box cursor-auto relative bg-blue-200 rounded-xl ",
+                                "text-center break-words border-box cursor-auto relative bg-blue-200 rounded-xl ",
                                 "px-1 py-5 my-8 w-full",
                                 "tablet:w-[600px] tablet:py-8 tablet:px-6",
                                 "desktop:py-11 desktop:px-10 desktop:m-auto ",
@@ -123,8 +127,8 @@ export function ModalWrapper({
                             </Button>
                             {children}
                         </div>
-                    </motion.div>
-                </div>
+                    </div>
+                </motion.div>
             )}
         </AnimatePresence>
     );

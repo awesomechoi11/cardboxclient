@@ -85,7 +85,9 @@ export default function AddBetweenTrigger({ index }) {
                                 fill="#674433"
                             />
                         </svg>
-                        <div className="subtitle-2">Add Between</div>
+                        <div className="text-blue-600 font-bold mx-2 my-0">
+                            Add Between
+                        </div>
                     </div>
                 </motion.div>
             )}

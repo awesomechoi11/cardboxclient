@@ -37,7 +37,7 @@ export default function UrlUploader() {
                 setSubmitting(false);
             }}
         >
-            <Form id="uploadbyurl-form">
+            <Form id="uploadbyurl-form" className="flex-grow-1">
                 <MyTextInput
                     label="Paste Image Url"
                     controlId="url"

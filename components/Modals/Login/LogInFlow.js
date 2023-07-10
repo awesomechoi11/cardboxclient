@@ -119,7 +119,7 @@ function StageTwo() {
             </div>
             <div className="message">
                 <div className="title-1">Logged In!</div>
-                <div className="subtitle-2">
+                <div className="text-blue-600 font-bold mx-2 my-0">
                     You may safely exit this modal.
                     <br />
                     Have fun studying!
@@ -154,7 +154,7 @@ function StageThree({ data, setStage }) {
             </div>
             <div className="message">
                 <div className="title-1">You seem familiar...</div>
-                <div className="subtitle-2">
+                <div className="text-blue-600 font-bold mx-2 my-0">
                     You already registered! But did you confirm your email?
                 </div>
             </div>

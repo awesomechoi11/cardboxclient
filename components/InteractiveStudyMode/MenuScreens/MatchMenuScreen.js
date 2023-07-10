@@ -52,7 +52,9 @@ export default function MatchDetails() {
     return (
         <>
             <div className="category">
-                <div className="subtitle-2">Category</div>
+                <div className="text-blue-600 font-bold mx-2 my-0">
+                    Category
+                </div>
                 <Select
                     styles={{
                         control: (provided) => ({
@@ -83,8 +85,10 @@ export default function MatchDetails() {
                 />
             </div>
             <div className="instructions">
-                <div className="subtitle-2">Instructions</div>
-                <div className="content">
+                <div className="text-blue-600 font-bold mx-2 my-0">
+                    Instructions
+                </div>
+                <div className="break-words">
                     <b>Match</b> - Select two cards that have matching term and
                     definition
                     {selectedCategory.value.gameScreenId === "rounds" && (

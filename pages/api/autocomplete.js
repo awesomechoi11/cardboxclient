@@ -7,7 +7,6 @@ export default async function handler(req, res) {
         }
         let query = JSON.stringify(req.body.query);
         let cursor;
-        console.log("autocomplete ", query);
 
         const { db: cachedDb, client, disconnect } = await connectToAtlas();
 

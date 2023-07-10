@@ -128,7 +128,7 @@ function StageTwo({ data }) {
             </div>
             <div className="message">
                 <div className="title-1">Almost Done!</div>
-                <div className="subtitle-2">
+                <div className="text-blue-600 font-bold mx-2 my-0">
                     Check your email for a verification link!
                 </div>
             </div>
@@ -172,7 +172,7 @@ function StageThree({ data, setStage, setMode }) {
             </div>
             <div className="message">
                 <div className="title-1">You seem familiar...</div>
-                <div className="subtitle-2">
+                <div className="text-blue-600 font-bold mx-2 my-0">
                     You already registered! But did you confirm your email? If
                     you did, you can go back and log in!
                 </div>
