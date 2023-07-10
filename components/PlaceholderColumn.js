@@ -42,7 +42,7 @@ const presets = {
                     <Link
                         href="https://discord.gg/QC3yHFySAV"
                         target="_blank"
-                        className="subtitle-2"
+                        className="text-blue-600 font-bold mx-2 my-0"
                     >
                         discord
                     </Link>

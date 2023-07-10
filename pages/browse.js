@@ -19,7 +19,7 @@ export default function Browse() {
                 <title key="title">Browse - Flippy - Flashcard App</title>
             </Head>
             <Navbar />
-            <main id="Browse" className="wide">
+            <main id="Browse" className="px-20 pt-0">
                 <WaitForMongo>
                     <BrowseContext.Provider
                         value={{

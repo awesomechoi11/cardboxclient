@@ -28,7 +28,7 @@ export default function PickerFlowDropzone() {
         <div {...getRootProps({ className: "dropzone" })}>
             <div className="inner">
                 {Dropzone_SVG}
-                <div className="text subtitle-2">
+                <div className="text text-blue-600 font-bold mx-2 my-0">
                     Drag your photos here to start uploading
                     <br />
                     <br />

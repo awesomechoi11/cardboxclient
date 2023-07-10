@@ -120,7 +120,9 @@ function PaginatedList({ files }) {
                 >
                     {PREV_SVG}
                 </div>
-                <div className="subtitle-2">{current}</div>
+                <div className="text-blue-600 font-bold mx-2 my-0">
+                    {current}
+                </div>
                 <div
                     className={clsx(next && "active", "icon-btn", "next")}
                     onClick={() => {

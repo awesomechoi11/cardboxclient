@@ -125,7 +125,7 @@ function CardFace({ data: { image, content }, backgroundColor }) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             {imgSrc && <img layout="fill" src={imgSrc} alt="card" />}
             <div
-                className="content"
+                className="break-words"
                 dangerouslySetInnerHTML={{ __html: draftjsToHtml(content) }}
             />{" "}
         </motion.div>

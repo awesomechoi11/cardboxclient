@@ -50,7 +50,7 @@ export function MySelect({ label, controlId, options, ...props }) {
                 disabled={isSubmitting}
             />
             {meta.touched && meta.error ? (
-                <div className="form-error">
+                <div className="m-2 text-red-600">
                     <ErrComponent err={meta.error} />
                 </div>
             ) : null}

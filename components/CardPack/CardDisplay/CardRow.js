@@ -25,7 +25,7 @@ function CardFace({ data }) {
             {imgSrc && <ImageViewer imgData={data.image} />}
             {/* {imgSrc && <img layout="fill" src={imgSrc} alt="card" />} */}
             <div
-                className="content"
+                className="break-words"
                 dangerouslySetInnerHTML={{ __html: draftjsToHtml(content) }}
             />
         </>

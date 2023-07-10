@@ -83,7 +83,7 @@ function CardDisplayInner() {
                     </div>
                 </div>
             </div>
-            <div className="content">
+            <div className="break-words">
                 {cardDisplayMode === "grid" && <CardGrid />}
                 {cardDisplayMode === "row" && <CardRow />}
             </div>

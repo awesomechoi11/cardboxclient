@@ -123,7 +123,7 @@ function Preview({ data }) {
                         />
                     </div>
                 )}
-                <div className="subtitle-2">{title}</div>
+                <div className="text-blue-600 font-bold mx-2 my-0">{title}</div>
             </div>
             <div className="mx-0 mt-2 break-words stats text-blue-400 ">
                 <div className="stat">

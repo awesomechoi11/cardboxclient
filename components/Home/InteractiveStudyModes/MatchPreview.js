@@ -61,7 +61,9 @@ function Client({ play }) {
                 className="cta-card"
                 back={
                     <>
-                        <div className="jumbo-1">Match</div>
+                        <div className="text-5xl font-bold color-blue-600">
+                            Match
+                        </div>
                         <div className=" mt-2 mx-0 text-blue-400 break-words">
                             Match related cards to clear. Clear them all to win!
                         </div>
@@ -80,7 +82,9 @@ function Client({ play }) {
                 }
                 front={
                     <>
-                        <div className="jumbo-1">Flip Me!</div>
+                        <div className="text-5xl font-bold color-blue-600">
+                            Flip Me!
+                        </div>
                     </>
                 }
                 hasWatermark
