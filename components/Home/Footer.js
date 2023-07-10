@@ -1,44 +1,49 @@
 
 export default function Footer() {
     return (
-        <div className="flex justify-evenly items-top mb-5">
-                <div className="w-1/4">
-                    <p className="flex items-center text-xl font-bold">
+        <div className="
+        desktop:flex desktop:justify-evenly desktop:flex-row 
+        flex flex-col-reverse  items-top mb-5">
+            <div className="desktop:w-1/4 desktop:mx-0 w-5/6 mx-auto">
+                <p className="flex items-center text-xl font-bold">
                     {cardsIcon} <span className="ml-3">flippy</span>
-                    </p>
-                    <p className="text-base font-semibold mt-4">
-                        Flippy is a dynamic online flashcard platform designed to transform your learning experience by making it more engaging, efficient, and personalized. Leveraging advanced search features, customizable flashcard sets, and progress tracking, our service supports a broad range of subjects, helping learners of all levels master new topics at their own pace and in their preferred learning style.
-                    </p>
-                </div>
+                </p>
+                <p className="text-base font-semibold mt-4">
+                    Flippy is a dynamic online flashcard platform designed to transform your learning experience by making it more engaging, efficient, and personalized. Leveraging advanced search features, customizable flashcard sets, and progress tracking, our service supports a broad range of subjects, helping learners of all levels master new topics at their own pace and in their preferred learning style.
+                </p>
+            </div>
 
-                <section className="flex justify-evenly w-2/6 h-20">
-                    <ul className="flex flex-col justify-between h-11">
-                        <li className="font-bold">About us</li>
-                        <li>Our Story</li>
-                        <li>Press</li>
-                        <li>Careers</li>
-                        <li>Dis my cord</li>
-                    </ul>
-                    <ul className="flex flex-col justify-between">
-                        <li className="font-bold">Browse by Subject</li>
-                        <li>Physics</li>
-                        <li>History</li>
-                        <li>Mathematics</li>
-                        <li>Language</li>
-                        <li>Geography</li>
-                    </ul>
-                    <ul className="flex flex-col justify-between">
-                        <li className="font-bold">Help & Support</li>
-                        <li>FAQ</li>
-                        <li>Contact Us</li>
-                        <li>Tutorials</li>
-                        <li>Terms of Service</li>
-                        <li>Privacy Policy</li>
-                    </ul>
-                </section>
+            <section className="
+                desktop:flex desktop:justify-evenly desktop:w-2/6 desktop:h-20
+                flex flex-wrap leading-loose pb-5
+                ">
+                <ul className="flex flex-col  desktop:justify- justify-self-start desktop:h-11">
+                    <li className="font-bold">About us</li>
+                    <li>Our Story</li>
+                    <li>Press</li>
+                    <li>Careers</li>
+                    <li>Dis my cord</li>
+                </ul>
+                <ul className="flex flex-col desktop:justify-evenly justify-self-start">
+                    <li className="font-bold">Browse by Subject</li>
+                    <li>Physics</li>
+                    <li>History</li>
+                    <li>Mathematics</li>
+                    <li>Language</li>
+                    <li>Geography</li>
+                </ul>
+                <ul className="flex flex-col desktop:justify-evenly justify-self-start">
+                    <li className="font-bold">Help & Support</li>
+                    <li>FAQ</li>
+                    <li>Contact Us</li>
+                    <li>Tutorials</li>
+                    <li>Terms of Service</li>
+                    <li>Privacy Policy</li>
+                </ul>
+            </section>
         </div>
     )
- }
+}
 
 
 const cardsIcon = (
