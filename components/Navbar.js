@@ -44,7 +44,8 @@ export default function Navbar() {
                                 >
                                     <path
                                         d="M6 9L12 15L18 9"
-                                        stroke="#082858"
+                                        // stroke="#082858"
+                                        className="stroke-blue-600"
                                         strokeWidth="2"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
@@ -277,7 +278,7 @@ const cardsIcon = (
             width="20"
             height="28"
             rx="3.96369"
-            stroke="#124898"
+            className="stroke-blue-600"
             strokeWidth="8.66854"
             mask="url(#path-1-inside-1_2134_8395)"
         />
