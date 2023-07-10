@@ -135,7 +135,9 @@ function Main() {
                     </div>
                     <div className="message">
                         <div className="title-1">Loading</div>
-                        <div className="subtitle-2">zzz...</div>
+                        <div className="text-blue-600 font-bold mx-2 my-0">
+                            zzz...
+                        </div>
                     </div>
                     <Button variant="primary" className="action-btn" disabled>
                         Please Wait
@@ -158,7 +160,7 @@ function Main() {
                             <div className="title-1">
                                 Registration Complete!
                             </div>
-                            <div className="subtitle-2">
+                            <div className="text-blue-600 font-bold mx-2 my-0">
                                 You can now log in.
                             </div>
                         </div>
@@ -204,7 +206,7 @@ function Main() {
                     </div>
                     <div className="message">
                         <div className="title-1">Something went wrong...</div>
-                        <div className="subtitle-2">
+                        <div className="text-blue-600 font-bold mx-2 my-0">
                             The link is broken or its been over 30 minutes. You
                             can resend the email confirmation link below.
                         </div>

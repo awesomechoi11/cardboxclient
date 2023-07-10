@@ -114,7 +114,7 @@ export function MobileDropdownModal() {
                 </Link>
                 {close(closeModal)}
             </div>
-            <div className="content">
+            <div className="break-words">
                 {/* <div>
                     <Button
                         variant="secondary"

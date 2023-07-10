@@ -47,7 +47,9 @@ export function CreateYourOwnPacks({ play }) {
                             width="200"
                             height="200"
                         />
-                        <div className="subtitle-2">Babylon</div>
+                        <div className="text-blue-600 font-bold mx-2 my-0">
+                            Babylon
+                        </div>
                     </>
                 }
                 onFlip={play}
@@ -70,14 +72,19 @@ export function CreateYourOwnPacks({ play }) {
                 }
                 back={
                     <>
-                        <div className="subtitle-2"> What is a burret?</div>
+                        <div className="text-blue-600 font-bold mx-2 my-0">
+                            {" "}
+                            What is a burret?
+                        </div>
                     </>
                 }
                 onFlip={play}
                 className="card3"
             />
             <div className="cta">
-                <div className="jumbo-1">Create Your Own Packs</div>
+                <div className="text-5xl font-bold color-blue-600">
+                    Create Your Own Packs
+                </div>
                 <div className=" mt-2 mx-0 text-blue-400 break-words">
                     Create & Share Your Card Packs with just your friends or
                     everybody!

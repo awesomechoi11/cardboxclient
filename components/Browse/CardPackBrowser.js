@@ -206,7 +206,9 @@ function CardPreviewDefault({ data, collection }) {
                 </div>
             )}
             <div className="right">
-                <div className="subtitle-2 title">{title}</div>
+                <div className="text-blue-600 font-bold mx-2 my-0 title">
+                    {title}
+                </div>
                 <div className=" mt-2 mx-0 text-blue-400 break-words  details">
                     {[totalCards + " cards", ...tags].join(", ")}
                 </div>

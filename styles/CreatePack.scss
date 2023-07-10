@@ -1,8 +1,6 @@
 @use "./vars";
 
-
 #CreatePack {
-
     .add-btn {
         width: 100%;
         margin-bottom: 48rem;
@@ -12,7 +10,6 @@
     }
     .create-pack-controls {
         > * {
-
             > * {
                 pointer-events: all;
             }
@@ -26,12 +23,9 @@
         > .right {
             justify-content: end;
         }
-
-
     }
 
     .create-pack-row-item {
-
         .image-wrapper {
             flex-shrink: 0;
             width: 85rem;
@@ -125,9 +119,6 @@
                     align-items: center;
                 }
             }
-            .my-text-input {
-                flex-grow: 1;
-            }
         }
     }
 
@@ -159,7 +150,7 @@
                 border-radius: 8rem;
                 padding: 8rem 16rem;
                 width: 192rem;
-                > .subtitle-2 {
+                > .text-blue-600 font-bold mx-2 my-0 {
                     flex-shrink: 0;
                 }
             }

@@ -227,7 +227,7 @@ function CardFace({ faceId }) {
                             </div>
                         )}
                         <div
-                            className="content"
+                            className="break-words"
                             dangerouslySetInnerHTML={{
                                 __html: draftjsToHtml(content),
                             }}

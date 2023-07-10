@@ -106,7 +106,7 @@ export function MyClickTooltip({
         TriggerContent={
             <button className="icon-btn">
                 <div className="icon">{DUPLICATE_SVG}</div>
-                <div className="content">{millify(duplciates)}</div>
+                <div className="break-words">{millify(duplciates)}</div>
             </button>
         }
         TooltipContent={<div>Duplicate</div>}
@@ -189,7 +189,7 @@ export function MyHoverTooltip({
                             </motion.svg>
                         </div>
                         <motion.div
-                            className="inner normal-1"
+                            className="inner m-0 font-bold text-base color-blue-600"
                             initial={{
                                 y: "10",
                             }}

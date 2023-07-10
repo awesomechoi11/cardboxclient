@@ -40,7 +40,7 @@ export default function Custom404() {
                 </div>
                 <div className="message">
                     <div className="title-1">404 Not Found</div>
-                    <div className="subtitle-2">
+                    <div className="text-blue-600 font-bold mx-2 my-0">
                         This page doesn’t exist or was removed!
                     </div>
                 </div>

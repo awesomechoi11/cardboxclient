@@ -94,7 +94,7 @@ export function ModalWrapper({
                     >
                         <div
                             className={twMerge(
-                                "text-center content border-box cursor-auto relative bg-blue-200 rounded-xl ",
+                                "text-center break-words border-box cursor-auto relative bg-blue-200 rounded-xl ",
                                 "px-1 py-5 my-8 w-full",
                                 "tablet:w-[600px] tablet:py-8 tablet:px-6",
                                 "desktop:py-11 desktop:px-10 desktop:m-auto ",

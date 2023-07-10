@@ -36,7 +36,7 @@ export function CreatePackControlsTop() {
                 </Button>
             </div>
             <div className="middle  absolute w-full pointer-events-none flex items-center gap-[16rem] ">
-                <span className="subtitle-2">
+                <span className="text-blue-600 font-bold mx-2 my-0">
                     {cardIds?.length || 0} Total Cards
                 </span>
             </div>
@@ -93,7 +93,7 @@ export function CreatePackControlsBottom() {
                 </Button>
             </div>
             <div className="middle">
-                <span className="subtitle-2">
+                <span className="text-blue-600 font-bold mx-2 my-0">
                     {cardIds?.length || 0} Total Cards
                 </span>
             </div>

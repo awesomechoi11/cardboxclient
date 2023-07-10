@@ -188,7 +188,9 @@ function CardPackPreviewInner({ data }) {
             <Details data={data} />
             <div className="divider" />
             <div className="content-preview">
-                <div className="subtitle-2">Interactive Study Modes</div>
+                <div className="text-blue-600 font-bold mx-2 my-0">
+                    Interactive Study Modes
+                </div>
                 <div>
                     <Button
                         variant="secondary"
@@ -210,7 +212,9 @@ function CardPackPreviewInner({ data }) {
 function ContentPreview({ data: { totalCards, cardsPreview } }) {
     return (
         <div className="content-preview">
-            <div className="subtitle-2">Cards ({totalCards})</div>
+            <div className="text-blue-600 font-bold mx-2 my-0">
+                Cards ({totalCards})
+            </div>
             {cardsPreview.map(({ id, term, definition }) => (
                 <div className="row" key={id}>
                     <Field data={term} label="Term" />
@@ -236,9 +240,11 @@ function Field({ data: { content, id, image }, label }) {
                 </div>
             )}
             <div className="content-wrapper">
-                <div className="label subtitle-2">{label}</div>
+                <div className="label text-blue-600 font-bold mx-2 my-0">
+                    {label}
+                </div>
                 <div
-                    className="content"
+                    className="break-words"
                     dangerouslySetInnerHTML={{ __html: draftjsToHtml(content) }}
                 />
             </div>
@@ -356,7 +362,7 @@ function Header({ data }) {
                             TriggerContent={
                                 <button className="icon-btn" onClick={sendLike}>
                                     <div className="icon">{LIKE_SVG}</div>
-                                    <div className="content">
+                                    <div className="break-words">
                                         {millify(localStats.likes || 0)}
                                     </div>
                                 </button>
@@ -370,7 +376,7 @@ function Header({ data }) {
                                     onClick={sendShare}
                                 >
                                     <div className="icon">{SHARE_SVG}</div>
-                                    <div className="content">
+                                    <div className="break-words">
                                         {millify(localStats.shares || 0)}
                                     </div>
                                 </button>
@@ -384,7 +390,7 @@ function Header({ data }) {
                                     onClick={sendDuplicate}
                                 >
                                     <div className="icon">{DUPLICATE_SVG}</div>
-                                    <div className="content">
+                                    <div className="break-words">
                                         {millify(localStats.duplicates || 0)}
                                     </div>
                                 </button>
@@ -461,9 +467,11 @@ function Details({
                             alt={username}
                         />
                     </div>
-                    <div className="username subtitle-2">{username}</div>
+                    <div className="username text-blue-600 font-bold mx-2 my-0">
+                        {username}
+                    </div>
                 </div>
-                <div className="tags normal-1">
+                <div className="tags m-0 font-bold text-base color-blue-600">
                     {tags.map((tag, index) => (
                         <div key={index} className="pill">
                             {tag}
@@ -471,7 +479,7 @@ function Details({
                     ))}
                 </div>
             </div>
-            <div className="subtitle-2 middle">
+            <div className="text-blue-600 font-bold mx-2 my-0 middle">
                 {[
                     lastModified && "Last Updated " + ago(lastModified),
                     selected.collection !== "cardpackDrafts" &&
