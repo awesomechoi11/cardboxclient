@@ -2,10 +2,10 @@
 
 .flippable {
     position: relative;
-    width: 300rem;
-    height: 400rem;
+    width: 300px;
+    height: 400px;
     cursor: pointer;
-    filter: drop-shadow(0px 2rem 4rem vars.$color-primary-1);
+    filter: drop-shadow(0px 2px 4px vars.$color-primary-1);
     .front {
         transform: rotateY(0deg);
     }
@@ -18,7 +18,7 @@
         height: 100%;
         transform-style: preserve-3d;
         backface-visibility: hidden;
-        padding: 24rem;
+        padding: 24px;
         box-sizing: border-box;
         img {
             width: 80%;
@@ -37,13 +37,13 @@
         justify-content: center;
         align-items: center;
         background-color: #e7cdb5;
-        border-radius: 24rem;
-        gap: 16rem;
+        border-radius: 24px;
+        gap: 16px;
         > .watermark {
             position: absolute;
-            bottom: 16rem;
-            right: 16rem;
-            font-size: 24rem;
+            bottom: 16px;
+            right: 16px;
+            font-size: 24px;
             font-weight: 800;
             opacity: 0.1;
         }

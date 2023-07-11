@@ -4,17 +4,17 @@
     position: relative;
     display: flex;
     justify-content: center;
-    padding: 32rem 0;
-    padding-bottom: 64rem;
+    padding: 32px 0;
+    padding-bottom: 64px;
     // overflow: hidden;
     &.mobile {
-        padding-bottom: 148rem;
+        padding-bottom: 148px;
         > .dropzone-wrapper {
             display: flex;
             justify-content: space-between;
             position: absolute;
-            width: 343rem;
-            height: 400rem;
+            width: 343px;
+            height: 400px;
         }
         > .controls {
             position: absolute;
@@ -28,14 +28,14 @@
                 }
             }
             > .left {
-                right: 130rem;
+                right: 130px;
             }
             > .right {
-                left: 130rem;
+                left: 130px;
             }
             .arrow {
-                width: 80rem;
-                height: 80rem;
+                width: 80px;
+                height: 80px;
                 border-radius: 100%;
                 display: flex;
                 justify-content: center;
@@ -46,14 +46,14 @@
                     background-color: vars.$color-secondary-2;
                 }
                 > svg {
-                    width: 32rem;
-                    height: 32rem;
+                    width: 32px;
+                    height: 32px;
                 }
             }
             .flipsides,
             .shuffle {
-                width: 48rem;
-                height: 48rem;
+                width: 48px;
+                height: 48px;
                 border-radius: 100%;
                 display: flex;
                 justify-content: center;
@@ -64,8 +64,8 @@
                     background-color: vars.$color-secondary-2;
                 }
                 > svg {
-                    width: 48rem;
-                    height: 48rem;
+                    width: 48px;
+                    height: 48px;
                 }
             }
         }
@@ -83,14 +83,14 @@
             }
         }
         > .left {
-            right: 320rem;
+            right: 320px;
         }
         > .right {
-            left: 320rem;
+            left: 320px;
         }
         .arrow {
-            width: 80rem;
-            height: 80rem;
+            width: 80px;
+            height: 80px;
             border-radius: 100%;
             display: flex;
             justify-content: center;
@@ -101,8 +101,8 @@
                 background-color: vars.$color-secondary-2;
             }
             > svg {
-                width: 32rem;
-                height: 32rem;
+                width: 32px;
+                height: 32px;
             }
         }
         .flipsides,
@@ -110,8 +110,8 @@
             .tooltip-container {
                 white-space: nowrap;
             }
-            width: 48rem;
-            height: 48rem;
+            width: 48px;
+            height: 48px;
             border-radius: 100%;
             display: flex;
             justify-content: center;
@@ -122,8 +122,8 @@
                 background-color: vars.$color-secondary-2;
             }
             > svg {
-                width: 48rem;
-                height: 48rem;
+                width: 48px;
+                height: 48px;
             }
         }
     }
@@ -132,20 +132,20 @@
         display: flex;
         justify-content: space-between;
         position: absolute;
-        width: 860rem;
-        height: 400rem;
+        width: 860px;
+        height: 400px;
     }
     > .stack {
         position: relative;
-        width: 300rem;
-        height: 400rem;
+        width: 300px;
+        height: 400px;
     }
     .card {
         word-break: break-word;
-        filter: drop-shadow(0px 2rem 4rem vars.$color-primary-1);
+        filter: drop-shadow(0px 2px 4px vars.$color-primary-1);
         position: absolute;
-        width: 300rem;
-        height: 400rem;
+        width: 300px;
+        height: 400px;
         &.active {
             cursor: grab;
         }
@@ -155,7 +155,7 @@
             height: 100%;
             opacity: 1;
             // background-color: #e7cdb5;
-            border-radius: 26.67rem;
+            border-radius: 26.67px;
             overflow: hidden;
             .back-face,
             .front-face {
@@ -173,7 +173,7 @@
             }
             .face {
                 background-color: #e7cdb5;
-                padding: 24rem;
+                padding: 24px;
                 box-sizing: border-box;
                 img {
                     width: 80%;
@@ -188,7 +188,7 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                gap: 16rem;
+                gap: 16px;
             }
         }
     }

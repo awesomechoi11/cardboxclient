@@ -123,7 +123,7 @@ function Inner() {
     ["card-pack", query.cardPackId, isAnon],
     () =>
       db
-        .collection("cardpacks")
+        .collection("testpacks")
         .aggregate([
           {
             $match: {
@@ -144,10 +144,10 @@ function Inner() {
               title: 1,
               description: 1,
               tags: 1,
-              views: 1,
-              likes: 1,
-              shares: 1,
-              duplicates: 1,
+              // views: 1,
+              // likes: 1,
+              // shares: 1,
+              // duplicates: 1,
               lastModified: 1,
               authorDetails: 1,
               lastModified: 1,
@@ -250,7 +250,7 @@ export async function getStaticProps({ params }) {
           : null,
         title: cardpack.title,
         image: cdnUrl,
-        url: `https://flippy.cards/card-pack/${cardpack._id}?slug=${slugify(
+        url: `https://flippy.cards/cardpack/${cardpack._id}?slug=${slugify(
           cardpack.title
         )}`,
         noIndex: cardpack.visibility !== "public",

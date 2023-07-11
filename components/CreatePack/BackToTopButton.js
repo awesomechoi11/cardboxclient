@@ -3,9 +3,9 @@ import { MyHoverTooltip } from "../Tooltip/MyClickTooltip";
 
 export default function BackToTopButton() {
   return (
-    <div className="absolute top-[1457rem] bottom-[75rem] left-[230rem] track">
+    <div className="absolute top-[1457px] bottom-[75px] left-[230px] track">
       <div
-        className="sticky top-[calc(100vh - 256rem)]"
+        className="sticky top-[calc(100vh - 256px)]"
         onClick={() => {
           document
             .getElementById("app")

@@ -3,7 +3,7 @@
 #CreatePack {
     .add-btn {
         width: 100%;
-        margin-bottom: 48rem;
+        margin-bottom: 48px;
     }
     > .row {
         width: 100%;
@@ -28,19 +28,19 @@
     .create-pack-row-item {
         .image-wrapper {
             flex-shrink: 0;
-            width: 85rem;
-            height: 76rem;
-            border-radius: 16rem;
+            width: 85px;
+            height: 76px;
+            border-radius: 16px;
             overflow: hidden;
             flex-shrink: 0;
             cursor: pointer;
             > .inner {
-                width: 85rem;
-                height: 76rem;
+                width: 85px;
+                height: 76px;
                 > svg,
                 > img {
-                    width: 85rem;
-                    height: 76rem;
+                    width: 85px;
+                    height: 76px;
                 }
             }
         }
@@ -84,7 +84,7 @@
                 z-index: 2;
             }
             > .index {
-                min-width: 48rem;
+                min-width: 48px;
             }
             > .title-1 {
                 margin: 0;
@@ -92,7 +92,7 @@
             > .fields {
                 display: flex;
                 flex-grow: 1;
-                gap: 24rem;
+                gap: 24px;
                 img {
                     object-fit: cover;
                 }
@@ -100,12 +100,12 @@
                     flex-grow: 1;
                     display: flex;
                     align-items: flex-start;
-                    gap: 8rem;
+                    gap: 8px;
                     > .editor-group {
-                        width: 250rem;
+                        width: 250px;
                         > .card-editor-wrapper {
                             > .editor {
-                                min-height: 54rem;
+                                min-height: 54px;
                             }
                             flex-grow: 1;
                             &.active {
@@ -128,8 +128,8 @@
         > .inner {
             position: absolute;
             bottom: 0;
-            width: 1300rem;
-            height: 96rem;
+            width: 1300px;
+            height: 96px;
             // background: red;
             // pointer-events: none;
         }
@@ -139,17 +139,17 @@
             display: flex;
             align-items: center;
             position: absolute;
-            bottom: 32rem;
-            left: 890rem;
+            bottom: 32px;
+            left: 890px;
             > .right {
                 box-sizing: border-box;
                 display: flex;
                 background-color: vars.$color-secondary-3;
                 align-items: center;
-                gap: 16rem;
-                border-radius: 8rem;
-                padding: 8rem 16rem;
-                width: 192rem;
+                gap: 16px;
+                border-radius: 8px;
+                padding: 8px 16px;
+                width: 192px;
                 > .text-blue-600 font-bold mx-2 my-0 {
                     flex-shrink: 0;
                 }

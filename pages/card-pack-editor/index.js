@@ -92,7 +92,7 @@ function Main() {
   );
 
   return (
-    <main id="CreatePack" className="px-[540rem]">
+    <main id="CreatePack" className="px-[540px]">
       <div className="title-1">Card Pack Editor</div>
       <div className="placeholder-wrapper flex justify-center">
         {(isSuccess || isLoading || isIdle) && (

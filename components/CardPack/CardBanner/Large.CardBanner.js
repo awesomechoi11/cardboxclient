@@ -1,45 +1,46 @@
 // import { useIsMobile } from "../../mediaQueryHooks";
 import { useRouter } from "next/router";
 import Button from "@components/general/Button";
+import { normalizeImageSrc } from "@components/general/NormalizedImage";
 
 export default function LargeCardBanner({ data }) {
-    const { tags, title, description, image, cards } = data;
-    // const isMobile = useIsMobile();
-    let imgSrc = normalizeImageSrc(image);
-    const router = useRouter();
-    return (
-        <div className="large-card-banner">
-            {imgSrc && (
-                <div className="left">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={imgSrc} alt="banner" />
-                </div>
-            )}
-            <div className="right">
-                <div className="top">
-                    <div className="title-1">{title}</div>
-                    <div className="text-blue-500 font-bold my-2 mx-0">
-                        {[cards.length + " cards", ...tags].join(" · ")}
-                    </div>
-                    <div className=" mt-2 mx-0 text-blue-400 break-words">
-                        {description}
-                    </div>
-                </div>
-                <div className="text-blue-600 font-bold mx-2 my-0">
-                    Interactive Study Modes
-                </div>
-                <div>
-                    <Button
-                        variant="secondary"
-                        size="sm"
-                        onClick={() => {
-                            router.push(`/card-pack/${data._id}/match`);
-                        }}
-                    >
-                        Match
-                    </Button>
-                </div>
-            </div>
+  const { tags, title, description, image, cards } = data;
+  // const isMobile = useIsMobile();
+  let imgSrc = normalizeImageSrc(image);
+  const router = useRouter();
+  return (
+    <div className="large-card-banner">
+      {imgSrc && (
+        <div className="left">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={imgSrc} alt="banner" />
         </div>
-    );
+      )}
+      <div className="right">
+        <div className="top">
+          <div className="title-1">{title}</div>
+          <div className="text-blue-500 font-bold my-2 mx-0">
+            {[cards.length + " cards", ...tags].join(" · ")}
+          </div>
+          <div className=" mt-2 mx-0 text-blue-400 break-words">
+            {description}
+          </div>
+        </div>
+        <div className="text-blue-600 font-bold mx-2 my-0">
+          Interactive Study Modes
+        </div>
+        <div>
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={() => {
+              router.push(`/card-pack/${data._id}/match`);
+            }}
+          >
+            Match
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
 }

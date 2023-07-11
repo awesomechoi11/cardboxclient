@@ -1,47 +1,47 @@
 @use "../vars";
 
 #match-post-game-screen {
-    width: 860rem;
+    width: 860px;
     margin: 0 auto;
 
     > .top {
         display: flex;
         justify-content: space-between;
         > .details {
-            width: 400rem;
+            width: 400px;
             > * {
-                margin-bottom: 24rem;
+                margin-bottom: 24px;
             }
             > .title-1 {
-                margin-bottom: 32rem;
+                margin-bottom: 32px;
             }
             > .stats {
                 display: flex;
-                gap: 24rem;
+                gap: 24px;
             }
             > .time {
-                margin-bottom: 32rem;
+                margin-bottom: 32px;
                 > .text-blue-600 font-bold mx-2 my-0 {
-                    margin-bottom: 8rem;
+                    margin-bottom: 8px;
                 }
                 > .content {
-                    font-size: 64rem;
+                    font-size: 64px;
                     font-weight: 600;
-                    margin: 16rem 24rem;
+                    margin: 16px 24px;
                 }
             }
             > .buttons {
                 display: flex;
-                gap: 16rem;
+                gap: 16px;
             }
         }
         > .leaderboard {
-            width: 400rem;
-            border-radius: 16rem;
-            padding: 16rem 24rem;
+            width: 400px;
+            border-radius: 16px;
+            padding: 16px 24px;
             display: flex;
             flex-direction: column;
-            gap: 16rem;
+            gap: 16px;
             background-color: vars.$color-secondary-2;
         }
     }
@@ -50,46 +50,46 @@
 @media (max-width: vars.$mobile-maxWidth) {
     #match-post-game-screen {
         margin-bottom: 20vh;
-        width: 343rem;
+        width: 343px;
         > .top {
             flex-direction: column;
-            gap: 48rem;
+            gap: 48px;
             > .details {
-                width: 343rem;
+                width: 343px;
                 > * {
-                    margin-bottom: 24rem;
+                    margin-bottom: 24px;
                 }
                 > .title-1 {
-                    margin-bottom: 32rem;
+                    margin-bottom: 32px;
                 }
                 > .stats {
                     display: flex;
-                    gap: 24rem;
+                    gap: 24px;
                 }
                 > .time {
-                    margin-bottom: 32rem;
+                    margin-bottom: 32px;
                     > .text-blue-600 font-bold mx-2 my-0 {
-                        margin-bottom: 8rem;
+                        margin-bottom: 8px;
                     }
                     > .content {
-                        font-size: 64rem;
+                        font-size: 64px;
                         font-weight: 600;
-                        margin: 16rem 24rem;
+                        margin: 16px 24px;
                     }
                 }
                 > .buttons {
                     display: flex;
-                    gap: 16rem;
+                    gap: 16px;
                 }
             }
             > .leaderboard {
-                width: 343rem;
+                width: 343px;
                 box-sizing: border-box;
-                border-radius: 16rem;
-                padding: 16rem 24rem;
+                border-radius: 16px;
+                padding: 16px 24px;
                 display: flex;
                 flex-direction: column;
-                gap: 16rem;
+                gap: 16px;
                 background-color: vars.$color-secondary-2;
             }
         }
