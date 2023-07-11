@@ -93,7 +93,9 @@ function Main() {
 
   return (
     <main id="CreatePack" className="px-[540px]">
-      <div className="title-1">Card Pack Editor</div>
+      <div className="title-1 text-lg font-semibold text-blue-600 my-1">
+        Card Pack Editor
+      </div>
       <div className="placeholder-wrapper flex justify-center">
         {(isSuccess || isLoading || isIdle) && (
           <PlaceholderColumn presetKey="loading" />

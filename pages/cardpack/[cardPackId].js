@@ -95,7 +95,7 @@ export default function CardPack({ metadata }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main>
+      <main className="bg-blue-200">
         <WaitForMongo>
           <Inner />
         </WaitForMongo>
@@ -172,13 +172,13 @@ function Inner() {
   console.log(data);
   if (isSuccess && data)
     return (
-      <>
-        <CardSwiper data={data} />
-        <div className="divider" />
+      <div className="w-[812px] mx-auto mt-7">
         <LargeCardBanner data={data} />
         <div className="divider" />
+        <CardSwiper data={data} />
+        <div className="divider" />
         <CardDisplay data={data} />
-      </>
+      </div>
     );
 
   return (

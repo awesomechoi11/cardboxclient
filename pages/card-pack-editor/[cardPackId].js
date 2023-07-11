@@ -109,7 +109,9 @@ function Inner({ cardPackId }) {
       {result.isSuccess &&
         (result.data ? (
           <CardPackDataContext.Provider value={result}>
-            <div className="title-1">Card Pack Editor</div>
+            <div className="title-1 text-lg font-semibold text-blue-600 my-1">
+              Card Pack Editor
+            </div>
             <CreatePackDetailsForm />
             <div className="divider" />
             <CreatePackDisplay />

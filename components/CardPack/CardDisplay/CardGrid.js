@@ -10,6 +10,8 @@ import clsx from "clsx";
 import { useIsMobile } from "../../mediaQueryHooks";
 import draftjsToHtml from "draftjs-to-html";
 import { normalizeImageSrc } from "@components/general/NormalizedImage";
+import ImageViewer from "@components/Modals/ImageViewer/ImageViewer";
+import { twMerge } from "tailwind-merge";
 
 export default function CardGrid() {
   const data = useContext(CardDisplayContext);
@@ -42,7 +44,11 @@ function Card({ index, play, backgroundColor = "#E7CDB5" }) {
   const flip = cardSide;
   return (
     <motion.div
-      className="card"
+      className={twMerge(
+        "w-[327px] h-[434px] box-border break-words select-none relative text-center",
+        "",
+        ""
+      )}
       viewport={{ once: true }}
       // style={{
       //     backgroundColor,
@@ -58,7 +64,7 @@ function Card({ index, play, backgroundColor = "#E7CDB5" }) {
       }}
     >
       <motion.div
-        className="inner"
+        className="w-full h-full opacity-100"
         // style={{
         //     rotateZ: rotate,
         //     scale,
@@ -66,7 +72,7 @@ function Card({ index, play, backgroundColor = "#E7CDB5" }) {
         // }}
       >
         <motion.div
-          className="front-face"
+          className="absolute w-full h-full preserve-3d backface-hidden transform-gpu"
           initial={flip ? "0deg" : "180deg"}
           animate={{
             rotateY: flip ? "180deg" : "0deg",
@@ -76,14 +82,12 @@ function Card({ index, play, backgroundColor = "#E7CDB5" }) {
           }}
         >
           {/* <AnimatePresence> */}
-          {active && frontData && (
-            <CardFace backgroundColor={backgroundColor} data={frontData} />
-          )}
+          {active && frontData && <CardFace data={frontData} />}
           {/* </AnimatePresence> */}
-          <BlankCardFace backgroundColor={backgroundColor} active={active} />
+          <BlankCardFace active={active} />
         </motion.div>
         <motion.div
-          className="back-face"
+          className="absolute w-full h-full preserve-3d backface-hidden transform-gpu"
           initial={flip ? "0deg" : "180deg"}
           animate={{
             rotateY: flip ? "0deg" : "180deg",
@@ -92,27 +96,23 @@ function Card({ index, play, backgroundColor = "#E7CDB5" }) {
             duration: 0.24,
           }}
         >
-          {active && backData && (
-            <CardFace backgroundColor={backgroundColor} data={backData} />
-          )}
-          <BlankCardFace backgroundColor={backgroundColor} active={active} />
+          {active && backData && <CardFace data={backData} />}
+          <BlankCardFace active={active} />
         </motion.div>
       </motion.div>
     </motion.div>
   );
 }
 
-function CardFace({ data: { image, content }, backgroundColor }) {
+function CardFace({ data: { image, content } }) {
   let imgSrc = normalizeImageSrc(image);
   return (
-    <motion.div
-      className="face"
-      style={{
-        backgroundColor,
-      }}
-    >
+    <motion.div className="shadow-2xl p-3 box-border absolute pointer-events-none w-full h-full flex flex-col justify-center items-center gap-3 bg-blue-100 rounded-2xl">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      {imgSrc && <img layout="fill" src={imgSrc} alt="card" />}
+      {/* {imgSrc && <img layout="fill" src={imgSrc} alt="card" />} */}
+      {imgSrc && (
+        <ImageViewer className="pointer-events-auto" imgData={image} />
+      )}
       <div
         className="break-words"
         dangerouslySetInnerHTML={{ __html: draftjsToHtml(content) }}
@@ -121,19 +121,14 @@ function CardFace({ data: { image, content }, backgroundColor }) {
   );
 }
 
-const BlankCardFace = ({ backgroundColor = "#E7CDB5", active }) => (
+const BlankCardFace = ({ active }) => (
   <motion.div
-    className="face blank"
+    className="p-3 box-border absolute pointer-events-none w-full h-full flex flex-col justify-center items-center gap-3 bg-blue-100 rounded-2xl"
     initial={{ opacity: 1 }}
-    animate={{ opacity: active ? 0 : 1 }}
+    animate={{ opacity: active ? 0 : 1, pointerEvents: "none" }}
   >
     <svg viewBox="0 0 180 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect
-        width="180"
-        height="240"
-        rx="16"
-        //  fill={backgroundColor}
-      />
+      <rect width="180" height="240" rx="16" />
       <path
         d="M56.6165 86.0187H48.5838C48.4767 85.1941 48.2572 84.4497 47.9251 83.7857C47.5931 83.1216 47.154 82.554 46.6078 82.0827C46.0616 81.6115 45.4136 81.2527 44.6639 81.0064C43.9249 80.7493 43.1056 80.6208 42.2059 80.6208C40.6101 80.6208 39.2338 81.0117 38.0771 81.7936C36.9311 82.5754 36.0475 83.7053 35.4264 85.1833C34.8159 86.6614 34.5106 88.45 34.5106 90.5492C34.5106 92.734 34.8212 94.5655 35.4424 96.0435C36.0743 97.5108 36.9579 98.6193 38.0932 99.369C39.2392 100.108 40.594 100.477 42.1577 100.477C43.0359 100.477 43.8339 100.365 44.5514 100.14C45.2797 99.9152 45.917 99.5886 46.4632 99.1601C47.0201 98.721 47.4753 98.1909 47.8288 97.5697C48.1929 96.9378 48.4446 96.2256 48.5838 95.433L56.6165 95.4812C56.4772 96.9378 56.0542 98.3729 55.3473 99.7867C54.6511 101.2 53.6926 102.491 52.4716 103.658C51.2507 104.815 49.7619 105.736 48.0055 106.422C46.2597 107.107 44.2569 107.45 41.9971 107.45C39.0196 107.45 36.3528 106.797 33.9965 105.49C31.651 104.173 29.7982 102.255 28.438 99.7385C27.0778 97.2216 26.3977 94.1585 26.3977 90.5492C26.3977 86.9291 27.0885 83.8606 28.4701 81.3437C29.8517 78.8269 31.7206 76.9151 34.0769 75.6084C36.4331 74.3018 39.0732 73.6485 41.9971 73.6485C43.9892 73.6485 45.8313 73.9269 47.5235 74.4839C49.2157 75.0301 50.7044 75.8334 51.9897 76.8937C53.2749 77.9433 54.3191 79.2338 55.1224 80.7654C55.9257 82.297 56.4237 84.0481 56.6165 86.0187ZM67.4445 107H58.8977L69.9988 74.0983H80.5859L91.687 107H83.1402L75.4128 82.388H75.1558L67.4445 107ZM66.3038 94.0514H84.1684V100.092H66.3038V94.0514ZM95.2294 107V74.0983H108.821C111.284 74.0983 113.41 74.5428 115.199 75.4317C116.998 76.31 118.385 77.5738 119.359 79.2231C120.334 80.8618 120.821 82.8057 120.821 85.0548C120.821 87.3361 120.323 89.2746 119.327 90.8705C118.331 92.4556 116.917 93.6658 115.086 94.5012C113.255 95.3259 111.086 95.7382 108.58 95.7382H99.9847V89.4728H107.102C108.301 89.4728 109.303 89.3175 110.106 89.0069C110.92 88.6856 111.536 88.2036 111.953 87.561C112.371 86.9077 112.58 86.0723 112.58 85.0548C112.58 84.0374 112.371 83.1966 111.953 82.5326C111.536 81.8578 110.92 81.3545 110.106 81.0224C109.292 80.6797 108.29 80.5084 107.102 80.5084H103.182V107H95.2294ZM113.753 91.9629L121.946 107H113.271L105.238 91.9629H113.753ZM137.344 107H125.183V74.0983H137.328C140.681 74.0983 143.567 74.757 145.988 76.0743C148.419 77.381 150.293 79.266 151.61 81.7293C152.928 84.1819 153.586 87.1165 153.586 90.5331C153.586 93.9603 152.928 96.9056 151.61 99.369C150.304 101.832 148.435 103.723 146.004 105.04C143.572 106.347 140.686 107 137.344 107ZM133.135 100.22H137.039C138.881 100.22 140.44 99.9099 141.714 99.2887C142.999 98.6568 143.969 97.6339 144.622 96.2202C145.286 94.7957 145.618 92.9 145.618 90.5331C145.618 88.1661 145.286 86.2811 144.622 84.8781C143.958 83.4644 142.978 82.4469 141.682 81.8257C140.397 81.1938 138.812 80.8779 136.927 80.8779H133.135V100.22Z"
         fill="#674433"

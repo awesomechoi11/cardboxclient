@@ -113,7 +113,9 @@ export const CreatePackRowItem = forwardRef(function CreatePackRowItem(
           // focused && "focused"
         )}
       >
-        <div className="index title-1">{index + 1}</div>
+        <div className="index title-1 text-lg font-semibold text-blue-600 my-1">
+          {index + 1}
+        </div>
         <Fields displayMode={displayState} />
       </div>
       <div className=" controls">

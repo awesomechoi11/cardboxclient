@@ -100,7 +100,9 @@ export default function PlaceholderColumn({
       )}
       {message && (
         <div className="message">
-          <div className="title-1">{message.title}</div>
+          <div className="title-1 text-lg font-semibold text-blue-600 my-1">
+            {message.title}
+          </div>
           <div className="mx-0 mt-2 text-blue-400 break-words">
             {message.description}
           </div>
