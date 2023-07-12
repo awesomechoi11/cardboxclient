@@ -16,36 +16,34 @@ export default function LargeCardBanner({ data }) {
   //   </div>
   // )}
   return (
-    <div className="large-card-banner">
-      <div className="right">
-        <div className="top">
-          <div className="title-1 text-xl font-semibold text-blue-900 my-1 ">
-            {title}
-          </div>
-          <div className="text-blue-500 font-bold my-2 mx-0 flex gap-1">
-            {tags.map((tag) => (
-              <UnlabeledPill key={tag}>{tag}</UnlabeledPill>
-            ))}
-          </div>
-          <div className=" mt-2 mx-0 text-blue-400 break-words">
-            {description}
-          </div>
+    <div className="w-full flex flex-col">
+      <div className="mb-4">
+        <div className="title-1 text-xl font-semibold text-blue-900 my-1 ">
+          {title}
         </div>
-        <div className="text-blue-800 font-bold my-0">
-          Interactive Study Modes
+        <div className="text-blue-500 font-bold my-2 mx-0 flex gap-1">
+          {tags.map((tag) => (
+            <UnlabeledPill key={tag}>{tag}</UnlabeledPill>
+          ))}
         </div>
-        <div>
-          <Button
-            variant="secondary"
-            size="sm"
-            onClick={() => {
-              router.push(`/card-pack/${data._id}/match`);
-            }}
-            className="shadow-[0_2px_6px_0px_rgba(0,0,0,0.3)]"
-          >
-            Match
-          </Button>
+        <div className=" mt-2 mx-0 text-blue-800 break-words">
+          {description}
         </div>
+      </div>
+      <div className="text-blue-800 font-bold my-0 mb-2">
+        Interactive Study Modes
+      </div>
+      <div className="mb-2">
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => {
+            router.push(`/card-pack/${data._id}/match`);
+          }}
+          className="shadow-[0_2px_6px_0px_rgba(0,0,0,0.3)]"
+        >
+          Match
+        </Button>
       </div>
     </div>
   );

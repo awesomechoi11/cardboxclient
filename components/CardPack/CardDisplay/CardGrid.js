@@ -24,19 +24,26 @@ export default function CardGrid() {
   );
 
   return (
-    <div className={clsx("card-grid", isMobile && "mobile")}>
-      {rows.map((row, rowIndex) => (
+    <div
+      className={clsx("card-grid flex justify-center", isMobile && "mobile")}
+    >
+      {/* {rows.map((row, rowIndex) => (
         <div className="row" key={rowIndex}>
           {row.map((index) => (
             <Card key={index} index={index} play={play} />
           ))}
         </div>
-      ))}
+      ))} */}
+      <div className="flex gap-3 justify-start flex-wrap">
+        {cards.map((card, index) => (
+          <Card key={index} index={index} play={play} />
+        ))}
+      </div>
     </div>
   );
 }
 
-function Card({ index, play, backgroundColor = "#E7CDB5" }) {
+function Card({ index, play }) {
   const { cardSide, cardData, flipCard } = useCardDisplayCardState(index);
   let frontData = cardData?.term;
   let backData = cardData?.definition;
@@ -45,7 +52,7 @@ function Card({ index, play, backgroundColor = "#E7CDB5" }) {
   return (
     <motion.div
       className={twMerge(
-        "w-[327px] h-[434px] box-border break-words select-none relative text-center",
+        "w-[260px] h-[353px] box-border break-words select-none relative text-center",
         "",
         ""
       )}
@@ -107,7 +114,7 @@ function Card({ index, play, backgroundColor = "#E7CDB5" }) {
 function CardFace({ data: { image, content } }) {
   let imgSrc = normalizeImageSrc(image);
   return (
-    <motion.div className="shadow-2xl p-3 box-border absolute pointer-events-none w-full h-full flex flex-col justify-center items-center gap-3 bg-blue-100 rounded-2xl">
+    <motion.div className="rounded-xl shadow-2xl p-3 box-border absolute pointer-events-none w-full h-full flex flex-col justify-center items-center gap-3 bg-blue-100 rounded-2xl">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       {/* {imgSrc && <img layout="fill" src={imgSrc} alt="card" />} */}
       {imgSrc && (

@@ -63,10 +63,10 @@
                 align-items: center;
                 transition: background-color 220ms;
                 cursor: pointer;
-                &:hover,
-                &.active {
-                    background-color: vars.$color-secondary-2;
-                }
+                // &:hover,
+                // &.active {
+                //     background-color: vars.$color-secondary-2;
+                // }
             }
         }
         > .left {
@@ -115,10 +115,10 @@
                     align-items: center;
                     transition: background-color 220ms;
                     cursor: pointer;
-                    &:hover,
-                    &.active {
-                        background-color: vars.$color-secondary-2;
-                    }
+                    // &:hover,
+                    // &.active {
+                    //     background-color: vars.$color-secondary-2;
+                    // }
                 }
             }
             > .left {
