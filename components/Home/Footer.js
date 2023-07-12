@@ -22,7 +22,7 @@ export default function Footer() {
                     <li>Our Story</li>
                     <li>Press</li>
                     <li>Careers</li>
-                    <li>Dis my cord</li>
+                    <li><a href="https://discord.gg/xGYGEPtC">Dis my cord</a></li>
                 </ul>
                 <ul className="flex flex-col desktop:justify-evenly justify-self-start">
                     <li className="font-bold">Browse by Subject</li>
