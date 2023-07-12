@@ -191,15 +191,24 @@ function Inner() {
 // This function gets called at build time
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
-  const apiCreds = Realm.Credentials.apiKey(process.env.MONGO_API_KEY);
-  const apiUser = await MongoApp.logIn(apiCreds);
-  const cardpacks = await apiUser.functions.getCardPackIds();
+  let cursor;
+  let paths;
+  const { db: cachedDb, client, disconnect } = await connectToAtlas();
+  try {
+    cursor = await cachedDb.collection("testpacks").find({}).limit(10);
+    paths = await cursor
+      .map((pack) => ({
+        params: {
+          cardPackId: pack._id,
+        },
+      }))
+      .toArray();
+  } catch {
+    console.log(e);
+  } finally {
+    if (cursor) await cursor.close();
+  }
   // Get the paths we want to pre-render based on posts
-  const paths = cardpacks.map((pack) => ({
-    params: {
-      cardPackId: pack._id,
-    },
-  }));
 
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
@@ -212,7 +221,6 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   let cardpack;
   let cursor;
-
   const { db: cachedDb, client, disconnect } = await connectToAtlas();
   try {
     // Process a POST request
