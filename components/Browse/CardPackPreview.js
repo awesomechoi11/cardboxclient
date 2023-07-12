@@ -177,9 +177,9 @@ function CardPackPreviewInner({ data }) {
       }}
     >
       <Header data={data} />
-      <div className="divider" />
+      <div className="w-full my-6 mx-0 opacity-20 h-[2px] bg-blue-600" />
       <Details data={data} />
-      <div className="divider" />
+      <div className="w-full my-6 mx-0 opacity-20 h-[2px] bg-blue-600" />
       <div className="content-preview">
         <div className="text-blue-600 font-bold mx-2 my-0">
           Interactive Study Modes
@@ -196,7 +196,7 @@ function CardPackPreviewInner({ data }) {
           </Button>
         </div>
       </div>
-      <div className="divider" />
+      <div className="w-full my-6 mx-0 opacity-20 h-[2px] bg-blue-600" />
       <ContentPreview data={data} />
     </motion.div>
   );

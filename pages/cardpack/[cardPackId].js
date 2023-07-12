@@ -172,11 +172,11 @@ function Inner() {
   console.log(data);
   if (isSuccess && data)
     return (
-      <div className="w-[812px] mx-auto mt-7">
+      <div className="px-2 tablet:px-0 max-w-[812px] mx-auto mt-7">
         <LargeCardBanner data={data} />
-        <div className="divider" />
+        <div className="w-full my-6 mx-0 opacity-20 h-[2px] bg-blue-600" />
         <CardSwiper data={data} />
-        <div className="divider" />
+        <div className="w-full my-6 mx-0 opacity-20 h-[2px] bg-blue-600" />
         <CardDisplay data={data} />
       </div>
     );

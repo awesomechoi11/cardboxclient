@@ -176,9 +176,9 @@ function Inner() {
     return (
       <>
         <CardSwiper data={data} />
-        <div className="divider" />
+        <div className="w-full my-6 mx-0 opacity-20 h-[2px] bg-blue-600" />
         <LargeCardBanner data={data} />
-        <div className="divider" />
+        <div className="w-full my-6 mx-0 opacity-20 h-[2px] bg-blue-600" />
         <CardDisplay data={data} />
       </>
     );

@@ -12,7 +12,7 @@ export default function PickerMode() {
         Choose or Upload an Image
       </div>
       <FileItemList />
-      <div className="divider" />
+      <div className="w-full my-6 mx-0 opacity-20 h-[2px] bg-blue-600" />
       <UrlUploader />
       <PickerFlowDropzone />
     </div>

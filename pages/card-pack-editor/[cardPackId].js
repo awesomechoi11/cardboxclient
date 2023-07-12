@@ -113,7 +113,7 @@ function Inner({ cardPackId }) {
               Card Pack Editor
             </div>
             <CreatePackDetailsForm />
-            <div className="divider" />
+            <div className="w-full my-6 mx-0 opacity-20 h-[2px] bg-blue-600" />
             <CreatePackDisplay />
           </CardPackDataContext.Provider>
         ) : (
