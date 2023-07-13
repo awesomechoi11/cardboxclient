@@ -67,7 +67,7 @@ export default function HomePage() {
                                 alt="diarreafarthead"
                                 width="621"
                                 height="375"
-                                className="tablet:flex tablet:mx-auto tablet:my-5"
+                                className="tablet:flex tablet:mx-auto desktop:mx-0 tablet:my-5"
                             />
                         )}
 
