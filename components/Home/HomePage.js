@@ -58,7 +58,7 @@ export default function HomePage() {
                 </div>
                 <section className="
                 desktop:bg-none tablet:bg-none 
-                before:bg-hero-pattern before:absolute before:inset-0 before:opacity-20 before:desktop:bg-none before:tablet:bg-none
+                before:bg-[url('/assets/img/flippybanner.png')] before:absolute before:inset-0 before:opacity-20 before:desktop:bg-none before:tablet:bg-none
                 relative desktop:py-0 tablet:py-0 py-8">
                     <div className="desktop:flex items-center desktop:w-4/6 mx-auto justify-between isolate">
                         {!isMobile && (
@@ -67,10 +67,11 @@ export default function HomePage() {
                                 alt="diarreafarthead"
                                 width="621"
                                 height="375"
+                                className="tablet:flex tablet:mx-auto tablet:my-5"
                             />
                         )}
 
-                        <div className="desktop:w-1/3 desktop:text-right desktop:space-y-3 w-full  space-y-4  text-center">
+                        <div className="desktop:w-1/3 desktop:text-right desktop:space-y-3 tablet:space-y-5 tablet:mb-5 w-full  space-y-4  text-center">
                             <p className="desktop:text-3xl text-3xl font-semibold leading-tight">
                                 Unlock your{" "}
                                 <span className="text-yellow-500">potential</span>
