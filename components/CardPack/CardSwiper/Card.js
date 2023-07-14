@@ -119,7 +119,7 @@ export default function Card({ active = false, arrIndex, play }) {
             }}
         >
             <motion.div
-                className="inner text-center"
+                className="text-center inner"
                 style={{
                     rotateZ: rotate,
                     scale,
@@ -127,7 +127,7 @@ export default function Card({ active = false, arrIndex, play }) {
                 }}
             >
                 <motion.div
-                    className="front-face bg-blue-100 shadow-2xl rounded-xl"
+                    className="bg-blue-100 shadow-2xl front-face rounded-xl"
                     initial={flip ? "0deg" : "180deg"}
                     animate={{
                         rotateY: flip ? "180deg" : "0deg",
@@ -142,7 +142,7 @@ export default function Card({ active = false, arrIndex, play }) {
                     <BlankCardFace active={active} />
                 </motion.div>
                 <motion.div
-                    className="back-face bg-blue-100 shadow-2xl rounded-xl"
+                    className="bg-blue-100 shadow-2xl backface-hidden rounded-xl"
                     initial={flip ? "0deg" : "180deg"}
                     animate={{
                         rotateY: flip ? "0deg" : "180deg",
@@ -163,7 +163,7 @@ function CardFace({ data: { image, content } }) {
     let imgSrc = normalizeImageSrc(image);
 
     return (
-        <motion.div className="face bg-blue-100 shadow-2xl rounded-xl">
+        <motion.div className="bg-blue-100 shadow-2xl face rounded-xl">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             {imgSrc && <img layout="fill" src={imgSrc} alt="card" />}
             <div dangerouslySetInnerHTML={{ __html: draftjsToHtml(content) }} />
@@ -173,7 +173,7 @@ function CardFace({ data: { image, content } }) {
 
 const BlankCardFace = ({ active }) => (
     <motion.div
-        className="face blank"
+        className="face blank backface-hidden"
         initial={{ opacity: 1 }}
         animate={{ opacity: active ? 0 : 1 }}
     >
