@@ -148,23 +148,3 @@ function Inner({ cardPackId }) {
         </main>
     );
 }
-
-// .aggregate([
-//     {
-//         $match: {
-//             _id: user.id,
-//         },
-//     },
-//     {
-//         $lookup: {
-//             // from: <collection to join>,
-//             from: "cardpacks",
-//             // localField: <field from the input documents>,
-//             localField: "cardpacks",
-//             // foreignField: <field from the documents of the "from" collection>,
-//             foreignField: "_id",
-//             // as: <output array field>
-//             as: "cardpacks",
-//         },
-//     },
-// ])

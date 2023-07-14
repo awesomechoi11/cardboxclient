@@ -80,14 +80,14 @@ export default function CreatePackDetailsForm() {
     >
       <Form
         id="CreatePack-form"
-        className="flex justify-between w-full gap-[24rem] "
+        className="flex justify-between w-full gap-[24px] "
       >
         <CreatePackDetailsAutoSave
           onUpdate={(newDoc) => {
             if (db) mutation.mutate([db, newDoc]);
           }}
         />
-        <div className="left w-[198rem]">
+        <div className="left w-[198px]">
           <div className="text-center flex flex-col gap-3">
             <MyFilePicker
               initialValue={data.image}
@@ -116,7 +116,7 @@ export default function CreatePackDetailsForm() {
             />
           </div>
         </div>
-        <div className="w-[200rem]">
+        <div className="w-[200px]">
           <div className="text-center flex flex-col gap-3">
             <MySelect
               label="Visibility"

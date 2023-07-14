@@ -24,7 +24,7 @@ html {
 }
 
 body {
-    // font-size: 14rem;
+    // font-size: 14px;
     padding: 0;
     margin: 0;
     font-family: "Inter", sans-serif;
@@ -39,7 +39,6 @@ body,
 main {
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 10vh;
 }
 
 @media (max-width: vars.$mobile-maxWidth) {
@@ -47,30 +46,27 @@ main {
         font-size: 0.26666666666vw;
     }
     main {
-        padding: 0 24rem;
+        padding: 0 24px;
         // width: 100vw;
     }
 }
 
 .divider {
     width: 100%;
-    margin: 48rem 0;
+    margin: 48px 0;
     opacity: 0.2;
     background-color: #9e694f;
-    height: 2rem;
+    height: 2px;
 }
 
 // .title-1 {
 //     color: vars.$color-primary-1;
-//     font-size: 24rem;
+//     font-size: 24px;
 //     font-weight: 600;
-//     margin: 8rem 0;
+//     margin: 8px 0;
 // }
 
 @layer components {
-    .title-1 {
-        @apply text-lg font-semibold text-blue-600 my-1;
-    }
     input {
         @apply px-4 py-3 rounded-sm border-blue-200 bg-blue-100 active:border-blue-400 hover:border-blue-400 border;
     }
@@ -113,16 +109,16 @@ button.discord {
     color: #5865f2;
     display: flex;
     align-items: center;
-    gap: 8rem;
+    gap: 8px;
 }
 
 .labeled-pills {
     > .label {
-        margin-bottom: 8rem;
+        margin-bottom: 8px;
     }
     > .content {
-        padding: 16rem 24rem;
-        border-radius: 8rem;
+        padding: 16px 24px;
+        border-radius: 8px;
         background-color: vars.$color-secondary-2;
         text-align: center;
     }
@@ -146,7 +142,7 @@ textarea {
 button.btn {
     // outline: none;
     border: none;
-    font-size: 16rem !important;
+    font-size: 16px !important;
 }
 .Toastify {
     max-width: 100%;
@@ -173,4 +169,11 @@ button.btn {
     border-radius: 4px;
     background-color: rgba(0, 0, 0, 0.5);
     box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.preserve-3d {
+    transform-style: preserve-3d;
+}
+.backface-hidden {
+    backface-visibility: hidden;
 }

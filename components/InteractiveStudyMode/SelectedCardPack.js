@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import Button from "@components/general/Button";
-import { CardPackContext } from "../../pages/card-pack/[cardPackId]/[modePath]";
+import { CardPackContext } from "../../lib/[modePath]";
 import PlaceholderColumn from "../PlaceholderColumn";
 import { normalizeImageSrc } from "@components/general/NormalizedImage";
 

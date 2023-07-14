@@ -1,151 +1,25 @@
 @use "../vars";
 
 .card-swiper-wrapper {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    padding: 32rem 0;
-    padding-bottom: 64rem;
-    // overflow: hidden;
-    &.mobile {
-        padding-bottom: 148rem;
-        > .dropzone-wrapper {
-            display: flex;
-            justify-content: space-between;
-            position: absolute;
-            width: 343rem;
-            height: 400rem;
-        }
-        > .controls {
-            position: absolute;
-            > * {
-                position: absolute;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                > * {
-                    position: absolute;
-                }
-            }
-            > .left {
-                right: 130rem;
-            }
-            > .right {
-                left: 130rem;
-            }
-            .arrow {
-                width: 80rem;
-                height: 80rem;
-                border-radius: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                transition: background-color 220ms;
-                cursor: pointer;
-                &:hover {
-                    background-color: vars.$color-secondary-2;
-                }
-                > svg {
-                    width: 32rem;
-                    height: 32rem;
-                }
-            }
-            .flipsides,
-            .shuffle {
-                width: 48rem;
-                height: 48rem;
-                border-radius: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                transition: background-color 220ms;
-                cursor: pointer;
-                &:hover {
-                    background-color: vars.$color-secondary-2;
-                }
-                > svg {
-                    width: 48rem;
-                    height: 48rem;
-                }
-            }
-        }
-    }
-
-    > .controls {
-        position: absolute;
-        > * {
-            position: absolute;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            > * {
-                position: absolute;
-            }
-        }
-        > .left {
-            right: 320rem;
-        }
-        > .right {
-            left: 320rem;
-        }
-        .arrow {
-            width: 80rem;
-            height: 80rem;
-            border-radius: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: background-color 220ms;
-            cursor: pointer;
-            &:hover {
-                background-color: vars.$color-secondary-2;
-            }
-            > svg {
-                width: 32rem;
-                height: 32rem;
-            }
-        }
-        .flipsides,
-        .shuffle {
-            .tooltip-container {
-                white-space: nowrap;
-            }
-            width: 48rem;
-            height: 48rem;
-            border-radius: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: background-color 220ms;
-            cursor: pointer;
-            &:hover {
-                background-color: vars.$color-secondary-2;
-            }
-            > svg {
-                width: 48rem;
-                height: 48rem;
-            }
-        }
-    }
 
     > .dropzone-wrapper {
         display: flex;
         justify-content: space-between;
         position: absolute;
-        width: 860rem;
-        height: 400rem;
+        width: 860px;
+        height: 400px;
     }
     > .stack {
         position: relative;
-        width: 300rem;
-        height: 400rem;
+        width: 300px;
+        height: 400px;
     }
     .card {
         word-break: break-word;
-        filter: drop-shadow(0px 2rem 4rem vars.$color-primary-1);
+        // filter: drop-shadow(0px 2px 4px vars.$color-primary-1);
         position: absolute;
-        width: 300rem;
-        height: 400rem;
+        width: 300px;
+        height: 400px;
         &.active {
             cursor: grab;
         }
@@ -155,8 +29,8 @@
             height: 100%;
             opacity: 1;
             // background-color: #e7cdb5;
-            border-radius: 26.67rem;
-            overflow: hidden;
+            border-radius: 26.67px;
+            // overflow: hidden;
             .back-face,
             .front-face {
                 position: absolute;
@@ -172,8 +46,8 @@
                 transform: rotateY(180deg);
             }
             .face {
-                background-color: #e7cdb5;
-                padding: 24rem;
+                // background-color: #e7cdb5;
+                padding: 24px;
                 box-sizing: border-box;
                 img {
                     width: 80%;
@@ -188,7 +62,7 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                gap: 16rem;
+                gap: 16px;
             }
         }
     }

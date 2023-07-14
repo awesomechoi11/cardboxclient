@@ -1,26 +1,26 @@
 @use "../vars";
 
 #match-rounds-game-screen {
-    // width: 1536rem;
+    // width: 1536px;
     margin: 0 auto;
     display: flex;
-    gap: 128rem;
+    gap: 128px;
     justify-content: left;
-    padding-left: 400rem;
+    padding-left: 400px;
     // justify-content: space-between;
     .side-controls {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        width: 200rem;
-        height: calc(100vh - 256rem);
+        width: 200px;
+        height: calc(100vh - 256px);
         display: flex;
         flex-direction: column;
-        gap: 32rem;
+        gap: 32px;
         > * {
             width: 100%;
             display: flex;
-            gap: 16rem;
+            gap: 16px;
             flex-direction: column;
             > * {
                 width: 100%;
@@ -28,10 +28,10 @@
         }
     }
     .board {
-        // width: 1205rem;
-        width: 795rem;
+        // width: 1205px;
+        width: 795px;
         display: flex;
-        gap: 24rem;
+        gap: 24px;
         flex-flow: row wrap;
         justify-content: space-between;
         &.paused {
@@ -41,24 +41,24 @@
     }
     .img-wrapper {
         position: relative;
-        width: 148rem;
-        height: 120rem;
-        border-radius: 8rem;
+        width: 148px;
+        height: 120px;
+        border-radius: 8px;
         overflow: hidden;
     }
     .card {
         position: absolute;
-        width: 180rem;
-        height: 240rem;
+        width: 180px;
+        height: 240px;
         position: relative;
         user-select: none;
         right: 0;
         // transition: filter 180ms, scale 180ms;
-        // filter: drop-shadow(0px 2rem 4rem rgba(vars.$color-primary-1, 0));
+        // filter: drop-shadow(0px 2px 4px rgba(vars.$color-primary-1, 0));
         // &:hover {
         //     cursor: pointer;
         //     scale: 1.08;
-        //     filter: drop-shadow(0px 2rem 4rem vars.$color-primary-1);
+        //     filter: drop-shadow(0px 2px 4px vars.$color-primary-1);
         // }
         > .inner {
             cursor: pointer;
@@ -90,8 +90,8 @@
             }
             .face {
                 overflow: hidden;
-                // font-size: 12rem;
-                padding: 16rem;
+                // font-size: 12px;
+                padding: 16px;
                 box-sizing: border-box;
                 position: absolute;
                 pointer-events: none;
@@ -102,9 +102,9 @@
                 justify-content: center;
                 align-items: center;
                 background-color: #e7cdb5;
-                border-radius: 26.67rem;
-                gap: 16rem;
-                border: solid vars.$color-primary-1 4rem;
+                border-radius: 26.67px;
+                gap: 16px;
+                border: solid vars.$color-primary-1 4px;
             }
             .floater {
                 pointer-events: none;
@@ -123,26 +123,26 @@
 
 @media (max-width: vars.$mobile-maxWidth) {
     #match-rounds-game-screen {
-        padding: 0 16rem;
+        padding: 0 16px;
         flex-direction: column;
         margin-bottom: 20vh;
         .side-controls {
-            width: 343rem;
+            width: 343px;
             height: auto;
-            gap: 48rem;
+            gap: 48px;
         }
         .board {
-            width: 343rem;
-            gap: 8rem;
+            width: 343px;
+            gap: 8px;
         }
         .card {
-            font-size: 8rem;
-            width: 79.25rem;
-            height: 106.333333333rem;
+            font-size: 8px;
+            width: 79.25px;
+            height: 106.333333333px;
             > .inner {
                 .face {
-                    padding: 4rem;
-                    border-radius: 8rem;
+                    padding: 4px;
+                    border-radius: 8px;
                 }
             }
         }

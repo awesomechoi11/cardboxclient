@@ -32,7 +32,7 @@ $color-shadow-1: rgba(81, 65, 57, 0.55);
 
 $color-error-1: #e94f2e;
 
-@mixin max-lines($lines: 1, $line-height: 24rem) {
+@mixin max-lines($lines: 1, $line-height: 24px) {
     line-height: $line-height;
     max-height: $line-height * $lines;
     text-overflow: ellipsis;
@@ -56,7 +56,7 @@ $mobile-maxWidth: 800px;
     margin-top: 0;
 }
 .form-check-label {
-    margin-left: 8rem;
+    margin-left: 8px;
 }
 .form-check-input,
 .form-check-label {
