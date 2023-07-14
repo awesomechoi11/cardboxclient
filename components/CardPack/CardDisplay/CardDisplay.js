@@ -3,8 +3,8 @@ import { useIsomorphicLayoutEffect } from "framer-motion";
 import { useSetRecoilState } from "recoil";
 import { MyHoverTooltip } from "../../Tooltip/MyClickTooltip";
 import { cardsMapState } from "../CardPackUtils";
-import CardGrid from "./CardGrid";
-import CardRow from "./CardRow";
+import CardGrid from "./CardGridView";
+import CardRow from "../general/CardHorizontal";
 import {
   CardDisplayContext,
   useCardDisplayControls,
@@ -69,12 +69,6 @@ function CardDisplayInner() {
           </div>
         </div>
         <div className="right">
-          {/* <div
-                        className={clsx("w-5 h-5 rounded-full flex justify-center items-center transition-colors cursor-pointer hover:bg-blue-300 active:bg-blue-300", cardDisplayMode === 'row' && 'active')}
-                        onClick={() => setCardDisplayMode("row")}
-                    >
-                        {row_svg}
-                    </div> */}
           <div
             className={clsx(
               "w-5 h-5 rounded-full flex justify-center items-center transition-colors cursor-pointer hover:bg-blue-300 active:bg-blue-300",
@@ -85,6 +79,18 @@ function CardDisplayInner() {
             <MyHoverTooltip
               TooltipContent="Grid View"
               TriggerContent={grid_svg}
+            />
+          </div>
+          <div
+            className={clsx(
+              "w-5 h-5 rounded-full flex justify-center items-center transition-colors cursor-pointer hover:bg-blue-300 active:bg-blue-300",
+              cardDisplayMode === "grid" && "active"
+            )}
+            onClick={() => setCardDisplayMode("row")}
+          >
+            <MyHoverTooltip
+              TooltipContent="Row View"
+              TriggerContent={row_svg}
             />
           </div>
         </div>
