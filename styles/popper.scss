@@ -1,22 +1,7 @@
 @use "./vars";
 
 .tooltip-container {
-    min-width: 32px;
-    min-height: 32px;
-    border-radius: 3px;
-    border: none;
-
-    display: flex;
-    flex-direction: column;
-    z-index: 9999;
     > .inner {
-        border-radius: 8px;
-        // padding: 4px;
-        padding: 8px 16px;
-        display: flex;
-        flex-direction: column;
-        background-color: vars.$color-secondary-3;
-        box-shadow: 3px 3px 5px vars.$color-secondary-4;
         button {
             background-color: vars.$color-secondary-3;
             &:hover {
@@ -85,8 +70,8 @@
         flex-shrink: 0;
         width: 32px;
         height: 8px;
-        > path {
-            fill: vars.$color-secondary-3;
-        }
+        // > path {
+        //     fill: vars.$color-secondary-3;
+        // }
     }
 }
