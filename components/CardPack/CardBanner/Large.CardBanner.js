@@ -21,7 +21,7 @@ export default function LargeCardBanner({ data }) {
         <div className="title-1 text-xl font-semibold text-blue-900 my-1 ">
           {title}
         </div>
-        <div className="text-blue-500 font-bold my-2 mx-0 flex gap-1">
+        <div className="text-blue-500 font-bold my-2 mx-0 flex gap-1 flex-wrap">
           {tags.map((tag) => (
             <UnlabeledPill key={tag}>{tag}</UnlabeledPill>
           ))}

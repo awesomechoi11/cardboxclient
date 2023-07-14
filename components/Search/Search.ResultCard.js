@@ -1,4 +1,4 @@
-import CardRow from "@components/CardPack/CardDisplay/CardRow";
+import CardRow from "@components/CardPack/general/CardHorizontal";
 import { ModalWrapper, useModal } from "@components/Modals/ModalUtils";
 import Button from "@components/general/Button";
 import Text from "@components/general/Text";
@@ -137,7 +137,7 @@ function Inner() {
           <div className="text-blue-950 text-[24px] font-semibold">
             <Text>{title}</Text>
           </div>
-          <div>ratings here</div>
+          {/* <div>ratings here</div> */}
         </div>
         <div className="flex flex-row-reverse justify-end flex-shrink-0 gap-1 tablet:items-start">
           <Button variant="secondary">Share</Button>

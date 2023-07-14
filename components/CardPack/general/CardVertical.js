@@ -1,49 +1,12 @@
-import { motion } from "framer-motion";
-import { useState, useContext } from "react";
-import useSound from "use-sound";
-import { createGroups } from "../../utils";
-import {
-  CardDisplayContext,
-  useCardDisplayCardState,
-} from "./_CardDisplayUtils";
-import clsx from "clsx";
-import { useIsMobile } from "../../mediaQueryHooks";
-import draftjsToHtml from "draftjs-to-html";
-import { normalizeImageSrc } from "@components/general/NormalizedImage";
 import ImageViewer from "@components/Modals/ImageViewer/ImageViewer";
+import { normalizeImageSrc } from "@components/general/NormalizedImage";
+import draftjsToHtml from "draftjs-to-html";
+import { motion } from "framer-motion";
+import { useState } from "react";
 import { twMerge } from "tailwind-merge";
+import { useCardDisplayCardState } from "../CardDisplay/_CardDisplayUtils";
 
-export default function CardGrid() {
-  const data = useContext(CardDisplayContext);
-  const { _id: id, cards } = data;
-  const [play] = useSound("/cardflip.m4a");
-  const isMobile = useIsMobile();
-  let rows = createGroups(
-    cards.map((_, index) => index),
-    isMobile ? 1 : 4
-  );
-
-  return (
-    <div
-      className={clsx("card-grid flex justify-center", isMobile && "mobile")}
-    >
-      {/* {rows.map((row, rowIndex) => (
-        <div className="row" key={rowIndex}>
-          {row.map((index) => (
-            <Card key={index} index={index} play={play} />
-          ))}
-        </div>
-      ))} */}
-      <div className="flex gap-3 justify-start flex-wrap">
-        {cards.map((card, index) => (
-          <Card key={index} index={index} play={play} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function Card({ index, play }) {
+export default function CardVertical({ index, data, play }) {
   const { cardSide, cardData, flipCard } = useCardDisplayCardState(index);
   let frontData = cardData?.term;
   let backData = cardData?.definition;
