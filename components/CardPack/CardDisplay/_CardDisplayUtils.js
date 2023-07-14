@@ -29,7 +29,6 @@ export function useCardDisplayCardState(index) {
     useDidUpdate(() => {
         setCardSide(cardDefaultSide);
     }, [cardDefaultSide, cardDisplayReset]);
-
     return {
         cardSide,
         flipCard: () => {

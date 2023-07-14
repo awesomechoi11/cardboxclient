@@ -12,7 +12,7 @@ export default async function handler(req, res) {
 
         try {
             // Process a POST request
-            let collection = cachedDb.collection("testpacks");
+            let collection = cachedDb.collection("cardpacks");
             // console.info("query: ", query);
             if (!query) {
                 throw Error("query invalid");
@@ -20,7 +20,7 @@ export default async function handler(req, res) {
             cursor = await collection.aggregate([
                 {
                     $search: {
-                        index: "testpackAutocomplete",
+                        index: "cardpacksAutocomplete",
                         autocomplete: {
                             query,
                             path: "title",

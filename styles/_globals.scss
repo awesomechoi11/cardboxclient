@@ -39,7 +39,6 @@ body,
 main {
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 10vh;
 }
 
 @media (max-width: vars.$mobile-maxWidth) {
@@ -172,9 +171,9 @@ button.btn {
     box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
-.preserve-3d{
+.preserve-3d {
     transform-style: preserve-3d;
 }
-.backface-hidden{
+.backface-hidden {
     backface-visibility: hidden;
 }

@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
         try {
             // Process a POST request
-            let collection = cachedDb.collection("testpacks");
+            let collection = cachedDb.collection("cardpacks");
 
             // console.info("query: ", query);
             cursor = await collection.aggregate([
