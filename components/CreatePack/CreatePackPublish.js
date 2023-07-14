@@ -67,7 +67,7 @@ export default function CreatePackPublish() {
                             toast.success(
                                 "Your card pack was successfully deleted!"
                             );
-                            router.push("/browse");
+                            router.push("/search");
                         },
                     })
                 }

@@ -67,7 +67,7 @@ function Main() {
                         label: "Browse Packs Instead",
                         props: {
                             onClick: () => {
-                                router.push("/browse");
+                                router.push("/search");
                             },
                         },
                     },

@@ -114,7 +114,7 @@ export const CreatePackRowItem = forwardRef(function CreatePackRowItem(
                 <div
                     className={twMerge(
                         dragOverlay && "opacity-0",
-                        "my-1 text-lg font-semibold text-blue-600 index min-w-[48px] title-1"
+                        "my-1 text-lg font-semibold text-blue-600 index min-w-[40px] title-1"
                     )}
                 >
                     <div>{index + 1}</div>
@@ -127,6 +127,7 @@ export const CreatePackRowItem = forwardRef(function CreatePackRowItem(
                     "flex mt-1 gap-2 justify-end transition-opacity opacity-0 group-hover/rowItem:opacity-100"
                 )}
             >
+                <SwapButton setData={setData} />
                 <DragButton listeners={listeners} />
                 <DeleteButton setData={setData} />
             </div>
@@ -166,9 +167,7 @@ function Fields({ displayMode }) {
                 defaultEditorState={defaultEditorTerm}
                 displayMode={displayMode}
             />
-            <div className="relative flex items-center justify-center my-2 transition-opacity opacity-0 group-hover/rowItem:opacity-100">
-                <SwapButton setData={setData} />
-            </div>
+
             <Field
                 image={definitionImage}
                 label="Definition"

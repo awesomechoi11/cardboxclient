@@ -93,7 +93,7 @@ function Main() {
                                     <Button
                                         variant="secondary"
                                         onClick={() => {
-                                            push("/browse");
+                                            push("/search");
                                         }}
                                     >
                                         Browse Card Packs
@@ -188,7 +188,7 @@ function Main() {
                                 label: "Browse Card Packs",
                                 props: {
                                     onClick: () => {
-                                        push("/browse");
+                                        push("/search");
                                     },
                                 },
                             },
