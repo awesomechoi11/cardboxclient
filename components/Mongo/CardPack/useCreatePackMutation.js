@@ -67,6 +67,6 @@ export default function useCreatePackMutation({ duplicateCardpackId }) {
         );
 
         // if all succeeds redirect to that cardpack
-        router.push(`/card-pack-editor/${cardpackId}`);
+        router.push(`/editor/${cardpackId}`);
     });
 }

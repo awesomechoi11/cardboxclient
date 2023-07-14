@@ -83,9 +83,7 @@ function NavButton({ data }) {
             variant="secondary"
             active={router.query.modePath === data.path}
             onClick={() =>
-                router.push(
-                    `/card-pack/${router.query.cardPackId}/${data.path}`
-                )
+                router.push(`/cardpack/${router.query.cardPackId}/${data.path}`)
             }
         >
             {data.label}

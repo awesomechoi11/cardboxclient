@@ -11,7 +11,7 @@ export default function CardRowView() {
     console.log(data);
     return (
         <div className={clsx("card-grid flex justify-center")}>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col w-full gap-3">
                 {cards.map((data, index) => (
                     <ActiveOnViewportEnter key={index} index={index}>
                         <CardDisplayCardWrapper index={index}>

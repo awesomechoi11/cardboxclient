@@ -116,7 +116,7 @@ export default function CardPackBrowser() {
 function BrowserResults({ data: { query, label, collection } }) {
     const { user, db, isAnon } = useMongo();
     const { isLoading, isError, isIdle, isSuccess, data, refetch } = useQuery(
-        ["card-pack-browser", user.id, label, isAnon],
+        ["cardpack-browser", user.id, label, isAnon],
         () => query(db),
         { refetchOnWindowFocus: false, enabled: !!db }
     );
@@ -148,7 +148,7 @@ function BrowserResults({ data: { query, label, collection } }) {
                                 label: "Create A Card Pack",
                                 props: {
                                     onClick: () => {
-                                        router.push("/card-pack-editor");
+                                        router.push("/editor");
                                     },
                                 },
                             },
@@ -185,7 +185,7 @@ function CardPreviewDefault({ data, collection }) {
             onFocus={() => {
                 window?.umami?.(`Click - Browse - Card Preview - ${title}`);
                 if (isMobile) {
-                    router.push(`/card-pack/${_id}`);
+                    router.push(`/cardpack/${_id}`);
                 } else {
                     setSelected({
                         id: _id,

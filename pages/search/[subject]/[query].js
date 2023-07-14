@@ -1,6 +1,6 @@
 import Footer from "@components/Home/Footer";
 import { useMongo } from "@components/Mongo/MongoUtils";
-import Navbar from "@components/Navbar";
+import Navbar from "@components/nav/Navbar";
 import SearchPagination from "@components/Search/Search.Pagination";
 import SearchResultCard from "@components/Search/Search.ResultCard";
 import Head from "next/head";

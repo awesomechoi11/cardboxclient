@@ -21,9 +21,9 @@ export default function HomePage() {
                             by the simplicity of flashcards and the flexibility
                             of digital learning
                         </p>
-                        <Button 
+                        <Button
                             variant="pink"
-                            onClick={() => router.push("/browse")}
+                            onClick={() => router.push("/search")}
                         >
                             Browse Packs
                         </Button>
@@ -85,5 +85,3 @@ export default function HomePage() {
         </div>
     );
 }
-
-
