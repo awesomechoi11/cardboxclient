@@ -39,7 +39,7 @@ export default function SelectedCardPack() {
         useContext(CardPackContext);
 
     return (
-        <div className="selected-card-pack">
+        <div className="selected-cardpack">
             <AnimatePresence>
                 {isIdle && (
                     <motion.div key="idle" className="inner" {...previewAnim}>
@@ -251,7 +251,7 @@ function Preview({ data }) {
                     variant="secondary"
                     size="sm"
                     onClick={() => {
-                        router.push(`/card-pack/${router.query.cardPackId}`);
+                        router.push(`/cardpack/${router.query.cardPackId}`);
                     }}
                 >
                     Goto Pack

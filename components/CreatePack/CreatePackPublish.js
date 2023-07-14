@@ -34,7 +34,7 @@ export default function CreatePackPublish() {
                     publishMutation.mutate(undefined, {
                         onSuccess: () => {
                             refetch();
-                            openModal({ url: `/card-pack/${dbdata._id}` });
+                            openModal({ url: `/cardpack/${dbdata._id}` });
                         },
                     })
                 }

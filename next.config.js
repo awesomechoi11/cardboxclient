@@ -5,7 +5,7 @@ const nextConfig = {
     async redirects() {
         return [
             {
-                source: "/card-pack",
+                source: "/cardpack",
                 destination: "/browse",
                 permanent: true,
             },

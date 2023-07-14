@@ -49,7 +49,7 @@ export default function CardPackPreview() {
 
     const { db, isAnon } = useMongo();
     const { data, isSuccess, isError, isIdle, isLoading } = useQuery(
-        ["card-pack-browser-preview", selected, isAnon],
+        ["cardpack-browser-preview", selected, isAnon],
         () =>
             db
                 .collection(selected.collection)
@@ -194,7 +194,7 @@ function CardPackPreviewInner({ data }) {
                         variant="secondary"
                         size="sm"
                         onClick={() => {
-                            router.push(`/card-pack/${data._id}/match`);
+                            router.push(`/cardpack/${data._id}/match`);
                         }}
                     >
                         Match
@@ -313,7 +313,7 @@ function Header({ data }) {
     }
     function sendShare() {
         navigator.clipboard.writeText(
-            `https://flippy.cards/card-pack/${selected.id}`
+            `https://flippy.cards/cardpack/${selected.id}`
         );
         if (mutation.isIdle)
             mutation.mutate(
@@ -416,14 +416,14 @@ function Header({ data }) {
                         variant="primary"
                         onClick={() => {
                             publishMutation.mutate();
-                            // router.push(`/card-pack/${selected.id}`);
+                            // router.push(`/cardpack/${selected.id}`);
                         }}
                     >
                         Publish
                     </Button>
                 ) : (
                     <Link
-                        href={`/card-pack/${selected.id}`}
+                        href={`/cardpack/${selected.id}`}
                         onClick={() => {
                             window?.umami?.("Click - Navbar - Browse Packs");
                         }}
