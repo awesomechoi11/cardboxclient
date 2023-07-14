@@ -7,7 +7,7 @@ import { useQuery } from "react-query";
 import CreatePackDetailsForm from "../../components/CreatePack/CreatePackDetailsForm";
 import CreatePackDisplay from "../../components/CreatePack/CreatePackDisplay";
 import { useMongo, WaitForMongo } from "../../components/Mongo/MongoUtils";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/navbar/Navbar";
 import PlaceholderColumn from "../../components/PlaceholderColumn";
 
 export default function CreatePack() {
@@ -91,7 +91,7 @@ CardPackDataContext.displayName = "CardPackDataContext";
 function Inner({ cardPackId }) {
     const { user, db, isAnon } = useMongo();
     const result = useQuery(
-        ["card-pack-editor", user.id, cardPackId, isAnon],
+        ["editor", user.id, cardPackId, isAnon],
         () =>
             db.collection("cardpackDrafts").findOne({
                 _id: cardPackId,

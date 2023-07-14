@@ -3,8 +3,8 @@ import { useIsMobile } from "@components/mediaQueryHooks";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { ModalWrapper, useModal } from "./Modals/ModalUtils";
-import { WaitForMongo, useMongo } from "./Mongo/MongoUtils";
+import { ModalWrapper, useModal } from "../Modals/ModalUtils";
+import { WaitForMongo, useMongo } from "../Mongo/MongoUtils";
 import Searchbar from "./Searchbar";
 
 export default function Navbar() {
@@ -167,7 +167,7 @@ function AuthedSection() {
             <Button
                 variant="create"
                 size="xs"
-                onClick={() => router.push("/card-pack-editor")}
+                onClick={() => router.push("/editor")}
             >
                 <svg
                     width="31"

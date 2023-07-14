@@ -56,9 +56,7 @@ export default function SelectedCardPack() {
                                         label: "Create A Card Pack",
                                         props: {
                                             onClick: () => {
-                                                router.push(
-                                                    "/card-pack-editor"
-                                                );
+                                                router.push("/editor");
                                             },
                                         },
                                     },

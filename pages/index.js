@@ -5,7 +5,7 @@ import { CreateYourOwnPacks } from "../components/Home/CreateYourOwnPacks";
 import Hero from "../components/Home/Hero";
 import InteractiveStudyModes from "../components/Home/InteractiveStudyModes";
 import { useMongo } from "../components/Mongo/MongoUtils";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar/Navbar";
 import { cardpackSchema } from "../schemas/cardpacks/publishedCardpack";
 import HomePage from "@components/Home/HomePage";
 import Footer from "@components/Home/Footer";
