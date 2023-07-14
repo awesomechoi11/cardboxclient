@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Navbar from "../components/navbar/Navbar";
+import Navbar from "../components/Navbar/Navbar";
 import Image from "next/image";
 import Button from "@components/general/Button";
 import { useState } from "react";

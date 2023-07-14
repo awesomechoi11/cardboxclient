@@ -63,14 +63,14 @@
         }
     }
     .editor {
-        padding: 16px 24px;
-        transition: border 220ms;
-        border: 1px solid rgba(vars.$color-primary-1, 0.25);
-        border-radius: 8px;
-        cursor: pointer;
-        &:hover {
-            border: 1px solid rgba(vars.$color-primary-2, 0.75);
-        }
+        // padding: 16px 24px;
+        // transition: border 220ms;
+        // border: 1px solid rgba(vars.$color-primary-1, 0.25);
+        // border-radius: 8px;
+        // cursor: pointer;
+        // &:hover {
+        //     border: 1px solid rgba(vars.$color-primary-2, 0.75);
+        // }
     }
     &.active .editor {
         border: 1px solid rgba(vars.$color-primary-1, 1);

@@ -84,8 +84,9 @@ export default function Navbar() {
 
 function Right() {
     const { isAnon } = useMongo();
-    return <UnauthedSection />;
-    //!isAnon ? <AuthedSection /> : <UnauthedSection />;
+    console.log(isAnon);
+    // return <UnauthedSection />;
+    return !isAnon ? <AuthedSection /> : <UnauthedSection />;
 }
 
 function subjectSelect() {}
@@ -163,7 +164,7 @@ function AuthedSection() {
     const router = useRouter();
 
     return (
-        <div className="mt-3">
+        <div className="">
             <Button
                 variant="create"
                 size="xs"

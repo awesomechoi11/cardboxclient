@@ -3,7 +3,7 @@ import Head from "next/head";
 import { createContext, useState } from "react";
 import CardPackBrowser from "../components/Browse/CardPackBrowser";
 import CardPackPreview from "../components/Browse/CardPackPreview";
-import Navbar from "../components/navbar/Navbar";
+import Navbar from "../components/Navbar/Navbar";
 import { useIsMobile } from "@components/mediaQueryHooks";
 import { WaitForMongo } from "@components/Mongo/MongoUtils";
 

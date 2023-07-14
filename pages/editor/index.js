@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 import { cardpackDraftsDefault } from "../../components/Mongo/documents/cardpacks";
 import { useMongo, WaitForMongo } from "../../components/Mongo/MongoUtils";
-import Navbar from "../../components/navbar/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 import PlaceholderColumn from "../../components/PlaceholderColumn";
 import { alphaNumId } from "../../components/utils";
 
