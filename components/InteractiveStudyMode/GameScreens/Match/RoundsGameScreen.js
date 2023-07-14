@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { RecoilRoot, useRecoilState } from "recoil";
-import { CardPackContext } from "../../../../pages/card-pack/[cardPackId]/[modePath]";
+import { CardPackContext } from "../../../../lib/[modePath]";
 import { gameSettingsSelector } from "../../GameStateHelpers";
 import Board from "./Boards";
 import GameLogicFragment from "./GameLogicFragment";
