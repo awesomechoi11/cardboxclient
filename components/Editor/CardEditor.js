@@ -41,7 +41,7 @@ export const CardEditor = ({ displayMode = false, ...props }) => {
                 <div
                     className={clsx(
                         props.editorClassName,
-                        "px-4 py-3 border-[1px] border-blue-400 transition-colors rounded-sm cursor-pointer hover:border-blue-600"
+                        "px-4 py-3 min-h-[76px] border-[1px] border-blue-400 transition-colors rounded-sm cursor-pointer hover:border-blue-600"
                     )}
                     dangerouslySetInnerHTML={{
                         __html: rawHtml,

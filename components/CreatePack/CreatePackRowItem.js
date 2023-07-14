@@ -124,7 +124,7 @@ export const CreatePackRowItem = forwardRef(function CreatePackRowItem(
             <div
                 className={twMerge(
                     isDragging && "opacity-0",
-                    "flex justify-end transition-opacity opacity-0 group-hover/rowItem:opacity-100"
+                    "flex mt-1 gap-2 justify-end transition-opacity opacity-0 group-hover/rowItem:opacity-100"
                 )}
             >
                 <DragButton listeners={listeners} />
@@ -166,7 +166,7 @@ function Fields({ displayMode }) {
                 defaultEditorState={defaultEditorTerm}
                 displayMode={displayMode}
             />
-            <div className="flex relative hover:z-[2] items-center justify-center transition-opacity opacity-0  group-hover/rowItem:opacity-100">
+            <div className="relative flex items-center justify-center my-2 transition-opacity opacity-0 group-hover/rowItem:opacity-100">
                 <SwapButton setData={setData} />
             </div>
             <Field
@@ -197,7 +197,7 @@ function Field({ image, label, id, defaultEditorState, displayMode }) {
         });
     }, []);
     return (
-        <div className={clsx(label, "field flex-col gap-1 relative z-[3]")}>
+        <div className={clsx(label, "field flex-col gap-1 relative")}>
             <div>
                 <label className="form-label">{label}</label>
             </div>
