@@ -7,7 +7,7 @@ import { useQuery } from "react-query";
 import CreatePackDetailsForm from "../../components/CreatePack/CreatePackDetailsForm";
 import CreatePackDisplay from "../../components/CreatePack/CreatePackDisplay";
 import { useMongo, WaitForMongo } from "../../components/Mongo/MongoUtils";
-import Navbar from "../../components/Navbar/Navbar";
+import Navbar from "../../components/nav/Navbar";
 import PlaceholderColumn from "../../components/PlaceholderColumn";
 
 export default function CreatePack() {

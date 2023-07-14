@@ -15,7 +15,7 @@ import {
     useMongo,
     WaitForMongo,
 } from "../components/Mongo/MongoUtils";
-import Navbar from "../components/Navbar/Navbar";
+import Navbar from "../components/nav/Navbar";
 import PlaceholderColumn from "../components/PlaceholderColumn";
 //http://localhost:3000/confirmEmail?token=e8bab441d021cb828b80b2c1a51937381c3b455b056a15ca28ab35fca53596d996e56b551c580749779654151aec35de5c5ac6225330abd9098068047ebf515a&tokenId=62479395d937dcecc6f5456b
 

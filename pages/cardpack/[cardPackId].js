@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Navbar from "../../components/Navbar/Navbar";
+import Navbar from "../../components/nav/Navbar";
 import {
     MongoApp,
     useMongo,
