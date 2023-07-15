@@ -13,6 +13,7 @@ import { useRef, createContext } from 'react'
 
 // ReactGA.initialize("UA-227551059-1");
 const queryClient = new QueryClient();
+export const AppRefContext = createContext();
 
 function MyApp({ Component, pageProps }) {
     const appRef = useRef();
