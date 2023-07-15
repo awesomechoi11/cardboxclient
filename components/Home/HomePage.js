@@ -12,7 +12,7 @@ export default function HomePage() {
         <div>
             {/* Just for note purposes, the custom media queries are based on min-width, so the given px, as long as it's bigger than it, will classify as desktop, tablet, mobile  */}
             <section className="desktop:pt-7 tablet:pt-5 pt-1 desktop:pb-10 pb-0  bg-white dark:bg-black overflow-x-hidden">
-                <div className="desktop:flex items-center desktop:w-4/6 w-5/6  mx-auto mb-9 justify-between">
+                <div className="desktop:flex items-center desktop:w-4/6 w-5/6  mx-auto mb-9 justify-between sticky">
                     <div className="desktop:w-1/3 desktop:space-y-3 space-y-4 desktop:mt-0 mt-6 text-left">
                         <p className="desktop:text-3xl text-[36px] font-semibold leading-tight ">
                             Study <span className="text-pink-500">smarter</span>,{" "}

@@ -18,7 +18,7 @@ export default function Home() {
     const { app, user } = useMongo();
     const appRef = useContext(AppRefContext)
 
-    const { scrollYProgress } = useScroll({ 
+    const { scrollYProgress } = useScroll({
         container: appRef,
         offset: ["end end", "start start"]
     });
@@ -30,10 +30,12 @@ export default function Home() {
 
     return (
         <>
-            <motion.div
-                className="progress-bar"
+            {/* <motion.div
+                className="progress-bar bg-blue-400 fixed h-4 bottom-0 left-0 right-0"
                 style={{ scaleX: scrollYProgress }}
-            />
+                initial={{ opacity: 0, scale: 0.5}}
+                whileInView={{ opacity: 1, scale: 1}}
+            /> */}
             <Head>
                 <title key="title">Flippy - Home - Flashcard App</title>
             </Head>
