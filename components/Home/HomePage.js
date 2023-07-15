@@ -2,16 +2,17 @@ import clsx from "clsx";
 import Button from "@components/general/Button";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { useIsMobile } from "@components/mediaQueryHooks";
 
 export default function HomePage() {
     const router = useRouter();
+    const isMobile = useIsMobile();
 
     return (
         <div>
-
             {/* Just for note purposes, the custom media queries are based on min-width, so the given px, as long as it's bigger than it, will classify as desktop, tablet, mobile  */}
             <section className="desktop:pt-7 tablet:pt-5 pt-1 desktop:pb-10 pb-0  bg-white dark:bg-black overflow-x-hidden">
-                <div className="desktop:flex items-center desktop:w-4/6 w-5/6  mx-auto mb-9 justify-between sticky">
+                <div className="desktop:flex items-center desktop:w-4/6 w-5/6  mx-auto mb-9 justify-between">
                     <div className="desktop:w-1/3 desktop:space-y-3 space-y-4 desktop:mt-0 mt-6 text-left">
                         <p className="desktop:text-3xl text-[36px] font-semibold leading-tight ">
                             Study <span className="text-pink-500">smarter</span>,{" "}
@@ -25,12 +26,11 @@ export default function HomePage() {
                         </p>
                         <Button
                             variant="pink"
-                            onClick={() => router.push("/search")}
+                            onClick={() => router.push("/browse")}
                         >
                             Browse Packs
                         </Button>
                     </div>
-
                     <div className="flex justify-evenly relative space-x-4 desktop:translate-x-10 ">
                         <Image
                             src="/assets/img/geography.png"
@@ -67,7 +67,7 @@ export default function HomePage() {
                                 alt="diarreafarthead"
                                 width="621"
                                 height="375"
-                                className="tablet:flex tablet:mx-auto desktop:mx-0 tablet:my-5"
+                                className="tablet:flex tablet:mx-auto tablet:my-5"
                             />
                         )}
 
@@ -85,11 +85,10 @@ export default function HomePage() {
                             </p>
                             <Button variant="yellow">Browse Packs</Button>
                         </div>
-
                     </div>
-                </div>
-            </section>
+                </section>
 
+            </section>
 
             <section className="desktop:flex justify-center desktop:py-10 py-8 bg-slate-50">
                 <div className="desktop:w-1/3 desktop:space-y-3 space-y-5 text-center">
