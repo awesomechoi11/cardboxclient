@@ -11,15 +11,23 @@ export default function Footer() {
                     </p>
                 </div>
 
-                <section className="flex justify-evenly w-2/6 h-20">
-                    <ul className="flex flex-col justify-between h-11">
+
+            <section className="
+                desktop:flex desktop:justify-evenly desktop:w-2/6 desktop:h-20
+                flex leading-loose pb-5 
+                ">
+                <div className="flex tablet:mx-auto tablet:justify-evenly tablet:w-[800px] flex-wrap">
+                    <ul className="flex flex-col  justify-self-start desktop:h-11">
+
                         <li className="font-bold">About us</li>
                         <li>Our Story</li>
                         <li>Press</li>
                         <li>Careers</li>
-                        <li>Dis my cord</li>
+
+                        <li><a href="https://discord.gg/xGYGEPtC">Dis my cord</a></li>
                     </ul>
-                    <ul className="flex flex-col justify-between">
+                    <ul className="flex flex-col desktop:justify-evenly justify-self-start">
+
                         <li className="font-bold">Browse by Subject</li>
                         <li>Physics</li>
                         <li>History</li>
@@ -27,7 +35,9 @@ export default function Footer() {
                         <li>Language</li>
                         <li>Geography</li>
                     </ul>
-                    <ul className="flex flex-col justify-between">
+
+                    <ul className="flex flex-col desktop:justify-evenly justify-self-start">
+
                         <li className="font-bold">Help & Support</li>
                         <li>FAQ</li>
                         <li>Contact Us</li>
@@ -35,7 +45,10 @@ export default function Footer() {
                         <li>Terms of Service</li>
                         <li>Privacy Policy</li>
                     </ul>
-                </section>
+
+                </div>
+            </section>
+
         </div>
     )
  }

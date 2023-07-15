@@ -7,12 +7,15 @@ import { MongoRoot } from "../components/Mongo/MongoUtils";
 import Script from "next/script";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Head from "next/head";
+import { useRef, createContext } from 'react'
+
 // import ReactGA from "react-ga";
 
 // ReactGA.initialize("UA-227551059-1");
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }) {
+    const appRef = useRef();
     return (
         <>
             <Head>
@@ -95,8 +98,12 @@ function MyApp({ Component, pageProps }) {
                             <div
                                 id="app"
                                 className="absolute inset-0 z-10 flex flex-col w-full h-full p-0 m-0 overflow-auto"
+                                ref={appRef}
                             >
-                                <Component {...pageProps} />
+                                <AppRefContext.Provider value={appRef}>
+                                    <Component {...pageProps} />
+                                </AppRefContext.Provider>
+
                             </div>
                             <ModalRoot />
                         </div>
