@@ -31,7 +31,9 @@
             // background-color: #e7cdb5;
             border-radius: 26.67px;
             // overflow: hidden;
-            .back-face,
+            .back-face {
+                height: 100%;
+            }
             .front-face {
                 position: absolute;
                 width: 100%;

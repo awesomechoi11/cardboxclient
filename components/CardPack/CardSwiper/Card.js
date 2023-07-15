@@ -142,7 +142,7 @@ export default function Card({ active = false, arrIndex, play }) {
                     <BlankCardFace active={active} />
                 </motion.div>
                 <motion.div
-                    className="bg-blue-100 shadow-2xl backface-hidden rounded-xl"
+                    className="bg-blue-100 shadow-2xl backface-hidden h-full rounded-xl"
                     initial={flip ? "0deg" : "180deg"}
                     animate={{
                         rotateY: flip ? "0deg" : "180deg",
@@ -163,7 +163,7 @@ function CardFace({ data: { image, content } }) {
     let imgSrc = normalizeImageSrc(image);
 
     return (
-        <motion.div className="bg-blue-100 shadow-2xl face rounded-xl">
+        <motion.div className="bg-blue-100 w-full h-full shadow-2xl face rounded-xl">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             {imgSrc && <img layout="fill" src={imgSrc} alt="card" />}
             <div dangerouslySetInnerHTML={{ __html: draftjsToHtml(content) }} />

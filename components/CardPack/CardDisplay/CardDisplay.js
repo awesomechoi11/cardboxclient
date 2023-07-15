@@ -38,11 +38,11 @@ function CardDisplayInner() {
     return (
         <>
             <div className="controls">
-                <div className="left">
+                <div className="left z-10">
                     {/* <div className="flex items-center justify-center w-5 h-5 transition-colors rounded-full cursor-pointer hover:bg-blue-300 active:bg-blue-300">{number_svg}</div> */}
                     {/* <div className="flex items-center justify-center w-5 h-5 transition-colors rounded-full cursor-pointer hover:bg-blue-300 active:bg-blue-300">{atoz_svg}</div> */}
                     <div
-                        className="flex items-center justify-center w-5 h-5 transition-colors rounded-full cursor-pointer hover:bg-blue-300 active:bg-blue-300"
+                        className="flex items-center justify-center w-5 h-5 transition-colors rounded-full cursor-pointer hover:bg-blue-300 active:bg-blue-300 "
                         onClick={() => shuffle()}
                     >
                         <MyHoverTooltip
@@ -69,7 +69,7 @@ function CardDisplayInner() {
                         />
                     </div>
                 </div>
-                <div className="right">
+                <div className="right z-10">
                     <div
                         className={twMerge(
                             "w-5 h-5 rounded-full flex justify-center items-center transition-colors cursor-pointer hover:bg-blue-300 active:bg-blue-300",
