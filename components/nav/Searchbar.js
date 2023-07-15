@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import * as Yup from "yup";
 import { useQuery } from "react-query";
-import BoldSubstring from "./general/BoldSubstring";
+import BoldSubstring from "../general/BoldSubstring";
 import { useDebouncedValue } from "rooks";
 import DotLoader from "react-spinners/DotLoader";
 
@@ -133,7 +133,7 @@ function SearchInner({
                         name="query"
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        value={values.query}
+                        value={values.query || ""}
                         placeholder="Study packs, homework problems, study guides"
                         className={clsx(
                             errors.email &&

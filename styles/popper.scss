@@ -1,22 +1,7 @@
 @use "./vars";
 
 .tooltip-container {
-    min-width: 32rem;
-    min-height: 32rem;
-    border-radius: 3px;
-    border: none;
-
-    display: flex;
-    flex-direction: column;
-    z-index: 9999;
     > .inner {
-        border-radius: 8rem;
-        // padding: 4rem;
-        padding: 8rem 16rem;
-        display: flex;
-        flex-direction: column;
-        background-color: vars.$color-secondary-3;
-        box-shadow: 3rem 3rem 5rem vars.$color-secondary-4;
         button {
             background-color: vars.$color-secondary-3;
             &:hover {
@@ -36,7 +21,7 @@
         top: 0;
         svg {
             position: absolute;
-            bottom: 0rem;
+            bottom: 0px;
         }
     }
     &[data-popper-placement*="top"] .tooltip-arrow {
@@ -47,7 +32,7 @@
         svg {
             rotate: 180deg;
             position: absolute;
-            top: 0rem;
+            top: 0px;
         }
     }
 
@@ -57,7 +42,7 @@
         margin-left: 0;
         svg {
             rotate: -90deg;
-            right: -12rem;
+            right: -12px;
             position: absolute;
         }
     }
@@ -74,19 +59,19 @@
 }
 
 .tooltip-arrow {
-    height: 1rem;
+    height: 1px;
     position: absolute;
-    width: 1rem;
+    width: 1px;
     pointer-events: none;
     display: flex;
     align-items: center;
     justify-content: center;
     > svg {
         flex-shrink: 0;
-        width: 32rem;
-        height: 8rem;
-        > path {
-            fill: vars.$color-secondary-3;
-        }
+        width: 32px;
+        height: 8px;
+        // > path {
+        //     fill: vars.$color-secondary-3;
+        // }
     }
 }

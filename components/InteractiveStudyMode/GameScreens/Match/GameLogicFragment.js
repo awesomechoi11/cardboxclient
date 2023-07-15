@@ -1,7 +1,7 @@
 import { useIsomorphicLayoutEffect } from "framer-motion";
 import { useContext, useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { CardPackContext } from "../../../../pages/card-pack/[cardPackId]/[modePath]";
+import { CardPackContext } from "../../../../lib/[modePath]";
 import { alphaNumId } from "../../../utils";
 import { cardFacesSelector, gameStateFamily, randomizeCards } from "./utils";
 

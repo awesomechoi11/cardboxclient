@@ -2,14 +2,13 @@ import clsx from "clsx";
 import Button from "@components/general/Button";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { useIsMobile } from "@components/mediaQueryHooks";
 
 export default function HomePage() {
     const router = useRouter();
-    const isMobile = useIsMobile();
 
     return (
         <div>
+
             {/* Just for note purposes, the custom media queries are based on min-width, so the given px, as long as it's bigger than it, will classify as desktop, tablet, mobile  */}
             <section className="desktop:pt-7 tablet:pt-5 pt-1 desktop:pb-10 pb-0  bg-white dark:bg-black overflow-x-hidden">
                 <div className="desktop:flex items-center desktop:w-4/6 w-5/6  mx-auto mb-9 justify-between sticky">
@@ -26,11 +25,12 @@ export default function HomePage() {
                         </p>
                         <Button
                             variant="pink"
-                            onClick={() => router.push("/browse")}
+                            onClick={() => router.push("/search")}
                         >
                             Browse Packs
                         </Button>
                     </div>
+
                     <div className="flex justify-evenly relative space-x-4 desktop:translate-x-10 ">
                         <Image
                             src="/assets/img/geography.png"
@@ -85,10 +85,11 @@ export default function HomePage() {
                             </p>
                             <Button variant="yellow">Browse Packs</Button>
                         </div>
-                    </div>
-                </section>
 
+                    </div>
+                </div>
             </section>
+
 
             <section className="desktop:flex justify-center desktop:py-10 py-8 bg-slate-50">
                 <div className="desktop:w-1/3 desktop:space-y-3 space-y-5 text-center">
@@ -131,5 +132,3 @@ export default function HomePage() {
         </div>
     );
 }
-
-

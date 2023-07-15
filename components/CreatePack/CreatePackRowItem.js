@@ -24,6 +24,7 @@ import {
 } from "./CreatePackRowItem.IconButtons";
 import { MyHoverTooltip } from "../Tooltip/MyClickTooltip";
 import Button from "@components/general/Button";
+import { twMerge } from "tailwind-merge";
 
 export const createPackIdContext = createContext();
 createPackIdContext.displayName = "CreatePackIdContext";
@@ -100,23 +101,33 @@ export const CreatePackRowItem = forwardRef(function CreatePackRowItem(
             ref={ref}
             style={style}
             {...props}
-            className={clsx(
-                "create-pack-row-item w-[860rem] mb-[64rem] relative z-[2] focus:z-[3] ",
-                isDragging && "dragging",
-                dragOverlay && "overlay"
-                // focused && "focused"
+            className={twMerge(
+                "create-pack-row-item group/rowItem w-full max-w-full break-all mb-[64px] relative z-[2] focus:z-[3] ",
+                isDragging && "opacity-50"
             )}
         >
             <div
                 className={clsx(
-                    "break-words"
-                    // focused && "focused"
+                    "content relative z-[1] flex justify-between focus:z-[2]  break-words"
                 )}
             >
-                <div className="index title-1">{index + 1}</div>
+                <div
+                    className={twMerge(
+                        dragOverlay && "opacity-0",
+                        "my-1 text-lg font-semibold text-blue-600 index min-w-[40px] title-1"
+                    )}
+                >
+                    <div>{index + 1}</div>
+                </div>
                 <Fields displayMode={displayState} />
             </div>
-            <div className=" controls">
+            <div
+                className={twMerge(
+                    isDragging && "opacity-0",
+                    "flex mt-1 gap-2 justify-end transition-opacity opacity-0 group-hover/rowItem:opacity-100"
+                )}
+            >
+                <SwapButton setData={setData} />
                 <DragButton listeners={listeners} />
                 <DeleteButton setData={setData} />
             </div>
@@ -148,7 +159,7 @@ function Fields({ displayMode }) {
         [definitionContent]
     );
     return (
-        <div className="fields">
+        <div className="flex flex-col flex-grow fields">
             <Field
                 image={termImage}
                 label="Term"
@@ -156,9 +167,7 @@ function Fields({ displayMode }) {
                 defaultEditorState={defaultEditorTerm}
                 displayMode={displayMode}
             />
-            <div className="middle">
-                <SwapButton setData={setData} />
-            </div>
+
             <Field
                 image={definitionImage}
                 label="Definition"
@@ -187,63 +196,68 @@ function Field({ image, label, id, defaultEditorState, displayMode }) {
         });
     }, []);
     return (
-        <div className={clsx(label, "field")}>
-            <MyHoverTooltip
-                tooltipOptions={{
-                    delayHide: 40,
-                    interactive: true,
-                    trigger: "hover",
-                    visible: image?.value ? undefined : false,
-                    offset: [0, 14],
-                    mutationObserverOptions: {
-                        attributes: false,
-                        childList: true,
-                        subtree: false,
-                    },
-                    placement: "bottom",
-                }}
-                TooltipContent={
-                    <Button
-                        size="sm"
-                        variant="secondary"
-                        onClick={() => {
-                            setData({
-                                action: "updateItemImage",
-                                data: {
-                                    key: label.toLowerCase(),
-                                    image: undefined,
-                                },
-                            });
-                        }}
-                    >
-                        Remove Image
-                    </Button>
-                }
-                TriggerContent={
-                    <MyFilePickerCreatePackField
-                        initialValue={image}
-                        onUpdate={(file) => {
-                            setData({
-                                action: "updateItemImage",
-                                data: {
-                                    key: label.toLowerCase(),
-                                    image: file,
-                                },
-                            });
-                        }}
-                        className="image-wrapper"
-                    />
-                }
-            />
-            <div className="flex flex-col flex-grow gap-2 editor-group">
+        <div className={clsx(label, "field flex-col gap-1 relative")}>
+            <div>
                 <label className="form-label">{label}</label>
-                <CardEditor
-                    displayMode={displayMode}
-                    wrapperId={id}
-                    key={id}
-                    defaultEditorState={defaultEditorState}
-                    onEditorStateChange={onEditorStateChange}
+            </div>
+
+            <div className="flex items-start flex-grow gap-1">
+                <MyHoverTooltip
+                    tooltipOptions={{
+                        delayHide: 40,
+                        interactive: true,
+                        trigger: "hover",
+                        visible: image?.value ? undefined : false,
+                        offset: [0, 14],
+                        mutationObserverOptions: {
+                            attributes: false,
+                            childList: true,
+                            subtree: false,
+                        },
+                        placement: "bottom",
+                    }}
+                    TooltipContent={
+                        <Button
+                            size="sm"
+                            variant="secondary"
+                            onClick={() => {
+                                setData({
+                                    action: "updateItemImage",
+                                    data: {
+                                        key: label.toLowerCase(),
+                                        image: undefined,
+                                    },
+                                });
+                            }}
+                        >
+                            Image
+                        </Button>
+                    }
+                    TriggerContent={
+                        <MyFilePickerCreatePackField
+                            initialValue={image}
+                            onUpdate={(file) => {
+                                setData({
+                                    action: "updateItemImage",
+                                    data: {
+                                        key: label.toLowerCase(),
+                                        image: file,
+                                    },
+                                });
+                            }}
+                            className="image-wrapper"
+                        />
+                    }
                 />
+                <div className="flex flex-col flex-grow w-full gap-2 editor-group">
+                    <CardEditor
+                        displayMode={displayMode}
+                        wrapperId={id}
+                        key={id}
+                        defaultEditorState={defaultEditorState}
+                        onEditorStateChange={onEditorStateChange}
+                    />
+                </div>
             </div>
         </div>
     );

@@ -42,7 +42,7 @@ const presets = {
                     <Link
                         href="https://discord.gg/QC3yHFySAV"
                         target="_blank"
-                        className="text-blue-600 font-bold mx-2 my-0"
+                        className="mx-2 my-0 font-bold text-blue-600"
                     >
                         discord
                     </Link>
@@ -85,7 +85,7 @@ export default function PlaceholderColumn({
         <div
             className={clsx(
                 className,
-                "placeholder-column flex flex-col gap-[48rem] items-center w-[400px] text-center break-words ",
+                "placeholder-column flex flex-col gap-[48px] items-center w-[400px] text-center break-words ",
                 options.sizeKey
             )}
         >
@@ -101,7 +101,9 @@ export default function PlaceholderColumn({
             )}
             {message && (
                 <div className="message">
-                    <div className="title-1">{message.title}</div>
+                    <div className="my-1 text-lg font-semibold text-blue-600 title-1">
+                        {message.title}
+                    </div>
                     <div className="mx-0 mt-2 text-blue-400 break-words">
                         {message.description}
                     </div>

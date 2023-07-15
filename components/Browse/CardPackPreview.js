@@ -49,7 +49,7 @@ export default function CardPackPreview() {
 
     const { db, isAnon } = useMongo();
     const { data, isSuccess, isError, isIdle, isLoading } = useQuery(
-        ["card-pack-browser-preview", selected, isAnon],
+        ["cardpack-browser-preview", selected, isAnon],
         () =>
             db
                 .collection(selected.collection)
@@ -113,9 +113,7 @@ export default function CardPackPreview() {
                                         label: "Create A Card Pack",
                                         props: {
                                             onClick: () => {
-                                                router.push(
-                                                    "/card-pack-editor"
-                                                );
+                                                router.push("/editor");
                                             },
                                         },
                                     },
@@ -184,9 +182,9 @@ function CardPackPreviewInner({ data }) {
             }}
         >
             <Header data={data} />
-            <div className="divider" />
+            <div className="w-full my-6 mx-0 opacity-20 h-[2px] bg-blue-600" />
             <Details data={data} />
-            <div className="divider" />
+            <div className="w-full my-6 mx-0 opacity-20 h-[2px] bg-blue-600" />
             <div className="content-preview">
                 <div className="text-blue-600 font-bold mx-2 my-0">
                     Interactive Study Modes
@@ -196,14 +194,14 @@ function CardPackPreviewInner({ data }) {
                         variant="secondary"
                         size="sm"
                         onClick={() => {
-                            router.push(`/card-pack/${data._id}/match`);
+                            router.push(`/cardpack/${data._id}/match`);
                         }}
                     >
                         Match
                     </Button>
                 </div>
             </div>
-            <div className="divider" />
+            <div className="w-full my-6 mx-0 opacity-20 h-[2px] bg-blue-600" />
             <ContentPreview data={data} />
         </motion.div>
     );
@@ -315,7 +313,7 @@ function Header({ data }) {
     }
     function sendShare() {
         navigator.clipboard.writeText(
-            `https://flippy.cards/card-pack/${selected.id}`
+            `https://flippy.cards/cardpack/${selected.id}`
         );
         if (mutation.isIdle)
             mutation.mutate(
@@ -354,7 +352,9 @@ function Header({ data }) {
 
     return (
         <div className="header">
-            <div className="title-1 title">{title}</div>
+            <div className="title-1 text-lg font-semibold text-blue-600 my-1 title">
+                {title}
+            </div>
             <div className="controls">
                 {selected.collection !== "cardpackDrafts" && (
                     <>
@@ -404,7 +404,7 @@ function Header({ data }) {
                         size="sm"
                         variant="secondary"
                         onClick={() => {
-                            router.push(`/card-pack-editor/${selected.id}`);
+                            router.push(`/editor/${selected.id}`);
                         }}
                     >
                         Edit
@@ -416,14 +416,14 @@ function Header({ data }) {
                         variant="primary"
                         onClick={() => {
                             publishMutation.mutate();
-                            // router.push(`/card-pack/${selected.id}`);
+                            // router.push(`/cardpack/${selected.id}`);
                         }}
                     >
                         Publish
                     </Button>
                 ) : (
                     <Link
-                        href={`/card-pack/${selected.id}`}
+                        href={`/cardpack/${selected.id}`}
                         onClick={() => {
                             window?.umami?.("Click - Navbar - Browse Packs");
                         }}

@@ -3,8 +3,8 @@ import { useIsMobile } from "@components/mediaQueryHooks";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { ModalWrapper, useModal } from "./Modals/ModalUtils";
-import { WaitForMongo, useMongo } from "./Mongo/MongoUtils";
+import { ModalWrapper, useModal } from "../Modals/ModalUtils";
+import { WaitForMongo, useMongo } from "../Mongo/MongoUtils";
 import Searchbar from "./Searchbar";
 
 export default function Navbar() {
@@ -84,8 +84,9 @@ export default function Navbar() {
 
 function Right() {
     const { isAnon } = useMongo();
-    return <UnauthedSection />;
-    //!isAnon ? <AuthedSection /> : <UnauthedSection />;
+    console.log(isAnon);
+    // return <UnauthedSection />;
+    return !isAnon ? <AuthedSection /> : <UnauthedSection />;
 }
 
 function subjectSelect() {}
@@ -119,7 +120,7 @@ export function MobileDropdownModal() {
                     <Button
                         variant="secondary"
                         size="sm"
-                        onClick={() => router.push("/browse")}
+                        onClick={() => router.push("/search")}
                     >
                         Browse Packs
                     </Button>
@@ -163,11 +164,11 @@ function AuthedSection() {
     const router = useRouter();
 
     return (
-        <div className="mt-3">
+        <div className="">
             <Button
                 variant="create"
                 size="xs"
-                onClick={() => router.push("/card-pack-editor")}
+                onClick={() => router.push("/editor")}
             >
                 <svg
                     width="31"

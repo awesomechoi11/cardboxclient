@@ -8,11 +8,11 @@ import Script from "next/script";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Head from "next/head";
 import { useRef, createContext } from 'react'
+
 // import ReactGA from "react-ga";
 
 // ReactGA.initialize("UA-227551059-1");
 const queryClient = new QueryClient();
-export const AppRefContext = createContext();
 
 function MyApp({ Component, pageProps }) {
     const appRef = useRef();

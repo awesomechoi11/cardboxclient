@@ -8,7 +8,7 @@ import { SearchResultPreviewModal } from "@components/Search/Search.ResultCard";
 import Button from "@components/general/Button";
 import { twMerge } from "tailwind-merge";
 import { ImageViewerModal } from "./ImageViewer/ImageViewer";
-import { MobileDropdownModal } from "@components/Navbar";
+import { MobileDropdownModal } from "@components/nav/Navbar";
 
 export default function ModalRoot() {
     return (

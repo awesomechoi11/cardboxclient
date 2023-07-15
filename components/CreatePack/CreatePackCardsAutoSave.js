@@ -3,7 +3,7 @@ import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { useMutation } from "react-query";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { useDebounce } from "rooks";
-import { CardPackDataContext } from "../../pages/card-pack-editor/[cardPackId]";
+import { CardPackDataContext } from "../../pages/editor/[cardPackId]";
 import { useMongo } from "../Mongo/MongoUtils";
 import {
     createPackAllDataSelector,

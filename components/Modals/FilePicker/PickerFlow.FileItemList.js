@@ -91,7 +91,7 @@ function PaginatedList({ files }) {
     return (
         <>
             <div className="file-item-list">
-                <AnimatePresence exitBeforeEnter>{items}</AnimatePresence>
+                <AnimatePresence mode="wait">{items}</AnimatePresence>
             </div>
             <div className="controls">
                 <div
@@ -120,7 +120,7 @@ function PaginatedList({ files }) {
                 >
                     {PREV_SVG}
                 </div>
-                <div className="text-blue-600 font-bold mx-2 my-0">
+                <div className="mx-2 my-0 font-bold text-blue-600">
                     {current}
                 </div>
                 <div

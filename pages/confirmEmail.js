@@ -15,7 +15,7 @@ import {
     useMongo,
     WaitForMongo,
 } from "../components/Mongo/MongoUtils";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/nav/Navbar";
 import PlaceholderColumn from "../components/PlaceholderColumn";
 //http://localhost:3000/confirmEmail?token=e8bab441d021cb828b80b2c1a51937381c3b455b056a15ca28ab35fca53596d996e56b551c580749779654151aec35de5c5ac6225330abd9098068047ebf515a&tokenId=62479395d937dcecc6f5456b
 
@@ -85,7 +85,7 @@ function Main() {
                                 <>
                                     <Button
                                         onClick={() => {
-                                            push("/card-pack-editor");
+                                            push("/editor");
                                         }}
                                     >
                                         Create A Card Pack
@@ -93,7 +93,7 @@ function Main() {
                                     <Button
                                         variant="secondary"
                                         onClick={() => {
-                                            push("/browse");
+                                            push("/search");
                                         }}
                                     >
                                         Browse Card Packs
@@ -134,7 +134,9 @@ function Main() {
                         />
                     </div>
                     <div className="message">
-                        <div className="title-1">Loading</div>
+                        <div className="title-1 text-lg font-semibold text-blue-600 my-1">
+                            Loading
+                        </div>
                         <div className="text-blue-600 font-bold mx-2 my-0">
                             zzz...
                         </div>
@@ -157,7 +159,7 @@ function Main() {
                             />
                         </div>
                         <div className="message">
-                            <div className="title-1">
+                            <div className="title-1 text-lg font-semibold text-blue-600 my-1">
                                 Registration Complete!
                             </div>
                             <div className="text-blue-600 font-bold mx-2 my-0">
@@ -186,7 +188,7 @@ function Main() {
                                 label: "Browse Card Packs",
                                 props: {
                                     onClick: () => {
-                                        push("/browse");
+                                        push("/search");
                                     },
                                 },
                             },
@@ -205,7 +207,9 @@ function Main() {
                         />
                     </div>
                     <div className="message">
-                        <div className="title-1">Something went wrong...</div>
+                        <div className="title-1 text-lg font-semibold text-blue-600 my-1">
+                            Something went wrong...
+                        </div>
                         <div className="text-blue-600 font-bold mx-2 my-0">
                             The link is broken or its been over 30 minutes. You
                             can resend the email confirmation link below.

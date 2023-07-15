@@ -3,6 +3,11 @@ module.exports = {
         "./pages/**/*.{js,ts,jsx,tsx}",
         "./components/**/*.{js,ts,jsx,tsx}",
     ],
+    variants: {
+        extend: {
+            opacity: ["group-hover"],
+        },
+    },
     theme: {
         extend: {
             screens: {
@@ -78,7 +83,7 @@ module.exports = {
                     700: "#144B9F",
                     600: "#1A63D0",
                     500: "#2B75E5",
-                    400: "#70A3EF",
+                    400: "#C0D8FD",
                     300: "#EFF5FE",
                     200: "#F8F8F8",
                     100: "#FFFFFF",

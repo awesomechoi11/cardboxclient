@@ -1,5 +1,6 @@
-import CardRow from "@components/CardPack/CardDisplay/CardRow";
+import CardRow from "@components/CardPack/general/CardHorizontal";
 import { ModalWrapper, useModal } from "@components/Modals/ModalUtils";
+import { ActiveOnViewportEnter } from "@components/general/ActiveOnViewportEnter";
 import Button from "@components/general/Button";
 import Text from "@components/general/Text";
 import Link from "next/link";
@@ -129,7 +130,7 @@ export function SearchResultPreviewModal() {
 function Inner() {
     const { data, closeModal } = useModal("search result preview");
 
-    const { title, previewCards } = data;
+    const { title, previewCards, _id } = data;
     return (
         <div className="flex flex-col gap-4 text-left">
             <div className="flex flex-col gap-3 tablet:flex-row">
@@ -137,22 +138,30 @@ function Inner() {
                     <div className="text-blue-950 text-[24px] font-semibold">
                         <Text>{title}</Text>
                     </div>
-                    <div>ratings here</div>
+                    {/* <div>ratings here</div> */}
                 </div>
                 <div className="flex flex-row-reverse justify-end flex-shrink-0 gap-1 tablet:items-start">
                     <Button variant="secondary">Share</Button>
-                    <Button variant="secondary">Save</Button>
+                    <Link
+                        href={`/cardpack/${_id}`}
+                        onClick={() => {
+                            closeModal();
+                        }}
+                    >
+                        <Button variant="secondary">Save</Button>
+                    </Link>
                     <Button>Study</Button>
                 </div>
             </div>
             <div className="flex flex-col gap-2">
                 {previewCards.map((data) => (
-                    <CardRow data={data} key={data._id} />
+                    <ActiveOnViewportEnter key={data._id}>
+                        <CardRow data={data} />
+                    </ActiveOnViewportEnter>
                 ))}
             </div>
-            {/* <Link href={`/card-pack/d9b431ca?slug=cs-10c-final`}> */}
             <Link
-                href={`/404`}
+                href={`/cardpack/${_id}`}
                 onClick={() => {
                     closeModal();
                 }}

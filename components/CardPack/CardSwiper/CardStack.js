@@ -21,14 +21,14 @@ export default function CardStack() {
             backgroundColor: "#E4BF9C",
             key: nanoid(),
         },
-        {
-            backgroundColor: "#EFD9C4",
-            key: nanoid(),
-        },
-        {
-            backgroundColor: "#E0C3AB",
-            key: nanoid(),
-        },
+        // {
+        //     backgroundColor: "#EFD9C4",
+        //     key: nanoid(),
+        // },
+        // {
+        //     backgroundColor: "#E0C3AB",
+        //     key: nanoid(),
+        // },
     ]);
     function shiftPlaceholder() {
         let copy = JSON.parse(JSON.stringify(placeholders));

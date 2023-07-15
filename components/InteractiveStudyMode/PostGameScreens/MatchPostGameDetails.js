@@ -13,7 +13,9 @@ export default function MatchPostGameDetails() {
         <div id="match-post-game-screen">
             <div className="top">
                 <div className="details">
-                    <div className="title-1">Interactive Study Mode</div>
+                    <div className="title-1 text-lg font-semibold text-blue-600 my-1">
+                        Interactive Study Mode
+                    </div>
                     <div className="stats">
                         <LabeledPills label="Mode" content="Match" />
                         <LabeledPills label="Category" content={label} />
@@ -59,7 +61,7 @@ export default function MatchPostGameDetails() {
                             size="sm"
                             onClick={() => {
                                 router.push(
-                                    `/card-pack/${router.query.cardPackId}`
+                                    `/cardpack/${router.query.cardPackId}`
                                 );
                             }}
                         >

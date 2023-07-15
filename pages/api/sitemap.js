@@ -18,7 +18,7 @@ export default async function sitemap(req, res) {
         cardpacks.forEach((pack) => {
             let imgSrc = normalizeImageSrc(pack.image);
             smStream.write({
-                url: `/card-pack/${pack._id}?slug=${slugify(pack.title)}`,
+                url: `/cardpack/${pack._id}?slug=${slugify(pack.title)}`,
                 lastmod: pack.lastModified.toISOString(),
                 changefreq: "daily",
                 priority: 0.9,

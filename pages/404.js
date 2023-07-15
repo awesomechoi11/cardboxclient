@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/nav/Navbar";
 import Image from "next/image";
 import Button from "@components/general/Button";
 import { useState } from "react";
@@ -39,7 +39,9 @@ export default function Custom404() {
                     )}
                 </div>
                 <div className="message">
-                    <div className="title-1">404 Not Found</div>
+                    <div className="title-1 text-lg font-semibold text-blue-600 my-1">
+                        404 Not Found
+                    </div>
                     <div className="text-blue-600 font-bold mx-2 my-0">
                         This page doesn’t exist or was removed!
                     </div>
