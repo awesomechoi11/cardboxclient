@@ -30,10 +30,10 @@ export default function LargeCardBanner({ data }) {
                     {description}
                 </div>
             </div>
-            <div className="text-blue-800 font-bold my-0 mb-2">
+            {/* <div className="text-blue-800 font-bold my-0 mb-2">
                 Interactive Study Modes
-            </div>
-            <div className="mb-2">
+            </div> */}
+            {/* <div className="mb-2">
                 <Button
                     variant="secondary"
                     size="sm"
@@ -44,7 +44,7 @@ export default function LargeCardBanner({ data }) {
                 >
                     Match
                 </Button>
-            </div>
+            </div> */}
         </div>
     );
 }

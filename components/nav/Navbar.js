@@ -89,7 +89,7 @@ function Right() {
     return !isAnon ? <AuthedSection /> : <UnauthedSection />;
 }
 
-function subjectSelect() {}
+function subjectSelect() { }
 
 function MobileDropdown() {
     // const [isOpen, setIsOpen] = useState(false);
