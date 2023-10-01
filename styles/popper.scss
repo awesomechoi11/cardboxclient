@@ -1,14 +1,14 @@
 @use "./vars";
 
 .tooltip-container {
-    > .inner {
-        button {
-            background-color: vars.$color-secondary-3;
-            &:hover {
-                background-color: vars.$color-secondary-4;
-            }
-        }
-    }
+    // > .inner {
+    //     button {
+    //         background-color: vars.$color-secondary-3;
+    //         &:hover {
+    //             background-color: vars.$color-secondary-4;
+    //         }
+    //     }
+    // }
 
     &[data-popper-interactive="false"] {
         pointer-events: none;

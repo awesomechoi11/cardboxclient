@@ -9,6 +9,7 @@ import Button from "@components/general/Button";
 import { twMerge } from "tailwind-merge";
 import { ImageViewerModal } from "./ImageViewer/ImageViewer";
 import { MobileDropdownModal } from "@components/nav/Navbar";
+import { LibraryPreviewModal } from "@components/Library/Library.PreviewModal";
 
 export default function ModalRoot() {
     return (
@@ -22,6 +23,7 @@ export default function ModalRoot() {
             <FilePickerModal />
             <LoginModal />
             <MobileDropdownModal />
+            <LibraryPreviewModal />
         </div>
     );
 }
@@ -71,7 +73,7 @@ export function ModalWrapper({
         <AnimatePresence>
             {isOpen && (
                 <motion.div
-                    styke={{
+                    style={{
                         WebkitOverflowScrolling: "touch",
                     }}
                     className="absolute inset-0 z-10 overflow-y-auto opacity-0 pointer-events-auto bg-blue-900/75 "

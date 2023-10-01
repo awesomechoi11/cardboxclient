@@ -25,16 +25,15 @@ export default function PickerFlowDropzone() {
     });
 
     return (
-        <div {...getRootProps({ className: "dropzone" })}>
-            <div className="inner">
+        <div {...getRootProps({ className: "dropzone h-[300px]" })}>
+            <div className="inner cursor-pointer relative flex gap-[16px] flex-col items-center">
                 {Dropzone_SVG}
-                <div className="text text-blue-600 font-bold mx-2 my-0">
+                <div className="text text-blue-600 font-bold mx-2 my-0 w-[186px] absolute top-[114px] text-center">
                     Drag your photos here to start uploading
-                    <br />
                     <br />
                     or
                 </div>
-                <Button className="cta" size="sm">
+                <Button className="cta top-[214px] absolute" size="sm">
                     Browse Files
                 </Button>
             </div>
