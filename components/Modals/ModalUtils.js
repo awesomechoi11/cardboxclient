@@ -19,11 +19,11 @@ export default function ModalRoot() {
         >
             <SearchResultPreviewModal />
             <PublishModal />
+            <LibraryPreviewModal />
             <ImageViewerModal />
             <FilePickerModal />
             <LoginModal />
-            <MobileDropdownModal />
-            <LibraryPreviewModal />
+            <MobileDropdownModal />  
         </div>
     );
 }
