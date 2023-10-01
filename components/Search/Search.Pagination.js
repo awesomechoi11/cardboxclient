@@ -17,7 +17,7 @@ export default function SearchPagination({
                 <p className="text-sm text-gray-700 ">
                     Showing{" "}
                     <span className="font-bold">{page * limit + 1}</span> to{" "}
-                    <span className="font-bold">{(page + 1) * limit}</span> of{" "}
+                    <span className="font-bold">{Math.min((page+1)*limit,maxDocs)}</span> of{" "}
                     <span className="font-bold">{maxDocs}</span> results
                 </p>
             </div>

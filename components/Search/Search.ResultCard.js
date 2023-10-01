@@ -31,7 +31,7 @@ export default function SearchResultCard({ data }) {
                                     Cards
                                 </span>
                             </div>
-                            <div>
+                            {/* <div>
                                 <span className="text-blue-950 text-[14px] font-semibold">
                                     {cardsCount}
                                 </span>
@@ -39,7 +39,7 @@ export default function SearchResultCard({ data }) {
                                     {" "}
                                     Saves
                                 </span>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="inline-flex items-center justify-center gap-1 ">
                             <div>
@@ -57,10 +57,11 @@ export default function SearchResultCard({ data }) {
                                             fill="#FFCD1F"
                                         />
                                     </svg>
-                                    3.0{" "}
+                                    5.0{" "}
                                 </span>
                                 <span className="text-neutral-400 text-[14px] font-semibold">
-                                    (4 Reviews)
+                                    {/* ({Math.floor(Math.random() * 150 + 1)} Reviews) */}
+                                    (? Reviews)
                                 </span>
                             </div>
                         </div>
@@ -96,19 +97,19 @@ export default function SearchResultCard({ data }) {
                                 </div>
                             </div>
                         </div>
-                        <div className=" bg-stone-50 rounded-xl justify-center items-center gap-[5.06px] inline-flex">
+                        {/* <div className=" bg-stone-50 rounded-xl justify-center items-center gap-[5.06px] inline-flex">
                             <div className="justify-start items-center gap-[2.53px] flex">
                                 <div className="text-blue-950 text-[12px] font-semibold">
                                     Grade 7
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="inline-flex items-center justify-end gap-1">
                         <div className="h-5 px-[1.67px] py-[4.17px] justify-center items-center flex" />
-                        <div className="text-neutral-400 text-[14px] font-semibold">
+                        {/* <div className="text-neutral-400 text-[14px] font-semibold">
                             526 Views
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
@@ -141,7 +142,12 @@ function Inner() {
                     {/* <div>ratings here</div> */}
                 </div>
                 <div className="flex flex-row-reverse justify-end flex-shrink-0 gap-1 tablet:items-start">
-                    <Button variant="secondary">Share</Button>
+                    <Button variant="secondary"
+                        onClick = {() => {
+                            navigator.clipboard.writeText(`https://flippy.cards/cardpack/${_id}`);
+                        }}
+                    >Share
+                    </Button>
                     <Link
                         href={`/cardpack/${_id}`}
                         onClick={() => {

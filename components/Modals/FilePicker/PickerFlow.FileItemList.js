@@ -212,12 +212,14 @@ function FileItem({ file, index, refetch }) {
             >
                 {isImage && (
                     <Image
-                        width="82"
-                        height="82"
+                        width={82}
+                        height={82}
                         src={previewUrl}
                         alt="preview"
                         className="object-cover"
+                        style={{height: "inherit"}}
                     />
+
                 )}
                 {isVideo && (
                     <video width="82" height="82" controls>

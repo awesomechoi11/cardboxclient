@@ -19,7 +19,7 @@ export function LibraryPreviewModal() {
 }
 
 function Inner() {
-    const { data:{data, refetch}, closeModal } = useModal("library result preview");
+    const { data: { data, refetch }, closeModal } = useModal("library result preview");
 
     const { title, cards, _id } = data;
     const deleteMutation = useDeletePackMutation({
@@ -32,14 +32,19 @@ function Inner() {
             <div className="flex flex-col gap-3 tablet:flex-row">
                 <div className="flex-grow">
                     <div className="text-blue-950 text-[24px] font-semibold">
-                        
+
                         <Text>{title || "untitled"}</Text>
                     </div>
                     {/* <div>ratings here</div> */}
                 </div>
                 <div className="flex flex-row-reverse justify-end flex-shrink-0 gap-1 tablet:items-start">
                     {data.published &&
-                        <Button variant="secondary">Share</Button>
+                        <Button variant="secondary"
+                            onClick={() => {
+                                navigator.clipboard.writeText(`https://flippy.cards/cardpack/${_id}`);
+                            }}
+                        >Share
+                        </Button>
                     }
                     <Link
                         href={`/editor/${_id}`}
@@ -51,7 +56,7 @@ function Inner() {
                     </Link>
                     <Button
                         variant="danger"
-                        onClick= { () => {
+                        onClick={() => {
                             deleteMutation.mutate(undefined, {
                                 onSuccess: () => {
                                     toast.success(
@@ -61,7 +66,7 @@ function Inner() {
                                     closeModal();
                                 },
                             })
-                            
+
                         }
                         }
                     >
@@ -71,21 +76,21 @@ function Inner() {
                 </div>
             </div>
             <div className="flex flex-col gap-2">
-                {cards && cards.map( data => (
+                {cards && cards.map(data => (
                     <ActiveOnViewportEnter key={data._id}>
                         <CardRow data={data} />
                     </ActiveOnViewportEnter>
                 ))}
             </div>
-            {data.published && 
-            <Link
-                href={`/cardpack/${_id}`}
-                onClick={() => {
-                    closeModal();
-                }}
-            >
-                <Button className="w-full text-center">View Full Set</Button>
-            </Link> }
+            {data.published &&
+                <Link
+                    href={`/cardpack/${_id}`}
+                    onClick={() => {
+                        closeModal();
+                    }}
+                >
+                    <Button className="w-full text-center">View Full Set</Button>
+                </Link>}
         </div>
     );
 }
