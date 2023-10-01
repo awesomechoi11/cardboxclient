@@ -16,6 +16,7 @@ import PlaceholderColumn from "../PlaceholderColumn";
 import { MyHoverTooltip } from "../Tooltip/MyClickTooltip";
 import { DUPLICATE_SVG, LIKE_SVG, SHARE_SVG } from "./_icons";
 import Link from "next/link";
+import { normalizeImageSrc } from "@components/general/NormalizedImage";
 const previewAnim = {
     initial: {
         scale: 0.98,
@@ -48,7 +49,7 @@ export default function CardPackPreview() {
 
     const { db, isAnon } = useMongo();
     const { data, isSuccess, isError, isIdle, isLoading } = useQuery(
-        ["card-pack-browser-preview", selected, isAnon],
+        ["cardpack-browser-preview", selected, isAnon],
         () =>
             db
                 .collection(selected.collection)
@@ -99,7 +100,7 @@ export default function CardPackPreview() {
             <AnimatePresence>
                 {isIdle && (
                     <motion.div key="idle" className="inner" {...previewAnim}>
-                        <div className="placeholder-wrapper">
+                        <div className="placeholder-wrapper flex justify-center">
                             <PlaceholderColumn
                                 options={{
                                     imageKey: "studyCat",
@@ -112,9 +113,7 @@ export default function CardPackPreview() {
                                         label: "Create A Card Pack",
                                         props: {
                                             onClick: () => {
-                                                router.push(
-                                                    "/card-pack-editor"
-                                                );
+                                                router.push("/editor");
                                             },
                                         },
                                     },
@@ -129,14 +128,14 @@ export default function CardPackPreview() {
                         className="inner"
                         {...previewAnim}
                     >
-                        <div className="placeholder-wrapper">
+                        <div className="placeholder-wrapper flex justify-center">
                             <PlaceholderColumn presetKey="loading" />
                         </div>
                     </motion.div>
                 )}
                 {isError && (
                     <motion.div key="error" className="inner" {...previewAnim}>
-                        <div className="placeholder-wrapper">
+                        <div className="placeholder-wrapper flex justify-center">
                             <PlaceholderColumn presetKey="error" />
                         </div>
                     </motion.div>
@@ -146,7 +145,7 @@ export default function CardPackPreview() {
                 )}
                 {isSuccess && !data && (
                     <motion.div key="error" className="inner" {...previewAnim}>
-                        <div className="placeholder-wrapper">
+                        <div className="placeholder-wrapper flex justify-center">
                             <PlaceholderColumn presetKey="error" />
                         </div>
                     </motion.div>
@@ -164,7 +163,7 @@ function CardPackPreviewInner({ data }) {
             // key={data._id}
             className="inner"
             initial={{
-                // y: "-48rem",
+                // y: "-48",
                 scale: 0.98,
                 opacity: 0,
                 position: "absolute",
@@ -176,31 +175,33 @@ function CardPackPreviewInner({ data }) {
                 position: "relative",
             }}
             exit={{
-                // y: "48rem",
+                // y: "48",
                 opacity: 0,
                 scale: 0.98,
                 position: "absolute",
             }}
         >
             <Header data={data} />
-            <div className="divider" />
+            <div className="w-full my-6 mx-0 opacity-20 h-[2px] bg-blue-600" />
             <Details data={data} />
-            <div className="divider" />
-            <div className="content-preview">
-                <div className="subtitle-2">Interactive Study Modes</div>
+            <div className="w-full my-6 mx-0 opacity-20 h-[2px] bg-blue-600" />
+            {/* <div className="content-preview">
+                <div className="text-blue-600 font-bold mx-2 my-0">
+                    Interactive Study Modes
+                </div>
                 <div>
                     <Button
                         variant="secondary"
                         size="sm"
                         onClick={() => {
-                            router.push(`/card-pack/${data._id}/match`);
+                            router.push(`/cardpack/${data._id}/match`);
                         }}
                     >
                         Match
                     </Button>
                 </div>
-            </div>
-            <div className="divider" />
+            </div> */}
+            <div className="w-full my-6 mx-0 opacity-20 h-[2px] bg-blue-600" />
             <ContentPreview data={data} />
         </motion.div>
     );
@@ -209,7 +210,9 @@ function CardPackPreviewInner({ data }) {
 function ContentPreview({ data: { totalCards, cardsPreview } }) {
     return (
         <div className="content-preview">
-            <div className="subtitle-2">Cards ({totalCards})</div>
+            <div className="text-blue-600 font-bold mx-2 my-0">
+                Cards ({totalCards})
+            </div>
             {cardsPreview.map(({ id, term, definition }) => (
                 <div className="row" key={id}>
                     <Field data={term} label="Term" />
@@ -220,25 +223,26 @@ function ContentPreview({ data: { totalCards, cardsPreview } }) {
     );
 }
 function Field({ data: { content, id, image }, label }) {
-    const imgSrc = image?.value?.cdnUrl;
+    const imgSrc = normalizeImageSrc(image);
     return (
         <div className="field">
             {imgSrc && (
                 <div className="img">
                     <Image
-                        // layout="responsive"
-                        objectFit="cover"
-                        width="85w"
-                        height="76w"
+                        className="object-cover"
+                        width="85"
+                        height="76"
                         src={imgSrc}
                         alt="card icon"
                     />
                 </div>
             )}
             <div className="content-wrapper">
-                <div className="label subtitle-2">{label}</div>
+                <div className="label text-blue-600 font-bold mx-2 my-0">
+                    {label}
+                </div>
                 <div
-                    className="content"
+                    className="break-words"
                     dangerouslySetInnerHTML={{ __html: draftjsToHtml(content) }}
                 />
             </div>
@@ -309,7 +313,7 @@ function Header({ data }) {
     }
     function sendShare() {
         navigator.clipboard.writeText(
-            `https://flippy.cards/card-pack/${selected.id}`
+            `https://flippy.cards/cardpack/${selected.id}`
         );
         if (mutation.isIdle)
             mutation.mutate(
@@ -348,7 +352,9 @@ function Header({ data }) {
 
     return (
         <div className="header">
-            <div className="title-1 title">{title}</div>
+            <div className="title-1 text-lg font-semibold text-blue-600 my-1 title">
+                {title}
+            </div>
             <div className="controls">
                 {selected.collection !== "cardpackDrafts" && (
                     <>
@@ -356,7 +362,7 @@ function Header({ data }) {
                             TriggerContent={
                                 <button className="icon-btn" onClick={sendLike}>
                                     <div className="icon">{LIKE_SVG}</div>
-                                    <div className="content">
+                                    <div className="break-words">
                                         {millify(localStats.likes || 0)}
                                     </div>
                                 </button>
@@ -370,7 +376,7 @@ function Header({ data }) {
                                     onClick={sendShare}
                                 >
                                     <div className="icon">{SHARE_SVG}</div>
-                                    <div className="content">
+                                    <div className="break-words">
                                         {millify(localStats.shares || 0)}
                                     </div>
                                 </button>
@@ -384,7 +390,7 @@ function Header({ data }) {
                                     onClick={sendDuplicate}
                                 >
                                     <div className="icon">{DUPLICATE_SVG}</div>
-                                    <div className="content">
+                                    <div className="break-words">
                                         {millify(localStats.duplicates || 0)}
                                     </div>
                                 </button>
@@ -398,7 +404,7 @@ function Header({ data }) {
                         size="sm"
                         variant="secondary"
                         onClick={() => {
-                            router.push(`/card-pack-editor/${selected.id}`);
+                            router.push(`/editor/${selected.id}`);
                         }}
                     >
                         Edit
@@ -410,24 +416,21 @@ function Header({ data }) {
                         variant="primary"
                         onClick={() => {
                             publishMutation.mutate();
-                            // router.push(`/card-pack/${selected.id}`);
+                            // router.push(`/cardpack/${selected.id}`);
                         }}
                     >
                         Publish
                     </Button>
                 ) : (
-                    <Link href={`/card-pack/${selected.id}`}>
-                        <a
-                            onClick={() => {
-                                window?.umami?.(
-                                    "Click - Navbar - Browse Packs"
-                                );
-                            }}
-                        >
-                            <Button size="sm" variant="primary">
-                                Open
-                            </Button>
-                        </a>
+                    <Link
+                        href={`/cardpack/${selected.id}`}
+                        onClick={() => {
+                            window?.umami?.("Click - Navbar - Browse Packs");
+                        }}
+                    >
+                        <Button size="sm" variant="primary">
+                            Open
+                        </Button>
                     </Link>
                 )}
             </div>
@@ -448,7 +451,7 @@ function Details({
         selectedState: [selected],
     } = useContext(BrowseContext);
     const imgSrc =
-        image?.value?.cdnUrl ||
+        normalizeImageSrc(image) ||
         "https://ucarecdn.com/8367c6e0-2a0f-40c0-9bbb-7bf74754a3a5/";
 
     return (
@@ -457,17 +460,18 @@ function Details({
                 <div className="author">
                     <div className="img">
                         <Image
-                            // layout="responsive"
-                            objectFit="cover"
-                            width="32rem"
-                            height="32rem"
+                            className="object-cover"
+                            width="32"
+                            height="32"
                             src={imgSrc}
                             alt={username}
                         />
                     </div>
-                    <div className="username subtitle-2">{username}</div>
+                    <div className="username text-blue-600 font-bold mx-2 my-0">
+                        {username}
+                    </div>
                 </div>
-                <div className="tags normal-1">
+                <div className="tags m-0 font-bold text-base color-blue-600">
                     {tags.map((tag, index) => (
                         <div key={index} className="pill">
                             {tag}
@@ -475,7 +479,7 @@ function Details({
                     ))}
                 </div>
             </div>
-            <div className="subtitle-2 middle">
+            <div className="text-blue-600 font-bold mx-2 my-0 middle">
                 {[
                     lastModified && "Last Updated " + ago(lastModified),
                     selected.collection !== "cardpackDrafts" &&
@@ -485,7 +489,9 @@ function Details({
                     .join(" · ")}
             </div>
             {description && (
-                <div className="description-1 bottom">{description}</div>
+                <div className=" mt-2 mx-0 text-blue-400 break-words  bottom">
+                    {description}
+                </div>
             )}
         </div>
     );

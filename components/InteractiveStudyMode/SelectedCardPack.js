@@ -4,8 +4,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import Button from "@components/general/Button";
-import { CardPackContext } from "../../pages/card-pack/[cardPackId]/[modePath]";
+import { CardPackContext } from "../../lib/[modePath]";
 import PlaceholderColumn from "../PlaceholderColumn";
+import { normalizeImageSrc } from "@components/general/NormalizedImage";
 
 const previewAnim = {
     initial: {
@@ -38,11 +39,11 @@ export default function SelectedCardPack() {
         useContext(CardPackContext);
 
     return (
-        <div className="selected-card-pack">
+        <div className="selected-cardpack">
             <AnimatePresence>
                 {isIdle && (
                     <motion.div key="idle" className="inner" {...previewAnim}>
-                        <div className="placeholder-wrapper">
+                        <div className="flex justify-center placeholder-wrapper">
                             <PlaceholderColumn
                                 options={{
                                     imageKey: "studyCat",
@@ -55,9 +56,7 @@ export default function SelectedCardPack() {
                                         label: "Create A Card Pack",
                                         props: {
                                             onClick: () => {
-                                                router.push(
-                                                    "/card-pack-editor"
-                                                );
+                                                router.push("/editor");
                                             },
                                         },
                                     },
@@ -72,14 +71,14 @@ export default function SelectedCardPack() {
                         className="inner"
                         {...previewAnim}
                     >
-                        <div className="placeholder-wrapper">
+                        <div className="flex justify-center placeholder-wrapper">
                             <PlaceholderColumn presetKey="loading" />
                         </div>
                     </motion.div>
                 )}
                 {isError && (
                     <motion.div key="error" className="inner" {...previewAnim}>
-                        <div className="placeholder-wrapper">
+                        <div className="flex justify-center placeholder-wrapper">
                             <PlaceholderColumn presetKey="error" />
                         </div>
                     </motion.div>
@@ -87,7 +86,7 @@ export default function SelectedCardPack() {
                 {isSuccess && data && <Preview data={data} />}
                 {isSuccess && !data && (
                     <motion.div key="error" className="inner" {...previewAnim}>
-                        <div className="placeholder-wrapper">
+                        <div className="flex justify-center placeholder-wrapper">
                             <PlaceholderColumn presetKey="error" />
                         </div>
                     </motion.div>
@@ -107,30 +106,29 @@ function Preview({ data }) {
         image,
     } = data;
     const router = useRouter();
-
+    let imgSrc = normalizeImageSrc(image);
     return (
         <div className="inner">
             <div className="header">
-                {image?.value?.cdnUrl && (
+                {imgSrc && (
                     <div className="img">
                         <Image
                             alt="selected card pack"
-                            src={image?.value?.cdnUrl}
-                            layout="responsive"
-                            width="64rem"
-                            height="54rem"
-                            objectFit="cover"
+                            src={imgSrc}
+                            width="64"
+                            height="54"
+                            className="object-cover"
                         />
                     </div>
                 )}
-                <div className="subtitle-2">{title}</div>
+                <div className="text-blue-600 font-bold mx-2 my-0">{title}</div>
             </div>
-            <div className="stats description-1">
+            <div className="mx-0 mt-2 break-words stats text-blue-400 ">
                 <div className="stat">
                     <svg
                         style={{
-                            width: "32rem",
-                            height: "32rem",
+                            width: "32",
+                            height: "32",
                         }}
                         width="32"
                         height="32"
@@ -142,7 +140,7 @@ function Preview({ data }) {
                             fillRule="evenodd"
                             clipRule="evenodd"
                             d="M22.6324 11.5234C21.6815 9.82375 19.4086 9.51288 18.0535 10.8971L16.7016 12.2779C16.5155 12.468 16.2631 12.5748 15.9999 12.5748C15.7367 12.5748 15.4844 12.468 15.2983 12.2779L13.9464 10.8971C12.5912 9.51293 10.3184 9.82384 9.36757 11.5235C8.73174 12.66 8.89976 14.0878 9.78115 15.0381L15.9999 21.7429L22.2188 15.0382C23.1003 14.0878 23.2683 12.66 22.6324 11.5234ZM16.6502 9.46375C18.9306 7.13448 22.7553 7.6576 24.3554 10.5177C25.4255 12.4303 25.1428 14.8331 23.6595 16.4322L17.0804 23.5253C16.4933 24.1582 15.5065 24.1582 14.9194 23.5253L8.34045 16.4321C6.85726 14.833 6.57453 12.4304 7.64448 10.5178C9.24453 7.65771 13.0692 7.13452 15.3497 9.4638L15.9999 10.1279L16.6502 9.46375Z"
-                            fill="#674433"
+                            className="fill-blue-600"
                         />
                     </svg>
 
@@ -151,8 +149,8 @@ function Preview({ data }) {
                 <div className="stat">
                     <svg
                         style={{
-                            width: "32rem",
-                            height: "32rem",
+                            width: "32",
+                            height: "32",
                         }}
                         width="32"
                         height="32"
@@ -164,7 +162,7 @@ function Preview({ data }) {
                             fillRule="evenodd"
                             clipRule="evenodd"
                             d="M21.317 9.13012C20.2843 8.19133 18.7048 8.19967 17.6821 9.14931L10.4346 15.8791C8.55009 17.629 8.54297 20.6094 10.4191 22.3683C12.1359 23.9777 14.8105 23.9672 16.5145 22.3443L23.2939 15.8878C23.6938 15.5069 24.3268 15.5223 24.7077 15.9222C25.0886 16.3222 25.0731 16.9551 24.6732 17.336L17.8938 23.7926C15.4218 26.1469 11.5417 26.1622 9.05124 23.8273C6.32951 21.2757 6.33983 16.9521 9.07371 14.4135L16.3212 7.68373C18.1053 6.02706 20.8608 6.01251 22.6623 7.65024C24.7046 9.50686 24.7081 12.7175 22.6698 14.5786L15.4126 21.2047C14.3158 22.2062 12.6252 22.1678 11.575 21.1175C10.4652 20.0078 10.4944 18.1998 11.6393 17.1264L18.2996 10.8824C18.7025 10.5046 19.3354 10.525 19.7131 10.928C20.0908 11.3309 20.0704 11.9637 19.6675 12.3414L13.0072 18.5854C12.6865 18.8861 12.6784 19.3925 12.9892 19.7033C13.2833 19.9975 13.7568 20.0082 14.0641 19.7277L21.3213 13.1016C22.4897 12.0348 22.4877 10.1944 21.317 9.13012Z"
-                            fill="#674433"
+                            className="fill-blue-600"
                         />
                     </svg>
 
@@ -173,8 +171,8 @@ function Preview({ data }) {
                 <div className="stat">
                     <svg
                         style={{
-                            width: "32rem",
-                            height: "32rem",
+                            width: "32",
+                            height: "32",
                         }}
                         width="32"
                         height="32"
@@ -215,8 +213,8 @@ function Preview({ data }) {
                 <div className="stat">
                     <svg
                         style={{
-                            width: "32rem",
-                            height: "32rem",
+                            width: "32",
+                            height: "32",
                         }}
                         width="32"
                         height="32"
@@ -253,7 +251,7 @@ function Preview({ data }) {
                     variant="secondary"
                     size="sm"
                     onClick={() => {
-                        router.push(`/card-pack/${router.query.cardPackId}`);
+                        router.push(`/cardpack/${router.query.cardPackId}`);
                     }}
                 >
                     Goto Pack

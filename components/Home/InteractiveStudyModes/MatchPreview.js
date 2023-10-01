@@ -4,93 +4,97 @@ import Button from "@components/general/Button";
 import { Flippable } from "../../general/Flippable";
 
 export default function MatchPreview({ play }) {
-    return <Client play={play} />;
+  return <Client play={play} />;
 }
 
 function Client({ play }) {
-    const cards = [
-        {
-            front: "Use tongs",
-            back: "",
-        },
-        {
-            front: "If a lab experiment is not completed, you should...",
-            back: "",
-        },
-        {
-            front: "Away from all people",
-            back: "",
-        },
+  const cards = [
+    {
+      front: "Use tongs",
+      back: "",
+    },
+    {
+      front: "If a lab experiment is not completed, you should...",
+      back: "",
+    },
+    {
+      front: "Away from all people",
+      back: "",
+    },
 
-        {
-            front: "You are heating a piece of glass and now want to pick it up. You should...",
-            back: "",
-        },
-        {
-            front: "Discuss the issue with your instructor",
-            back: "",
-        },
-        {
-            front: "You are heating a substance in a test tube. Always point the open end of the tube",
-            back: "",
-        },
-    ];
-    const [selected, setselected] = useState(null);
-    return (
-        <div id="match-preview">
-            <div className="card-grid">
-                {cards.map((card, index) => (
-                    <Flippable
-                        className={selected === index && "selected"}
-                        front={<div className="title-1">{card.front}</div>}
-                        key={index}
-                        hasWatermark
-                        active={false}
-                        onClick={() => {
-                            if (selected === index) {
-                                setselected(null);
-                            } else {
-                                play();
-                                setselected(index);
-                            }
-                        }}
-                    />
-                ))}
+    {
+      front:
+        "You are heating a piece of glass and now want to pick it up. You should...",
+      back: "",
+    },
+    {
+      front: "Discuss the issue with your instructor",
+      back: "",
+    },
+    {
+      front:
+        "You are heating a substance in a test tube. Always point the open end of the tube",
+      back: "",
+    },
+  ];
+  const [selected, setselected] = useState(null);
+  return (
+    <div id="match-preview">
+      <div className="card-grid">
+        {cards.map((card, index) => (
+          <Flippable
+            className={selected === index && "selected"}
+            front={
+              <div className="title-1 text-lg font-semibold text-blue-600 my-1">
+                {card.front}
+              </div>
+            }
+            key={index}
+            hasWatermark
+            active={false}
+            onClick={() => {
+              if (selected === index) {
+                setselected(null);
+              } else {
+                play();
+                setselected(index);
+              }
+            }}
+          />
+        ))}
+      </div>
+      <Flippable
+        className="cta-card"
+        back={
+          <>
+            <div className="text-5xl font-bold color-blue-600">Match</div>
+            <div className=" mt-2 mx-0 text-blue-400 break-words">
+              Match related cards to clear. Clear them all to win!
             </div>
-            <Flippable
-                className="cta-card"
-                back={
-                    <>
-                        <div className="jumbo-1">Match</div>
-                        <div className="description-1">
-                            Match related cards to clear. Clear them all to win!
-                        </div>
-                        <Link href="/browse">
-                            <a target="_blank">
-                                <Button
-                                    size="sm"
-                                    variant="secondary"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                    }}
-                                >
-                                    Play Match Mode
-                                </Button>
-                            </a>
-                        </Link>
-                    </>
-                }
-                front={
-                    <>
-                        <div className="jumbo-1">Flip Me!</div>
-                    </>
-                }
-                hasWatermark
-                onFlip={play}
-                onClick={() => {
-                    window?.umami?.("Click - Home - MatchPreview - Card");
+            <Link href="/browse" target="_blank">
+              <Button
+                size="sm"
+                variant="secondary"
+                onClick={(e) => {
+                  e.stopPropagation();
                 }}
-            />
-        </div>
-    );
+              >
+                Play Match Mode
+              </Button>
+            </Link>
+          </>
+        }
+        front={
+          <>
+            <div className="text-5xl font-bold color-blue-600">Flip Me!</div>
+          </>
+        }
+        hasWatermark
+        onFlip={play}
+        onClick={() => {
+          window?.umami?.("Click - Home - MatchPreview - Card");
+        }}
+      />
+    </div>
+  );
 }

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/nav/Navbar";
 import {
     MongoApp,
     useMongo,
@@ -15,6 +15,8 @@ import { useEffect } from "react";
 import PlaceholderColumn from "../../components/PlaceholderColumn";
 import * as Realm from "realm-web";
 import slugify from "slugify";
+import { normalizeImageSrc } from "@components/general/NormalizedImage";
+import { connectToAtlas } from "lib/mongodb";
 
 export default function CardPack({ metadata }) {
     const router = useRouter();
@@ -85,7 +87,7 @@ export default function CardPack({ metadata }) {
                         <meta
                             key="twitter:url"
                             name="twitter:url"
-                            content="https://awesomechoi11.lhr.rocks/card-pack/9125f846ec1e972a"
+                            content={metadata.url}
                         />
                         <meta
                             key="twitter:title"
@@ -116,7 +118,7 @@ export default function CardPack({ metadata }) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Navbar />
-            <main id="card-pack">
+            <main className="bg-blue-200 pb-28">
                 <WaitForMongo>
                     <Inner />
                 </WaitForMongo>
@@ -127,19 +129,10 @@ export default function CardPack({ metadata }) {
 
 function Inner() {
     const { query, isReady, isFallback } = useRouter();
-    const { db, isAnon } = useMongo();
-
-    const mutation = useCardpackFunctions_incrementStats();
-    useEffect(() => {
-        if (query.cardPackId)
-            mutation.mutate({
-                action: "views",
-                cardPackId: query.cardPackId,
-            });
-    }, [isReady]);
+    const { db, user } = useMongo();
 
     const { data, isLoading, isIdle, isSuccess, isError } = useQuery(
-        ["card-pack", query.cardPackId, isAnon],
+        ["cardpack", query.cardPackId, user],
         () =>
             db
                 .collection("cardpacks")
@@ -163,10 +156,10 @@ function Inner() {
                             title: 1,
                             description: 1,
                             tags: 1,
-                            views: 1,
-                            likes: 1,
-                            shares: 1,
-                            duplicates: 1,
+                            //   views: 1,
+                            //   likes: 1,
+                            //   shares: 1,
+                            //   duplicates: 1,
                             lastModified: 1,
                             authorDetails: 1,
                             lastModified: 1,
@@ -180,30 +173,30 @@ function Inner() {
             enabled: Boolean(isReady && query.cardPackId),
         }
     );
+    console.log(123123312, data);
     if (isIdle || isLoading || isFallback)
         return (
-            <div className="placeholder-wrapper">
+            <div className="flex justify-center placeholder-wrapper">
                 <PlaceholderColumn presetKey="loading" />
             </div>
         );
     if (isError) return;
-    <div className="placeholder-wrapper">
+    <div className="flex justify-center placeholder-wrapper">
         <PlaceholderColumn presetKey="error" />
     </div>;
-
     if (isSuccess && data)
         return (
-            <>
+            <div className="px-2 tablet:px-0 max-w-[812px] mx-auto mt-7">
                 <CardSwiper data={data} />
-                <div className="divider" />
+                <div className="w-full my-6 mx-0 opacity-20 h-[2px] bg-blue-600" />
                 <LargeCardBanner data={data} />
-                <div className="divider" />
+                <div className="w-full my-6 mx-0 opacity-20 h-[2px] bg-blue-600" />
                 <CardDisplay data={data} />
-            </>
+            </div>
         );
 
     return (
-        <div className="placeholder-wrapper">
+        <div className="flex justify-center placeholder-wrapper">
             <PlaceholderColumn presetKey="error" />
         </div>
     );
@@ -212,15 +205,24 @@ function Inner() {
 // This function gets called at build time
 export async function getStaticPaths() {
     // Call an external API endpoint to get posts
-    const apiCreds = Realm.Credentials.apiKey(process.env.MONGO_API_KEY);
-    const apiUser = await MongoApp.logIn(apiCreds);
-    const cardpacks = await apiUser.functions.getCardPackIds();
+    let cursor;
+    let paths;
+    const { db: cachedDb, client, disconnect } = await connectToAtlas();
+    try {
+        cursor = await cachedDb.collection("cardpacks").find({}).limit(10);
+        paths = await cursor
+            .map((pack) => ({
+                params: {
+                    cardPackId: pack._id,
+                },
+            }))
+            .toArray();
+    } catch {
+        console.log(e);
+    } finally {
+        if (cursor) await cursor.close();
+    }
     // Get the paths we want to pre-render based on posts
-    const paths = cardpacks.map((pack) => ({
-        params: {
-            cardPackId: pack._id,
-        },
-    }));
 
     // We'll pre-render only these paths at build time.
     // { fallback: false } means other routes should 404.
@@ -231,15 +233,26 @@ export async function getStaticPaths() {
 // It won't be called on client-side, so you can even do
 // direct database queries.
 export async function getStaticProps({ params }) {
-    // Call an external API endpoint to get posts.
-    // You can use any data fetching library
-    const apiCreds = Realm.Credentials.apiKey(process.env.MONGO_API_KEY);
-    const apiUser = await MongoApp.logIn(apiCreds);
-    const cardpack = await apiUser.functions.getCardPackById(params.cardPackId);
-
-    const cdnUrl =
+    let cardpack;
+    let cursor;
+    const { db: cachedDb, client, disconnect } = await connectToAtlas();
+    try {
+        // Process a POST request
+        let collection = cachedDb.collection("cardpacks");
+        cardpack = await collection.findOne({
+            _id: params.cardPackId,
+        });
+    } catch (e) {
+        console.log(e);
+    } finally {
+        if (cursor) await cursor.close();
+    }
+    let cdnUrl =
         `${cardpack?.image?.value?.cdnUrl}-/overlay/e8cc658f-c96e-4463-aff9-83434e3e3898/50px50p/10p,90p/100p/` ||
         "https://ucarecdn.com/23bcd3ee-07fe-4333-bb7a-f306d9b67efc/-/preview/-/quality/smart/";
+    if (cardpack?.image?.type === "cloudflare") {
+        cdnUrl = cardpack?.image?.value?.variants[0];
+    }
 
     if (!cardpack) {
         return {
@@ -249,7 +262,7 @@ export async function getStaticProps({ params }) {
                         "404 Cardpack Not Found - Flippy - Flashcard App",
                     title: "Cardpack Not Found",
                     image: cdnUrl,
-                    url: `https://flippy.cards/card-pack/${
+                    url: `https://flippy.cards/cardpack/${
                         cardpack._id
                     }?slug=${slugify(cardpack.title)}`,
                     noIndex: true,
@@ -270,7 +283,7 @@ export async function getStaticProps({ params }) {
                     : null,
                 title: cardpack.title,
                 image: cdnUrl,
-                url: `https://flippy.cards/card-pack/${
+                url: `https://flippy.cards/cardpack/${
                     cardpack._id
                 }?slug=${slugify(cardpack.title)}`,
                 noIndex: cardpack.visibility !== "public",

@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 import { cardpackDraftsDefault } from "../../components/Mongo/documents/cardpacks";
 import { useMongo, WaitForMongo } from "../../components/Mongo/MongoUtils";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/nav/Navbar";
 import PlaceholderColumn from "../../components/PlaceholderColumn";
 import { alphaNumId } from "../../components/utils";
 
@@ -36,7 +36,7 @@ function Main() {
     // show cannot sign and prolly a button to go home
     const { user, db, isAnon } = useMongo();
     const { data, isSuccess, isError, isIdle, isLoading } = useQuery(
-        ["card-pack-editor-new", isAnon],
+        ["editor-new", isAnon],
         () =>
             user
                 .refreshCustomData()
@@ -90,15 +90,17 @@ function Main() {
                 )
                 .then((cardpackId) =>
                     // if all succeeds redirect to that cardpack
-                    push(`/card-pack-editor/${cardpackId}`)
+                    push(`/editor/${cardpackId}`)
                 ),
         { refetchOnWindowFocus: false, enabled: !!user && isReady, retry: 0 }
     );
 
     return (
-        <main id="CreatePack" className="px-[540rem]">
-            <div className="title-1">Card Pack Editor</div>
-            <div className="placeholder-wrapper">
+        <main id="CreatePack" className="px-[540px]">
+            <div className="my-1 text-lg font-semibold text-blue-600 title-1">
+                Card Pack Editor
+            </div>
+            <div className="flex justify-center placeholder-wrapper">
                 {(isSuccess || isLoading || isIdle) && (
                     <PlaceholderColumn presetKey="loading" />
                 )}

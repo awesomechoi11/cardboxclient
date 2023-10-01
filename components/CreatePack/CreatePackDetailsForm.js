@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { useMutation } from "react-query";
 import { useSetRecoilState } from "recoil";
 import * as Yup from "yup";
-import { CardPackDataContext } from "../../pages/card-pack-editor/[cardPackId]";
+import { CardPackDataContext } from "../../pages/editor/[cardPackId]";
 import { MyTextInput } from "../Form/Basic";
 import { MySelect } from "../Form/MySelect";
 import { useMongo } from "../Mongo/MongoUtils";
@@ -78,47 +78,58 @@ export default function CreatePackDetailsForm() {
                 // .required("Required"),
             })}
         >
-            <Form id="CreatePack-form">
+            <Form
+                id="CreatePack-form"
+                className="flex justify-between w-full gap-[24px] "
+            >
                 <CreatePackDetailsAutoSave
                     onUpdate={(newDoc) => {
                         if (db) mutation.mutate([db, newDoc]);
                     }}
                 />
-                <div className="left">
-                    <MyFilePicker
-                        initialValue={data.image}
-                        onUpdate={(file) => {
-                            if (db)
-                                mutation.mutate([
-                                    db,
-                                    {
-                                        $set: { image: file },
-                                        $currentDate: { lastModified: true },
-                                    },
-                                ]);
-                        }}
-                    />
+                <div className="left w-[198px]">
+                    <div className="text-center flex flex-col gap-3">
+                        <MyFilePicker
+                            initialValue={data.image}
+                            onUpdate={(file) => {
+                                if (db)
+                                    mutation.mutate([
+                                        db,
+                                        {
+                                            $set: { image: file },
+                                            $currentDate: {
+                                                lastModified: true,
+                                            },
+                                        },
+                                    ]);
+                            }}
+                        />
+                    </div>
                 </div>
-                <div className="middle">
-                    <MyTextInput label="Title" controlId="title" />
-                    <MyTextInput
-                        label="Tags (separated by commas)"
-                        controlId="tags"
-                    />
-                    <MyTextInput
-                        label="Description"
-                        controlId="description"
-                        as="textarea"
-                        rows={5}
-                    />
+                <div className="flex-grow">
+                    <div className="text-center flex flex-col gap-3">
+                        <MyTextInput label="Title" controlId="title" />
+                        <MyTextInput
+                            label="Tags (separated by commas)"
+                            controlId="tags"
+                        />
+                        <MyTextInput
+                            label="Description"
+                            controlId="description"
+                            as="textarea"
+                            rows={5}
+                        />
+                    </div>
                 </div>
-                <div className="right">
-                    <MySelect
-                        label="Visibility"
-                        controlId="visibility"
-                        options={selectOptions}
-                    />
-                    <CreatePackPublish />
+                <div className="w-[200px]">
+                    <div className="text-center flex flex-col gap-3">
+                        <MySelect
+                            label="Visibility"
+                            controlId="visibility"
+                            options={selectOptions}
+                        />
+                        <CreatePackPublish />
+                    </div>
                 </div>
             </Form>
         </Formik>

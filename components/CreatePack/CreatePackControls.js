@@ -23,8 +23,8 @@ export function CreatePackControlsTop() {
         };
     }, [tick]);
     return (
-        <div className="create-pack-controls top">
-            <div className="left">
+        <div className="create-pack-controls py-[16px] px-0 flex items-center mb-[64px] top-0 sticky z-10 ">
+            <div className="left justify-start absolute w-full pointer-events-none flex items-center gap-[16px] ">
                 <Button
                     size="sm"
                     onClick={() => setCards("swapAllCardTermDefinition")}
@@ -35,17 +35,19 @@ export function CreatePackControlsTop() {
                     shuffle
                 </Button>
             </div>
-            <div className="middle">
-                <span className="subtitle-2">
+            <div className="middle justify-center absolute w-full pointer-events-none flex items-center gap-[16px] ">
+                <span className="mx-2 my-0 font-bold text-blue-600">
                     {cardIds?.length || 0} Total Cards
                 </span>
             </div>
-            <div className="right">
+            <div className="right justify-end absolute w-full pointer-events-none flex items-center gap-[16px] ">
                 {saveState.saving ? (
-                    <div className="subtitle-1">Saving...</div>
+                    <div className="mx-0 my-2 font-bold text-blue-500">
+                        Saving...
+                    </div>
                 ) : (
                     saveState.lastUpdated && (
-                        <div className="subtitle-1">
+                        <div className="mx-0 my-2 font-bold text-blue-500">
                             Last Saved: {ago(saveState.lastUpdated)}
                         </div>
                     )
@@ -78,8 +80,8 @@ export function CreatePackControlsBottom() {
     }, [tick]);
 
     return (
-        <div className="create-pack-controls bottom">
-            <div className="left">
+        <div className="flex relative create-pack-controls py-[16px] px-0 items-center mb-[64px] top-0 z-10  bottom">
+            <div className="left justify-start absolute w-full pointer-events-none flex items-center gap-[16px]">
                 <Button
                     size="sm"
                     onClick={() => setCards("swapAllCardTermDefinition")}
@@ -90,17 +92,19 @@ export function CreatePackControlsBottom() {
                     shuffle
                 </Button>
             </div>
-            <div className="middle">
-                <span className="subtitle-2">
+            <div className="absolute justify-center w-full pointer-events-none flex items-center gap-[16px]">
+                <span className="mx-2 my-0 font-bold text-blue-600">
                     {cardIds?.length || 0} Total Cards
                 </span>
             </div>
-            <div className="right">
+            <div className="absolute justify-end w-full pointer-events-none flex items-center gap-[16px]">
                 {saveState.saving ? (
-                    <div className="subtitle-1">Saving...</div>
+                    <div className="mx-0 my-2 font-bold text-blue-500">
+                        Saving...
+                    </div>
                 ) : (
                     saveState.lastUpdated && (
-                        <div className="subtitle-1">
+                        <div className="mx-0 my-2 font-bold text-blue-500">
                             Last Saved: {ago(saveState.lastUpdated)}
                         </div>
                     )

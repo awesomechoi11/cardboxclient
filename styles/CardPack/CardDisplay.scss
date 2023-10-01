@@ -6,94 +6,67 @@
             > .row {
                 display: flex;
                 justify-content: space-between;
-                margin-bottom: 24rem;
-                min-height: 434rem;
+                margin-bottom: 24px;
+                min-height: 434px;
             }
             .card {
-                width: 327rem;
-                height: 434rem;
+                width: 327px;
+                height: 434px;
             }
         }
 
         > .row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 24rem;
+            margin-bottom: 24px;
         }
         .card {
             word-break: break-word;
-            filter: drop-shadow(0px 2rem 1rem vars.$color-primary-1);
+            filter: drop-shadow(0px 2px 1px vars.$color-primary-1);
             // position: absolute;
             cursor: pointer;
-            width: 180rem;
-            height: 240rem;
+            width: 180px;
+            height: 240px;
             user-select: none;
             > .inner {
-                width: 100%;
-                height: 100%;
-                opacity: 1;
-                .back-face,
-                .front-face {
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                    transform-style: preserve-3d;
-                    backface-visibility: hidden;
-                }
-                .front-face {
-                    transform: rotateY(0deg);
-                }
-                .back-face {
-                    transform: rotateY(180deg);
-                }
+
                 .face {
-                    padding: 24rem;
+                    padding: 24px;
                     box-sizing: border-box;
                     img {
                         width: 80%;
                         height: 40%;
                         object-fit: contain;
                     }
-                    position: absolute;
-                    pointer-events: none;
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    background-color: #e7cdb5;
-                    border-radius: 16rem;
-                    gap: 16rem;
                 }
             }
         }
     }
 
     > .content {
-        margin: 32rem 0 128rem 0;
+        margin: 32px 0 128px 0;
     }
 
     > .controls {
         display: flex;
         justify-content: space-between;
-        margin: 32rem 0;
+        margin: 32px 0;
         > * {
             display: flex;
-            gap: 8rem;
+            gap: 8px;
             > .icon-button {
-                width: 32rem;
-                height: 32rem;
+                width: 32px;
+                height: 32px;
                 border-radius: 100%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 transition: background-color 220ms;
                 cursor: pointer;
-                &:hover,
-                &.active {
-                    background-color: vars.$color-secondary-2;
-                }
+                // &:hover,
+                // &.active {
+                //     background-color: vars.$color-secondary-2;
+                // }
             }
         }
         > .left {
@@ -111,41 +84,41 @@
                     display: flex;
                     justify-content: space-between;
                     flex-flow: row wrap;
-                    margin-bottom: 24rem;
-                    height: 434rem;
+                    margin-bottom: 24px;
+                    height: 434px;
                 }
                 .card {
-                    width: 327rem;
-                    height: 434rem;
+                    width: 327px;
+                    height: 434px;
                     box-sizing: border-box;
                 }
             }
         }
 
         > .content {
-            margin: 32rem 0 128rem 0;
+            margin: 32px 0 128px 0;
         }
 
         > .controls {
             display: flex;
             justify-content: space-between;
-            margin: 32rem 0;
+            margin: 32px 0;
             > * {
                 display: flex;
-                gap: 8rem;
+                gap: 8px;
                 > .icon-button {
-                    width: 32rem;
-                    height: 32rem;
+                    width: 32px;
+                    height: 32px;
                     border-radius: 100%;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     transition: background-color 220ms;
                     cursor: pointer;
-                    &:hover,
-                    &.active {
-                        background-color: vars.$color-secondary-2;
-                    }
+                    // &:hover,
+                    // &.active {
+                    //     background-color: vars.$color-secondary-2;
+                    // }
                 }
             }
             > .left {

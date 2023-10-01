@@ -14,6 +14,7 @@ import Button from "@components/general/Button";
 import PlaceholderColumn from "../../PlaceholderColumn";
 import useDeleteFileMutation from "../../Mongo/Files/useDeleteFileMutation";
 import { toast } from "react-toastify";
+import { normalizeImageSrc } from "@components/general/NormalizedImage";
 
 export const pickerIncomingFileItemState = atom({
     key: "pickerIncomingFileItemState",
@@ -55,23 +56,14 @@ export default function FileItemList() {
             {isSuccess &&
                 !!data?.files?.length &&
                 (() => {
-                    let files = data.files.map((file, index) => {
-                        switch (file.type) {
-                            case "uploadcare":
-                                return (
-                                    <UploadCareFileItem
-                                        {...file}
-                                        key={file.value.uuid}
-                                        index={index}
-                                        refetch={refetch}
-                                    />
-                                );
-
-                            default:
-                                // dont show on list if not handled
-                                return null;
-                        }
-                    });
+                    let files = data.files.map((file, index) => (
+                        <FileItem
+                            file={file}
+                            key={file.value.uuid}
+                            index={index}
+                            refetch={refetch}
+                        />
+                    ));
                     return <PaginatedList files={files.reverse()} />;
                 })()}
             <IncomingFileList refetch={refetch} />
@@ -98,14 +90,14 @@ function PaginatedList({ files }) {
 
     return (
         <>
-            <div className="file-item-list">
-                <AnimatePresence exitBeforeEnter>{items}</AnimatePresence>
+            <div className="file-item-list flex flex-wrap overflow-hidden h-[300px] gap-4 mb-4 ">
+                <AnimatePresence mode="wait">{items}</AnimatePresence>
             </div>
-            <div className="controls">
+            <div className="controls flex justify-around items-center">
                 <div
                     className={clsx(
-                        first && current !== first && "active",
-                        "icon-btn",
+                        first && current !== first && "active cursor-pointer hover:bg-blue-400",
+                        "icon-btn transition-colors w-5 h-5 flex items-center justify-center rounded-full",
                         "first"
                     )}
                     onClick={() => {
@@ -118,7 +110,7 @@ function PaginatedList({ files }) {
                     {FIRST_SVG}
                 </div>
                 <div
-                    className={clsx(prev && "active", "icon-btn", "prev")}
+                    className={clsx(prev && "active cursor-pointer hover:bg-blue-400", "icon-btn transition-colors w-5 h-5 flex items-center justify-center rounded-full", "prev")}
                     onClick={() => {
                         if (prev && !Locked) {
                             setLocked(true);
@@ -128,9 +120,11 @@ function PaginatedList({ files }) {
                 >
                     {PREV_SVG}
                 </div>
-                <div className="subtitle-2">{current}</div>
+                <div className="mx-2 my-0 font-bold text-blue-600">
+                    {current}
+                </div>
                 <div
-                    className={clsx(next && "active", "icon-btn", "next")}
+                    className={clsx(next && "active cursor-pointer hover:bg-blue-400", "icon-btn transition-colors w-5 h-5 flex items-center justify-center rounded-full", "next")}
                     onClick={() => {
                         if (next && !Locked) {
                             setLocked(true);
@@ -142,8 +136,8 @@ function PaginatedList({ files }) {
                 </div>
                 <div
                     className={clsx(
-                        last && current !== last && "active",
-                        "icon-btn",
+                        last && current !== last && "active cursor-pointer hover:bg-blue-400",
+                        "icon-btn transition-colors w-5 h-5 flex items-center justify-center rounded-full",
                         "last"
                     )}
                     onClick={() => {
@@ -160,8 +154,9 @@ function PaginatedList({ files }) {
     );
 }
 
-function UploadCareFileItem({ type, value, index, refetch }) {
-    let previewUrl = value.cdnUrl;
+function FileItem({ file, index, refetch }) {
+    const { type, value } = file;
+    let previewUrl = normalizeImageSrc(file);
 
     const isVideo = value.mimeType.startsWith("video/");
     const isImage = value.mimeType.startsWith("image/");
@@ -194,7 +189,7 @@ function UploadCareFileItem({ type, value, index, refetch }) {
     return (
         <>
             <motion.div
-                className="file-item"
+                className="file-item cursor-pointer overflow-hidden w-9 h-9 rounded-xl bg-300 relative"
                 initial={{
                     opacity: 0,
                     scale: 0.9,
@@ -217,16 +212,17 @@ function UploadCareFileItem({ type, value, index, refetch }) {
             >
                 {isImage && (
                     <Image
-                        layout="responsive"
-                        width="82w"
-                        height="82w"
+                        width={82}
+                        height={82}
                         src={previewUrl}
                         alt="preview"
-                        objectFit="cover"
+                        className="object-cover"
+                        style={{height: "inherit"}}
                     />
+
                 )}
                 {isVideo && (
-                    <video width="82w" height="82w" controls>
+                    <video width="82" height="82" controls>
                         <source src={previewUrl} type={value.mimeType} />
                         Your browser does not support the video tag.
                     </video>
@@ -236,7 +232,8 @@ function UploadCareFileItem({ type, value, index, refetch }) {
                 {visible && (
                     <motion.div
                         ref={setTooltipRef}
-                        {...getTooltipProps({ className: "tooltip-container" })}
+                        {...getTooltipProps({ 
+                            className: "tooltip-container z-20 flex flex-col min-w-5 min-h-5 rounded-[3px]" })}
                         initial={{
                             opacity: 0,
                         }}
@@ -250,7 +247,7 @@ function UploadCareFileItem({ type, value, index, refetch }) {
                             duration: 0.18,
                         }}
                     >
-                        <div {...getArrowProps({ className: "tooltip-arrow" })}>
+                        <div {...getArrowProps({ className: "tooltip-arrow h-[1rem] w-[1rem] pointer-events-none justify-center" })}>
                             <motion.svg
                                 width="32"
                                 height="8"
@@ -258,13 +255,13 @@ function UploadCareFileItem({ type, value, index, refetch }) {
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                                 initial={{
-                                    y: "10rem",
+                                    y: "10",
                                 }}
                                 animate={{
-                                    y: "0rem",
+                                    y: "0",
                                 }}
                                 exit={{
-                                    y: "10rem",
+                                    y: "10",
                                 }}
                                 transition={{
                                     duration: 0.18,
@@ -272,27 +269,27 @@ function UploadCareFileItem({ type, value, index, refetch }) {
                             >
                                 <path
                                     d="M16 0C12 0 8 8 0 8L32 8C24 8 20 0 16 0Z"
-                                    fill="#F9F5F1"
+                                    fill="#C0D8FD"
                                 />
                             </motion.svg>
                         </div>
                         <motion.div
-                            className="inner"
+                            className="inner flex flex-col z-40 p-1 bg-blue-400 rounded-sm"
                             initial={{
-                                y: "10rem",
+                                y: "10",
                             }}
                             animate={{
-                                y: "0rem",
+                                y: "0",
                             }}
                             exit={{
-                                y: "10rem",
+                                y: "10",
                             }}
                             transition={{
                                 duration: 0.18,
                             }}
                         >
                             <Button
-                                variant="secondary"
+                                variant="tertiary"
                                 size="sm"
                                 onClick={() => {
                                     setFile({ type, value });
@@ -301,11 +298,11 @@ function UploadCareFileItem({ type, value, index, refetch }) {
                             >
                                 Use
                             </Button>
-                            <Button variant="secondary" size="sm">
+                            <Button variant="tertiary" size="sm">
                                 Edit
                             </Button>
                             <Button
-                                variant="secondary"
+                                variant="tertiary"
                                 size="sm"
                                 onClick={() => {
                                     deleteFileMutation.mutate(undefined, {

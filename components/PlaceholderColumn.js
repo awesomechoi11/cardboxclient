@@ -27,7 +27,7 @@ const imageObj = {
 
 const sizes = {
     regular: {
-        width: "360rem",
+        width: "360",
     },
 };
 const presets = {
@@ -39,10 +39,12 @@ const presets = {
                 <>
                     Try refreshing! If it keeps persisting please reach out to
                     us on{" "}
-                    <Link href="https://discord.gg/QC3yHFySAV">
-                        <a target="_blank" className="subtitle-2">
-                            discord
-                        </a>
+                    <Link
+                        href="https://discord.gg/QC3yHFySAV"
+                        target="_blank"
+                        className="mx-2 my-0 font-bold text-blue-600"
+                    >
+                        discord
                     </Link>
                     !
                 </>
@@ -80,21 +82,31 @@ export default function PlaceholderColumn({
     const actionComponent = options.actionComponent;
     const action = options.action;
     return (
-        <div className={clsx(className, "placeholder-column", options.sizeKey)}>
+        <div
+            className={clsx(
+                className,
+                "placeholder-column flex flex-col gap-[48px] items-center w-[400px] text-center break-words ",
+                options.sizeKey
+            )}
+        >
             {image && (
                 <div className="img-wrapper">
                     <Image
                         alt={image.alt}
                         src={image.src}
-                        layout="fill"
-                        objectFit="contain"
+                        className="object-contain"
+                        fill
                     />
                 </div>
             )}
             {message && (
                 <div className="message">
-                    <div className="title-1">{message.title}</div>
-                    <div className="description-1">{message.description}</div>
+                    <div className="my-1 text-lg font-semibold text-blue-600 title-1">
+                        {message.title}
+                    </div>
+                    <div className="mx-0 mt-2 text-blue-400 break-words">
+                        {message.description}
+                    </div>
                 </div>
             )}
             {actionComponent}

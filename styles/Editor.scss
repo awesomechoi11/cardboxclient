@@ -3,8 +3,8 @@
 .card-editor-wrapper {
     position: relative;
     img {
-        width: 24rem;
-        height: 24rem;
+        width: 24px;
+        height: 24px;
     }
     p {
         margin: 0;
@@ -15,21 +15,21 @@
     .toolbar {
         z-index: 1;
         position: absolute;
-        top: calc(100% + 8rem);
-        width: 360rem;
+        top: calc(100% + 8px);
+        width: 360px;
         justify-content: center;
         background-color: vars.$color-secondary-3;
-        box-shadow: 3rem 3rem 5rem vars.$color-secondary-4;
-        border-radius: 16rem;
+        box-shadow: 3px 3px 5px vars.$color-secondary-4;
+        border-radius: 16px;
         border: none;
         transition: opacity 220ms, transform 220ms;
 
         .rdw-option-wrapper {
             height: unset;
             min-width: unset;
-            margin: 0 8rem;
-            padding: 8rem;
-            border-radius: 8rem;
+            margin: 0 8px;
+            padding: 8px;
+            border-radius: 8px;
             background-color: vars.$color-secondary-3;
             transition: background-color 220ms;
             border: none;
@@ -45,14 +45,14 @@
         .rdw-colorpicker-wrapper {
             justify-content: center;
             .rdw-colorpicker-modal {
-                border-radius: 8rem;
+                border-radius: 8px;
                 background-color: vars.$color-secondary-3;
-                box-shadow: 3rem 3rem 5rem vars.$color-secondary-4;
+                box-shadow: 3px 3px 5px vars.$color-secondary-4;
                 border: none;
-                top: calc(100% + 16rem);
+                top: calc(100% + 16px);
             }
             .rdw-colorpicker-modal-style-label-active {
-                border-bottom: 2rem solid vars.$color-primary-1;
+                border-bottom: 2px solid vars.$color-primary-1;
             }
             .rdw-colorpicker-option {
                 box-shadow: none;
@@ -63,16 +63,16 @@
         }
     }
     .editor {
-        padding: 16rem 24rem;
-        transition: border 220ms;
-        border: 1rem solid rgba(vars.$color-primary-1, 0.25);
-        border-radius: 8rem;
-        cursor: pointer;
-        &:hover {
-            border: 1rem solid rgba(vars.$color-primary-2, 0.75);
-        }
+        // padding: 16px 24px;
+        // transition: border 220ms;
+        // border: 1px solid rgba(vars.$color-primary-1, 0.25);
+        // border-radius: 8px;
+        // cursor: pointer;
+        // &:hover {
+        //     border: 1px solid rgba(vars.$color-primary-2, 0.75);
+        // }
     }
     &.active .editor {
-        border: 1rem solid rgba(vars.$color-primary-1, 1);
+        border: 1px solid rgba(vars.$color-primary-1, 1);
     }
 }

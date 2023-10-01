@@ -13,14 +13,18 @@ export default function MatchPostGameDetails() {
         <div id="match-post-game-screen">
             <div className="top">
                 <div className="details">
-                    <div className="title-1">Interactive Study Mode</div>
+                    <div className="title-1 text-lg font-semibold text-blue-600 my-1">
+                        Interactive Study Mode
+                    </div>
                     <div className="stats">
                         <LabeledPills label="Mode" content="Match" />
                         <LabeledPills label="Category" content={label} />
                     </div>
                     <div className="time">
-                        <div className="subtitle-2">My Time</div>
-                        <div className="content">
+                        <div className="text-blue-600 font-bold mx-2 my-0">
+                            My Time
+                        </div>
+                        <div className="break-words">
                             {Math.round(time / 10) / 100} s
                         </div>
                     </div>
@@ -57,7 +61,7 @@ export default function MatchPostGameDetails() {
                             size="sm"
                             onClick={() => {
                                 router.push(
-                                    `/card-pack/${router.query.cardPackId}`
+                                    `/cardpack/${router.query.cardPackId}`
                                 );
                             }}
                         >
@@ -66,8 +70,12 @@ export default function MatchPostGameDetails() {
                     </div>
                 </div>
                 <div className="leaderboard">
-                    <div className="subtitle-2">Leaderboard</div>
-                    <div className="description-1">coming soon!</div>
+                    <div className="text-blue-600 font-bold mx-2 my-0">
+                        Leaderboard
+                    </div>
+                    <div className=" mt-2 mx-0 text-blue-400 break-words">
+                        coming soon!
+                    </div>
                 </div>
             </div>
         </div>

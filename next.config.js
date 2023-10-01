@@ -5,14 +5,20 @@ const nextConfig = {
     async redirects() {
         return [
             {
-                source: "/card-pack",
+                source: "/cardpack",
                 destination: "/browse",
                 permanent: true,
             },
         ];
     },
     images: {
-        domains: ["quizlet.com", "loremflickr.com", "ucarecdn.com"],
+        domains: [
+            "quizlet.com",
+            "loremflickr.com",
+            "ucarecdn.com",
+            "cdn.discordapp.com",
+            "imagedelivery.net",
+        ],
     },
 };
 

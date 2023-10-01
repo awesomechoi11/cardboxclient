@@ -47,11 +47,13 @@ export function MyTextInput({ label, controlId, ...props }) {
     const { isSubmitting } = useFormikContext();
 
     return (
-        <div className="my-text-input">
-            <label htmlFor={controlId}>{label}</label>
+        <div className="flex flex-col gap-2 ">
+            <label htmlFor={controlId} className="font-bold">
+                {label}
+            </label>
             <input {...props} {...field} disabled={isSubmitting} />
             {meta.touched && meta.error ? (
-                <div className="form-error">
+                <div className="mx-0 mt-0 mb-1 text-red-600">
                     <ErrComponent err={meta.error} />
                 </div>
             ) : null}
@@ -68,7 +70,7 @@ export function MyTextArea({ label, controlId, ...props }) {
     const { isSubmitting } = useFormikContext();
 
     return (
-        <Form.Group controlId={controlId} className="my-text-input">
+        <Form.Group controlId={controlId} className="flex flex-col gap-2">
             <Form.Label>{label}</Form.Label>
             <Form.Control
                 as="textarea"
@@ -78,7 +80,7 @@ export function MyTextArea({ label, controlId, ...props }) {
                 disabled={isSubmitting}
             />
             {meta.touched && meta.error ? (
-                <div className="form-error">
+                <div className="m-2 text-red-600">
                     <ErrComponent err={meta.error} />
                 </div>
             ) : null}

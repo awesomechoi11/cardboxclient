@@ -59,8 +59,10 @@ function NavButtonWithTooltip({ data }) {
             TriggerContent={<NavButton data={data} />}
             TooltipContent={
                 <div className="tooltip">
-                    <div className="subtitle-1">Coming Soon!</div>
-                    <div className="description-1">
+                    <div className="text-blue-500 font-bold my-2 mx-0">
+                        Coming Soon!
+                    </div>
+                    <div className=" mt-2 mx-0 text-blue-400 break-words">
                         Keep Updated on Discord!
                     </div>
                     <div>
@@ -81,9 +83,7 @@ function NavButton({ data }) {
             variant="secondary"
             active={router.query.modePath === data.path}
             onClick={() =>
-                router.push(
-                    `/card-pack/${router.query.cardPackId}/${data.path}`
-                )
+                router.push(`/cardpack/${router.query.cardPackId}/${data.path}`)
             }
         >
             {data.label}

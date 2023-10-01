@@ -9,13 +9,8 @@
 // My Sass
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;800;900&family=Nunito:wght@600;800&display=swap");
 @import "./CardPack/CardPack.scss";
-@import "./Modals/ModalRoot.scss";
-@import "Navbar.scss";
-@import "ConfirmEmail.scss";
 @import "CreatePack.scss";
 @import "Editor.scss";
-@import "MyComponents.scss";
-@import "Home.scss";
 @import "Browse.scss";
 @import "popper.scss";
 @import "PlaceholderColumn.scss";
@@ -23,39 +18,26 @@
 @import "Flippable.scss";
 
 html {
-    font-size: 0.0520833333333vw;
+    // font-size: 0.0520833333333vw;
     overflow: hidden;
 }
 
 body {
-    font-size: 14rem;
+    // font-size: 14px;
     padding: 0;
     margin: 0;
     font-family: "Inter", sans-serif;
-    color: vars.$color-primary-1;
-    background-color: vars.$color-secondary-1;
 }
 html,
 body,
 #app {
-    height: 100vh;
-    width: 100vw;
-    padding: 0;
-    margin: 0;
     font-family: "Inter", sans-serif;
-    // color: vars.$color-primary-1;
-    background-color: vars.$color-secondary-1;
+    height: 100%;
 }
-#app {
-    overflow: auto;
-    position: relative;
-    z-index: 1;
-}
+
 main {
     width: 100%;
-    padding: 0 530rem;
     box-sizing: border-box;
-    margin-bottom: 10vh;
 }
 
 @media (max-width: vars.$mobile-maxWidth) {
@@ -63,104 +45,35 @@ main {
         font-size: 0.26666666666vw;
     }
     main {
-        padding: 0 24rem;
+        padding: 0 24px;
         // width: 100vw;
     }
 }
 
 .divider {
     width: 100%;
-    margin: 48rem 0;
+    margin: 48px 0;
     opacity: 0.2;
     background-color: #9e694f;
-    height: 2rem;
+    height: 2px;
 }
 
 // .title-1 {
 //     color: vars.$color-primary-1;
-//     font-size: 24rem;
+//     font-size: 24px;
 //     font-weight: 600;
-//     margin: 8rem 0;
+//     margin: 8px 0;
 // }
 
 @layer components {
-    .title-1 {
-        @apply text-lg font-semibold text-brown-600 my-1;
-    }
     input {
-        @apply px-4 py-3 rounded-sm border-brown-200 bg-brown-50 active:border-brown-400 hover:border-brown-400 border;
+        @apply px-4 py-3 rounded-sm border-blue-200 bg-blue-100 active:border-blue-400 hover:border-blue-400 border;
     }
-}
-.my-text-input {
-    display: flex;
-    gap: 8rem;
-    flex-direction: column;
-    > label {
-        font-weight: 600;
-    }
-}
-.subtitle-1 {
-    color: vars.$color-primary-2;
-    font-weight: 600;
-    margin: 8rem 0;
-}
-.subtitle-2 {
-    color: vars.$color-primary-1;
-    font-weight: 600;
-    margin: 8rem 0;
-}
-.description-1 {
-    margin: 8rem 0;
-    color: vars.$color-secondary-4;
-    word-break: break-word;
-}
-.normal-1 {
-    margin: 0;
-    font-weight: 600;
-    font-size: 14rem;
-    color: vars.$color-primary-1;
-}
-.jumbo-1 {
-    font-size: 64rem;
-    font-weight: 600;
-    color: vars.$color-primary-1;
 }
 
 input {
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
-}
-.content {
-    word-break: break-word;
-}
-.form-error {
-    margin: 8rem;
-    color: vars.$color-error-1;
-}
-
-main.wide {
-    padding: 0 192rem;
-    margin-bottom: 128rem;
-    text-align: left;
-}
-
-main.column {
-    padding: 0 780rem;
-    margin-bottom: 128rem;
-    text-align: center;
-    form {
-        text-align: left;
-    }
-    > * {
-        width: 100%;
-        margin-bottom: 48rem;
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-    > .message > * {
-        margin-bottom: 24rem;
-    }
 }
 
 /* unvisited link */
@@ -195,16 +108,16 @@ button.discord {
     color: #5865f2;
     display: flex;
     align-items: center;
-    gap: 8rem;
+    gap: 8px;
 }
 
 .labeled-pills {
     > .label {
-        margin-bottom: 8rem;
+        margin-bottom: 8px;
     }
     > .content {
-        padding: 16rem 24rem;
-        border-radius: 8rem;
+        padding: 16px 24px;
+        border-radius: 8px;
         background-color: vars.$color-secondary-2;
         text-align: center;
     }
@@ -228,7 +141,7 @@ textarea {
 button.btn {
     // outline: none;
     border: none;
-    font-size: 16rem !important;
+    font-size: 16px !important;
 }
 .Toastify {
     max-width: 100%;
@@ -236,4 +149,33 @@ button.btn {
 
 .nowrap {
     white-space: nowrap;
+}
+
+@supports (-webkit-touch-callout: none) {
+    body {
+        height: -webkit-fill-available;
+    }
+    html {
+        height: -webkit-fill-available;
+    }
+}
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.preserve-3d {
+    transform-style: preserve-3d;
+}
+.backface-hidden {
+    backface-visibility: hidden;
+}
+.rdw-editor-main {
+    overflow: hidden !important;
 }

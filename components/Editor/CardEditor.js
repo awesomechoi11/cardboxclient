@@ -31,12 +31,18 @@ export const CardEditor = ({ displayMode = false, ...props }) => {
     if (displayMode || !(focusedField === props.wrapperId)) {
         return (
             <div
-                className={clsx("card-editor-wrapper", props.wrapperClassName)}
+                className={clsx(
+                    "card-editor-wrapper flex-grow ",
+                    props.wrapperClassName
+                )}
                 tabIndex={"0"}
                 onFocus={() => setFocusedField(props.wrapperId)}
             >
                 <div
-                    className={clsx(props.editorClassName, "editor")}
+                    className={clsx(
+                        props.editorClassName,
+                        "px-4 py-3 min-h-[76px] border-[1px] border-blue-400 transition-colors rounded-sm cursor-pointer hover:border-blue-600"
+                    )}
                     dangerouslySetInnerHTML={{
                         __html: rawHtml,
                     }}
@@ -82,10 +88,10 @@ function Inner({
             tabIndex="0"
             wrapperClassName={clsx(
                 wrapperClassName,
-                "card-editor-wrapper",
-                focused && "active"
+                "card-editor-wrapper px-4 py-3 border-[1px] border-blue-400 rounded-sm",
+                focused && "z-[2]"
             )}
-            editorClassName={clsx(editorClassName, "editor")}
+            editorClassName={clsx(editorClassName, "")}
             toolbarClassName={clsx(toolbarClassName, "toolbar")}
             toolbar={toolbar}
             onFocus={() => {
@@ -98,7 +104,7 @@ function Inner({
                 visibility: "unset",
                 opacity: focused ? 1 : 0,
                 pointerEvents: focused ? "all" : "none",
-                transform: `translate3d(0,${focused ? 0 : 10}rem,0)`,
+                transform: `translate3d(0,${focused ? 0 : 10}px,0)`,
             }}
             {...props}
             editorState={editorState}

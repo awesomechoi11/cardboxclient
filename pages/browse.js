@@ -3,7 +3,7 @@ import Head from "next/head";
 import { createContext, useState } from "react";
 import CardPackBrowser from "../components/Browse/CardPackBrowser";
 import CardPackPreview from "../components/Browse/CardPackPreview";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/nav/Navbar";
 import { useIsMobile } from "@components/mediaQueryHooks";
 import { WaitForMongo } from "@components/Mongo/MongoUtils";
 
@@ -19,7 +19,7 @@ export default function Browse() {
                 <title key="title">Browse - Flippy - Flashcard App</title>
             </Head>
             <Navbar />
-            <main id="Browse" className="wide">
+            <main id="Browse" className="px-20 pt-0">
                 <WaitForMongo>
                     <BrowseContext.Provider
                         value={{

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/nav/Navbar";
 import Image from "next/image";
 import Button from "@components/general/Button";
 import { useState } from "react";
@@ -22,27 +22,27 @@ export default function Custom404() {
                 <div>
                     {clicked ? (
                         <Image
-                            width="360w"
-                            height="322w"
-                            objectFit="contain"
-                            layout="responsive"
+                            width="360"
+                            height="322"
+                            className="object-contain"
                             src="/assets/img/404 - 2.png"
                             alt="cute cate -  404"
                         />
                     ) : (
                         <Image
-                            width="360w"
-                            height="322w"
-                            objectFit="contain"
-                            layout="responsive"
+                            width="360"
+                            height="322"
+                            className="object-contain"
                             src="/assets/img/404 - 1.png"
                             alt="cute cate -  404"
                         />
                     )}
                 </div>
                 <div className="message">
-                    <div className="title-1">404 Not Found</div>
-                    <div className="subtitle-2">
+                    <div className="title-1 text-lg font-semibold text-blue-600 my-1">
+                        404 Not Found
+                    </div>
+                    <div className="text-blue-600 font-bold mx-2 my-0">
                         This page doesn’t exist or was removed!
                     </div>
                 </div>

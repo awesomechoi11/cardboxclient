@@ -34,7 +34,10 @@ export function MyClickTooltip({
                 {visible && (
                     <motion.div
                         ref={setTooltipRef}
-                        {...getTooltipProps({ className: "tooltip-container" })}
+                        {...getTooltipProps({
+                            className:
+                                "tooltip-container min-w-[32px] min-h-[32px] rounded-sm border-none flex flex-col z-50",
+                        })}
                         initial={{
                             opacity: 0,
                         }}
@@ -56,13 +59,13 @@ export function MyClickTooltip({
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                                 initial={{
-                                    y: "10rem",
+                                    y: "10",
                                 }}
                                 animate={{
-                                    y: "0rem",
+                                    y: "0",
                                 }}
                                 exit={{
-                                    y: "10rem",
+                                    y: "10",
                                 }}
                                 transition={{
                                     duration: 0.18,
@@ -70,20 +73,20 @@ export function MyClickTooltip({
                             >
                                 <path
                                     d="M16 0C12 0 8 8 0 8L32 8C24 8 20 0 16 0Z"
-                                    fill="#F9F5F1"
+                                    className="fill-blue-300"
                                 />
                             </motion.svg>
                         </div>
                         <motion.div
-                            className="inner"
+                            className="flex flex-col px-3 py-1 bg-blue-400 rounded-sm shadow-md inner"
                             initial={{
-                                y: "10rem",
+                                y: "10",
                             }}
                             animate={{
-                                y: "0rem",
+                                y: "0",
                             }}
                             exit={{
-                                y: "10rem",
+                                y: "10",
                             }}
                             transition={{
                                 duration: 0.18,
@@ -106,7 +109,7 @@ export function MyClickTooltip({
         TriggerContent={
             <button className="icon-btn">
                 <div className="icon">{DUPLICATE_SVG}</div>
-                <div className="content">{millify(duplciates)}</div>
+                <div className="break-words">{millify(duplciates)}</div>
             </button>
         }
         TooltipContent={<div>Duplicate</div>}
@@ -130,6 +133,7 @@ export function MyHoverTooltip({
     },
     TooltipContent,
     TriggerContent,
+    className,
 }) {
     const {
         getArrowProps,
@@ -141,14 +145,17 @@ export function MyHoverTooltip({
 
     return (
         <>
-            <div className="tooltip-trigger-wrapper" ref={setTriggerRef}>
+            <div
+                className="tooltip-trigger-wrapper relative hover:z-[5]"
+                ref={setTriggerRef}
+            >
                 {TriggerContent}
             </div>
             <AnimatePresence>
                 {visible && (
                     <motion.div
                         ref={setTooltipRef}
-                        {...getTooltipProps({ className: "tooltip-container" })}
+                        {...getTooltipProps({ className })}
                         initial={{
                             opacity: 0,
                         }}
@@ -170,13 +177,13 @@ export function MyHoverTooltip({
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                                 initial={{
-                                    y: "10rem",
+                                    y: "10",
                                 }}
                                 animate={{
-                                    y: "0rem",
+                                    y: "0",
                                 }}
                                 exit={{
-                                    y: "10rem",
+                                    y: "10",
                                 }}
                                 transition={{
                                     duration: 0.18,
@@ -184,20 +191,20 @@ export function MyHoverTooltip({
                             >
                                 <path
                                     d="M16 0C12 0 8 8 0 8L32 8C24 8 20 0 16 0Z"
-                                    fill="#F9F5F1"
+                                    className="fill-blue-300"
                                 />
                             </motion.svg>
                         </div>
                         <motion.div
-                            className="inner normal-1"
+                            className="flex flex-col px-3 py-1 m-0 mt-[3px] text-base font-bold bg-blue-300 rounded-sm shadow-md inner color-blue-800"
                             initial={{
-                                y: "10rem",
+                                y: "10",
                             }}
                             animate={{
-                                y: "0rem",
+                                y: "0",
                             }}
                             exit={{
-                                y: "10rem",
+                                y: "10",
                             }}
                             transition={{
                                 duration: 0.18,

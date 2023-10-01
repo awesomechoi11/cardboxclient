@@ -1,6 +1,6 @@
 import Button from "@components/general/Button";
 import { useContext } from "react";
-import { CardPackDataContext } from "../../pages/card-pack-editor/[cardPackId]";
+import { CardPackDataContext } from "../../pages/editor/[cardPackId]";
 import usePublishPackMutation from "../Mongo/CardPack/usePublishPackMutation";
 import ago from "s-ago";
 import { useRecoilState } from "recoil";
@@ -34,10 +34,11 @@ export default function CreatePackPublish() {
                     publishMutation.mutate(undefined, {
                         onSuccess: () => {
                             refetch();
-                            openModal({ url: `/card-pack/${dbdata._id}` });
+                            openModal({ url: `/cardpack/${dbdata._id}` });
                         },
                     })
                 }
+                className="w-full"
                 disabled={
                     publishMutation.isLoading ||
                     !canBePublished ||
@@ -59,13 +60,14 @@ export default function CreatePackPublish() {
 
             <Button
                 variant="danger"
+                className="w-full"
                 onClick={() =>
                     deleteMutation.mutate(undefined, {
                         onSuccess: () => {
                             toast.success(
                                 "Your card pack was successfully deleted!"
                             );
-                            router.push("/browse");
+                            router.push("/library");
                         },
                     })
                 }

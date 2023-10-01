@@ -1,54 +1,47 @@
 @use "./vars";
 
 .placeholder-column {
-    display: flex;
-    flex-direction: column;
-    gap: 48rem;
-    align-items: center;
-    width: 400rem;
-    text-align: center;
-    word-break: break-word;
     .img-wrapper {
-        height: 320rem;
-        width: 360rem;
+        height: 320px;
+        width: 360px;
         position: relative;
     }
     .message {
-        width: 360rem;
+        width: 360px;
     }
     .message > .title-1 {
-        margin-bottom: 24rem;
+        margin-bottom: 24px;
     }
     > button {
         width: 100%;
     }
     &.regular {
         > .img-wrapper {
-            width: 360rem;
-            height: 320rem;
+            width: 360px;
+            height: 320px;
             position: relative;
         }
     }
 }
 @media (max-width: vars.$mobile-maxWidth) {
     .placeholder-column {
-        gap: 24rem;
-        width: 343rem;
+        gap: 24px;
+        width: 343px;
         > .img-wrapper {
-            height: 148.7rem;
-            width: 183rem;
+            height: 148.7px;
+            width: 183px;
         }
         .message {
-            width: 343rem;
+            width: 343px;
         }
 
         > button {
-            width: 343rem;
+            width: 343px;
         }
         &.regular {
             > .img-wrapper {
-                height: 148.7rem;
-                width: 183rem;
+                height: 148.7px;
+                width: 183px;
             }
         }
     }

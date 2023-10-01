@@ -16,9 +16,8 @@ export function CreateYourOwnPacks({ play }) {
                         <Image
                             src="https://ucarecdn.com/cd15bed7-a920-48b5-a6d0-fa72b7de99f7/-/scale_crop/400x400/smart/"
                             alt="zenitsu face"
-                            layout="fixed"
-                            width="200rem"
-                            height="200rem"
+                            width="200"
+                            height="200"
                         />
                         Name this character
                     </>
@@ -45,11 +44,12 @@ export function CreateYourOwnPacks({ play }) {
                         <Image
                             src="https://ucarecdn.com/e9c1edee-0693-43b2-b173-e0cfd95f8063/-/scale_crop/400x400/smart"
                             alt="babylon"
-                            layout="fixed"
-                            width="200rem"
-                            height="200rem"
+                            width="200"
+                            height="200"
                         />
-                        <div className="subtitle-2">Babylon</div>
+                        <div className="text-blue-600 font-bold mx-2 my-0">
+                            Babylon
+                        </div>
                     </>
                 }
                 onFlip={play}
@@ -62,9 +62,8 @@ export function CreateYourOwnPacks({ play }) {
                         <Image
                             src="https://ucarecdn.com/0c586228-d7d8-4fc2-bd02-1d07cf086b57/-/scale_crop/400x400/smart/"
                             alt="burette"
-                            layout="fixed"
-                            width="200rem"
-                            height="200rem"
+                            width="200"
+                            height="200"
                         />
                         {`A long tube of glass, usually marked in 0.1 mL units,
                         that's equipped with a stopcock and used for the
@@ -73,22 +72,25 @@ export function CreateYourOwnPacks({ play }) {
                 }
                 back={
                     <>
-                        <div className="subtitle-2"> What is a burret?</div>
+                        <div className="text-blue-600 font-bold mx-2 my-0">
+                            {" "}
+                            What is a burret?
+                        </div>
                     </>
                 }
                 onFlip={play}
                 className="card3"
             />
             <div className="cta">
-                <div className="jumbo-1">Create Your Own Packs</div>
-                <div className="description-1">
+                <div className="text-5xl font-bold color-blue-600">
+                    Create Your Own Packs
+                </div>
+                <div className=" mt-2 mx-0 text-blue-400 break-words">
                     Create & Share Your Card Packs with just your friends or
                     everybody!
                 </div>
-                <Link href="/card-pack-editor">
-                    <a target="_blank">
-                        <Button>Create Pack</Button>
-                    </a>
+                <Link href="/editor" target="_blank">
+                    <Button>Create Pack</Button>
                 </Link>
             </div>
         </div>

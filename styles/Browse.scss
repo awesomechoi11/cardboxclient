@@ -2,64 +2,64 @@
 
 #Browse {
     display: flex;
-    // gap: 64rem;
+    // gap: 64px;
     justify-content: space-between;
     align-items: flex-start;
     > .browser {
-        width: 548rem;
+        width: 548px;
         display: flex;
         flex-direction: column;
-        gap: 32rem;
+        gap: 32px;
         > .nav {
             display: flex;
             flex-flow: row wrap;
-            gap: 16rem;
+            gap: 16px;
         }
         > .browser-results {
             display: flex;
             flex-direction: column;
-            gap: 32rem;
+            gap: 32px;
         }
     }
     > .preview {
         position: relative;
-        width: 924rem;
-        min-height: 640rem;
+        width: 924px;
+        min-height: 640px;
         background-color: vars.$color-secondary-2;
-        border-radius: 32rem;
+        border-radius: 32px;
         box-sizing: border-box;
-        padding: 64rem 32rem;
+        padding: 64px 32px;
         > .inner {
-            width: 860rem;
+            width: 860px;
             > .divider {
-                margin: 32rem 0;
+                margin: 32px 0;
             }
             > .content-preview {
                 display: flex;
                 flex-direction: column;
-                gap: 24rem;
+                gap: 24px;
                 > .row {
                     display: flex;
-                    gap: 48rem;
+                    gap: 48px;
                     > .field {
                         display: flex;
                         flex-grow: 1;
-                        gap: 8rem;
-                        max-width: 404rem;
+                        gap: 8px;
+                        max-width: 404px;
                         > .img {
-                            border-radius: 8rem;
+                            border-radius: 8px;
                             overflow: hidden;
-                            width: 85rem;
-                            height: 76rem;
+                            width: 85px;
+                            height: 76px;
                             flex-shrink: 0;
                         }
                         > .content-wrapper {
                             flex-grow: 1;
                             .content {
-                                min-height: 49rem;
-                                padding: 12rem 24rem;
-                                border-radius: 8rem;
-                                border: solid 1rem vars.$color-secondary-4;
+                                min-height: 49px;
+                                padding: 12px 24px;
+                                border-radius: 8px;
+                                border: solid 1px vars.$color-secondary-4;
                             }
                         }
                     }
@@ -69,22 +69,22 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: flex-start;
-                gap: 16rem;
+                gap: 16px;
                 > .controls {
                     flex-shrink: 0;
                     display: flex;
-                    gap: 16rem;
+                    gap: 16px;
                     align-items: center;
                     .icon-btn {
                         display: flex;
                         align-items: center;
-                        padding: 4rem 16rem 4rem 8rem;
-                        border-radius: 8rem;
+                        padding: 4px 16px 4px 8px;
+                        border-radius: 8px;
                         outline: none;
                         border: none;
                         background: none;
                         font-weight: 600;
-                        font-size: 14rem;
+                        font-size: 14px;
                         color: vars.$color-secondary-4;
                         cursor: pointer;
                         transition: color 220ms, background-color 220ms;
@@ -97,7 +97,7 @@
             }
             > .details {
                 display: flex;
-                gap: 24rem;
+                gap: 24px;
                 flex-direction: column;
                 > .middle {
                     color: vars.$color-secondary-4;
@@ -110,21 +110,21 @@
                 > .top {
                     display: flex;
                     justify-content: space-between;
-                    gap: 128rem;
+                    gap: 128px;
                     align-items: flex-start;
                     > .author {
                         flex-shrink: 0;
                         display: flex;
-                        gap: 16rem;
+                        gap: 16px;
                         align-items: center;
                     }
                     > .tags {
                         display: flex;
                         flex-flow: row wrap;
-                        gap: 8rem;
+                        gap: 8px;
                         > .pill {
-                            padding: 8rem 16rem;
-                            border-radius: 8rem;
+                            padding: 8px 16px;
+                            border-radius: 8px;
                             background-color: vars.$color-primary-5;
                         }
                     }
@@ -139,16 +139,16 @@
 }
 
 .card-preview-default {
-    width: 548rem;
-    border: 1rem solid vars.$color-secondary-2;
-    border-radius: 12rem;
-    padding: 16rem;
+    width: 548px;
+    border: 1px solid vars.$color-secondary-2;
+    border-radius: 12px;
+    padding: 16px;
     box-sizing: border-box;
-    height: 138rem;
+    height: 138px;
     width: 100%;
-    max-width: 860rem;
+    max-width: 860px;
     display: flex;
-    gap: 16rem;
+    gap: 16px;
     transition: background-color 220ms, box-shadow 220ms, border 220ms;
     box-shadow: 0px 4px 4px 0px rgba(81, 65, 57, 0);
     cursor: pointer;
@@ -157,13 +157,13 @@
         box-shadow: 0px 4px 4px 0px vars.$color-shadow-1;
     }
     &.active {
-        border: 1rem solid vars.$color-secondary-4;
+        border: 1px solid vars.$color-secondary-4;
     }
     > .left {
         height: 100%;
-        width: 144rem;
+        width: 144px;
         background-color: vars.$color-secondary-3;
-        border-radius: 4rem;
+        border-radius: 4px;
         flex-shrink: 0;
         position: relative;
         overflow: hidden;
@@ -181,11 +181,11 @@
 
 @media (max-width: vars.$mobile-maxWidth) {
     #Browse {
-        padding: 0 24rem;
+        padding: 0 24px;
         .card-preview-default {
-            height: 98rem;
+            height: 98px;
             > .left {
-                width: 64rem;
+                width: 64px;
             }
         }
     }

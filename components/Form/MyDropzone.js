@@ -46,12 +46,12 @@ export function MyDropzone({
             />
             <div className="dropzone-inner">{children}</div>
             {meta.touched && meta.error ? (
-                <div className="form-error">
+                <div className="m-2 text-red-600">
                     <ErrComponent err={meta.error} />
                 </div>
             ) : null}
             <div
-                className="remove"
+                className="cursor-pointer text-center py-1 px-0"
                 onClick={(e) => {
                     e.stopPropagation();
                     helpers.setValue(null, false);
@@ -63,62 +63,3 @@ export function MyDropzone({
         </Form.Group>
     );
 }
-
-/**
- 
-                    <MyDropzone
-                        label="Pack Image (Optional)"
-                        controlId="image"
-                        onUpdate={(files) => {
-                            if (files && files?.length) {
-                                setFiles(
-                                    files.map((file) =>
-                                        Object.assign(file, {
-                                            preview: URL.createObjectURL(file),
-                                        })
-                                    )
-                                );
-                                compressImageFile(files.[0])
-                                    .then(uploadImage)
-                            } else {
-                                setFiles(null);
-                            }
-                        }}
-                        options={{
-                            accept: "image/jpeg",
-                            multiple: false,
-                            maxFiles: 1,
-                            maxSize: 1000000,
-                            onDragEnter: () => setIsDragging(true),
-                            onDragLeave: () => setIsDragging(false),
-                        }}
-                    >
-                        {files?.[0] || data.image?.cdnUrl ? (
-                            <div className="preview-image">
-                                <Image
-                                    layout="fill"
-                                    src={files[0].preview || data.image?.cdnUrl}
-                                    alt="drag n drop"
-                                />
-                            </div>
-                        ) : !isDragging ? (
-                            <Image
-                                width="135w"
-                                height="105.5w"
-                                objectFit="contain"
-                                layout="responsive"
-                                src="/assets/img/photo.png"
-                                alt="cute cate -  photo zone"
-                            />
-                        ) : (
-                            <Image
-                                width="135w"
-                                height="105.5w"
-                                objectFit="contain"
-                                layout="responsive"
-                                src="/assets/img/circle.png"
-                                alt="cute cate -  photo zone drop"
-                            />
-                        )}
-                    </MyDropzone> 
- */

@@ -8,6 +8,8 @@ import Image from "next/image";
 import PlaceholderColumn from "../PlaceholderColumn";
 import { useRouter } from "next/router";
 import { useIsMobile } from "@components/mediaQueryHooks";
+import Footer from "@components/Home/Footer";
+import { normalizeImageSrc } from "@components/general/NormalizedImage";
 // import ReactGA from "react-ga";
 
 export default function CardPackBrowser() {
@@ -106,7 +108,6 @@ export default function CardPackBrowser() {
                     </Button>
                 ))}
             </div>
-
             <BrowserResults data={pages[currentPage]} />
         </div>
     );
@@ -115,7 +116,7 @@ export default function CardPackBrowser() {
 function BrowserResults({ data: { query, label, collection } }) {
     const { user, db, isAnon } = useMongo();
     const { isLoading, isError, isIdle, isSuccess, data, refetch } = useQuery(
-        ["card-pack-browser", user.id, label, isAnon],
+        ["cardpack-browser", user.id, label, isAnon],
         () => query(db),
         { refetchOnWindowFocus: false, enabled: !!db }
     );
@@ -147,7 +148,7 @@ function BrowserResults({ data: { query, label, collection } }) {
                                 label: "Create A Card Pack",
                                 props: {
                                     onClick: () => {
-                                        router.push("/card-pack-editor");
+                                        router.push("/editor");
                                     },
                                 },
                             },
@@ -172,7 +173,7 @@ function CardPreviewDefault({ data, collection }) {
         selectedState: [selected, setSelected],
     } = useContext(BrowseContext);
     const isMobile = useIsMobile();
-    const imgSrc = image?.value?.cdnUrl;
+    const imgSrc = normalizeImageSrc(image);
     const router = useRouter();
     return (
         <div
@@ -184,7 +185,7 @@ function CardPreviewDefault({ data, collection }) {
             onFocus={() => {
                 window?.umami?.(`Click - Browse - Card Preview - ${title}`);
                 if (isMobile) {
-                    router.push(`/card-pack/${_id}`);
+                    router.push(`/cardpack/${_id}`);
                 } else {
                     setSelected({
                         id: _id,
@@ -197,21 +198,24 @@ function CardPreviewDefault({ data, collection }) {
                 <div className="left">
                     <Image
                         src={imgSrc}
+                        key={imgSrc}
                         alt="preview"
-                        layout="fill"
-                        // width={isMobile ? "64rem" : "144rem"}
-                        // height="106.29rem"
-                        objectFit="cover"
+                        fill
+                        className="object-cover"
                     />
                 </div>
             )}
             <div className="right">
-                <div className="subtitle-2 title">{title}</div>
-                <div className="description-1 details">
+                <div className="text-blue-600 font-bold mx-2 my-0 title">
+                    {title}
+                </div>
+                <div className=" mt-2 mx-0 text-blue-400 break-words  details">
                     {[totalCards + " cards", ...tags].join(", ")}
                 </div>
                 {!isMobile && (
-                    <div className="description-1 details">{description}</div>
+                    <div className=" mt-2 mx-0 text-blue-400 break-words  details">
+                        {description}
+                    </div>
                 )}
             </div>
         </div>
