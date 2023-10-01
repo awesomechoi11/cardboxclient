@@ -20,7 +20,7 @@ export default function IncomingFileList({ refetch }) {
 
   return (
     <>
-      <motion.div className="file-item-list incoming" layout>
+      <motion.div className="file-item-list flex flex-wrap overflow-hidden h-auto gap-4 mb-4 incoming" layout>
         <AnimatePresence mode="wait">
           {incomingFiles.map((file, index) => (
             <IncomingFileItem
@@ -37,7 +37,7 @@ export default function IncomingFileList({ refetch }) {
   );
 }
 
-function IncomingFileItem({ index, id, refetch }) {
+function IncomingFileItem({ file, index, id, refetch }) {
   const { type, value, previewUrl } = file;
   const removeIncomingFile = useSetRecoilState(pickerIncomingFileItemRemover);
 
@@ -72,7 +72,7 @@ function IncomingFileItem({ index, id, refetch }) {
 
   return (
     <motion.div
-      className="file-item"
+      className="file-item cursor-pointer overflow-hidden w-9 h-9 rounded-xl bg-300 relative"
       initial={{
         opacity: 0,
         scale: 0.9,
@@ -122,7 +122,7 @@ function IncomingFileItem({ index, id, refetch }) {
         </>
       )}
       <motion.div
-        className="progress-bar"
+        className="progress-bar bottom-1 left-1 absolute w-[66px] h-1 bg-blue-400 rounded-sm overflow-hidden"
         initial={{
           opacity: 0,
         }}
@@ -132,7 +132,7 @@ function IncomingFileItem({ index, id, refetch }) {
         }}
         animate={{ opacity: 1 }}
       >
-        <motion.div className="bar" style={{ width: progressBarWidth }} />
+        <motion.div className="bar bg-blue-700 w-1 h-1" style={{ width: progressBarWidth }} />
       </motion.div>
     </motion.div>
   );

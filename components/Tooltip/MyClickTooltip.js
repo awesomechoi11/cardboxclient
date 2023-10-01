@@ -146,7 +146,7 @@ export function MyHoverTooltip({
     return (
         <>
             <div
-                className="tooltip-trigger-wrapper relative hover:z-[2]"
+                className="tooltip-trigger-wrapper relative hover:z-[5]"
                 ref={setTriggerRef}
             >
                 {TriggerContent}

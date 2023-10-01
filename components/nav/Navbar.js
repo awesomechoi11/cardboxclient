@@ -27,7 +27,7 @@ export default function Navbar() {
             {!isMobile && (
                 <div className="flex items-center">
                     <div>
-                        <Link href="/" onClick={subjectSelect} className="flex">
+                        {/* <Link href="/" onClick={subjectSelect} className="flex">
                             <Button
                                 variant="secondary"
                                 size="sm"
@@ -52,7 +52,7 @@ export default function Navbar() {
                                     />
                                 </svg>
                             </Button>
-                        </Link>
+                        </Link> */}
                     </div>
                     <Link
                         href="/library"
@@ -89,7 +89,7 @@ function Right() {
     return !isAnon ? <AuthedSection /> : <UnauthedSection />;
 }
 
-function subjectSelect() {}
+function subjectSelect() { }
 
 function MobileDropdown() {
     // const [isOpen, setIsOpen] = useState(false);
@@ -162,15 +162,32 @@ function UnauthedSection() {
 
 function AuthedSection() {
     const router = useRouter();
-
+    const isMobile = useIsMobile();
     return (
-        <div className="">
+        <div className="flex flex-col items-center">
+            {
+                isMobile && (
+                    <Link
+                        className="mb-3"
+                        href={"/library"}
+                    >
+                        <Button
+                            variant="primary"
+                            size="xs"
+                        >
+                            Library
+                        </Button>
+                    </Link>
+                )
+            }
             <Button
+                className="flex gap-1 items-center pr-2"
                 variant="create"
                 size="xs"
                 onClick={() => router.push("/editor")}
             >
                 <svg
+                    className="inline-block"
                     width="31"
                     height="30"
                     viewBox="0 0 31 30"
@@ -184,6 +201,7 @@ function AuthedSection() {
                         fill="white"
                     />
                 </svg>
+                Create Pack
             </Button>
         </div>
     );

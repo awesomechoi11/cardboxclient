@@ -61,6 +61,21 @@ const buttonVariants = {
         "active:text-blue-800",
     ],
 
+    tertiary: [
+        "font-semibold",
+        "bg-blue-400",
+        "text-blue-800",
+        //hover
+        "hover:bg-blue-500",
+        "hover:text-blue-800",
+        //disabled
+        "disabled:bg-blue-50",
+        "disabled:text-blue-400",
+        //active
+        "active:bg-blue-500",
+        "active:text-blue-800",
+    ],
+
     pink: [
         "font-semibold",
         "bg-pink-600",
@@ -111,7 +126,7 @@ const sizeVariants = {
     sm: ["text-base rounded-sm px-3 py-2 "],
     default: ["text-base rounded-lg px-4 py-3 "],
     roundedDefault: ["text-base rounded-full px-3 py-3 "],
-    xs: ["text-base rounded px-1 py-1 h-6"],
+    xs: ["text-base rounded-sm px-1 py-1 h-6"],
 };
 export default function Button({
     variant = "primary",

@@ -47,7 +47,7 @@ export function MyTextInput({ label, controlId, ...props }) {
     const { isSubmitting } = useFormikContext();
 
     return (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 ">
             <label htmlFor={controlId} className="font-bold">
                 {label}
             </label>

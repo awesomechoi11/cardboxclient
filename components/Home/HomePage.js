@@ -26,7 +26,7 @@ export default function HomePage() {
                         </p>
                         <Button
                             variant="pink"
-                            onClick={() => router.push("/browse")}
+                            onClick={() => router.push("/search/any/chemistry")}
                         >
                             Browse Packs
                         </Button>
@@ -67,7 +67,7 @@ export default function HomePage() {
                                 alt="diarreafarthead"
                                 width="621"
                                 height="375"
-                                className="tablet:flex tablet:mx-auto tablet:my-5"
+                                className="desktop:mx-0 tablet:flex tablet:mx-auto tablet:my-5"
                             />
                         )}
 
@@ -83,7 +83,11 @@ export default function HomePage() {
                                 professional, our personalized flashcard experience will
                                 help you unlock your full potential.
                             </p>
-                            <Button variant="yellow">Browse Packs</Button>
+                            <Button 
+                            variant="yellow"
+                            onClick={() => router.push("/search/any/math")}
+                            >
+                                Browse Packs</Button>
                         </div>
                     </div>
                 </section>
@@ -125,7 +129,10 @@ export default function HomePage() {
                         Useful features that allow users to monitor their learning progress. These include tracking viewed flashcards, marking known ones, identifying challenging areas, and providing insights into study habits.
 
                     </p>
-                    <Button variant="cyan">Browse Packs</Button>
+                    <Button 
+                    variant="cyan"
+                    onClick={() => router.push("/search/any/english")}
+                    >Browse Packs</Button>
                 </div>
             </section>
         </div>

@@ -90,14 +90,14 @@ function PaginatedList({ files }) {
 
     return (
         <>
-            <div className="file-item-list">
+            <div className="file-item-list flex flex-wrap overflow-hidden h-[300px] gap-4 mb-4 ">
                 <AnimatePresence mode="wait">{items}</AnimatePresence>
             </div>
-            <div className="controls">
+            <div className="controls flex justify-around items-center">
                 <div
                     className={clsx(
-                        first && current !== first && "active",
-                        "icon-btn",
+                        first && current !== first && "active cursor-pointer hover:bg-blue-400",
+                        "icon-btn transition-colors w-5 h-5 flex items-center justify-center rounded-full",
                         "first"
                     )}
                     onClick={() => {
@@ -110,7 +110,7 @@ function PaginatedList({ files }) {
                     {FIRST_SVG}
                 </div>
                 <div
-                    className={clsx(prev && "active", "icon-btn", "prev")}
+                    className={clsx(prev && "active cursor-pointer hover:bg-blue-400", "icon-btn transition-colors w-5 h-5 flex items-center justify-center rounded-full", "prev")}
                     onClick={() => {
                         if (prev && !Locked) {
                             setLocked(true);
@@ -124,7 +124,7 @@ function PaginatedList({ files }) {
                     {current}
                 </div>
                 <div
-                    className={clsx(next && "active", "icon-btn", "next")}
+                    className={clsx(next && "active cursor-pointer hover:bg-blue-400", "icon-btn transition-colors w-5 h-5 flex items-center justify-center rounded-full", "next")}
                     onClick={() => {
                         if (next && !Locked) {
                             setLocked(true);
@@ -136,8 +136,8 @@ function PaginatedList({ files }) {
                 </div>
                 <div
                     className={clsx(
-                        last && current !== last && "active",
-                        "icon-btn",
+                        last && current !== last && "active cursor-pointer hover:bg-blue-400",
+                        "icon-btn transition-colors w-5 h-5 flex items-center justify-center rounded-full",
                         "last"
                     )}
                     onClick={() => {
@@ -189,7 +189,7 @@ function FileItem({ file, index, refetch }) {
     return (
         <>
             <motion.div
-                className="file-item"
+                className="file-item cursor-pointer overflow-hidden w-9 h-9 rounded-xl bg-300 relative"
                 initial={{
                     opacity: 0,
                     scale: 0.9,
@@ -230,7 +230,8 @@ function FileItem({ file, index, refetch }) {
                 {visible && (
                     <motion.div
                         ref={setTooltipRef}
-                        {...getTooltipProps({ className: "tooltip-container" })}
+                        {...getTooltipProps({ 
+                            className: "tooltip-container z-20 flex flex-col min-w-5 min-h-5 rounded-[3px]" })}
                         initial={{
                             opacity: 0,
                         }}
@@ -244,7 +245,7 @@ function FileItem({ file, index, refetch }) {
                             duration: 0.18,
                         }}
                     >
-                        <div {...getArrowProps({ className: "tooltip-arrow" })}>
+                        <div {...getArrowProps({ className: "tooltip-arrow h-[1rem] w-[1rem] pointer-events-none justify-center" })}>
                             <motion.svg
                                 width="32"
                                 height="8"
@@ -266,12 +267,12 @@ function FileItem({ file, index, refetch }) {
                             >
                                 <path
                                     d="M16 0C12 0 8 8 0 8L32 8C24 8 20 0 16 0Z"
-                                    fill="#F9F5F1"
+                                    fill="#C0D8FD"
                                 />
                             </motion.svg>
                         </div>
                         <motion.div
-                            className="inner"
+                            className="inner flex flex-col z-40 p-1 bg-blue-400 rounded-sm"
                             initial={{
                                 y: "10",
                             }}
@@ -286,7 +287,7 @@ function FileItem({ file, index, refetch }) {
                             }}
                         >
                             <Button
-                                variant="secondary"
+                                variant="tertiary"
                                 size="sm"
                                 onClick={() => {
                                     setFile({ type, value });
@@ -295,11 +296,11 @@ function FileItem({ file, index, refetch }) {
                             >
                                 Use
                             </Button>
-                            <Button variant="secondary" size="sm">
+                            <Button variant="tertiary" size="sm">
                                 Edit
                             </Button>
                             <Button
-                                variant="secondary"
+                                variant="tertiary"
                                 size="sm"
                                 onClick={() => {
                                     deleteFileMutation.mutate(undefined, {
