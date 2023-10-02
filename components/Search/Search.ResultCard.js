@@ -154,9 +154,10 @@ function Inner() {
                             closeModal();
                         }}
                     >
-                        <Button variant="secondary">Save</Button>
+                        <Button>Study</Button>
+                        {/* <Button variant="secondary">Save</Button> */}
                     </Link>
-                    <Button>Study</Button>
+                    
                 </div>
             </div>
             <div className="flex flex-col gap-2">
