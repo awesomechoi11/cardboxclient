@@ -7,8 +7,8 @@ import { MongoRoot } from "../components/Mongo/MongoUtils";
 import Script from "next/script";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Head from "next/head";
-import { useRef, createContext } from 'react'
-
+import { useRef, createContext } from "react";
+import { Analytics } from "@vercel/analytics/react";
 // import ReactGA from "react-ga";
 
 // ReactGA.initialize("UA-227551059-1");
@@ -104,7 +104,6 @@ function MyApp({ Component, pageProps }) {
                                 <AppRefContext.Provider value={appRef}>
                                     <Component {...pageProps} />
                                 </AppRefContext.Provider>
-
                             </div>
                             <ModalRoot />
                         </div>
@@ -112,6 +111,7 @@ function MyApp({ Component, pageProps }) {
                     <ToastContainer />
                 </RecoilRoot>
             </QueryClientProvider>
+            <Analytics />
             <Script
                 async
                 defer
