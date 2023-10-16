@@ -16,6 +16,7 @@
     "@popperjs/core": "^2.11.5",
     "@realm/react": "^0.4.3",
     "@uploadcare/upload-client": "^3.0.0",
+    "@vercel/analytics": "^1.1.1",
     "browser-image-compression": "^1.0.17",
     "clsx": "^1.1.1",
     "core-js": "^3.21.1",
