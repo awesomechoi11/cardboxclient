@@ -61,7 +61,7 @@ export default function SearchSubjectQueryPage() {
                 {isSuccess && (
                     <div className="box-content mx-auto tablet:mx-auto desktop:max-w-[1280px] tablet:max-w-[848px] max-w-[416px] pt-5">
                         <div className="mx-1 text-blue-950 text-[16px] font-semibold mb-3">
-                            Results ({data?.totalCount[0].count})
+                            Results ({data?.totalCount[0]?.count || 0})
                         </div>
                         <div className="grid grid-cols-1 mx-1 mb-3 gap-x-3 gap-y-4 desktop:grid-cols-3 tablet:grid-cols-2">
                             {data?.result?.map((packData) => (
@@ -74,9 +74,9 @@ export default function SearchSubjectQueryPage() {
                         <SearchPagination
                             current={page}
                             max={Math.ceil(
-                                Number(data?.totalCount[0].count) / limit
+                                Number(data?.totalCount[0]?.count || 0) / limit
                             )}
-                            maxDocs={Number(data?.totalCount[0].count)}
+                            maxDocs={Number(data?.totalCount[0]?.count || 0)}
                             limit={limit}
                             setPage={setPage}
                         />

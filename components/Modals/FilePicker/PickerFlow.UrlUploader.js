@@ -37,13 +37,18 @@ export default function UrlUploader() {
                 setSubmitting(false);
             }}
         >
-            <Form id="uploadbyurl-form" className="flex-grow-1">
-                <MyTextInput
-                    label="Paste Image Url"
-                    controlId="url"
-                    size="sm"
-                />
-                <MySubmitButton size="sm">Upload</MySubmitButton>
+            <Form id="uploadbyurl-form" className="flex-grow-1 mb-3">
+                <div className="flex gap-3">
+                    <div className="flex-grow-1 text-left">
+                        <MyTextInput
+                            label="Paste Image Url"
+                            controlId="url"
+                            size="sm"
+                        />
+                    </div>
+                    <MySubmitButton size="sm" className="mt-[36px] h-[58px]">Upload</MySubmitButton>
+                </div>
+
             </Form>
         </Formik>
     );

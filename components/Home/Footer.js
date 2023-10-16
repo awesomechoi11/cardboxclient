@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 export default function Footer() {
     return (
@@ -20,26 +21,48 @@ export default function Footer() {
                 <div className="flex tablet:mx-auto tablet:justify-evenly tablet:w-[800px] flex-wrap">
                     <ul className="flex flex-col  justify-self-start desktop:h-11">
                         <li className="font-bold">About us</li>
-                        <li>Our Story</li>
+                        {/* <li>Our Story</li>
                         <li>Press</li>
-                        <li>Careers</li>
-                        <li><a href="https://discord.gg/xGYGEPtC">Dis my cord</a></li>
+                        <li>Careers</li> */}
+                        <li><a href="https://discord.gg/HkbMWntqpC">Discord</a></li>
                     </ul>
                     <ul className="flex flex-col desktop:justify-evenly justify-self-start">
                         <li className="font-bold">Browse by Subject</li>
-                        <li>Physics</li>
-                        <li>History</li>
-                        <li>Mathematics</li>
-                        <li>Language</li>
-                        <li>Geography</li>
+                        <li>
+                            <Link href={`/search/any/physics`}>
+                                Physics
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href={`/search/any/history`}>
+                                History
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href={`/search/any/mathematics`}>
+                                Mathematics
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href={`/search/any/language`}>
+                                Language
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href={`/search/any/geography`}>
+                                Geography
+                            </Link>
+                        </li>
                     </ul>
                     <ul className="flex flex-col desktop:justify-evenly justify-self-start">
                         <li className="font-bold">Help & Support</li>
+                        <Link href={"https://discord.gg/HkbMWntqpC"}>
                         <li>FAQ</li>
                         <li>Contact Us</li>
                         <li>Tutorials</li>
                         <li>Terms of Service</li>
                         <li>Privacy Policy</li>
+                        </Link>
                     </ul>
                 </div>
             </section>

@@ -21,7 +21,7 @@ export default async function handler(req, res) {
             // console.info("query: ", query);
             cursor = await collection.aggregate([
                 {
-                    $search: {
+                    $library: {
                         index: "default",
                         text: {
                             query,

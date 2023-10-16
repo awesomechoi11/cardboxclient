@@ -26,34 +26,6 @@ export default function Navbar() {
             </Link>
             {!isMobile && (
                 <div className="flex items-center">
-                    <div>
-                        <Link href="/" onClick={subjectSelect} className="flex">
-                            <Button
-                                variant="secondary"
-                                size="sm"
-                                className="flex items-center"
-                            >
-                                Subject
-                                <svg
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="transition ease-in-out hover:rotate-180 duration-600"
-                                >
-                                    <path
-                                        d="M6 9L12 15L18 9"
-                                        // stroke="#082858"
-                                        className="stroke-blue-600"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                </svg>
-                            </Button>
-                        </Link>
-                    </div>
                     <Link
                         href="/library"
                         onClick={() => {
@@ -162,15 +134,37 @@ function UnauthedSection() {
 
 function AuthedSection() {
     const router = useRouter();
-
+    const isMobile = useIsMobile();
+    const { closeModal } = useModal("mobile navbar");
     return (
-        <div className="">
+        <div className="flex flex-col items-center">
+            {
+                isMobile && (
+                    <Link
+                        className="mb-3"
+                        href={"/library"}
+                    >
+                        <Button
+                            variant="primary"
+                            size="xs"
+
+                            onClick = { () => {
+                                closeModal();
+                            }}
+                        >
+                            Library
+                        </Button>
+                    </Link>
+                )
+            }
             <Button
+                className="flex gap-1 items-center pr-2"
                 variant="create"
                 size="xs"
                 onClick={() => router.push("/editor")}
             >
                 <svg
+                    className="inline-block"
                     width="31"
                     height="30"
                     viewBox="0 0 31 30"
@@ -184,6 +178,7 @@ function AuthedSection() {
                         fill="white"
                     />
                 </svg>
+                Create Pack
             </Button>
         </div>
     );
