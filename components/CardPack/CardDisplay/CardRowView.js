@@ -4,6 +4,7 @@ import CardDisplayCardWrapper from "./CardDisplay.CardWrapper";
 import { useContext } from "react";
 import { CardDisplayContext } from "./_CardDisplayUtils";
 import clsx from "clsx";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function CardRowView() {
     const data = useContext(CardDisplayContext);
