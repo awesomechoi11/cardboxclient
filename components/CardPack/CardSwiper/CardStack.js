@@ -1,4 +1,4 @@
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "motion/react";
 import { nanoid } from "nanoid";
 import { useState } from "react";
 import { useDidUpdate } from "rooks";

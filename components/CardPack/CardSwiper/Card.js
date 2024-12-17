@@ -6,7 +6,7 @@ import {
     useIsomorphicLayoutEffect,
     useMotionTemplate,
     useSpring,
-} from "framer-motion";
+} from "motion/react";
 import { useEffect, useState } from "react";
 import { relativeRem } from "../../utils";
 import { DragDropRef } from "./CardSwiper";

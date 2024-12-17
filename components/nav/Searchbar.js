@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { Formik, useField } from "formik";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 import { useState } from "react";

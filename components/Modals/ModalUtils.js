@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { atomFamily, useRecoilState, useResetRecoilState } from "recoil";
 import FilePickerModal from "./FilePicker/_FilePickerModal";
 import LoginModal from "./Login/LoginModal";
@@ -23,7 +23,7 @@ export default function ModalRoot() {
             <ImageViewerModal />
             <FilePickerModal />
             <LoginModal />
-            <MobileDropdownModal />  
+            <MobileDropdownModal />
         </div>
     );
 }

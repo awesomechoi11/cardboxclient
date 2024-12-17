@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { motion, useIsomorphicLayoutEffect } from "framer-motion";
+import { motion, useIsomorphicLayoutEffect } from "motion/react";
 import { createRef } from "react";
 import { useRecoilState } from "recoil";
 import { useIsMobile } from "../../mediaQueryHooks";

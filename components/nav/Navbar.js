@@ -11,7 +11,7 @@ export default function Navbar() {
     const isMobile = useIsMobile();
 
     return (
-        <div className="flex gap-2 tablet:gap-4 px-1 py-3 items-center tablet:px-4 desktop:px-[225px] bg-blue-200 relative z-10">
+        <div className="flex gap-2 tablet:gap-4 px-1 py-3 items-center tablet:px-4 desktop:px-[225px] relative z-10">
             <Link
                 href="/"
                 onClick={() => {
@@ -61,7 +61,7 @@ function Right() {
     return !isAnon ? <AuthedSection /> : <UnauthedSection />;
 }
 
-function subjectSelect() { }
+function subjectSelect() {}
 
 function MobileDropdown() {
     // const [isOpen, setIsOpen] = useState(false);
@@ -138,27 +138,21 @@ function AuthedSection() {
     const { closeModal } = useModal("mobile navbar");
     return (
         <div className="flex flex-col items-center">
-            {
-                isMobile && (
-                    <Link
-                        className="mb-3"
-                        href={"/library"}
+            {isMobile && (
+                <Link className="mb-3" href={"/library"}>
+                    <Button
+                        variant="primary"
+                        size="xs"
+                        onClick={() => {
+                            closeModal();
+                        }}
                     >
-                        <Button
-                            variant="primary"
-                            size="xs"
-
-                            onClick = { () => {
-                                closeModal();
-                            }}
-                        >
-                            Library
-                        </Button>
-                    </Link>
-                )
-            }
+                        Library
+                    </Button>
+                </Link>
+            )}
             <Button
-                className="flex gap-1 items-center pr-2"
+                className="flex items-center gap-1 pr-2"
                 variant="create"
                 size="xs"
                 onClick={() => router.push("/editor")}

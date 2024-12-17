@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { customAlphabet } from "nanoid";
 import { useRef } from "react";
 import { atom, useRecoilState, useSetRecoilState } from "recoil";

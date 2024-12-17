@@ -1,4 +1,4 @@
-import { useAnimationFrame, useIsomorphicLayoutEffect } from "framer-motion";
+import { useAnimationFrame, useIsomorphicLayoutEffect } from "motion/react";
 import { useEffect, useRef } from "react";
 import Button from "@components/general/Button";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";

@@ -54,6 +54,7 @@ module.exports = {
             fontFamily: {
                 sans: ["Inter", "sans-serif"],
                 serif: ["Merriweather", "serif"],
+                gilroy: ["Gilroy", "sans-serif"],
             },
             borderRadius: {
                 xs: "4px",
@@ -64,18 +65,6 @@ module.exports = {
                 xl: "16px",
             },
             colors: {
-                brown: {
-                    900: "#1C0B05",
-                    800: "#34190F",
-                    700: "#4D2D1F",
-                    600: "#674433",
-                    500: "#84604D",
-                    400: "#A17F6D",
-                    300: "#BFA493",
-                    200: "#DCCCBF",
-                    100: "#EEE5DF",
-                    50: "#F9F5F1",
-                },
                 blue: {
                     950: "#082858",
                     900: "#031024",

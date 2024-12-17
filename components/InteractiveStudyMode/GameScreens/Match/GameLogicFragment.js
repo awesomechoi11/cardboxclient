@@ -1,4 +1,4 @@
-import { useIsomorphicLayoutEffect } from "framer-motion";
+import { useIsomorphicLayoutEffect } from "motion/react";
 import { useContext, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { CardPackContext } from "../../../../lib/[modePath]";

@@ -17,6 +17,14 @@
 @import "InteractiveStudyMode.scss";
 @import "Flippable.scss";
 
+@font-face {
+    font-family: "Gilroy";
+    src: url("https://cdn.re-search.io/fonts/gilroy/Gilroy-Bold.otf")
+        format("opentype");
+    font-weight: bold;
+    font-style: normal;
+}
+
 html {
     // font-size: 0.0520833333333vw;
     overflow: hidden;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import { useIsomorphicLayoutEffect } from "framer-motion";
+import { useIsomorphicLayoutEffect } from "motion/react";
 
 export function useIsMobile() {
     const [isClient, setIsClient] = useState(false);

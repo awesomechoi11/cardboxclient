@@ -1,4 +1,4 @@
-import { MotionConfig } from "framer-motion";
+import { MotionConfig } from "motion/react";
 import Head from "next/head";
 import { createContext, useState } from "react";
 import CardPackBrowser from "../components/Browse/CardPackBrowser";

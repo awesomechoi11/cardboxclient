@@ -1,5 +1,5 @@
 import draftjsToHtml from "draftjs-to-html";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import millify from "millify";
 import Image from "next/image";
 import { useRouter } from "next/router";

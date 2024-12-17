@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useIsomorphicLayoutEffect } from "framer-motion";
+import { useIsomorphicLayoutEffect } from "motion/react";
 import { useSetRecoilState } from "recoil";
 import { MyHoverTooltip } from "../../Tooltip/MyClickTooltip";
 import { cardsMapState } from "../CardPackUtils";

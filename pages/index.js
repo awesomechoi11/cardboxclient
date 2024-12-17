@@ -9,24 +9,29 @@ import Navbar from "../components/nav/Navbar";
 import { cardpackSchema } from "../schemas/cardpacks/publishedCardpack";
 import HomePage from "@components/Home/HomePage";
 import Footer from "@components/Home/Footer";
-import { useMotionValueEvent, useSpring, motion, useScroll, Variants } from 'framer-motion';
+import {
+    useMotionValueEvent,
+    useSpring,
+    motion,
+    useScroll,
+    Variants,
+} from "framer-motion";
 import { useContext } from "react";
 import { AppRefContext } from "./_app";
 
 export default function Home() {
     // this will try to login with anonymous
     const { app, user } = useMongo();
-    const appRef = useContext(AppRefContext)
+    const appRef = useContext(AppRefContext);
 
     const { scrollYProgress } = useScroll({
         container: appRef,
-        offset: ["end end", "start start"]
+        offset: ["end end", "start start"],
     });
 
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
-        console.log("Page scroll: ", latest)
-    })
-
+        // console.log("Page scroll: ", latest)
+    });
 
     return (
         <>

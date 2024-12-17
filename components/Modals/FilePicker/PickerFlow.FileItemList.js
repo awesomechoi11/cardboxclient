@@ -6,7 +6,7 @@ import { atom, selector } from "recoil";
 import Image from "next/image";
 import { FIRST_SVG, LAST_SVG, NEXT_SVG, PREV_SVG } from "./_icons";
 import clsx from "clsx";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import IncomingFileList from "./PickerFlow.FileItemList.IncomingFileList";
 import { usePaginationator } from "../../utils";
 import { usePopperTooltip } from "react-popper-tooltip";
@@ -96,7 +96,9 @@ function PaginatedList({ files }) {
             <div className="controls flex justify-around items-center">
                 <div
                     className={clsx(
-                        first && current !== first && "active cursor-pointer hover:bg-blue-400",
+                        first &&
+                            current !== first &&
+                            "active cursor-pointer hover:bg-blue-400",
                         "icon-btn transition-colors w-5 h-5 flex items-center justify-center rounded-full",
                         "first"
                     )}
@@ -110,7 +112,11 @@ function PaginatedList({ files }) {
                     {FIRST_SVG}
                 </div>
                 <div
-                    className={clsx(prev && "active cursor-pointer hover:bg-blue-400", "icon-btn transition-colors w-5 h-5 flex items-center justify-center rounded-full", "prev")}
+                    className={clsx(
+                        prev && "active cursor-pointer hover:bg-blue-400",
+                        "icon-btn transition-colors w-5 h-5 flex items-center justify-center rounded-full",
+                        "prev"
+                    )}
                     onClick={() => {
                         if (prev && !Locked) {
                             setLocked(true);
@@ -124,7 +130,11 @@ function PaginatedList({ files }) {
                     {current}
                 </div>
                 <div
-                    className={clsx(next && "active cursor-pointer hover:bg-blue-400", "icon-btn transition-colors w-5 h-5 flex items-center justify-center rounded-full", "next")}
+                    className={clsx(
+                        next && "active cursor-pointer hover:bg-blue-400",
+                        "icon-btn transition-colors w-5 h-5 flex items-center justify-center rounded-full",
+                        "next"
+                    )}
                     onClick={() => {
                         if (next && !Locked) {
                             setLocked(true);
@@ -136,7 +146,9 @@ function PaginatedList({ files }) {
                 </div>
                 <div
                     className={clsx(
-                        last && current !== last && "active cursor-pointer hover:bg-blue-400",
+                        last &&
+                            current !== last &&
+                            "active cursor-pointer hover:bg-blue-400",
                         "icon-btn transition-colors w-5 h-5 flex items-center justify-center rounded-full",
                         "last"
                     )}
@@ -217,9 +229,8 @@ function FileItem({ file, index, refetch }) {
                         src={previewUrl}
                         alt="preview"
                         className="object-cover"
-                        style={{height: "inherit"}}
+                        style={{ height: "inherit" }}
                     />
-
                 )}
                 {isVideo && (
                     <video width="82" height="82" controls>
@@ -232,8 +243,10 @@ function FileItem({ file, index, refetch }) {
                 {visible && (
                     <motion.div
                         ref={setTooltipRef}
-                        {...getTooltipProps({ 
-                            className: "tooltip-container z-20 flex flex-col min-w-5 min-h-5 rounded-[3px]" })}
+                        {...getTooltipProps({
+                            className:
+                                "tooltip-container z-20 flex flex-col min-w-5 min-h-5 rounded-[3px]",
+                        })}
                         initial={{
                             opacity: 0,
                         }}
@@ -247,7 +260,12 @@ function FileItem({ file, index, refetch }) {
                             duration: 0.18,
                         }}
                     >
-                        <div {...getArrowProps({ className: "tooltip-arrow h-[1rem] w-[1rem] pointer-events-none justify-center" })}>
+                        <div
+                            {...getArrowProps({
+                                className:
+                                    "tooltip-arrow h-[1rem] w-[1rem] pointer-events-none justify-center",
+                            })}
+                        >
                             <motion.svg
                                 width="32"
                                 height="8"

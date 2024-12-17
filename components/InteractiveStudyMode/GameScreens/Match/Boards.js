@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import draftjsToHtml from "draftjs-to-html";
-import { motion, useAnimation, useIsomorphicLayoutEffect } from "framer-motion";
+import { motion, useAnimation, useIsomorphicLayoutEffect } from "motion/react";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";

@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import useSound from "use-sound";
 import CardVertical from "../general/CardVertical";
 import { CardDisplayContext } from "./_CardDisplayUtils";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ActiveOnViewportEnter } from "@components/general/ActiveOnViewportEnter";
 import CardDisplayCardWrapper from "./CardDisplay.CardWrapper";
 

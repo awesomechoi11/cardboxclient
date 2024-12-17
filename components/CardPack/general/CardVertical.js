@@ -1,7 +1,7 @@
 import ImageViewer from "@components/Modals/ImageViewer/ImageViewer";
 import { normalizeImageSrc } from "@components/general/NormalizedImage";
 import draftjsToHtml from "draftjs-to-html";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { BlankCardFace } from "./BlankCardFace";
 
 export default function CardVertical({ cardState, active, play }) {
