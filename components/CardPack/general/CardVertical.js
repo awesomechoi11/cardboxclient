@@ -55,7 +55,7 @@ export default function CardVertical({ cardState, active, play }) {
 function CardFace({ data: { image, content } }) {
     let imgSrc = normalizeImageSrc(image);
     return (
-        <motion.div className="box-border absolute flex flex-col items-center justify-center w-full h-full gap-3 p-3 bg-blue-100 shadow-2xl pointer-events-none rounded-2xl">
+        <motion.div className="box-border absolute flex flex-col items-center justify-center w-full h-full gap-3 p-3 bg-blue-100 shadow-2xl pointer-events-none desktop:rounded-2xl rounded-xl">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             {/* {imgSrc && <img layout="fill" src={imgSrc} alt="card" />} */}
             {imgSrc && (

@@ -14,7 +14,7 @@ export default function CardGridView() {
 
     return (
         <div className={clsx("card-grid flex justify-center")}>
-            <div className="flex flex-wrap justify-start gap-3">
+            <div className="flex flex-wrap desktop:justify-start justify-center gap-3 w-full">
                 {cards.map((data, index) => (
                     <ActiveOnViewportEnter key={index}>
                         <CardDisplayCardWrapper index={index}>
