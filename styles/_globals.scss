@@ -48,16 +48,6 @@ main {
     box-sizing: border-box;
 }
 
-@media (max-width: vars.$mobile-maxWidth) {
-    html {
-        font-size: 0.26666666666vw;
-    }
-    main {
-        padding: 0 24px;
-        // width: 100vw;
-    }
-}
-
 .divider {
     width: 100%;
     margin: 48px 0;
@@ -65,13 +55,6 @@ main {
     background-color: #9e694f;
     height: 2px;
 }
-
-// .title-1 {
-//     color: vars.$color-primary-1;
-//     font-size: 24px;
-//     font-weight: 600;
-//     margin: 8px 0;
-// }
 
 @layer components {
     input {

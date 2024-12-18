@@ -11,25 +11,32 @@ export default function Hero() {
     return (
         <div className="">
             <div className="relative z-10 px-1 mx-auto border border-red-600 max-w-screen-2xl">
-                <div className="absolute bottom-[-100px] right-[200px] rotate-12">
+                <div className="absolute top-[350px] md:top-[230px] xl:top-[250px] left-[calc(50vw-155px)] md:left-[500px] lg:left-[600px] xl:left-[700px] rotate-12">
                     <Flippable
                         hasWatermark
                         front={
                             <>
-                                One of the ancient world wonders, the “Hanging
-                                Gardens,” was found in which city?
+                                <Image
+                                    src="https://ucarecdn.com/55e9189c-7650-4f62-a8aa-8837de52b792/Frame903.png"
+                                    alt="flippy wave"
+                                    width="200"
+                                    height="200"
+                                />
+                                <div className="mx-2 my-0 font-bold">
+                                    Click me to flip
+                                </div>
                             </>
                         }
                         back={
                             <>
                                 <Image
-                                    src="https://ucarecdn.com/e9c1edee-0693-43b2-b173-e0cfd95f8063/-/scale_crop/400x400/smart"
-                                    alt="babylon"
+                                    src="https://ucarecdn.com/92d0a8f5-dcb7-47b9-9bff-963c969ac2ea/flippy_celebrate.png"
+                                    alt="flippy celebrate"
                                     width="200"
                                     height="200"
                                 />
-                                <div className="mx-2 my-0 font-bold text-blue-600">
-                                    Babylon
+                                <div className="mx-2 my-0 font-bold">
+                                    Hooray!!
                                 </div>
                             </>
                         }
@@ -37,12 +44,12 @@ export default function Hero() {
                         className="card2"
                     />
                 </div>
-                <div className="font-gilroy font-bold leading-none text-[285px]">
+                <div className="font-gilroy font-bold leading-none text-[16vw] sm:text-[102px] md:text-[148px] lg:text-[180px] 2xl:text-[204px]">
                     <div className="text-black">Study with</div>
                     <div className="text-blue-600">Flippy!</div>
                 </div>
 
-                <div className="flex flex-row max-w-xl gap-3 mt-5">
+                <div className="flex flex-row max-w-xl gap-3 mt-5 sm:max-w-md lg:max-w-xl">
                     <div className="w-1 my-[4px] bg-blue-600"></div>
                     <div className="w-full">
                         Effortlessly{" "}
@@ -56,7 +63,7 @@ export default function Hero() {
                 </div>
             </div>
             {/* wave container */}
-            <div className="absolute inset-0 top-[750px] flex items-center justify-center">
+            <div className="absolute inset-0 top-[750px] bottom-auto flex items-center justify-center border border-red-600">
                 <WavePattern />
             </div>
         </div>

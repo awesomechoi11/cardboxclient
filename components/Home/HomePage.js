@@ -14,8 +14,8 @@ export default function HomePage() {
             {/* Just for note purposes, the custom media queries are based on min-width, so the given px, as long as it's bigger than it, will classify as desktop, tablet, mobile  */}
             <section className="pt-1 pb-0 overflow-x-hidden bg-white desktop:pt-7 tablet:pt-5 desktop:pb-10 dark:bg-black">
                 <Hero />
-                <div className="relative z-20 items-center justify-between w-5/6 mx-auto mt-14 desktop:flex desktop:w-4/6 mb-9">
-                    <div className="mt-6 space-y-4 text-left desktop:w-1/3 desktop:space-y-3 desktop:mt-0">
+                <div className="relative z-20 items-center justify-between w-5/6 mx-auto mt-16 desktop:flex desktop:w-4/6 mb-9">
+                    <div className="mt-[500px] md:mt-12 space-y-4 text-left desktop:w-1/3 desktop:space-y-3">
                         <p className="desktop:text-3xl text-[36px] font-semibold leading-tight ">
                             Study <span className="text-pink-500">smarter</span>
                             , <br></br> not harder
